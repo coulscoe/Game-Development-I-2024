@@ -1,0 +1,13 @@
+using UnityEngine;
+using UnityEngine.Events;
+
+public class IDcontainerBehavior : MonoBehaviour
+{
+   public ID idObj;//contains the ID of an object
+   public UnityEvent startEvent;
+
+   public void Start()
+   {
+      startEvent.Invoke();
+   }
+}
