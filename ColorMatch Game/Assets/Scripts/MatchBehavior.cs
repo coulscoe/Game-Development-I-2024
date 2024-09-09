@@ -7,7 +7,7 @@ public class MatchBehavior : MonoBehaviour
     public UnityEvent matchEvent, noMatchEvent;
     private void OnTriggerEnter(Collider other)
     {
-        var tempObj = other.GetComponent<IDcontainerBehavior>();
+        var tempObj = other.GetComponent<IDContainerBehavior>();
         if (tempObj == null) 
             return;
         var otherID = tempObj.idObj;

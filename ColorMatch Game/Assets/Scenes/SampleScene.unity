@@ -512,6 +512,7 @@ GameObject:
   - component: {fileID: 1100906176}
   - component: {fileID: 1100906175}
   - component: {fileID: 1100906174}
+  - component: {fileID: 1100906179}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -531,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3b02ae9ff06f349a3e91d7d232d5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idObj: {fileID: 11400000, guid: 53b40610887e3624bbfaed5352bb64bc, type: 2}
+  idObj: {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
   matchEvent:
     m_PersistentCalls:
       m_Calls:
@@ -542,6 +543,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1100906179}
+        m_TargetAssemblyTypeName: SpriteBehavior, Assembly-CSharp
+        m_MethodName: ChangeRenderColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: ColorID, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 10
           m_StringArgument: 
@@ -677,6 +690,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1100906179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100906173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45822023fcbde742af84ee3e1b198f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1354366636
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +715,7 @@ GameObject:
   - component: {fileID: 1354366639}
   - component: {fileID: 1354366638}
   - component: {fileID: 1354366642}
+  - component: {fileID: 1354366643}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -824,10 +850,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268811cbec18809438b354d54e81a0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idObj: {fileID: 11400000, guid: 53b40610887e3624bbfaed5352bb64bc, type: 2}
+  idObj: {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
   startEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1354366643}
+        m_TargetAssemblyTypeName: SpriteBehavior, Assembly-CSharp
+        m_MethodName: ChangeRenderColor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: ColorID, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1354366643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354366636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45822023fcbde742af84ee3e1b198f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
