@@ -1,13 +1,14 @@
 using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 public class TextMeshProBehavior : MonoBehaviour
 {
-    private TextMesh label;
+    private TextMeshProUGUI label;
     public UnityEvent startEvent;
     private void Start()
     {
-        label = GetComponent<TextMesh>();
+        label = GetComponent<TextMeshProUGUI>();
         startEvent.Invoke();
     }
 
