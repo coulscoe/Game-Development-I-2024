@@ -1,10 +1,11 @@
+using System;
 using UnityEngine; 
 [CreateAssetMenu] 
-public class IntData : ScriptableObject 
+public class FloatData : ScriptableObject 
 { 
     public float value;
 
-    public void SetValue(int num)
+    public void SetValue(float num)
     {
         value = num;
     }
