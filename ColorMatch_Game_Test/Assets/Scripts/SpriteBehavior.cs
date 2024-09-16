@@ -1,9 +1,10 @@
-using UnityEngine; 
+using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteBehavior : MonoBehaviour
 {
-    private SpriteRenderer rendererObj; 
+    private SpriteRenderer rendererObj;
+
     private void Awake()
     {
         rendererObj = GetComponent<SpriteRenderer>(); //allows for the control of sprite renderers
@@ -14,8 +15,8 @@ public class SpriteBehavior : MonoBehaviour
         rendererObj.color = obj.value;
     }
 
-    /* public void ChangeRendererColor(ColorIDDataList obj)
+    public void ChangeRendererColor(ColorIDDataList obj)
     {
         rendererObj.color = obj.currentColor.value;
-    } */
+    }
 }
