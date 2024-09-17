@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorIDList:
   - {fileID: 11400000, guid: 2696aa1bdad361f459d02a58314ae3b2, type: 2}
-  - {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
   - {fileID: 11400000, guid: 9356c5d66ef2caa478606dc1df05d094, type: 2}
+  - {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
   currentColor: {fileID: 11400000, guid: 9969aaacc5e14a24d9eb3ad16d7a71d3, type: 2}
