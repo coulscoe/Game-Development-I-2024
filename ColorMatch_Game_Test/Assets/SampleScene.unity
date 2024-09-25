@@ -508,6 +508,30 @@ MonoBehaviour:
           m_StringArgument: Idle_retry
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: e9d8b45971cceb244a70305939ea4653, type: 2}
+        m_TargetAssemblyTypeName: GameAction, Assembly-CSharp
+        m_MethodName: RaiseAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 776133231}
+        m_TargetAssemblyTypeName: CoroutineBehavior, Assembly-CSharp
+        m_MethodName: StartRepeatUntilFalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &156036853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,6 +1026,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &776133235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776133230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a8250bf8cca0c49ac407c5ba7615da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameActionObj: {fileID: 11400000, guid: e9d8b45971cceb244a70305939ea4653, type: 2}
+  onRaiseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 776133231}
+        m_TargetAssemblyTypeName: CoroutineBehavior, Assembly-CSharp
+        m_MethodName: set_canRun
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &888929604
 GameObject:
@@ -2764,6 +2816,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3930685583978130433, guid: ab6f66a4c09751c48b20defc93e5d545, type: 3}
       insertIndex: -1
       addedObject: {fileID: 776133233}
+    - targetCorrespondingSourceObject: {fileID: 3930685583978130433, guid: ab6f66a4c09751c48b20defc93e5d545, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 776133235}
   m_SourcePrefab: {fileID: 100100000, guid: ab6f66a4c09751c48b20defc93e5d545, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
