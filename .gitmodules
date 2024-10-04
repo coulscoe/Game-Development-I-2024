@@ -1,3 +1,6 @@
 [submodule "Game_development/Assets/tools"]
 	path = Game_development/Assets/tools
 	url = https://github.com/coulscoe/Game_Dev_Tools
+[submodule "Tools_submodule"]
+	path = Tools_submodule
+	url = https://github.com/coulscoe/ArtisanDream.Tools
