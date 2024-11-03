@@ -9676,7 +9676,8 @@ GameObject:
   - component: {fileID: 1382129586}
   - component: {fileID: 1382129585}
   - component: {fileID: 1382129584}
-  - component: {fileID: 1382129583}
+  - component: {fileID: 1382129589}
+  - component: {fileID: 1382129588}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -9684,19 +9685,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1382129583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382129582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 546c98ccbf48649a8b90fe7e0358d642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1554089443}
 --- !u!195 &1382129584
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9778,12 +9766,79 @@ Transform:
   m_GameObject: {fileID: 1382129582}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -102.35, y: 43.58, z: 9.39}
+  m_LocalPosition: {x: -105.98, y: 43.52, z: 9.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1382129588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382129582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d705ca18e024740b78e43134c2d0b3b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiBrainObj: {fileID: 11400000, guid: 867db9f7d78153844872909cd8ac6ddc, type: 2}
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  triggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 867db9f7d78153844872909cd8ac6ddc, type: 2}
+        m_TargetAssemblyTypeName: AiBrain, Assembly-CSharp
+        m_MethodName: ChangeBase
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 85690f32a86cf9d49a908bc09e2ea9c3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: AiBase, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 867db9f7d78153844872909cd8ac6ddc, type: 2}
+        m_TargetAssemblyTypeName: AiBrain, Assembly-CSharp
+        m_MethodName: ChangeBase
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: bc955bc8a33f74ea494c45bbe6d60fca, type: 2}
+          m_ObjectArgumentAssemblyTypeName: AiBase, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &1382129589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382129582}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 30, y: 0.17113876, z: 30}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1406377852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13308,6 +13363,7 @@ GameObject:
   - component: {fileID: 1554089444}
   - component: {fileID: 1554089445}
   - component: {fileID: 1554089446}
+  - component: {fileID: 1554089447}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -13328,7 +13384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 18
-  jumpForce: 6
+  jumpForce: 5
   gravity: -19
 --- !u!143 &1554089439
 CharacterController:
@@ -13578,6 +13634,52 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1554089447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554089437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9380c5088918442908482eb5acf13274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdTime: 0.1
+  onCallEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  awakeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e0ab7aaa6ec70cf45b9831e414da6e28, type: 2}
+        m_TargetAssemblyTypeName: GameActionAdvanced, Assembly-CSharp
+        m_MethodName: RaiseAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1554089443}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  runEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  disableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  applicationQuitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!21 &1582727501
 Material:
   serializedVersion: 8
