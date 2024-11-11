@@ -1,36 +1,37 @@
 //Maya ASCII 2025ff03 scene
 //Name: Running_ani.ma
-//Last modified: Sun, Nov 10, 2024 10:52:14 PM
+//Last modified: Mon, Nov 11, 2024 01:42:20 PM
 //Codeset: 1252
-file -rdi 1 -ns "Run_Jump_bony_rig" -rfn "Run_Jump_bony_rigRN" -op "VERS|2025ff03|UVER|undef|MADE|undef|CHNG|Wed, Oct 16, 2024 01:03:16 AM|ICON|undef|INFO|undef|OBJN|2704|INCL|undef(|LUNI|cm|TUNI|film|AUNI|deg|TDUR|141120000|"
-		 -typ "mayaBinary" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Principles-of-Animation-I-2024/Run_Jump_rig//Run_Jump_bony_rig.mb";
-file -r -ns "Run_Jump_bony_rig" -dr 1 -rfn "Run_Jump_bony_rigRN" -op "VERS|2025ff03|UVER|undef|MADE|undef|CHNG|Wed, Oct 16, 2024 01:03:16 AM|ICON|undef|INFO|undef|OBJN|2704|INCL|undef(|LUNI|cm|TUNI|film|AUNI|deg|TDUR|141120000|"
-		 -typ "mayaBinary" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Principles-of-Animation-I-2024/Run_Jump_rig//Run_Jump_bony_rig.mb";
+file -rdi 1 -ns "full_body_rig" -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
+		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//assets/full_body_rig.ma";
+file -r -ns "full_body_rig" -dr 1 -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
+		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//assets/full_body_rig.ma";
 requires maya "2025ff03";
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiImagerDenoiserOidn"
 		 "mtoa" "5.4.2.1";
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "5679E92F-45ED-EBBF-D961-4FBB89D6BCD7";
+fileInfo "UUID" "C3195BAD-4454-842C-EA0F-A08A449CD559";
 createNode transform -s -n "persp";
 	rename -uid "C2450394-430A-B20C-3429-4F8942F98E72";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -37.44981310773673 9.6392018622366571 26.527294077653309 ;
-	setAttr ".r" -type "double3" -6.3383527295174051 -776.9999999998862 7.2996849219732174e-16 ;
+	setAttr ".t" -type "double3" -39.571375353049604 5.2957865164961699 10.519971788630706 ;
+	setAttr ".r" -type "double3" -3.9383527331101158 -2960.1999999997324 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "E35EF721-4EED-6D93-54A2-7C9F9CF7005A";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 40.715569293558971;
+	setAttr ".coi" 41.986739599089077;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" 0.9791131270876573 4.362849768324061 4.1476891486928551 ;
+	setAttr ".tp" -type "double3" 1.2444641026770527 5.5368902562489293 3.4870757553876182 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "2259A134-47E5-C5F6-F870-36B821D5929C";
@@ -134,23 +135,23 @@ createNode camera -n "bottomShape" -p "bottom";
 	setAttr ".o" yes;
 	setAttr ".ai_translator" -type "string" "orthographic";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "7F33CB4D-4D87-950B-092F-1EB99EE86FDF";
+	rename -uid "A4889B53-46E8-9D3C-B467-469E451F2537";
 	setAttr -s 4 ".lnk";
 	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "D2AE58BA-459E-7C7C-885F-02AE1DC12F4F";
+	rename -uid "F571A81C-40D1-073C-E509-A7B4D122B7AE";
 	setAttr ".bsdt[0].bscd" -type "Int32Array" 1 0 ;
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "BC5A2731-403C-D06A-D602-9FBBDB4A5C66";
+	rename -uid "5CA834E7-420C-2B59-D8D8-ED9AE06F93FD";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "5E60BB79-4A43-6135-829B-81A1B89B3B7D";
+	rename -uid "A4BA3916-4BF7-595F-A550-CAA1AC9E1DDC";
 	setAttr -s 2 ".dli[1]"  1;
 	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "7B0BA9C7-4BCF-6B6E-A90B-4589144AACC5";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "9EF6CE86-4E0C-6FD2-70D4-4DAC8CF164FE";
+	rename -uid "494A4756-4E88-010E-3446-F5880D787254";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "2F1880D4-4CC7-43B0-D745-F09F15ACFAE6";
 	setAttr ".g" yes;
@@ -205,461 +206,6 @@ createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "B973760C-4656-826D-9B0E-5BA636717C7F";
 	setAttr ".b" -type "string" "playbackOptions -min 0 -max 14 -ast 0 -aet 200 ";
 	setAttr ".st" 6;
-createNode reference -n "Run_Jump_bony_rigRN";
-	rename -uid "9D5FD800-4461-EF9E-0F39-AB913246084C";
-	setAttr -s 46 ".phl";
-	setAttr ".phl[1]" 0;
-	setAttr ".phl[2]" 0;
-	setAttr ".phl[3]" 0;
-	setAttr ".phl[4]" 0;
-	setAttr ".phl[5]" 0;
-	setAttr ".phl[6]" 0;
-	setAttr ".phl[7]" 0;
-	setAttr ".phl[8]" 0;
-	setAttr ".phl[9]" 0;
-	setAttr ".phl[10]" 0;
-	setAttr ".phl[11]" 0;
-	setAttr ".phl[12]" 0;
-	setAttr ".phl[13]" 0;
-	setAttr ".phl[14]" 0;
-	setAttr ".phl[15]" 0;
-	setAttr ".phl[16]" 0;
-	setAttr ".phl[17]" 0;
-	setAttr ".phl[18]" 0;
-	setAttr ".phl[19]" 0;
-	setAttr ".phl[20]" 0;
-	setAttr ".phl[21]" 0;
-	setAttr ".phl[22]" 0;
-	setAttr ".phl[23]" 0;
-	setAttr ".phl[24]" 0;
-	setAttr ".phl[25]" 0;
-	setAttr ".phl[26]" 0;
-	setAttr ".phl[27]" 0;
-	setAttr ".phl[28]" 0;
-	setAttr ".phl[29]" 0;
-	setAttr ".phl[30]" 0;
-	setAttr ".phl[31]" 0;
-	setAttr ".phl[32]" 0;
-	setAttr ".phl[33]" 0;
-	setAttr ".phl[34]" 0;
-	setAttr ".phl[35]" 0;
-	setAttr ".phl[36]" 0;
-	setAttr ".phl[37]" 0;
-	setAttr ".phl[38]" 0;
-	setAttr ".phl[39]" 0;
-	setAttr ".phl[40]" 0;
-	setAttr ".phl[41]" 0;
-	setAttr ".phl[42]" 0;
-	setAttr ".phl[43]" 0;
-	setAttr ".phl[44]" 0;
-	setAttr ".phl[45]" 0;
-	setAttr ".phl[46]" 0;
-	setAttr ".ed" -type "dataReferenceEdits" 
-		"Run_Jump_bony_rigRN"
-		"Run_Jump_bony_rigRN" 0
-		"Run_Jump_bony_rigRN" 181
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT" "translate" " -type \"double3\" 0 0 0"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC" 
-		"translate" " -type \"double3\" 0 -0.76894778167114675 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC" 
-		"rotate" " -type \"double3\" 30.41185150698895256 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC" 
-		"rotatePivot" " -type \"double3\" 0 4.76611491117542752 0.018608514219522476"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC" 
-		"scalePivot" " -type \"double3\" 0 4.76611491117542752 0.018608514219522476"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_MainHipCG|Run_Jump_bony_rig:Bony_MainHipC" 
-		"translate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_MainHipCG|Run_Jump_bony_rig:Bony_MainHipC" 
-		"rotate" " -type \"double3\" 0 50 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_MainHipCG|Run_Jump_bony_rig:Bony_MainHipC" 
-		"rotatePivot" " -type \"double3\" 0 4.76611491117542752 0.018608514219522476"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_MainHipCG|Run_Jump_bony_rig:Bony_MainHipC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_MainHipCG|Run_Jump_bony_rig:Bony_MainHipC" 
-		"scalePivot" " -type \"double3\" 0 4.76611491117542752 0.018608514219522476"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_SpineTopIKCG|Run_Jump_bony_rig:Bony_SpineTopIKC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine02FKCG|Run_Jump_bony_rig:Bony_Spine02FKC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine02FKCG|Run_Jump_bony_rig:Bony_Spine02FKC" 
-		"rotatePivot" " -type \"double3\" 0 5.86266147212089095 0.044605889415280084"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine02FKCG|Run_Jump_bony_rig:Bony_Spine02FKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine02FKCG|Run_Jump_bony_rig:Bony_Spine02FKC" 
-		"scalePivot" " -type \"double3\" 0 5.86266147212089095 0.044605889415280084"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine03FKCG|Run_Jump_bony_rig:Bony_Spine03FKC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine03FKCG|Run_Jump_bony_rig:Bony_Spine03FKC" 
-		"rotatePivot" " -type \"double3\" 0 6.41093475259362133 0.017890240669450483"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine03FKCG|Run_Jump_bony_rig:Bony_Spine03FKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Spine03FKCG|Run_Jump_bony_rig:Bony_Spine03FKC" 
-		"scalePivot" " -type \"double3\" 0 6.41093475259362133 0.017890240669450483"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_HeadCG2|Run_Jump_bony_rig:Bony_HeadCG|Run_Jump_bony_rig:Bony_HeadC" 
-		"rotate" " -type \"double3\" -30.28520858059487608 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_HeadCG2|Run_Jump_bony_rig:Bony_HeadCG|Run_Jump_bony_rig:Bony_HeadC" 
-		"rotatePivot" " -type \"double3\" 0 -1.37442979891153527 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_HeadCG2|Run_Jump_bony_rig:Bony_HeadCG|Run_Jump_bony_rig:Bony_HeadC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_HeadCG2|Run_Jump_bony_rig:Bony_HeadCG|Run_Jump_bony_rig:Bony_HeadC" 
-		"scalePivot" " -type \"double3\" 0 -1.37442979891153527 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_HeadCG2|Run_Jump_bony_rig:Bony_HeadCG|Run_Jump_bony_rig:Bony_HeadC" 
-		"HeadOrient" " -k 1 1"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Neck01CG|Run_Jump_bony_rig:Bony_Neck01C" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Neck01CG|Run_Jump_bony_rig:Bony_Neck01C" 
-		"rotatePivot" " -type \"double3\" 0 7.39434989182300662 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Neck01CG|Run_Jump_bony_rig:Bony_Neck01C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_Neck01CG|Run_Jump_bony_rig:Bony_Neck01C" 
-		"scalePivot" " -type \"double3\" 0 7.39434989182300662 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"translate" " -type \"double3\" 0 2.80381042429273508 -2.62342074213460652"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"rotate" " -type \"double3\" 129.5807413863020372 9.1079702844219419 1.47705317222172328"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"rotateOrder" " 1"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"rotatePivot" " -type \"double3\" 0.459382534027099 0.58418124914169312 -0.094986259937286863"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"scalePivot" " -type \"double3\" 0.459382534027099 0.58418124914169312 -0.094986259937286863"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"footTilt" " -k 1 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"heelBall" " -k 1 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC" 
-		"ballSwivel" " -k 1 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lKneeIKCG|Run_Jump_bony_rig:Bony_lKneeIKC" 
-		"translate" " -type \"double3\" -0.0079467419096433678 0.077216684917331746 2.66488273147422161"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristFKCG|Run_Jump_bony_rig:Bony_lWristFKC" 
-		"rotatePivot" " -type \"double3\" 3.56096076965332031 7.10134363174438565 -0.013861402869224545"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristFKCG|Run_Jump_bony_rig:Bony_lWristFKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristFKCG|Run_Jump_bony_rig:Bony_lWristFKC" 
-		"scalePivot" " -type \"double3\" 3.56096076965332031 7.10134363174438565 -0.013861402869224545"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lElbowFKCG|Run_Jump_bony_rig:Bony_lElbowFKC" 
-		"rotatePivot" " -type \"double3\" 2.19269463755247829 7.10134396423723313 -0.01510315880519093"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lElbowFKCG|Run_Jump_bony_rig:Bony_lElbowFKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lElbowFKCG|Run_Jump_bony_rig:Bony_lElbowFKC" 
-		"scalePivot" " -type \"double3\" 2.19269463755247829 7.10134396423723313 -0.01510315880519093"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J1CG|Run_Jump_bony_rig:Bony_lFinger1J1C" 
-		"rotate" " -type \"double3\" 0 0 -70.19021875348867923"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J2CG|Run_Jump_bony_rig:Bony_lFinger1J2C" 
-		"rotate" " -type \"double3\" 0 0 -75.62338460395321249"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J2CG|Run_Jump_bony_rig:Bony_lFinger1J2C" 
-		"rotatePivot" " -type \"double3\" 0.70960511608347243 0 0.17782907378309631"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J2CG|Run_Jump_bony_rig:Bony_lFinger1J2C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J2CG|Run_Jump_bony_rig:Bony_lFinger1J2C" 
-		"scalePivot" " -type \"double3\" 0.70960511608347243 0 0.17782907378309631"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J3CG|Run_Jump_bony_rig:Bony_lFinger1J3C" 
-		"rotate" " -type \"double3\" 0 0 -75.62338460395321249"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J3CG|Run_Jump_bony_rig:Bony_lFinger1J3C" 
-		"rotatePivot" " -type \"double3\" 0.89524901023438908 0 0.17782907378309631"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J3CG|Run_Jump_bony_rig:Bony_lFinger1J3C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J3CG|Run_Jump_bony_rig:Bony_lFinger1J3C" 
-		"scalePivot" " -type \"double3\" 0.89524901023438908 0 0.17782907378309631"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J1CG|Run_Jump_bony_rig:Bony_lFinger2J1C" 
-		"rotate" " -type \"double3\" 0 0 -75.62338460395321249"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J2CG|Run_Jump_bony_rig:Bony_lFinger2J2C" 
-		"rotate" " -type \"double3\" 0 0 -75.62338460395321249"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J2CG|Run_Jump_bony_rig:Bony_lFinger2J2C" 
-		"rotatePivot" " -type \"double3\" 0.71882314778425194 0 -0.072347365319728768"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J2CG|Run_Jump_bony_rig:Bony_lFinger2J2C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J2CG|Run_Jump_bony_rig:Bony_lFinger2J2C" 
-		"scalePivot" " -type \"double3\" 0.71882314778425194 0 -0.072347365319728768"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J3CG|Run_Jump_bony_rig:Bony_lFinger2J3C" 
-		"rotate" " -type \"double3\" 0 0 -75.62338460395321249"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J3CG|Run_Jump_bony_rig:Bony_lFinger2J3C" 
-		"rotatePivot" " -type \"double3\" 0.89735598890885004 0 -0.072347365319728657"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J3CG|Run_Jump_bony_rig:Bony_lFinger2J3C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J3CG|Run_Jump_bony_rig:Bony_lFinger2J3C" 
-		"scalePivot" " -type \"double3\" 0.89735598890885004 0 -0.072347365319728657"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lToeIKCG|Run_Jump_bony_rig:Bony_lToeIKC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lToeIKCG|Run_Jump_bony_rig:Bony_lToeIKC" 
-		"rotatePivot" " -type \"double3\" 0.4593825340271292 0 1.1912821698436713"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lToeIKCG|Run_Jump_bony_rig:Bony_lToeIKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lToeIKCG|Run_Jump_bony_rig:Bony_lToeIKC" 
-		"scalePivot" " -type \"double3\" 0.4593825340271292 0 1.1912821698436713"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"translate" " -type \"double3\" -0.012504330453687373 0.45218434676481423 -3.80259392771517213"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"rotate" " -type \"double3\" 7.75332481911064075 -0.42197114801518854 1.50740937480027681"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"rotateOrder" " 1"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"rotatePivot" " -type \"double3\" -0.45938253402709933 -0.58418124914169223 0.094986259937274123"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"scalePivot" " -type \"double3\" -0.45938253402709933 -0.58418124914169223 0.094986259937274123"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"Stretch" " -k 1 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"footTilt" " -k 1 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC" 
-		"ballSwivel" " -k 1 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rKneeIKCG|Run_Jump_bony_rig:Bony_rKneeIKC" 
-		"translate" " -type \"double3\" 0.0082916319815124935 0.080567903355458811 2.78053913597700442"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristFKCG|Run_Jump_bony_rig:Bony_rWristFKC" 
-		"rotatePivot" " -type \"double3\" -3.56096076965332031 -7.10134363174438565 0.013861402869225412"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristFKCG|Run_Jump_bony_rig:Bony_rWristFKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristFKCG|Run_Jump_bony_rig:Bony_rWristFKC" 
-		"scalePivot" " -type \"double3\" -3.56096076965332031 -7.10134363174438565 0.013861402869225412"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rElbowFKCG|Run_Jump_bony_rig:Bony_rElbowFKC" 
-		"rotatePivot" " -type \"double3\" -2.19269463755246852 -7.1013439642371905 0.015103158825501766"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rElbowFKCG|Run_Jump_bony_rig:Bony_rElbowFKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rElbowFKCG|Run_Jump_bony_rig:Bony_rElbowFKC" 
-		"scalePivot" " -type \"double3\" -2.19269463755246852 -7.1013439642371905 0.015103158825501766"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rShoulderFKCG2|Run_Jump_bony_rig:Bony_rShoulderFKCG|Run_Jump_bony_rig:Bony_rShoulderFKC" 
-		"rotatePivot" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rShoulderFKCG2|Run_Jump_bony_rig:Bony_rShoulderFKCG|Run_Jump_bony_rig:Bony_rShoulderFKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rShoulderFKCG2|Run_Jump_bony_rig:Bony_rShoulderFKCG|Run_Jump_bony_rig:Bony_rShoulderFKC" 
-		"scalePivot" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rClavicleCG|Run_Jump_bony_rig:Bony_rClavicleC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rClavicleCG|Run_Jump_bony_rig:Bony_rClavicleC" 
-		"rotatePivot" " -type \"double3\" -0.38826418586793277 -7.10134458541870206 0.013861397281295979"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rClavicleCG|Run_Jump_bony_rig:Bony_rClavicleC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rClavicleCG|Run_Jump_bony_rig:Bony_rClavicleC" 
-		"scalePivot" " -type \"double3\" -0.38826418586793277 -7.10134458541870206 0.013861397281295979"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC" 
-		"rotate" " -type \"double3\" 0 0 -16.65486425909127632"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J1CG|Run_Jump_bony_rig:Bony_rFinger1J1C" 
-		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J2CG|Run_Jump_bony_rig:Bony_rFinger1J2C" 
-		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J2CG|Run_Jump_bony_rig:Bony_rFinger1J2C" 
-		"rotatePivot" " -type \"double3\" -4.27056588573679186 7.10134363174437322 0.16396767091387163"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J2CG|Run_Jump_bony_rig:Bony_rFinger1J2C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J2CG|Run_Jump_bony_rig:Bony_rFinger1J2C" 
-		"scalePivot" " -type \"double3\" -4.27056588573679186 7.10134363174437322 0.16396767091387163"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J3CG|Run_Jump_bony_rig:Bony_rFinger1J3C" 
-		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J3CG|Run_Jump_bony_rig:Bony_rFinger1J3C" 
-		"rotatePivot" " -type \"double3\" -4.4562097798877085 7.10134363174437322 0.16396767091387163"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J3CG|Run_Jump_bony_rig:Bony_rFinger1J3C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J3CG|Run_Jump_bony_rig:Bony_rFinger1J3C" 
-		"scalePivot" " -type \"double3\" -4.4562097798877085 7.10134363174437322 0.16396767091387163"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J1CG|Run_Jump_bony_rig:Bony_rFinger2J1C" 
-		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J2CG|Run_Jump_bony_rig:Bony_rFinger2J2C" 
-		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J2CG|Run_Jump_bony_rig:Bony_rFinger2J2C" 
-		"rotatePivot" " -type \"double3\" -4.27978391743757136 7.10134363174436345 -0.086208768188953441"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J2CG|Run_Jump_bony_rig:Bony_rFinger2J2C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J2CG|Run_Jump_bony_rig:Bony_rFinger2J2C" 
-		"scalePivot" " -type \"double3\" -4.27978391743757136 7.10134363174436345 -0.086208768188953441"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J3CG|Run_Jump_bony_rig:Bony_rFinger2J3C" 
-		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J3CG|Run_Jump_bony_rig:Bony_rFinger2J3C" 
-		"rotatePivot" " -type \"double3\" -4.45831675856216947 7.10134363174436345 -0.08620876818895333"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J3CG|Run_Jump_bony_rig:Bony_rFinger2J3C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J3CG|Run_Jump_bony_rig:Bony_rFinger2J3C" 
-		"scalePivot" " -type \"double3\" -4.45831675856216947 7.10134363174436345 -0.08620876818895333"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rToeIKCG|Run_Jump_bony_rig:Bony_rToeIKC" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rToeIKCG|Run_Jump_bony_rig:Bony_rToeIKC" 
-		"rotatePivot" " -type \"double3\" -0.45938253402743601 0 -1.19128216984371704"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rToeIKCG|Run_Jump_bony_rig:Bony_rToeIKC" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rToeIKCG|Run_Jump_bony_rig:Bony_rToeIKC" 
-		"scalePivot" " -type \"double3\" -0.45938253402743601 0 -1.19128216984371704"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ1CG|Run_Jump_bony_rig:Bony_lThumbJ1C" 
-		"rotatePivot" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ1CG|Run_Jump_bony_rig:Bony_lThumbJ1C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ1CG|Run_Jump_bony_rig:Bony_lThumbJ1C" 
-		"scalePivot" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ2CG|Run_Jump_bony_rig:Bony_lThumbJ2C" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ2CG|Run_Jump_bony_rig:Bony_lThumbJ2C" 
-		"rotatePivot" " -type \"double3\" 0.52575844069504174 0.10939357085096901 -0.18650295137775119"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ2CG|Run_Jump_bony_rig:Bony_lThumbJ2C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ2CG|Run_Jump_bony_rig:Bony_lThumbJ2C" 
-		"scalePivot" " -type \"double3\" 0.52575844069504174 0.10939357085096901 -0.18650295137775119"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ3CG|Run_Jump_bony_rig:Bony_lThumbJ3C" 
-		"rotatePivot" " -type \"double3\" 0.6852317315687797 0.10939357085096901 -0.18650295137775252"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ3CG|Run_Jump_bony_rig:Bony_lThumbJ3C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ3CG|Run_Jump_bony_rig:Bony_lThumbJ3C" 
-		"scalePivot" " -type \"double3\" 0.6852317315687797 0.10939357085096901 -0.18650295137775252"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ1CG|Run_Jump_bony_rig:Bony_rThumbJ1C" 
-		"rotate" " -type \"double3\" 1.56345240042281519 10.49890171939013861 -16.65486425909127632"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ2CG|Run_Jump_bony_rig:Bony_rThumbJ2C" 
-		"rotate" " -type \"double3\" -1.11839690486711385 -21.51625385079774588 -79.65024893185238852"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ2CG|Run_Jump_bony_rig:Bony_rThumbJ2C" 
-		"rotatePivot" " -type \"double3\" 0.52575844069503985 0.10939357085097523 0.18650295137774897"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ2CG|Run_Jump_bony_rig:Bony_rThumbJ2C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ2CG|Run_Jump_bony_rig:Bony_rThumbJ2C" 
-		"scalePivot" " -type \"double3\" 0.52575844069503985 0.10939357085097523 0.18650295137774897"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ3CG|Run_Jump_bony_rig:Bony_rThumbJ3C" 
-		"rotate" " -type \"double3\" -15.67689433351663375 2.38799461908611388 -34.08307940592856511"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ3CG|Run_Jump_bony_rig:Bony_rThumbJ3C" 
-		"rotatePivot" " -type \"double3\" 0.68523173156877948 0.10939357085097878 0.18650295137775119"
-		
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ3CG|Run_Jump_bony_rig:Bony_rThumbJ3C" 
-		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ3CG|Run_Jump_bony_rig:Bony_rThumbJ3C" 
-		"scalePivot" " -type \"double3\" 0.68523173156877948 0.10939357085097878 0.18650295137775119"
-		
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC.translateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[1]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_ROOTCG|Run_Jump_bony_rig:Bony_ROOTC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[2]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_MainHipCG|Run_Jump_bony_rig:Bony_MainHipC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[3]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_HeadCG2|Run_Jump_bony_rig:Bony_HeadCG|Run_Jump_bony_rig:Bony_HeadC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[4]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC.toeUpDn" 
-		"Run_Jump_bony_rigRN.placeHolderList[5]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC.translateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[6]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC.translateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[7]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lFootIKCG|Run_Jump_bony_rig:Bony_lFootIKC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[8]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristFKCG|Run_Jump_bony_rig:Bony_lWristFKC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[9]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristFKCG|Run_Jump_bony_rig:Bony_lWristFKC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[10]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristFKCG|Run_Jump_bony_rig:Bony_lWristFKC.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[11]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lElbowFKCG|Run_Jump_bony_rig:Bony_lElbowFKC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[12]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lShoulderFKCG2|Run_Jump_bony_rig:Bony_lShoulderFKCG|Run_Jump_bony_rig:Bony_lShoulderFKC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[13]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lShoulderFKCG2|Run_Jump_bony_rig:Bony_lShoulderFKCG|Run_Jump_bony_rig:Bony_lShoulderFKC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[14]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lShoulderFKCG2|Run_Jump_bony_rig:Bony_lShoulderFKCG|Run_Jump_bony_rig:Bony_lShoulderFKC.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[15]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J1CG|Run_Jump_bony_rig:Bony_lFinger1J1C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[16]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J2CG|Run_Jump_bony_rig:Bony_lFinger1J2C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[17]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger1J3CG|Run_Jump_bony_rig:Bony_lFinger1J3C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[18]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J1CG|Run_Jump_bony_rig:Bony_lFinger2J1C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[19]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J2CG|Run_Jump_bony_rig:Bony_lFinger2J2C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[20]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lPalmCG|Run_Jump_bony_rig:Bony_lPalmC|Run_Jump_bony_rig:Bony_lFinger2J3CG|Run_Jump_bony_rig:Bony_lFinger2J3C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[21]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC.heelBall" 
-		"Run_Jump_bony_rigRN.placeHolderList[22]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC.toeUpDn" 
-		"Run_Jump_bony_rigRN.placeHolderList[23]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC.translateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[24]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC.translateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[25]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rFootIKCG|Run_Jump_bony_rig:Bony_rFootIKC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[26]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristFKCG|Run_Jump_bony_rig:Bony_rWristFKC.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[27]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristFKCG|Run_Jump_bony_rig:Bony_rWristFKC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[28]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristFKCG|Run_Jump_bony_rig:Bony_rWristFKC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[29]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rElbowFKCG|Run_Jump_bony_rig:Bony_rElbowFKC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[30]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rShoulderFKCG2|Run_Jump_bony_rig:Bony_rShoulderFKCG|Run_Jump_bony_rig:Bony_rShoulderFKC.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[31]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rShoulderFKCG2|Run_Jump_bony_rig:Bony_rShoulderFKCG|Run_Jump_bony_rig:Bony_rShoulderFKC.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[32]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rShoulderFKCG2|Run_Jump_bony_rig:Bony_rShoulderFKCG|Run_Jump_bony_rig:Bony_rShoulderFKC.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[33]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[34]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger1J2CG|Run_Jump_bony_rig:Bony_rFinger1J2C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[35]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J1CG|Run_Jump_bony_rig:Bony_rFinger2J1C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[36]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rPalmCG|Run_Jump_bony_rig:Bony_rPalmC|Run_Jump_bony_rig:Bony_rFinger2J2CG|Run_Jump_bony_rig:Bony_rFinger2J2C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[37]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ1CG|Run_Jump_bony_rig:Bony_lThumbJ1C.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[38]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ1CG|Run_Jump_bony_rig:Bony_lThumbJ1C.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[39]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ1CG|Run_Jump_bony_rig:Bony_lThumbJ1C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[40]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ3CG|Run_Jump_bony_rig:Bony_lThumbJ3C.rotateX" 
-		"Run_Jump_bony_rigRN.placeHolderList[41]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ3CG|Run_Jump_bony_rig:Bony_lThumbJ3C.rotateY" 
-		"Run_Jump_bony_rigRN.placeHolderList[42]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_lWristJG2|Run_Jump_bony_rig:Bony_lWristJG1|Run_Jump_bony_rig:Bony_lThumbJ3CG|Run_Jump_bony_rig:Bony_lThumbJ3C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[43]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ1CG|Run_Jump_bony_rig:Bony_rThumbJ1C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[44]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ2CG|Run_Jump_bony_rig:Bony_rThumbJ2C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[45]" ""
-		5 4 "Run_Jump_bony_rigRN" "|Run_Jump_bony_rig:Bony|Run_Jump_bony_rig:Bony_Main_CNT|Run_Jump_bony_rig:Bony_rWristJG2|Run_Jump_bony_rig:Bony_rWristJG1|Run_Jump_bony_rig:Bony_rThumbJ3CG|Run_Jump_bony_rig:Bony_rThumbJ3C.rotateZ" 
-		"Run_Jump_bony_rigRN.placeHolderList[46]" "";
-	setAttr ".ptag" -type "string" "";
-lockNode -l 1 ;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "D729D76E-47FB-A5F0-2B2D-9C8B93EE6D37";
 	setAttr ".version" -type "string" "5.4.2.1";
@@ -780,7 +326,7 @@ createNode animCurveTA -n "Bony_rShoulderFKC_rotateY";
 	rename -uid "B88F37C8-4B56-1521-4FA6-43BA49B006D7";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  0 63.913804958539892 1 41.729861783423949
+	setAttr -s 10 ".ktv[0:9]"  0 63.913804958539892 1 41.729861783423956
 		 3 20.116649601430364 4 -4.7473395244435919 6 -27.150527941538183 7 -41.471512870669855
 		 10 -4.9059962636718888 11 20.072809502706946 12 37.628605350077841 13 46.486063244304859;
 createNode animCurveTA -n "Bony_rShoulderFKC_rotateZ";
@@ -789,7 +335,7 @@ createNode animCurveTA -n "Bony_rShoulderFKC_rotateZ";
 	setAttr ".wgt" no;
 	setAttr -s 10 ".ktv[0:9]"  0 -26.732054766685383 1 -55.495082229982536
 		 3 -63.2466110789642 4 -64.909145312973905 6 -61.650773895656179 7 -55.678073627870603
-		 10 -64.902902090650173 11 -63.254696938842557 12 -57.738816189535534 13 -52.119516668132526;
+		 10 -64.902902090650187 11 -63.254696938842557 12 -57.738816189535534 13 -52.119516668132526;
 createNode animCurveTA -n "Bony_rElbowFKC_rotateY";
 	rename -uid "E0BA78B4-4BDC-94A9-5C38-2FBCC3E76DFC";
 	setAttr ".tan" 18;
@@ -880,7 +426,7 @@ createNode animCurveTA -n "Bony_lElbowFKC_rotateY";
 	rename -uid "CAB78CDF-49B2-45F3-CBCA-ADA66F4ED273";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 11 ".ktv[0:10]"  0 -72.209851344187371 1 -56.406781839393041
+	setAttr -s 11 ".ktv[0:10]"  0 -72.209851344187371 1 -56.406781839393048
 		 3 -48.975026334035384 4 -57.818678372107485 5 -62.929420636844206 6 -62.929420636844206
 		 7 -48.57088539594951 8 -44.435159202070452 10 -24.232218533106654 12 -65.318079278570607
 		 13 -79.366444284257071;
@@ -957,7 +503,7 @@ createNode animCurveTA -n "Bony_lWristFKC_rotateY";
 	setAttr ".wgt" no;
 	setAttr -s 9 ".ktv[0:8]"  0 -13.44508419742103 3 -32.870877597849024
 		 4 -17.992196474599265 5 -5.9036716227553514 6 -5.9036716227553514 7 -16.127560536975547
-		 8 14.785255812231814 11 27.129546640280591 13 -21.324334444456145;
+		 8 14.785255812231814 11 27.129546640280594 13 -21.324334444456145;
 createNode animCurveTA -n "Bony_lWristFKC_rotateZ";
 	rename -uid "A3308F35-4CD8-04FC-92E7-A29A583F1380";
 	setAttr ".tan" 18;
@@ -965,12 +511,765 @@ createNode animCurveTA -n "Bony_lWristFKC_rotateZ";
 	setAttr -s 9 ".ktv[0:8]"  0 3.4491088711902682 3 3.4491088711902682
 		 4 9.5391412479516049 5 6.5239429199475252 6 6.5239429199475252 7 8.9804692432967297
 		 8 7.2332157041115179 11 8.4591324121882625 13 8.4591324121882625;
+createNode animCurveTU -n "Bony_lFootIKC_heelBall";
+	rename -uid "5CFB5CBF-4C09-54DF-C694-94BE5C8158E1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -9 1 -9 3 -9 5 -9 6 -9 8 -9 9 -9 10 -9
+		 11 -9;
+createNode animCurveTA -n "Bony_rWristFKC_rotateX1";
+	rename -uid "5D0E3F0B-4BED-7B53-C9FF-89A8469C7659";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 11 ".ktv[0:10]"  0 -30.116161311337159 1 -30.116161311337159
+		 3 -7.0056740296175288 4 3.0122686184374885 5 9.5504450815100856 7 23.839474288698611
+		 8 13.989833252390524 10 2.2466955565585831 11 -5.0435473913896116 12 -9.0980282653548681
+		 13 -14.812174350975225;
+createNode animCurveTA -n "Bony_rWristFKC_rotateY1";
+	rename -uid "6DFBF1C7-46D9-82D1-A4F2-2C81D208DE91";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 11 ".ktv[0:10]"  0 -30.116161311337159 1 -30.116161311337159
+		 3 -7.0056740296175288 4 3.0122686184374885 5 9.5504450815100856 7 23.839474288698611
+		 8 13.989833252390524 10 2.2466955565585831 11 -5.0435473913896116 12 -9.0980282653548681
+		 13 -14.812174350975225;
+createNode animCurveTA -n "Bony_rWristFKC_rotateZ1";
+	rename -uid "07DB2700-48C7-9905-701A-A9912AC8061F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 11 ".ktv[0:10]"  0 -30.116161311337159 1 -30.116161311337159
+		 3 -7.0056740296175288 4 3.0122686184374885 5 9.5504450815100856 7 23.839474288698611
+		 8 13.989833252390524 10 2.2466955565585831 11 -5.0435473913896116 12 -9.0980282653548681
+		 13 -14.812174350975225;
+createNode animCurveTU -n "Bony_rWristFKC_scaleX";
+	rename -uid "E6A296AA-468B-BE13-1622-CB9AD9142136";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 11 ".ktv[0:10]"  0 -30.116161311337159 1 -30.116161311337159
+		 3 -7.0056740296175288 4 3.0122686184374885 5 9.5504450815100856 7 23.839474288698611
+		 8 13.989833252390524 10 2.2466955565585831 11 -5.0435473913896116 12 -9.0980282653548681
+		 13 -14.812174350975225;
+createNode animCurveTA -n "Bony_lElbowFKC_rotateY1";
+	rename -uid "FED4EDB6-465F-D779-A67A-F6AD01EA6AD7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -2.1861602356901781 3 -2.1861602356901781
+		 4 -5.4587076951694087 5 -0.95438995548169558 6 -0.95438995548169558 7 -4.709568574922856
+		 8 7.6139752147637161 11 13.114223652449571 13 13.114223652449571;
+createNode animCurveTA -n "Bony_lShoulderFKC_rotateX1";
+	rename -uid "1898CEE4-4CBB-6646-ED02-728A37F6CF96";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -0.53088133145112071;
+createNode animCurveTA -n "Bony_lShoulderFKC_rotateY1";
+	rename -uid "78954263-4348-169D-1681-8EA77806D29E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -0.53088133145112071;
+createNode animCurveTA -n "Bony_lShoulderFKC_rotateZ1";
+	rename -uid "F66BFC15-4034-1906-7CFE-FBAF77D3C16E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -0.53088133145112071;
+createNode animCurveTU -n "Bony_lShoulderFKC_scaleX";
+	rename -uid "07076F71-48CB-FC90-E616-A18E9C8E9396";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -0.53088133145112071;
+createNode animCurveTU -n "Bony_lShoulderFKC_ShoulderOrient";
+	rename -uid "BEDCAA28-42B9-27DD-2013-32A459CB3531";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -0.53088133145112071;
+createNode animCurveTA -n "Bony_rShoulderFKC_rotateX1";
+	rename -uid "4F6801A1-4924-09FF-63B6-43BB00DCE39B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -69.27326290065767;
+createNode animCurveTA -n "Bony_rShoulderFKC_rotateY1";
+	rename -uid "0731EDC0-40A2-AD40-4542-5791522B518D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -69.27326290065767;
+createNode animCurveTA -n "Bony_rShoulderFKC_rotateZ1";
+	rename -uid "E898C5CF-4881-7946-464C-00AE2B094B43";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -69.27326290065767;
+createNode animCurveTU -n "Bony_rShoulderFKC_scaleX";
+	rename -uid "FE5186F0-4783-3985-5833-0EAE9AE613CC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -69.27326290065767;
+createNode animCurveTU -n "Bony_rShoulderFKC_ShoulderOrient";
+	rename -uid "11D0E9FD-4C55-349B-C83F-70BE433EDEE0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -69.27326290065767;
+createNode animCurveTA -n "Bony_lWristFKC_rotateX1";
+	rename -uid "A6952BAD-4737-BD7F-3819-6CA814B005E4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -3.8025939277151721 1 -1.2048417403805707
+		 3 0.072598423584838923 4 1.6348286666529259 5 2.4336648461858212 6 4.0234878184081184
+		 7 3.7014327553899449 8 3.4079776881883439 10 2.2341574193819418 11 0.29735397585137413
+		 12 -2.5230779917443584 13 -3.7624484426902147;
+createNode animCurveTA -n "Bony_lWristFKC_rotateY1";
+	rename -uid "0315649C-425F-094D-A154-C88524E101E2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -3.8025939277151721 1 -1.2048417403805707
+		 3 0.072598423584838923 4 1.6348286666529259 5 2.4336648461858212 6 4.0234878184081184
+		 7 3.7014327553899449 8 3.4079776881883439 10 2.2341574193819418 11 0.29735397585137413
+		 12 -2.5230779917443584 13 -3.7624484426902147;
+createNode animCurveTA -n "Bony_lWristFKC_rotateZ1";
+	rename -uid "DCA8AD89-4B8C-5EF8-A735-858234A85844";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -3.8025939277151721 1 -1.2048417403805707
+		 3 0.072598423584838923 4 1.6348286666529259 5 2.4336648461858212 6 4.0234878184081184
+		 7 3.7014327553899449 8 3.4079776881883439 10 2.2341574193819418 11 0.29735397585137413
+		 12 -2.5230779917443584 13 -3.7624484426902147;
+createNode animCurveTU -n "Bony_lWristFKC_scaleX";
+	rename -uid "A3919EDB-4A53-D223-1633-7C922B37D001";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -3.8025939277151721 1 -1.2048417403805707
+		 3 0.072598423584838923 4 1.6348286666529259 5 2.4336648461858212 6 4.0234878184081184
+		 7 3.7014327553899444 8 3.4079776881883439 10 2.2341574193819418 11 0.29735397585137413
+		 12 -2.5230779917443584 13 -3.7624484426902147;
+createNode animCurveTA -n "Bony_rElbowFKC_rotateY1";
+	rename -uid "990A17F8-414F-033F-43A8-3D8E528A3AC9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 10 ".ktv[0:9]"  0 -26.732054766685383 1 -55.495082229982536
+		 3 -63.2466110789642 4 -64.909145312973905 6 -61.650773895656179 7 -55.678073627870603
+		 10 -64.902902090650187 11 -63.254696938842557 12 -57.738816189535534 13 -52.119516668132526;
+createNode animCurveTA -n "Bony_lToeIKC_rotateX";
+	rename -uid "98273AD8-4A0D-A9EE-5029-E0B2459FF620";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -75.623384603953212;
+createNode animCurveTA -n "Bony_lToeIKC_rotateY";
+	rename -uid "132138BB-4DA2-C947-2AFF-39B214878A5E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -75.623384603953212;
+createNode animCurveTA -n "Bony_lToeIKC_rotateZ";
+	rename -uid "3F96EEC4-48C8-B6DB-4BD2-CD8BA30389C0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -75.623384603953212;
+createNode reference -n "full_body_rigRN";
+	rename -uid "89701532-4DBB-24D4-F5ED-E2B33C67361E";
+	setAttr -s 57 ".phl";
+	setAttr ".phl[1]" 0;
+	setAttr ".phl[2]" 0;
+	setAttr ".phl[3]" 0;
+	setAttr ".phl[4]" 0;
+	setAttr ".phl[5]" 0;
+	setAttr ".phl[6]" 0;
+	setAttr ".phl[7]" 0;
+	setAttr ".phl[8]" 0;
+	setAttr ".phl[9]" 0;
+	setAttr ".phl[10]" 0;
+	setAttr ".phl[11]" 0;
+	setAttr ".phl[12]" 0;
+	setAttr ".phl[13]" 0;
+	setAttr ".phl[14]" 0;
+	setAttr ".phl[15]" 0;
+	setAttr ".phl[16]" 0;
+	setAttr ".phl[17]" 0;
+	setAttr ".phl[18]" 0;
+	setAttr ".phl[19]" 0;
+	setAttr ".phl[20]" 0;
+	setAttr ".phl[21]" 0;
+	setAttr ".phl[22]" 0;
+	setAttr ".phl[23]" 0;
+	setAttr ".phl[24]" 0;
+	setAttr ".phl[25]" 0;
+	setAttr ".phl[26]" 0;
+	setAttr ".phl[27]" 0;
+	setAttr ".phl[28]" 0;
+	setAttr ".phl[29]" 0;
+	setAttr ".phl[30]" 0;
+	setAttr ".phl[31]" 0;
+	setAttr ".phl[32]" 0;
+	setAttr ".phl[33]" 0;
+	setAttr ".phl[34]" 0;
+	setAttr ".phl[35]" 0;
+	setAttr ".phl[36]" 0;
+	setAttr ".phl[37]" 0;
+	setAttr ".phl[38]" 0;
+	setAttr ".phl[39]" 0;
+	setAttr ".phl[40]" 0;
+	setAttr ".phl[41]" 0;
+	setAttr ".phl[42]" 0;
+	setAttr ".phl[43]" 0;
+	setAttr ".phl[44]" 0;
+	setAttr ".phl[45]" 0;
+	setAttr ".phl[46]" 0;
+	setAttr ".phl[47]" 0;
+	setAttr ".phl[48]" 0;
+	setAttr ".phl[49]" 0;
+	setAttr ".phl[50]" 0;
+	setAttr ".phl[51]" 0;
+	setAttr ".phl[52]" 0;
+	setAttr ".phl[53]" 0;
+	setAttr ".phl[54]" 0;
+	setAttr ".phl[55]" 0;
+	setAttr ".phl[56]" 0;
+	setAttr ".phl[57]" 0;
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"full_body_rigRN"
+		"full_body_rigRN" 0
+		"full_body_rigRN" 82
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC" 
+		"translate" " -type \"double3\" -0.0035638612558616203 0.034629229791521887 1.19511523415538279"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC" 
+		"scaleX" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C" 
+		"rotate" " -type \"double3\" 0 0 -99.114"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C" 
+		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C" 
+		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C" 
+		"rotate" " -type \"double3\" 0 0 -99.114"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C" 
+		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C" 
+		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC" 
+		"translate" " -type \"double3\" 0.0038063509620151893 0.036985447150617745 1.27643241267161556"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC" 
+		"Follow" " -k 1 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C" 
+		"rotate" " -type \"double3\" 0 0 -99.114"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C" 
+		"rotate" " -type \"double3\" 0 0 -99.114"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C" 
+		"rotate" " -type \"double3\" 0 0 -99.114"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C" 
+		"scale" " -type \"double3\" 1 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC.translateY" 
+		"full_body_rigRN.placeHolderList[1]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC.rotateX" 
+		"full_body_rigRN.placeHolderList[2]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC.rotateY" 
+		"full_body_rigRN.placeHolderList[3]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC.rotateX" 
+		"full_body_rigRN.placeHolderList[4]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC.toeUpDn" 
+		"full_body_rigRN.placeHolderList[5]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC.translateY" 
+		"full_body_rigRN.placeHolderList[6]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC.translateZ" 
+		"full_body_rigRN.placeHolderList[7]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC.rotateX" 
+		"full_body_rigRN.placeHolderList[8]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC.rotateZ" 
+		"full_body_rigRN.placeHolderList[9]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC.rotateX" 
+		"full_body_rigRN.placeHolderList[10]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC.rotateY" 
+		"full_body_rigRN.placeHolderList[11]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC.rotateY" 
+		"full_body_rigRN.placeHolderList[12]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC.rotateX" 
+		"full_body_rigRN.placeHolderList[13]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC.rotateY" 
+		"full_body_rigRN.placeHolderList[14]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC.rotateZ" 
+		"full_body_rigRN.placeHolderList[15]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC.rotateZ" 
+		"full_body_rigRN.placeHolderList[16]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC.rotateX" 
+		"full_body_rigRN.placeHolderList[17]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC.rotateY" 
+		"full_body_rigRN.placeHolderList[18]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C.rotateZ" 
+		"full_body_rigRN.placeHolderList[19]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C.rotateZ" 
+		"full_body_rigRN.placeHolderList[20]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C.rotateZ" 
+		"full_body_rigRN.placeHolderList[21]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C.rotateZ" 
+		"full_body_rigRN.placeHolderList[22]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC.heelBall" 
+		"full_body_rigRN.placeHolderList[23]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC.toeUpDn" 
+		"full_body_rigRN.placeHolderList[24]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC.translateY" 
+		"full_body_rigRN.placeHolderList[25]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC.translateZ" 
+		"full_body_rigRN.placeHolderList[26]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC.rotateX" 
+		"full_body_rigRN.placeHolderList[27]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC.rotateX" 
+		"full_body_rigRN.placeHolderList[28]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC.rotateY" 
+		"full_body_rigRN.placeHolderList[29]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC.rotateZ" 
+		"full_body_rigRN.placeHolderList[30]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC.rotateY" 
+		"full_body_rigRN.placeHolderList[31]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC.rotateX" 
+		"full_body_rigRN.placeHolderList[32]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC.rotateY" 
+		"full_body_rigRN.placeHolderList[33]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC.rotateZ" 
+		"full_body_rigRN.placeHolderList[34]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC.rotateZ" 
+		"full_body_rigRN.placeHolderList[35]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C.rotateZ" 
+		"full_body_rigRN.placeHolderList[36]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C.rotateZ" 
+		"full_body_rigRN.placeHolderList[37]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C.rotateZ" 
+		"full_body_rigRN.placeHolderList[38]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C.rotateZ" 
+		"full_body_rigRN.placeHolderList[39]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C.rotateZ" 
+		"full_body_rigRN.placeHolderList[40]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C.rotateX" 
+		"full_body_rigRN.placeHolderList[41]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C.rotateY" 
+		"full_body_rigRN.placeHolderList[42]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C.rotateZ" 
+		"full_body_rigRN.placeHolderList[43]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C.rotateX" 
+		"full_body_rigRN.placeHolderList[44]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C.rotateY" 
+		"full_body_rigRN.placeHolderList[45]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C.rotateZ" 
+		"full_body_rigRN.placeHolderList[46]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C.rotateX" 
+		"full_body_rigRN.placeHolderList[47]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C.rotateY" 
+		"full_body_rigRN.placeHolderList[48]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C.rotateX" 
+		"full_body_rigRN.placeHolderList[49]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C.rotateY" 
+		"full_body_rigRN.placeHolderList[50]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C.rotateZ" 
+		"full_body_rigRN.placeHolderList[51]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C.rotateX" 
+		"full_body_rigRN.placeHolderList[52]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C.rotateY" 
+		"full_body_rigRN.placeHolderList[53]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C.rotateZ" 
+		"full_body_rigRN.placeHolderList[54]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C.rotateX" 
+		"full_body_rigRN.placeHolderList[55]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C.rotateY" 
+		"full_body_rigRN.placeHolderList[56]" ""
+		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C.rotateZ" 
+		"full_body_rigRN.placeHolderList[57]" "";
+	setAttr ".ptag" -type "string" "";
+lockNode -l 1 ;
+createNode animCurveTA -n "Bony_lFootIKC_rotateX1";
+	rename -uid "45E3830D-4109-6246-5694-69BDA833E939";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 129.58074138630204 1 153.73424436565912
+		 3 108.99306580064759 4 57.657485229892906 5 -7.9267022732721051 6 -22.372278883205993
+		 7 -22.372278883205993 8 0.97776630377180063 10 0.97776630377180063 11 40.092880190841157
+		 12 51.68199625344365 13 115.96995267211659;
+createNode animCurveTU -n "Bony_lFootIKC_toeUpDn1";
+	rename -uid "8C7BE456-44AF-3009-B363-788A2D06AB13";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  11 1 12 0 13 0;
+createNode animCurveTL -n "Bony_lFootIKC_translateY1";
+	rename -uid "D39FCCF1-4CF9-DD7C-A5EC-EA871910D784";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 2.8038104242927351 1 1.9794613783387573
+		 3 1.3857759094824764 4 1.3232827022344469 5 1.2139195895503945 6 1.3545293058584609
+		 7 -0.20780087534227776 8 0.0028422898969353572 10 0.0028422898969353572 11 0.48849877154673427
+		 12 0.48849877154673427 13 1.7026399756712303;
+createNode animCurveTL -n "Bony_lFootIKC_translateZ1";
+	rename -uid "4B98B10F-46ED-B201-E706-9C9E050C35AD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -2.6234207421346065 1 -2.4047793803933972
+		 3 -0.51435986114050358 4 0.62614117113603585 5 2.2040946541487805 6 3.0165063483731669
+		 7 2.8446500284410847 8 1.2510732436163314 10 -0.25793082436696935 11 -1.714900269316364
+		 12 -2.4086952431017892 13 -3.0157658451640383;
+createNode animCurveTU -n "Bony_rFootIKC_heelBall1";
+	rename -uid "6AC01D3D-4C40-91AC-71C1-EA964A0B9306";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 9 ".ktv[0:8]"  0 -9 1 -9 3 -9 5 -9 6 -9 8 -9 9 -9 10 -9
+		 11 -9;
+createNode animCurveTA -n "Bony_rFootIKC_rotateX1";
+	rename -uid "2A203939-472F-27B6-00BD-088265E41A88";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 7.7533248191106408 1 81.916608728363727
+		 3 80.881830900444328 5 140.28897909731549 6 201.5444994437371 7 210.9963483555986
+		 8 213.2612374182973 9 225.46110428116063 10 204.64590287616022 11 144.35039074390593
+		 12 84.531275453688636 13 59.292711088767454;
+createNode animCurveTU -n "Bony_rFootIKC_toeUpDn1";
+	rename -uid "42B30C3A-4864-3903-09E9-B1B1847A7865";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 10 ".ktv[0:9]"  0 -2 1 0 3 0 5 3 6 1 7 0 8 0 9 0 10 0 13 0;
+createNode animCurveTL -n "Bony_rFootIKC_translateY1";
+	rename -uid "F4A9D734-4D9C-F4EE-854D-6793CD1E0E95";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0.45218434676481423 1 0.77616613735767248
+		 3 0.7744409686825825 5 0.20309585275790698 6 -2.011128983130595 7 -2.8057810848943348
+		 8 -1.886935609005477 9 -1.7417817218984752 10 -1.252689943229141 11 -0.41145208391788413
+		 12 -0.68534347997271106 13 -0.95683494871028318;
+createNode animCurveTL -n "Bony_rFootIKC_translateZ1";
+	rename -uid "A3CEBAF1-46B2-A5BE-DA09-12BE55992360";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -3.8025939277151721 1 -1.2048417403805707
+		 3 0.072598423584838923 4 1.6348286666529259 5 2.4336648461858212 6 4.0234878184081184
+		 7 3.7014327553899444 8 3.4079776881883439 10 2.2341574193819418 11 0.29735397585137413
+		 12 -2.5230779917443584 13 -3.7624484426902147;
+createNode animCurveTA -n "Bony_ROOTC_rotateX1";
+	rename -uid "90B69C53-46DF-C32D-8C39-9584EF0F8CEE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  0 30.411851506988953 13 30.411851506988953;
+createNode animCurveTL -n "Bony_ROOTC_translateY1";
+	rename -uid "BDEC69C7-4E0A-5332-CF3D-FF8B9D82D0E0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -0.76894778167114675 1 -1.157557493247888
+		 3 -0.71112125885384236 4 -0.47585630591224959 5 0.086386150330493905 6 -0.43904964731717921
+		 7 -0.8001090069784631 8 -1.1575574932478903 10 -0.74670000220159372 11 -0.34114379790039229
+		 12 0.005951832183391792 13 -0.40494363713179471;
+createNode animCurveTA -n "Bony_MainHipC_rotateY1";
+	rename -uid "DF26B6E2-4D3A-9F6C-787F-AE972B659159";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 14 ".ktv[0:13]"  0 50 1 40 2 29.999999999999996 3 20 4 -20
+		 5 -40 6 -29.999999999999996 7 -14.999999999999998 8 -10 9 -10 10 0 11 20 12 29.999999999999996
+		 13 40;
+createNode animCurveTA -n "Bony_rShoulderFKC_rotateX2";
+	rename -uid "90E2747F-4015-E2AB-8FFA-75B038CE1CF7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 10 ".ktv[0:9]"  0 50.608738988587838 1 27.088089816346834
+		 3 12.341081052183039 4 0.28652067448892971 6 -11.327892081732328 7 -21.827345870989252
+		 10 0.21194355120271913 11 12.317529276464521 12 23.578433506836909 13 31.930480781829385;
+createNode animCurveTA -n "Bony_rShoulderFKC_rotateY2";
+	rename -uid "41A414F7-4494-C3B4-7BD0-9ABBF06257D6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 10 ".ktv[0:9]"  0 63.913804958539892 1 41.729861783423956
+		 3 20.116649601430364 4 -4.7473395244435919 6 -27.150527941538183 7 -41.471512870669855
+		 10 -4.9059962636718888 11 20.072809502706946 12 37.628605350077841 13 46.486063244304859;
+createNode animCurveTA -n "Bony_rShoulderFKC_rotateZ2";
+	rename -uid "5947C998-408E-ACC6-D320-84B2D30DD3F5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 10 ".ktv[0:9]"  0 -26.732054766685383 1 -55.495082229982536
+		 3 -63.2466110789642 4 -64.909145312973905 6 -61.650773895656179 7 -55.678073627870603
+		 10 -64.902902090650187 11 -63.254696938842557 12 -57.738816189535534 13 -52.119516668132526;
+createNode animCurveTA -n "Bony_rElbowFKC_rotateY2";
+	rename -uid "2B9D6C35-4E16-8AD2-F2B2-35AB911DE24E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  0 -53.833414530994936 1 -27.980541182392784
+		 4 -72.556523330909556 5 -93.624634648681734 8 -70.655861022805468 10 -54.247736612768094
+		 13 -40.718166646482409;
+createNode animCurveTA -n "Bony_rWristFKC_rotateX2";
+	rename -uid "DCAE5DBF-4521-D688-20B6-49B67D50CA6C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 8 ".ktv[0:7]"  0 0 1 8.9480533527909198 4 8.5723182719222475
+		 5 8.8339685359344404 6 2.8459100925081748 7 2.0277810386281039 10 7.5716868249250311
+		 11 15.482191106048322;
+createNode animCurveTA -n "Bony_rWristFKC_rotateY2";
+	rename -uid "DBC44BC1-4F16-1512-2B5E-D88C9DC1FACE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 8 ".ktv[0:7]"  0 0 1 25.440780096164744 4 18.019336351409006
+		 5 -2.152182293675609 6 -30.254078599448587 7 -32.261524406929411 10 -25.368588573781288
+		 11 -11.030463919393354;
+createNode animCurveTA -n "Bony_rWristFKC_rotateZ2";
+	rename -uid "91D26034-496F-4293-D27E-89A9F4477B01";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 8 ".ktv[0:7]"  0 0 1 -4.5428204080891454 4 -1.2882895833751467
+		 5 8.1711523428597399 6 23.739574338505619 7 24.863458028925525 10 18.863155408616368
+		 11 9.9612597586271932;
+createNode animCurveTA -n "Bony_rPalmC_rotateZ1";
+	rename -uid "B0559EAC-4401-CD7D-0F88-FE82992F90E0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -16.654864259091276;
+createNode animCurveTA -n "Bony_rFinger2J1C_rotateZ1";
+	rename -uid "BA7D613B-4891-790D-2046-D7AA34F5D575";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_rFinger2J2C_rotateZ1";
+	rename -uid "6730CECB-4C4C-8B27-2C7F-DCA72184198B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_rFinger1J2C_rotateZ1";
+	rename -uid "A8BE0EDD-4BDB-49E8-52D8-89A31CF1577D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_rThumbJ1C_rotateX";
+	rename -uid "9BB4AADC-427A-FEAB-2EEC-078B52568297";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 1.5634524004228152;
+createNode animCurveTA -n "Bony_rThumbJ1C_rotateY";
+	rename -uid "EE373E25-407A-50BB-52A0-DCB612892659";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 10.498901719390139;
+createNode animCurveTA -n "Bony_rThumbJ1C_rotateX1";
+	rename -uid "8EE58539-4EF4-9B59-7288-B68C9C6A273F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 1.5634524004228152;
+createNode animCurveTA -n "Bony_rThumbJ1C_rotateY1";
+	rename -uid "65DF3DF4-4718-D377-0417-F2B33759B38A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 10.498901719390139;
+createNode animCurveTA -n "Bony_rThumbJ1C_rotateZ1";
+	rename -uid "5670C9A0-4C94-F9E9-506A-A39D0CAE84D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -16.654864259091276;
+createNode animCurveTA -n "Bony_rThumbJ2C_rotateX";
+	rename -uid "AFD75EB9-478D-0CCD-FFFA-F392C298A760";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -1.1183969048671139;
+createNode animCurveTA -n "Bony_rThumbJ2C_rotateY";
+	rename -uid "B9533951-46DA-6535-EFBA-2BA5E4C4A312";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -21.516253850797746;
+createNode animCurveTA -n "Bony_rThumbJ2C_rotateX1";
+	rename -uid "46E88888-43A8-5E4F-7C18-AA8AF7618691";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -1.1183969048671139;
+createNode animCurveTA -n "Bony_rThumbJ2C_rotateY1";
+	rename -uid "39A8185F-47B2-BF75-D9C9-B2BC7AF98E90";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -21.516253850797746;
+createNode animCurveTA -n "Bony_rThumbJ2C_rotateZ1";
+	rename -uid "A0684F7D-47DA-63E6-893E-5287EDD0B3F8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -79.650248931852389;
+createNode animCurveTA -n "Bony_rThumbJ3C_rotateX";
+	rename -uid "C9E9DA9A-4C9B-E81F-656F-01A1E85BFBF1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -15.676894333516634;
+createNode animCurveTA -n "Bony_rThumbJ3C_rotateY";
+	rename -uid "19A695DE-4FDF-B84D-10EE-DBAA2B30387E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 2.3879946190861139;
+createNode animCurveTA -n "Bony_rThumbJ3C_rotateX1";
+	rename -uid "F602FCD0-4F3B-CC98-5F1A-AC9D383F5504";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -15.676894333516634;
+createNode animCurveTA -n "Bony_rThumbJ3C_rotateY1";
+	rename -uid "7B5F37E1-4B66-5ECF-7AFD-DF82C8F2627B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 2.3879946190861139;
+createNode animCurveTA -n "Bony_rThumbJ3C_rotateZ1";
+	rename -uid "C0EA6DC7-4759-754F-4400-AABD8B822AFE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -34.083079405928565;
+createNode animCurveTA -n "Bony_HeadC_rotateX1";
+	rename -uid "17B54B3B-48E7-3767-6C1D-2C988ABF5D94";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 7 ".ktv[0:6]"  0 -30.285208580594876 2 -25 4 -29.999999999999996
+		 6 -25 8 -29.999999999999996 11 -25 13 -29.999999999999996;
+createNode animCurveTA -n "Bony_lShoulderFKC_rotateX2";
+	rename -uid "EEE70220-4616-653D-7232-C592C8295E6A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 11 ".ktv[0:10]"  0 -30.116161311337159 1 -30.116161311337159
+		 3 -7.0056740296175288 4 3.0122686184374885 5 9.5504450815100856 7 23.839474288698611
+		 8 13.989833252390524 10 2.2466955565585831 11 -5.0435473913896116 12 -9.0980282653548681
+		 13 -14.812174350975225;
+createNode animCurveTA -n "Bony_lShoulderFKC_rotateY2";
+	rename -uid "D70A1FE4-4469-45C6-6709-4188B451E4BB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 10 ".ktv[0:9]"  0 -59.938989402823012 1 -59.938989402823012
+		 3 -14.744636894988915 4 39.539321040214062 6 49.57379066832037 7 59.722090515426466
+		 8 60.74483580222465 10 19.212123185672148 11 -7.0652899113541521 13 -37.37048682958536;
+createNode animCurveTA -n "Bony_lShoulderFKC_rotateZ2";
+	rename -uid "7DCAD0C2-40C9-B633-F208-C1AA0A8205AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 -59.424793960413652 1 -59.424793960413652
+		 3 -74.715475206342745 4 -74.061527267309913 5 -70.681920319580996 6 -66.830229703540439
+		 7 -59.596554684364335 8 -65.231109554434227 10 -74.330005588167637 11 -75.075554079309981
+		 12 -74.075251713535664 13 -71.247625149773825;
+createNode animCurveTA -n "Bony_lElbowFKC_rotateY2";
+	rename -uid "CA3959C5-4717-9F11-B3C1-43B16280DB13";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 11 ".ktv[0:10]"  0 -72.209851344187371 1 -56.406781839393048
+		 3 -48.975026334035384 4 -57.818678372107485 5 -62.929420636844206 6 -62.929420636844206
+		 7 -48.57088539594951 8 -44.435159202070452 10 -24.232218533106654 12 -65.318079278570607
+		 13 -79.366444284257071;
+createNode animCurveTA -n "Bony_lPalmC_rotateX";
+	rename -uid "1DC4CC6B-4404-F684-3522-81AD5F195145";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -1.1183969048671139;
+createNode animCurveTA -n "Bony_lPalmC_rotateY";
+	rename -uid "25A19AD8-4902-704E-C2D1-7C807BD1DBFE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -1.1183969048671139;
+createNode animCurveTA -n "Bony_lPalmC_rotateZ";
+	rename -uid "3E3276AF-4DB3-F605-FEB2-989D2A316219";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -1.1183969048671139;
+createNode animCurveTA -n "Bony_lWristFKC_rotateX2";
+	rename -uid "B7B6BDE2-43EF-A4FE-75C6-179B72E0CA16";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 8 ".ktv[0:7]"  0 0 1 8.9480533527909198 4 8.5723182719222475
+		 5 8.8339685359344404 6 2.8459100925081748 7 2.0277810386281039 10 7.5716868249250311
+		 11 15.482191106048322;
+createNode animCurveTA -n "Bony_lWristFKC_rotateY2";
+	rename -uid "2BBFD794-455B-16F2-2F75-EEBE39175881";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 8 ".ktv[0:7]"  0 0 1 25.440780096164744 4 18.019336351409006
+		 5 -2.152182293675609 6 -30.254078599448587 7 -32.261524406929411 10 -25.368588573781288
+		 11 -11.030463919393354;
+createNode animCurveTA -n "Bony_lWristFKC_rotateZ2";
+	rename -uid "1CAA12BA-44CF-7BE6-EC4B-E7A47B6AB712";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 8 ".ktv[0:7]"  0 0 1 -4.5428204080891454 4 -1.2882895833751467
+		 5 8.1711523428597399 6 23.739574338505619 7 24.863458028925525 10 18.863155408616368
+		 11 9.9612597586271932;
+createNode animCurveTA -n "Bony_rFinger1J1C_rotateZ";
+	rename -uid "243C6810-4D5D-0390-073D-7B8AB2DDB9DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114;
+createNode animCurveTA -n "Bony_lFinger2J2C_rotateZ1";
+	rename -uid "3A4A389C-4E17-DBF2-C3FF-D1B7A3D99975";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_lFinger1J2C_rotateZ1";
+	rename -uid "44C8843D-41B6-5F44-CEB5-F2BE9979E582";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_lFinger1J3C_rotateZ1";
+	rename -uid "E21E69BF-4078-ADAC-D9B3-72AEE79A3868";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_lFinger2J3C_rotateZ1";
+	rename -uid "B62F4E34-4CA6-D364-BA21-ADA7D295049F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -99.114288088231078;
+createNode animCurveTA -n "Bony_lThumbJ1C_rotateX1";
+	rename -uid "47C09AC5-4C8D-092F-C0D7-C19920B55FA0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 1.5634524004228152;
+createNode animCurveTA -n "Bony_lThumbJ1C_rotateY1";
+	rename -uid "7478ECA7-4CA3-B8FA-CD0C-68A62E6EFAB9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 10.498901719390139;
+createNode animCurveTA -n "Bony_lThumbJ1C_rotateZ1";
+	rename -uid "7182DA03-43B3-2644-F6DD-D685BCE44BA2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -16.654864259091276;
+createNode animCurveTA -n "Bony_lThumbJ2C_rotateX";
+	rename -uid "08FC29CB-4FF2-456E-54B3-7FA280E6E34D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -1.1183969048671139;
+createNode animCurveTA -n "Bony_lThumbJ2C_rotateY";
+	rename -uid "68A6112F-4F42-F309-D2D5-3A90DDF8B7B8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -21.516253850797746;
+createNode animCurveTA -n "Bony_lThumbJ2C_rotateZ";
+	rename -uid "A87BADD5-40C5-3CBE-6177-0DAC5802A31B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -79.650248931852389;
+createNode animCurveTA -n "Bony_lThumbJ3C_rotateX1";
+	rename -uid "2EA33212-4C42-09B8-FFD1-5E9DF41FB608";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -15.676894333516634;
+createNode animCurveTA -n "Bony_lThumbJ3C_rotateY1";
+	rename -uid "C2547E7C-457D-5705-0F06-61BB7F1A0C47";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 2.3879946190861139;
+createNode animCurveTA -n "Bony_lThumbJ3C_rotateZ1";
+	rename -uid "2AFB81D0-4682-D682-3072-E1A803AFF6AF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -34.083079405928565;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr ".o" 0;
+	setAttr ".o" 5;
+	setAttr ".unw" 5;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
@@ -1192,53 +1491,64 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".hwdp";
 	setAttr -k on ".hwql";
 select -ne :ikSystem;
-	setAttr -s 2 ".sol";
-connectAttr "Bony_ROOTC_translateY.o" "Run_Jump_bony_rigRN.phl[1]";
-connectAttr "Bony_ROOTC_rotateX.o" "Run_Jump_bony_rigRN.phl[2]";
-connectAttr "Bony_MainHipC_rotateY.o" "Run_Jump_bony_rigRN.phl[3]";
-connectAttr "Bony_HeadC_rotateX.o" "Run_Jump_bony_rigRN.phl[4]";
-connectAttr "Bony_lFootIKC_toeUpDn.o" "Run_Jump_bony_rigRN.phl[5]";
-connectAttr "Bony_lFootIKC_translateY.o" "Run_Jump_bony_rigRN.phl[6]";
-connectAttr "Bony_lFootIKC_translateZ.o" "Run_Jump_bony_rigRN.phl[7]";
-connectAttr "Bony_lFootIKC_rotateX.o" "Run_Jump_bony_rigRN.phl[8]";
-connectAttr "Bony_lWristFKC_rotateX.o" "Run_Jump_bony_rigRN.phl[9]";
-connectAttr "Bony_lWristFKC_rotateY.o" "Run_Jump_bony_rigRN.phl[10]";
-connectAttr "Bony_lWristFKC_rotateZ.o" "Run_Jump_bony_rigRN.phl[11]";
-connectAttr "Bony_lElbowFKC_rotateY.o" "Run_Jump_bony_rigRN.phl[12]";
-connectAttr "Bony_lShoulderFKC_rotateX.o" "Run_Jump_bony_rigRN.phl[13]";
-connectAttr "Bony_lShoulderFKC_rotateY.o" "Run_Jump_bony_rigRN.phl[14]";
-connectAttr "Bony_lShoulderFKC_rotateZ.o" "Run_Jump_bony_rigRN.phl[15]";
-connectAttr "Bony_lFinger1J1C_rotateZ.o" "Run_Jump_bony_rigRN.phl[16]";
-connectAttr "Bony_lFinger1J2C_rotateZ.o" "Run_Jump_bony_rigRN.phl[17]";
-connectAttr "Bony_lFinger1J3C_rotateZ.o" "Run_Jump_bony_rigRN.phl[18]";
-connectAttr "Bony_lFinger2J1C_rotateZ.o" "Run_Jump_bony_rigRN.phl[19]";
-connectAttr "Bony_lFinger2J2C_rotateZ.o" "Run_Jump_bony_rigRN.phl[20]";
-connectAttr "Bony_lFinger2J3C_rotateZ.o" "Run_Jump_bony_rigRN.phl[21]";
-connectAttr "Bony_rFootIKC_heelBall.o" "Run_Jump_bony_rigRN.phl[22]";
-connectAttr "Bony_rFootIKC_toeUpDn.o" "Run_Jump_bony_rigRN.phl[23]";
-connectAttr "Bony_rFootIKC_translateY.o" "Run_Jump_bony_rigRN.phl[24]";
-connectAttr "Bony_rFootIKC_translateZ.o" "Run_Jump_bony_rigRN.phl[25]";
-connectAttr "Bony_rFootIKC_rotateX.o" "Run_Jump_bony_rigRN.phl[26]";
-connectAttr "Bony_rWristFKC_rotateZ.o" "Run_Jump_bony_rigRN.phl[27]";
-connectAttr "Bony_rWristFKC_rotateX.o" "Run_Jump_bony_rigRN.phl[28]";
-connectAttr "Bony_rWristFKC_rotateY.o" "Run_Jump_bony_rigRN.phl[29]";
-connectAttr "Bony_rElbowFKC_rotateY.o" "Run_Jump_bony_rigRN.phl[30]";
-connectAttr "Bony_rShoulderFKC_rotateX.o" "Run_Jump_bony_rigRN.phl[31]";
-connectAttr "Bony_rShoulderFKC_rotateY.o" "Run_Jump_bony_rigRN.phl[32]";
-connectAttr "Bony_rShoulderFKC_rotateZ.o" "Run_Jump_bony_rigRN.phl[33]";
-connectAttr "Bony_rPalmC_rotateZ.o" "Run_Jump_bony_rigRN.phl[34]";
-connectAttr "Bony_rFinger1J2C_rotateZ.o" "Run_Jump_bony_rigRN.phl[35]";
-connectAttr "Bony_rFinger2J1C_rotateZ.o" "Run_Jump_bony_rigRN.phl[36]";
-connectAttr "Bony_rFinger2J2C_rotateZ.o" "Run_Jump_bony_rigRN.phl[37]";
-connectAttr "Bony_lThumbJ1C_rotateX.o" "Run_Jump_bony_rigRN.phl[38]";
-connectAttr "Bony_lThumbJ1C_rotateY.o" "Run_Jump_bony_rigRN.phl[39]";
-connectAttr "Bony_lThumbJ1C_rotateZ.o" "Run_Jump_bony_rigRN.phl[40]";
-connectAttr "Bony_lThumbJ3C_rotateX.o" "Run_Jump_bony_rigRN.phl[41]";
-connectAttr "Bony_lThumbJ3C_rotateY.o" "Run_Jump_bony_rigRN.phl[42]";
-connectAttr "Bony_lThumbJ3C_rotateZ.o" "Run_Jump_bony_rigRN.phl[43]";
-connectAttr "Bony_rThumbJ1C_rotateZ.o" "Run_Jump_bony_rigRN.phl[44]";
-connectAttr "Bony_rThumbJ2C_rotateZ.o" "Run_Jump_bony_rigRN.phl[45]";
-connectAttr "Bony_rThumbJ3C_rotateZ.o" "Run_Jump_bony_rigRN.phl[46]";
+	setAttr -s 4 ".sol";
+connectAttr "Bony_ROOTC_translateY1.o" "full_body_rigRN.phl[1]";
+connectAttr "Bony_ROOTC_rotateX1.o" "full_body_rigRN.phl[2]";
+connectAttr "Bony_MainHipC_rotateY1.o" "full_body_rigRN.phl[3]";
+connectAttr "Bony_HeadC_rotateX1.o" "full_body_rigRN.phl[4]";
+connectAttr "Bony_lFootIKC_toeUpDn1.o" "full_body_rigRN.phl[5]";
+connectAttr "Bony_lFootIKC_translateY1.o" "full_body_rigRN.phl[6]";
+connectAttr "Bony_lFootIKC_translateZ1.o" "full_body_rigRN.phl[7]";
+connectAttr "Bony_lFootIKC_rotateX1.o" "full_body_rigRN.phl[8]";
+connectAttr "Bony_lWristFKC_rotateZ2.o" "full_body_rigRN.phl[9]";
+connectAttr "Bony_lWristFKC_rotateX2.o" "full_body_rigRN.phl[10]";
+connectAttr "Bony_lWristFKC_rotateY2.o" "full_body_rigRN.phl[11]";
+connectAttr "Bony_lElbowFKC_rotateY2.o" "full_body_rigRN.phl[12]";
+connectAttr "Bony_lShoulderFKC_rotateX2.o" "full_body_rigRN.phl[13]";
+connectAttr "Bony_lShoulderFKC_rotateY2.o" "full_body_rigRN.phl[14]";
+connectAttr "Bony_lShoulderFKC_rotateZ2.o" "full_body_rigRN.phl[15]";
+connectAttr "Bony_lPalmC_rotateZ.o" "full_body_rigRN.phl[16]";
+connectAttr "Bony_lPalmC_rotateX.o" "full_body_rigRN.phl[17]";
+connectAttr "Bony_lPalmC_rotateY.o" "full_body_rigRN.phl[18]";
+connectAttr "Bony_lFinger1J2C_rotateZ1.o" "full_body_rigRN.phl[19]";
+connectAttr "Bony_lFinger1J3C_rotateZ1.o" "full_body_rigRN.phl[20]";
+connectAttr "Bony_lFinger2J2C_rotateZ1.o" "full_body_rigRN.phl[21]";
+connectAttr "Bony_lFinger2J3C_rotateZ1.o" "full_body_rigRN.phl[22]";
+connectAttr "Bony_rFootIKC_heelBall1.o" "full_body_rigRN.phl[23]";
+connectAttr "Bony_rFootIKC_toeUpDn1.o" "full_body_rigRN.phl[24]";
+connectAttr "Bony_rFootIKC_translateY1.o" "full_body_rigRN.phl[25]";
+connectAttr "Bony_rFootIKC_translateZ1.o" "full_body_rigRN.phl[26]";
+connectAttr "Bony_rFootIKC_rotateX1.o" "full_body_rigRN.phl[27]";
+connectAttr "Bony_rWristFKC_rotateX2.o" "full_body_rigRN.phl[28]";
+connectAttr "Bony_rWristFKC_rotateY2.o" "full_body_rigRN.phl[29]";
+connectAttr "Bony_rWristFKC_rotateZ2.o" "full_body_rigRN.phl[30]";
+connectAttr "Bony_rElbowFKC_rotateY2.o" "full_body_rigRN.phl[31]";
+connectAttr "Bony_rShoulderFKC_rotateX2.o" "full_body_rigRN.phl[32]";
+connectAttr "Bony_rShoulderFKC_rotateY2.o" "full_body_rigRN.phl[33]";
+connectAttr "Bony_rShoulderFKC_rotateZ2.o" "full_body_rigRN.phl[34]";
+connectAttr "Bony_rPalmC_rotateZ1.o" "full_body_rigRN.phl[35]";
+connectAttr "Bony_rFinger1J1C_rotateZ.o" "full_body_rigRN.phl[36]";
+connectAttr "Bony_rFinger1J2C_rotateZ1.o" "full_body_rigRN.phl[37]";
+connectAttr "Bony_rFinger2J1C_rotateZ1.o" "full_body_rigRN.phl[38]";
+connectAttr "Bony_rFinger2J2C_rotateZ1.o" "full_body_rigRN.phl[39]";
+connectAttr "Bony_lThumbJ1C_rotateZ1.o" "full_body_rigRN.phl[40]";
+connectAttr "Bony_lThumbJ1C_rotateX1.o" "full_body_rigRN.phl[41]";
+connectAttr "Bony_lThumbJ1C_rotateY1.o" "full_body_rigRN.phl[42]";
+connectAttr "Bony_lThumbJ2C_rotateZ.o" "full_body_rigRN.phl[43]";
+connectAttr "Bony_lThumbJ2C_rotateX.o" "full_body_rigRN.phl[44]";
+connectAttr "Bony_lThumbJ2C_rotateY.o" "full_body_rigRN.phl[45]";
+connectAttr "Bony_lThumbJ3C_rotateZ1.o" "full_body_rigRN.phl[46]";
+connectAttr "Bony_lThumbJ3C_rotateX1.o" "full_body_rigRN.phl[47]";
+connectAttr "Bony_lThumbJ3C_rotateY1.o" "full_body_rigRN.phl[48]";
+connectAttr "Bony_rThumbJ1C_rotateX1.o" "full_body_rigRN.phl[49]";
+connectAttr "Bony_rThumbJ1C_rotateY1.o" "full_body_rigRN.phl[50]";
+connectAttr "Bony_rThumbJ1C_rotateZ1.o" "full_body_rigRN.phl[51]";
+connectAttr "Bony_rThumbJ2C_rotateX1.o" "full_body_rigRN.phl[52]";
+connectAttr "Bony_rThumbJ2C_rotateY1.o" "full_body_rigRN.phl[53]";
+connectAttr "Bony_rThumbJ2C_rotateZ1.o" "full_body_rigRN.phl[54]";
+connectAttr "Bony_rThumbJ3C_rotateX1.o" "full_body_rigRN.phl[55]";
+connectAttr "Bony_rThumbJ3C_rotateY1.o" "full_body_rigRN.phl[56]";
+connectAttr "Bony_rThumbJ3C_rotateZ1.o" "full_body_rigRN.phl[57]";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
