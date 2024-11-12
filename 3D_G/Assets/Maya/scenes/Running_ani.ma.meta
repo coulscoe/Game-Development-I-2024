@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63ed14a56300968499ef64eb017f873b
+guid: a0feb16c7ad035047b9e9bfc976a599c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -11,7 +11,7 @@ ModelImporter:
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
-    bakeSimulation: 0
+    bakeSimulation: 1
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
@@ -35,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -90,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 20
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

@@ -1,6 +1,6 @@
 //Maya ASCII 2025ff03 scene
 //Name: Running_ani.ma
-//Last modified: Mon, Nov 11, 2024 11:23:58 PM
+//Last modified: Mon, Nov 11, 2024 08:57:07 PM
 //Codeset: 1252
 file -rdi 1 -ns "full_body_rig" -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//assets/full_body_rig.ma";
@@ -17,17 +17,17 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "DA3114AF-4230-0BBF-C489-118506227A2C";
+fileInfo "UUID" "3AB83FCF-4578-85EA-CE48-AFA455594D60";
 createNode transform -s -n "persp";
 	rename -uid "C2450394-430A-B20C-3429-4F8942F98E72";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -23.514247453596028 4.7457007836922855 16.370586435029594 ;
+	setAttr ".t" -type "double3" -22.956770875665974 3.3311455863089483 17.31367123248031 ;
 	setAttr ".r" -type "double3" -0.93835273313554923 -2938.1999999995755 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "E35EF721-4EED-6D93-54A2-7C9F9CF7005A";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 28.706898544705986;
+	setAttr ".coi" 28.706898544706508;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -723,19 +723,7 @@ createNode reference -n "full_body_rigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"full_body_rigRN"
 		"full_body_rigRN" 0
-		"full_body_rigRN" 143
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG" 
-		"translateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG" 
-		"translateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG" 
-		"translateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG" 
-		"rotateZ" " -k 0"
+		"full_body_rigRN" 84
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC" 
 		"translate" " -type \"double3\" -0.0035638612558616203 0.034629229791521887 1.19511523415538279"
 		
@@ -743,22 +731,6 @@ createNode reference -n "full_body_rigRN";
 		"scaleX" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lShoulderJIK" 
-		"rotate" " -type \"double3\" -30.47433118466694424 22.24396198434368088 -6.8600053413382911"
-		
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lShoulderJIK|full_body_rig:Bony_lElbowJIK" 
-		"rotate" " -type \"double3\" 0 0.024990553017125917 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lHipJIK" 
-		"rotate" " -type \"double3\" 29.28060644469220719 1.21652142142720998 -0.43534314216930536"
-		
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lHipJIK|full_body_rig:Bony_lKneeJIK" 
-		"rotate" " -type \"double3\" 0 0.0036332408105628333 3.2281809105778394"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lHipJIK|full_body_rig:Bony_lKneeJIK|full_body_rig:Bony_lAnkleJIK" 
-		"rotate" " -type \"double3\" 0.43528592495752283 -0.7947993211211265 -29.40505127030370858"
-		
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lHipJIK|full_body_rig:Bony_lKneeJIK|full_body_rig:Bony_lAnkleJIK|full_body_rig:Bony_lBallJIK" 
-		"rotate" " -type \"double3\" -0.14071823794581162 -0.11478549083506726 -7.37506355280858994"
-		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C" 
@@ -785,114 +757,19 @@ createNode reference -n "full_body_rigRN";
 		"rotate" " -type \"double3\" 0 0 -99.11428808823107772"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmLengthOriginLctr" 
-		"translateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmLengthOriginLctr" 
-		"translateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmLengthOriginLctr" 
-		"translateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmLengthOriginLctr" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmLengthOriginLctr" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmLengthOriginLctr" 
-		"rotateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegLengthOriginLctr" 
-		"translateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegLengthOriginLctr" 
-		"translateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegLengthOriginLctr" 
-		"translateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegLengthOriginLctr" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegLengthOriginLctr" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegLengthOriginLctr" 
-		"rotateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG" 
-		"rotateX" " -av -k 0 180"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC" 
 		"footTilt" " -k 1 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG" 
-		"translateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG" 
-		"translateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG" 
-		"translateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG" 
-		"rotateZ" " -k 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC" 
 		"translate" " -type \"double3\" 0.0038063509620151893 0.036985447150617745 1.27643241267161556"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC" 
 		"Follow" " -k 1 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rShoulderJIK" 
-		"rotate" " -type \"double3\" -30.24647915379380336 22.24396443079092833 -6.86000681433958537"
-		
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rShoulderJIK|full_body_rig:Bony_rElbowJIK" 
-		"rotate" " -type \"double3\" 0 0.024984721049234652 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rHipJIK" 
-		"rotate" " -type \"double3\" 11.75076675762145406 28.78751660645004762 112.31484808477200943"
-		
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rHipJIK|full_body_rig:Bony_rKneeJIK" 
-		"rotate" " -type \"double3\" 0 -0.0014446817165081323 -70.68457173016376771"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rHipJIK|full_body_rig:Bony_rKneeJIK|full_body_rig:Bony_rAnkleJIK" 
-		"rotate" " -type \"double3\" -0.27348357480196334 -1.03473916257873033 -11.86794102249686667"
-		
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rHipJIK|full_body_rig:Bony_rKneeJIK|full_body_rig:Bony_rAnkleJIK|full_body_rig:Bony_rBallJIK" 
-		"rotate" " -type \"double3\" -8.9637521698811369e-07 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C" 
 		"rotate" " -type \"double3\" 0 0 -99.114"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C" 
 		"rotate" " -type \"double3\" 0 0 -99.114"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C" 
 		"rotate" " -type \"double3\" 0 0 -99.114"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmLengthOriginLctr" 
-		"translateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmLengthOriginLctr" 
-		"translateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmLengthOriginLctr" 
-		"translateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmLengthOriginLctr" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmLengthOriginLctr" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmLengthOriginLctr" 
-		"rotateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegLengthOriginLctr" 
-		"translateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegLengthOriginLctr" 
-		"translateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegLengthOriginLctr" 
-		"translateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegLengthOriginLctr" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegLengthOriginLctr" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegLengthOriginLctr" 
-		"rotateZ" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rBallSwivel|full_body_rig:Bony_rFootInTilt" 
-		"rotate" " -type \"double3\" -180 0 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rBallSwivel|full_body_rig:Bony_rFootInTilt" 
-		"rotateZ" " -av"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rBallSwivel|full_body_rig:Bony_rFootInTilt|full_body_rig:Bony_rFootOutTilt" 
-		"rotate" " -type \"double3\" 0 0 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rBallSwivel|full_body_rig:Bony_rFootInTilt|full_body_rig:Bony_rFootOutTilt" 
-		"rotateZ" " -av"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rBallSwivel|full_body_rig:Bony_rFootInTilt|full_body_rig:Bony_rFootOutTilt|full_body_rig:Bony_rFootHeelPivot" 
-		"rotate" " -type \"double3\" -81 0 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:BonyExtraNodes|full_body_rig:Bony_ribbonBlend|full_body_rig:Bony_ribbonBlendShape" 
-		"visibility" " -k 0 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:BonyExtraNodes|full_body_rig:Bony_extraCurveNodesG|full_body_rig:Bony_rLowerArmCurve2CG" 
-		"rotateX" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:BonyExtraNodes|full_body_rig:Bony_extraCurveNodesG|full_body_rig:Bony_rLowerArmCurve2CG" 
-		"rotateY" " -k 0"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:BonyExtraNodes|full_body_rig:Bony_extraCurveNodesG|full_body_rig:Bony_rLowerArmCurve2CG" 
-		"rotateZ" " -k 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C" 
@@ -901,7 +778,6 @@ createNode reference -n "full_body_rigRN";
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
-		2 "full_body_rig:Jolan_ribbonBlendShape1" "envelope" " 1"
 		2 "full_body_rig:Jolan_ribbonBlendShape1" "midLayerParent" " 0"
 		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC.translateY" 
 		"full_body_rigRN.placeHolderList[1]" ""
@@ -1395,8 +1271,8 @@ select -ne :time1;
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr ".o" 12;
-	setAttr ".unw" 12;
+	setAttr ".o" 14;
+	setAttr ".unw" 14;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
@@ -1618,7 +1494,7 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".hwdp";
 	setAttr -k on ".hwql";
 select -ne :ikSystem;
-	setAttr -s 4 ".sol";
+	setAttr -s 2 ".sol";
 connectAttr "Bony_ROOTC_translateY1.o" "full_body_rigRN.phl[1]";
 connectAttr "Bony_ROOTC_rotateX1.o" "full_body_rigRN.phl[2]";
 connectAttr "Bony_MainHipC_rotateY1.o" "full_body_rigRN.phl[3]";
