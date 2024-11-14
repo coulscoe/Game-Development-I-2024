@@ -5,26 +5,21 @@ def group_tool():
     for sel in sels:
         position=cmds.xform(sel, q=True, ws=True, t=True)
         rotation=cmds.xform(sel, q=True, ws=True, ro=True)
-        obj_group = cmds.group( empty=True, name=f'{sel}_Grp')
+        # checks for '_' so it can update the control and the group name
+        if '_' in sel:
+            base_name=sel.rpartition('_')[0]
+        else:
+            base_name=sel
+        ctrl_name = f'{base_name}_Ctrl'
+        group_name = f'{ctrl_name}_Grp'
+        # creates group and moves and rotates it to the joint
+        obj_group = cmds.group( empty=True, name=group_name)
         cmds.xform(obj_group, ws=True, t=position)
         cmds.xform(obj_group, ws=True, ro=rotation)
-        cmds.parent(obj_group, sel)
-        return position, rotation
-def control_tool():
-    position, rotation= group_tool()
-    circle=cmds.circle()
-    cmds.xform(circle, ws=True, t=position)
-    cmds.xform(circle, ws=True, ro=rotation)
+
+        # same but for the circle
+        circle = cmds.circle(name=ctrl_name,radius=.5, normal=[0,1,0])[0]
+        cmds.xform(circle, ws=True, t=position)
+        cmds.xform(circle, ws=True, ro=rotation)
+        cmds.parent(circle, obj_group)
 group_tool()
-# #txt = "hi class really this is really neat _jnt"
-#
-# #txt = 'L_Arm_01_Jnt'
-# txt = 'L_Arm_02_Geo'
-# #'L_Arm_01_al;ksjdfhlaksjdhgflkasjhdgf'
-#
-# #'L_Arm_01_Ctrl'
-# #'L_Arm_02_Ctrl'
-#
-# txt2 = (txt.rpartition('_')[0])
-# txt2 = '%s_Ctrl' % txt2
-# print(txt2)
