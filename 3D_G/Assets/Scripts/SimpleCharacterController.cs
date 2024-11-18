@@ -1,20 +1,24 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 [RequireComponent(typeof(CharacterController))]
 public class SimpleCharacterController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
     public float gravity = -9.81f;
-
+    public int maxJumps = 2;
+    
     private CharacterController controller;
     private Vector3 velocity;
     private Transform thisTransform;
+    private int jumpsRemaining;
 
+    public UnityEvent jumpEvent;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         thisTransform = transform;
+        jumpsRemaining = maxJumps;
     }
 
     private void Update()
@@ -34,7 +38,12 @@ public class SimpleCharacterController : MonoBehaviour
         // Jumping
         if (Input.GetButtonDown("Jump"))
         {
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            if (controller.isGrounded || jumpsRemaining > 0)
+            {
+                velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+                jumpsRemaining--;
+                jumpEvent.Invoke();
+            }
         }
     }
 
