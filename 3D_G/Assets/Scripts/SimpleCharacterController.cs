@@ -40,9 +40,9 @@ public class SimpleCharacterController : MonoBehaviour
         {
             if (controller.isGrounded || jumpsRemaining > 0)
             {
+                jumpEvent.Invoke();
                 velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
                 jumpsRemaining--;
-                jumpEvent.Invoke();
             }
         }
     }
@@ -57,6 +57,7 @@ public class SimpleCharacterController : MonoBehaviour
         else
         {
             velocity.y = 0f; // Reset velocity when grounded
+            jumpsRemaining = maxJumps;
         }
 
         // Apply the velocity to the controller
