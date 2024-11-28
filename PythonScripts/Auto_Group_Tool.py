@@ -53,3 +53,20 @@ def group_tool():
         cmds.xform(circle, ws=True, ro=rotation)
         cmds.parent(circle, obj_group)
 group_tool()
+def color_changer(color):
+    # color requires a number between 0-31
+    sels= cmds.ls(selection=True)
+    for sel in sels:
+        sel=list(sel)
+        try:
+            int(sel[-1])
+            removed_char = str(sel.pop(-1))
+            sel.append('Shape')
+            sel.append(removed_char)
+        except ValueError:
+            sel.append('Shape')
+        sel=''.join(sel)
+        cmds.select(sel, replace=True)
+        cmds.setAttr(sel + '.overrideEnabled',1)
+        cmds.setAttr(sel + '.overrideColor',color)
+color_changer(30)
