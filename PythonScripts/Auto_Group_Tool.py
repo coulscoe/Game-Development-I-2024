@@ -1,34 +1,4 @@
 ﻿import maya.cmds as cmds
-# def create_control():
-#     sels = cmds.ls(sl=True)
-#
-#     for sel in sels:
-#         sel_position = cmds.xform(sel, q=True, ws=True, translation=True)
-#         sel_rotation = cmds.xform(sel, q=True, ws=True, rotation=True)
-#
-#         new_ctrl = cmds.circle(center=(0,0,0), normal=(1,0,0), sweep=360, radius=1, d=3, ut=False,  tol=0.01, s=8, ch=True)[0]
-#         cmds.xform(new_ctrl, ws=True, translation=sel_position)
-#         cmds.xform(new_ctrl, ws=True, rotation=sel_rotation)
-#
-#         new_group = cmds.group(empty=True, world=True)
-#         cmds.xform(new_group, ws=True, translation=sel_position)
-#         cmds.xform(new_group, ws=True, rotation=sel_rotation)
-#
-#         cmds.parent(new_ctrl, new_group)
-#
-#         # temp_list = sel.rpartition('_')
-#         # name = temp_list[0]
-#         # temp_var = temp_list[1]
-#         # suffix = temp_list[2]
-#
-#         name, temp_var, suffix = sel.rpartition('_')
-#         if suffix.lower() not in ['jnt', 'geo', 'grp', 'joint']:
-#             name = sel
-#
-#         new_ctrl = cmds.rename(new_ctrl, '%s_Ctrl' % name)
-#         new_group = cmds.rename(new_group, '%s_Grp' % new_ctrl)
-#
-# create_control()
 def group_tool():
     # gets selection and creates a curve and empty group then parents it together
     sels= cmds.ls(selection=True)
@@ -74,15 +44,18 @@ color_changer(30)
 def sequential_renamer(name):
     name=name.split("_")
     start=1
-    count=name[1].count('#')
-    index=name[1].rfind('#')
+    for value, obj in enumerate(name):
+        if obj.find('#')==0:
+            index=value
+    count = name[index].count('#')
     sels= cmds.ls(selection=True)
     for sel in sels:
         name_int=str(start).zfill(count)
-        name[1]=name_int
+        print(name_int)
+        name[index]=name_int
+        print(name)
         name='_'.join(name)
         cmds.rename(sel,name)
         start=int(start)+1
         print(start)
-    start=0
-sequential_renamer("wow_##_bruh")
+sequential_renamer("oof_that_##_hurt")
