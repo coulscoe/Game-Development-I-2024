@@ -70,3 +70,19 @@ def color_changer(color):
         cmds.setAttr(sel + '.overrideEnabled',1)
         cmds.setAttr(sel + '.overrideColor',color)
 color_changer(30)
+# requires a string in the format "Name_##_NodeType"
+def sequential_renamer(name):
+    name=name.split("_")
+    start=1
+    count=name[1].count('#')
+    index=name[1].rfind('#')
+    sels= cmds.ls(selection=True)
+    for sel in sels:
+        name_int=str(start).zfill(count)
+        name[1]=name_int
+        name='_'.join(name)
+        cmds.rename(sel,name)
+        start=int(start)+1
+        print(start)
+    start=0
+sequential_renamer("wow_##_bruh")
