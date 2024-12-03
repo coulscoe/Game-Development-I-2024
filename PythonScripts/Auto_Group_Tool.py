@@ -44,6 +44,7 @@ color_changer(30)
 def sequential_renamer(name):
     name=name.split("_")
     start=1
+    # finds # and the index of where it was found
     for value, obj in enumerate(name):
         if obj.find('#')==0:
             index=value
@@ -51,11 +52,10 @@ def sequential_renamer(name):
     sels= cmds.ls(selection=True)
     for sel in sels:
         name_int=str(start).zfill(count)
-        print(name_int)
         name[index]=name_int
-        print(name)
         name='_'.join(name)
         cmds.rename(sel,name)
+        # split to replace the name_int in the next loop
+        name=name.split('_')
         start=int(start)+1
-        print(start)
-sequential_renamer("oof_that_##_hurt")
+sequential_renamer("R_Leg_####_Jnt")
