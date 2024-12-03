@@ -1,12 +1,13 @@
 //Maya ASCII 2025ff03 scene
 //Name: Exaggeration_attack_hit_ani.ma
-//Last modified: Sun, Dec 01, 2024 03:55:47 PM
+//Last modified: Mon, Dec 02, 2024 09:40:02 PM
 //Codeset: 1252
 file -rdi 1 -ns "full_body_rig" -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//scenes/full_body_rig.ma";
 file -r -ns "full_body_rig" -dr 1 -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//scenes/full_body_rig.ma";
 requires maya "2025ff03";
+requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.4.2.1";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -14,21 +15,21 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "E5C48011-4B57-7CC9-73D5-E69FC4A11C3B";
+fileInfo "UUID" "8A7175F3-4D11-4802-E83B-51ADE166B76E";
 createNode transform -s -n "persp";
 	rename -uid "D5937A7D-4539-36CE-D0E8-ACA2DBB30030";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -32.927741549948678 8.6263992235156977 24.241063472874199 ;
-	setAttr ".r" -type "double3" -6.3383526984946412 -2573.7999999970125 0 ;
+	setAttr ".t" -type "double3" -12.580606209759949 6.6630730909281883 7.0692197861458954 ;
+	setAttr ".r" -type "double3" -2.7383526121619752 -3298.9999999985034 -3.8596111096746657e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "B0D2769F-4D65-A8EF-545D-739439EC778F";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 41.905519286672039;
+	setAttr ".coi" 15.775623712673735;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" 0 7.0966328633949054 2.2204460492503131e-16 ;
+	setAttr ".tp" -type "double3" 0.83925673248182664 0.13931354864454604 0.48119479498262724 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "B9C1877A-40EA-20D3-9E6A-1FBA31E50A46";
@@ -94,21 +95,21 @@ createNode camera -n "leftShape" -p "left";
 	setAttr ".hc" -type "string" "viewSet -ls %camera";
 	setAttr ".o" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "B554B3AC-4288-FC51-2A65-8991F2A8312A";
+	rename -uid "8D514CA6-4A32-D67D-A476-578199DDF902";
 	setAttr -s 4 ".lnk";
 	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "1B6AE722-488F-D191-72A6-22B0F9B6695C";
+	rename -uid "3E549D8C-4912-6353-EC18-22AE2B930192";
 	setAttr ".bsdt[0].bscd" -type "Int32Array" 1 0 ;
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "9B08AE24-44B3-DC9F-6ACC-37BAA2EC7A46";
+	rename -uid "BBB25124-439F-AC5A-C129-1B97BBBE71C0";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "51B83FF9-40C8-5550-A3C7-F1B06162EBFA";
+	rename -uid "07AD12B0-4CF5-C2C2-3A35-2BA497DB8AC7";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "06DD4BAB-4854-077D-FBAD-8F974C125A1E";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "1DDC809F-45AA-E889-1E55-B78487DF2998";
+	rename -uid "824BD932-4F49-E597-8ACE-67A5F42B145D";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "AD1C2F81-46CA-D1BF-AE97-9F8084F8C11F";
 	setAttr ".g" yes;
@@ -155,14 +156,18 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 0\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n"
+		+ "                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n"
+		+ "                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n"
+		+ "                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n"
+		+ "\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
 		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1317\\n    -height 538\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1317\\n    -height 538\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "70BFD379-4256-6C70-4541-FDBD0B38A466";
-	setAttr ".b" -type "string" "playbackOptions -min 0 -max 39 -ast 0 -aet 83 ";
+	setAttr ".b" -type "string" "playbackOptions -min 45 -max 84 -ast 0 -aet 84 ";
 	setAttr ".st" 6;
 createNode reference -n "full_body_rigRN";
 	rename -uid "B6ADAA17-458A-C7AF-E9F2-3AA2261E782D";
@@ -363,55 +368,4623 @@ createNode reference -n "full_body_rigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"full_body_rigRN"
 		"full_body_rigRN" 0
-		"full_body_rigRN" 217
+		"full_body_rigRN" 2381
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
+		"Stretch" " -k 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC" 
+		"Stretch" " -k 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC" 
+		"toeUpDn" " -k 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKC" 
 		"translate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKC" 
 		"rotate" " -type \"double3\" -60.47211060427298435 -84.80803635349002434 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine1|full_body_rig:Bony_spineShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_spine2|full_body_rig:Bony_spine2Shape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_chest|full_body_rig:Bony_chestShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_neck|full_body_rig:Bony_neckShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_body_Grp|full_body_rig:Bony_head|full_body_rig:Bony_headShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:Bony_L_footShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_foot|full_body_rig:L_foot_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:Bony_L_toeShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_toe|full_body_rig:L_toe_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:Bony_L_ankleShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_ankle|full_body_rig:L_ankle_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:Bony_L_kneeShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_knee|full_body_rig:L_knee_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_but|full_body_rig:Bony_L_butShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_L_leg_Grp|full_body_rig:Bony_L_leg|full_body_rig:Bony_L_legShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_shoulder|full_body_rig:Bony_L_shoulderShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_elbow|full_body_rig:Bony_L_elbowShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_wrist|full_body_rig:Bony_L_wristShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_hand|full_body_rig:Bony_L_handShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb3|full_body_rig:Bony_L_thumbShape3" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb2|full_body_rig:Bony_L_thumbShape2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_thumb1|full_body_rig:Bony_L_thumbShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index1|full_body_rig:Bony_L_indexShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index2|full_body_rig:Bony_L_indexShape2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_index3|full_body_rig:Bony_L_indexShape3" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky3|full_body_rig:Bony_L_pinkyShape3" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky2|full_body_rig:Bony_L_pinkyShape2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_pinky1|full_body_rig:Bony_L_pinkyShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__L_arm_Grp|full_body_rig:Bony_L_arm|full_body_rig:Bony_L_armShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_pelvis|full_body_rig:Bony_pelvisShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:Bony_R_footShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_foot|full_body_rig:R_foot_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:Bony_R_toeShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_toe|full_body_rig:R_toe_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:Bony_R_ankleShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_ankle|full_body_rig:R_ankle_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:Bony_R_kneeShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_knee|full_body_rig:R_knee_parentConstraint1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_but|full_body_rig:Bony_R_butShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony_R_leg_Grp|full_body_rig:Bony_R_leg|full_body_rig:Bony_R_legShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_shoulder|full_body_rig:Bony_R_shoulderShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_elbow|full_body_rig:Bony_R_elbowShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_wrist|full_body_rig:Bony_R_wristShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_hand|full_body_rig:Bony_R_handShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb3|full_body_rig:Bony_R_thumbShape3" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb2|full_body_rig:Bony_R_thumbShape2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_thumb1|full_body_rig:Bony_R_thumbShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index1|full_body_rig:Bony_R_indexShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index2|full_body_rig:Bony_R_indexShape2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_index3|full_body_rig:Bony_R_indexShape3" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky3|full_body_rig:Bony_R_pinkyShape3" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky2|full_body_rig:Bony_R_pinkyShape2" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_pinky1|full_body_rig:Bony_R_pinkyShape1" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghosting" " 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostingMode" " 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostPreFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostPostFrames" " 3"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostsStep" " 2"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostOpacityRange" " -type \"float2\" 0 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Mesh_Grp|full_body_rig:Bony__R_arm_Grp|full_body_rig:Bony_R_arm|full_body_rig:Bony_R_armShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT.GlobalScale" 
 		"full_body_rigRN.placeHolderList[1]" ""
 		5 4 "full_body_rigRN" "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT.translateX" 
@@ -817,72 +5390,77 @@ createNode animCurveTU -n "Bony_lArmSwitchC_SwitchIkFk";
 	rename -uid "E111B2D4-4192-B716-D291-5A8805F84358";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTA -n "Bony_rThumbJ1C_rotateX";
 	rename -uid "A6100491-4336-A770-DF7B-C89EC527534D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 5.2526863394274006 2 8.084710383928833
-		 4 19.412806561934563 6 22.244830606436 21 22.244830606436 40 5.2526863394274006;
+	setAttr -s 8 ".ktv[0:7]"  0 5.2526863394274006 2 8.084710383928833
+		 4 19.412806561934563 6 22.244830606436 21 22.244830606436 40 5.2526863394274006 45 5.2526863394274006
+		 73 5.2526863394274006;
 createNode animCurveTA -n "Bony_rThumbJ1C_rotateY";
 	rename -uid "8835CAAA-4625-7E19-A281-6FA26A567B7C";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 34.632115896192964 2 29.969379140468117
-		 4 11.318432117568705 6 6.6556953618438532 21 6.6556953618438532 40 34.632115896192964;
+	setAttr -s 8 ".ktv[0:7]"  0 34.632115896192964 2 29.969379140468117
+		 4 11.318432117568705 6 6.6556953618438532 21 6.6556953618438532 40 34.632115896192964
+		 45 34.632115896192964 73 34.632115896192964;
 createNode animCurveTA -n "Bony_rThumbJ1C_rotateZ";
 	rename -uid "5667A76E-47EC-B30D-6BB4-1A9172B1E6A5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -7.1508367581350267 2 -14.694432346550361
-		 4 -44.868814700211701 6 -52.412410288627036 21 -52.412410288627036 40 -7.1508367581350267;
+	setAttr -s 8 ".ktv[0:7]"  0 -7.1508367581350267 2 -14.694432346550361
+		 4 -44.868814700211701 6 -52.412410288627036 21 -52.412410288627036 40 -7.1508367581350267
+		 45 -7.1508367581350267 73 -7.1508367581350267;
 createNode animCurveTU -n "Bony_rThumbJ1C_scaleX";
 	rename -uid "9507D125-44C1-F6E0-0AAA-A087E21EC7DF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_rThumbJ1C_scaleY";
 	rename -uid "12457E9F-4AB2-1861-839C-1F8F8F460EC1";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_rThumbJ1C_scaleZ";
 	rename -uid "F3251839-4BAE-0D44-A244-99923AABAE15";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTA -n "Bony_rFinger2J2C_rotateX";
 	rename -uid "9F83AE43-4139-9E83-8130-5BB324D6B11F";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger2J2C_rotateY";
 	rename -uid "4AA6C0B1-4B6A-2E38-4A4F-55B337C4A7F1";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger2J2C_rotateZ";
 	rename -uid "BE8AC234-48F4-EAD2-E8D0-699E737EF334";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -15.351769173344765 2 -28.361981940422051
-		 4 -80.402833008731207 6 -93.41304577580847 21 -93.41304577580847 40 -15.351769173344765;
+	setAttr -s 8 ".ktv[0:7]"  0 -15.351769173344765 2 -28.361981940422051
+		 4 -80.402833008731207 6 -93.41304577580847 21 -93.41304577580847 40 -15.351769173344765
+		 45 -15.351769173344765 73 -15.351769173344765;
 createNode animCurveTA -n "Bony_rThumbJ2C_rotateX";
 	rename -uid "AE2C8D8F-47EE-A334-D3DA-BF80B285F8B8";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rThumbJ2C_rotateY";
 	rename -uid "2FA509BA-40A8-E4F5-D8A9-74B99413EA5C";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rThumbJ2C_rotateZ";
 	rename -uid "D69D6416-46D1-5492-4C72-DF8DB1F37C05";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -16.873688017257425 2 -25.261116754154159
-		 4 -58.810831701741094 6 -67.198260438637817 21 -67.198260438637817 40 -16.873688017257425;
+	setAttr -s 8 ".ktv[0:7]"  0 -16.873688017257425 2 -25.261116754154159
+		 4 -58.810831701741094 6 -67.198260438637817 21 -67.198260438637817 40 -16.873688017257425
+		 45 -16.873688017257425 73 -16.873688017257425;
 createNode animCurveTU -n "Bony_lLegSwitchC_SwitchIkFk";
 	rename -uid "114CE084-4C81-4A5D-53DA-99B9F6DDBFF0";
 	setAttr ".tan" 2;
@@ -893,121 +5471,127 @@ createNode animCurveTA -n "Bony_lFinger1J1C_rotateX";
 	rename -uid "A2B0CA81-4EFD-9D50-7EC6-EAA48583DF74";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 4.5336369524385951 2 2.1180335775680152
-		 4 4.2360671551360305 40 4.5336369524385951;
+	setAttr -s 6 ".ktv[0:5]"  0 4.5336369524385951 2 2.1180335775680152
+		 4 4.2360671551360305 40 4.5336369524385951 45 4.5336369524385951 73 4.5336369524385951;
 createNode animCurveTA -n "Bony_lFinger1J1C_rotateY";
 	rename -uid "98E02EC0-4922-AC59-05CB-4C9DBF002B62";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -3.3018407108769137 2 1.2846771253480533
-		 4 2.5693542506961067 40 -3.3018407108769137;
+	setAttr -s 6 ".ktv[0:5]"  0 -3.3018407108769137 2 1.2846771253480533
+		 4 2.5693542506961067 40 -3.3018407108769137 45 -3.3018407108769137 73 -3.3018407108769137;
 createNode animCurveTA -n "Bony_lFinger1J1C_rotateZ";
 	rename -uid "CD44A917-45B1-8323-EE2C-E4AFB40B50E6";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -23.349864397250141 2 -44.089093547000459
-		 4 -88.178187094000918 40 -23.349864397250141;
+	setAttr -s 6 ".ktv[0:5]"  0 -23.349864397250141 2 -44.089093547000459
+		 4 -88.178187094000918 40 -23.349864397250141 45 -23.349864397250141 73 -23.349864397250141;
 createNode animCurveTU -n "Bony_lFinger1J1C_scaleX";
 	rename -uid "C469D67B-49AE-C005-2BAA-EF92581D2686";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lFinger1J1C_scaleY";
 	rename -uid "514C7EEE-4FAE-8EA0-E8D6-378054781103";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lFinger1J1C_scaleZ";
 	rename -uid "ADEBC5DF-422B-33EC-C014-0C9BB7899FBA";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTA -n "Bony_Spine02FKC_rotateX";
 	rename -uid "BB9E24B8-4C5E-A9FD-E875-FD8379732612";
-	setAttr ".tan" 3;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 10 0 12 -24.482901163065794 13 -24.482901163065794
-		 17 20.771901800530813 19 0 40 0;
-	setAttr -s 7 ".kit[0:6]"  2 1 3 3 18 1 2;
-	setAttr -s 7 ".kot[0:6]"  2 1 3 3 18 1 2;
-	setAttr -s 7 ".kix[1:6]"  1 1 1 1 1 1;
-	setAttr -s 7 ".kiy[1:6]"  0 0 0 0 0 0;
-	setAttr -s 7 ".kox[1:6]"  0.8815291156000572 1 1 1 0.8815291156000572 
-		1;
-	setAttr -s 7 ".koy[1:6]"  -0.47212966264510547 0 0 0 -0.47212966264510547 
-		0;
+	setAttr -s 9 ".ktv[0:8]"  0 0 10 0 12 -24.482901163065794 13 -24.482901163065794
+		 17 20.771901800530813 19 0 40 0 45 0 73 0;
+	setAttr -s 9 ".kit[1:8]"  1 3 3 18 1 2 2 2;
+	setAttr -s 9 ".kot[1:8]"  1 3 3 18 1 2 2 2;
+	setAttr -s 9 ".kix[1:8]"  1 1 1 1 1 1 1 1;
+	setAttr -s 9 ".kiy[1:8]"  0 0 0 0 0 0 0 0;
+	setAttr -s 9 ".kox[1:8]"  0.8815291156000572 1 1 1 0.8815291156000572 
+		1 1 1;
+	setAttr -s 9 ".koy[1:8]"  -0.47212966264510547 0 0 0 -0.47212966264510547 
+		0 0 0;
 createNode animCurveTA -n "Bony_Spine02FKC_rotateY";
 	rename -uid "9D519C6F-473A-D370-00C6-4B85569E3932";
 	setAttr ".tan" 1;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 10 0 12 -21.213170122448215 13 -21.213170122448215
-		 17 20.9235191048869 19 0 40 0;
-	setAttr -s 7 ".kit[0:6]"  2 1 3 3 18 1 1;
-	setAttr -s 7 ".kot[0:6]"  2 1 3 3 18 1 1;
-	setAttr -s 7 ".kix[1:6]"  1 1 1 1 1 1;
-	setAttr -s 7 ".kiy[1:6]"  0 0 0 0 0 0;
-	setAttr -s 7 ".kox[1:6]"  0.76474802597924751 1 1 1 0.76474802597924751 
-		0.62442203445114319;
-	setAttr -s 7 ".koy[1:6]"  -0.64432946289987703 0 0 0 -0.64432946289987703 
-		-0.78108714167619953;
+	setAttr -s 9 ".ktv[0:8]"  0 0 10 0 12 -21.213170122448215 13 -21.213170122448215
+		 17 20.9235191048869 19 0 40 0 45 0 73 0;
+	setAttr -s 9 ".kit[0:8]"  2 1 3 3 18 1 1 2 
+		2;
+	setAttr -s 9 ".kot[0:8]"  2 1 3 3 18 1 1 2 
+		2;
+	setAttr -s 9 ".kix[1:8]"  1 1 1 1 1 1 1 1;
+	setAttr -s 9 ".kiy[1:8]"  0 0 0 0 0 0 0 0;
+	setAttr -s 9 ".kox[1:8]"  0.76474802597924751 1 1 1 0.76474802597924751 
+		0.62442203445114319 1 1;
+	setAttr -s 9 ".koy[1:8]"  -0.64432946289987703 0 0 0 -0.64432946289987703 
+		-0.78108714167619953 0 0;
 createNode animCurveTA -n "Bony_Spine02FKC_rotateZ";
 	rename -uid "91956A76-468F-C265-25F3-3E8FB71919C8";
-	setAttr ".tan" 3;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 10 0 12 12.127447372726605 13 12.127447372726605
-		 17 20.813900159924465 19 0 40 0;
-	setAttr -s 7 ".kit[0:6]"  2 1 3 3 18 1 2;
-	setAttr -s 7 ".kot[0:6]"  2 1 3 3 18 1 2;
-	setAttr -s 7 ".kix[1:6]"  1 1 1 1 1 1;
-	setAttr -s 7 ".kiy[1:6]"  0 0 0 0 0 0;
-	setAttr -s 7 ".kox[1:6]"  0.97728514333351679 1 1 1 0.97728514333351679 
-		1;
-	setAttr -s 7 ".koy[1:6]"  0.21192864039479772 0 0 0 0.21192864039479772 
-		0;
+	setAttr -s 9 ".ktv[0:8]"  0 0 10 0 12 12.127447372726605 13 12.127447372726605
+		 17 20.813900159924465 19 0 40 0 45 0 73 0;
+	setAttr -s 9 ".kit[1:8]"  1 3 3 18 1 2 2 2;
+	setAttr -s 9 ".kot[1:8]"  1 3 3 18 1 2 2 2;
+	setAttr -s 9 ".kix[1:8]"  1 1 1 1 1 1 1 1;
+	setAttr -s 9 ".kiy[1:8]"  0 0 0 0 0 0 0 0;
+	setAttr -s 9 ".kox[1:8]"  0.97728514333351679 1 1 1 0.97728514333351679 
+		1 1 1;
+	setAttr -s 9 ".koy[1:8]"  0.21192864039479772 0 0 0 0.21192864039479772 
+		0 0 0;
 createNode animCurveTA -n "Bony_lWristFKC_rotateX";
 	rename -uid "FBD0CB37-4133-386C-A598-5CB62F155BDD";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lWristFKC_rotateY";
 	rename -uid "B32D88D5-467A-949F-53E0-AAA2B969CBF0";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lWristFKC_rotateZ";
 	rename -uid "9B9AD092-4129-35D9-45DE-27AC501B6387";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 45 0 73 0;
 createNode animCurveTU -n "Bony_lWristFKC_scaleX";
 	rename -uid "12C86F33-4829-C4C1-58A0-829A8AA29BC9";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTL -n "Bony_lFootIKC_translateX";
 	rename -uid "960C2B45-4EDD-1E1F-361C-E68CCEF69AF7";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0.301;
-	setAttr ".kot[0]"  5;
+	setAttr -s 7 ".ktv[0:6]"  0 0.301 54 0.301 57 0.301 61 0 65 0.301
+		 69 0.301 73 0;
+	setAttr -s 7 ".kot[0:6]"  5 2 2 5 5 2 2;
 createNode animCurveTL -n "Bony_lFootIKC_translateY";
 	rename -uid "EE79A4ED-4F50-1928-AE44-BD8659A5AEA4";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0;
-	setAttr ".kot[0]"  5;
+	setAttr -s 7 ".ktv[0:6]"  0 0 54 1.0073608698534844 57 0.34989422962294547
+		 61 0 65 1.0073608698534844 69 0.34989422962294547 73 0;
+	setAttr -s 7 ".kot[0:6]"  5 2 2 5 5 2 2;
 createNode animCurveTL -n "Bony_lFootIKC_translateZ";
 	rename -uid "8C60C330-4042-C59B-2FA2-50A6A3E46F53";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0;
-	setAttr ".kot[0]"  5;
+	setAttr -s 7 ".ktv[0:6]"  0 0 54 0 57 -0.98665806198866379 61 0 65 0
+		 69 -0.98665806198866379 73 0;
+	setAttr -s 7 ".kot[0:6]"  5 2 2 5 5 2 2;
 createNode animCurveTA -n "Bony_lFootIKC_rotateX";
 	rename -uid "C22F0061-40B2-07C6-D0FC-A292C1292CE5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0;
-	setAttr ".kot[0]"  5;
+	setAttr -s 7 ".ktv[0:6]"  0 0 54 19.957231049260532 57 19.957231049260532
+		 61 0 65 19.957231049260532 69 19.957231049260532 73 0;
+	setAttr -s 7 ".kot[0:6]"  5 2 2 5 5 2 2;
 createNode animCurveTA -n "Bony_lFootIKC_rotateY";
 	rename -uid "70EBFFB3-451F-3EEB-7EB8-109908A039A7";
 	setAttr ".tan" 2;
@@ -1022,10 +5606,11 @@ createNode animCurveTA -n "Bony_lFootIKC_rotateZ";
 	setAttr ".kot[0]"  5;
 createNode animCurveTU -n "Bony_lFootIKC_Stretch";
 	rename -uid "7AC01A96-4267-D3EF-B434-139B00951359";
-	setAttr ".tan" 5;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 12 1;
-	setAttr -s 2 ".kit[0:1]"  2 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 12 1 45 0 73 0;
+	setAttr -s 4 ".kit[1:3]"  18 2 2;
+	setAttr -s 4 ".kot[0:3]"  5 5 2 2;
 createNode animCurveTU -n "Bony_lFootIKC_KneeLock";
 	rename -uid "295B0F1D-485A-4E60-FB04-51A848E1C8C2";
 	setAttr ".tan" 2;
@@ -1060,49 +5645,51 @@ createNode animCurveTA -n "Bony_rFinger1J2C_rotateX";
 	rename -uid "D7600908-49B1-C26F-CCB1-FFA37C66772F";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger1J2C_rotateY";
 	rename -uid "9D1FDA2F-4FE0-8A6E-6641-AF94ED3C4AB3";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger1J2C_rotateZ";
 	rename -uid "8EADA21B-42AB-FAC6-2841-01A8BE3D1F86";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -20.596660687803141 2 -33.606873454880443
-		 4 -85.647724523189638 6 -98.657937290266943 21 -98.657937290266943 40 -20.596660687803141;
+	setAttr -s 8 ".ktv[0:7]"  0 -20.596660687803141 2 -33.606873454880443
+		 4 -85.647724523189638 6 -98.657937290266943 21 -98.657937290266943 40 -20.596660687803141
+		 45 -20.596660687803141 73 -20.596660687803141;
 createNode animCurveTA -n "Bony_lFinger2J2C_rotateX";
 	rename -uid "BDB88596-4021-E71A-C2B2-1EAC7B735426";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger2J2C_rotateY";
 	rename -uid "92BCF864-4B9C-1EEE-AA22-4CBA2D7A00A9";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger2J2C_rotateZ";
 	rename -uid "15AEA1A8-485B-0CA9-1A34-7BB086F79EAB";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -15.351769173344765 2 -40.201416504365604
-		 4 -80.402833008731207 40 -15.351769173344765;
+	setAttr -s 6 ".ktv[0:5]"  0 -15.351769173344765 2 -40.201416504365604
+		 4 -80.402833008731207 40 -15.351769173344765 45 -15.351769173344765 73 -15.351769173344765;
 createNode animCurveTA -n "Bony_lPalmC_rotateX";
 	rename -uid "F3F6AFAC-4968-D99E-615C-65B4C835F624";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 2 0 40 0;
+	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lPalmC_rotateY";
 	rename -uid "5FD9A290-41ED-DBB1-ABF7-E7BDADB898C9";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 2 0 40 0;
+	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lPalmC_rotateZ";
 	rename -uid "AB4DDBD1-45DA-7613-032D-5CB40768D664";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 15.670326205563924 2 0 40 15.670326205563924;
+	setAttr -s 5 ".ktv[0:4]"  0 15.670326205563924 2 0 40 15.670326205563924
+		 45 15.670326205563924 73 15.670326205563924;
 createNode animCurveTU -n "Bony_rLegSwitchC_SwitchIkFk";
 	rename -uid "FDED66B8-406C-60C6-E89D-4BA307360F65";
 	setAttr ".tan" 2;
@@ -1112,51 +5699,54 @@ createNode animCurveTA -n "Bony_rFinger2J1C_rotateX";
 	rename -uid "6CE923AE-4B20-0058-E361-2B98B6BB145E";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 7.3053004812911064 2 5.2633917580944871
-		 4 -2.9042431346919928 6 -4.9461518578886121 21 -4.9461518578886121 40 7.3053004812911064;
+	setAttr -s 8 ".ktv[0:7]"  0 7.3053004812911064 2 5.2633917580944871
+		 4 -2.9042431346919928 6 -4.9461518578886121 21 -4.9461518578886121 40 7.3053004812911064
+		 45 7.3053004812911064 73 7.3053004812911064;
 createNode animCurveTA -n "Bony_rFinger2J1C_rotateY";
 	rename -uid "5B1C4F20-4934-494D-6E93-45A9B7299050";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 6.5388687848913074 2 6.8593949349095604
-		 4 8.1414995349825734 6 8.4620256850008246 21 8.4620256850008246 40 6.5388687848913074;
+	setAttr -s 8 ".ktv[0:7]"  0 6.5388687848913074 2 6.8593949349095604
+		 4 8.1414995349825734 6 8.4620256850008246 21 8.4620256850008246 40 6.5388687848913074
+		 45 6.5388687848913074 73 6.5388687848913074;
 createNode animCurveTA -n "Bony_rFinger2J1C_rotateZ";
 	rename -uid "3814FC45-4162-44CD-D6C0-408AD205A04D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -27.377739169684862 2 -40.518621272836029
-		 4 -93.082149685440726 6 -106.22303178859188 21 -106.22303178859188 40 -27.377739169684862;
+	setAttr -s 8 ".ktv[0:7]"  0 -27.377739169684862 2 -40.518621272836029
+		 4 -93.082149685440726 6 -106.22303178859188 21 -106.22303178859188 40 -27.377739169684862
+		 45 -27.377739169684862 73 -27.377739169684862;
 createNode animCurveTU -n "Bony_rFinger2J1C_scaleX";
 	rename -uid "25B93A44-4A9F-B166-7531-C88C30937380";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_rFinger2J1C_scaleY";
 	rename -uid "A75A8F75-4BB2-3BD8-72EB-7F816AEC7AFA";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_rFinger2J1C_scaleZ";
 	rename -uid "CFBE9955-4567-AE77-40EC-CE8F254ECCEF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTA -n "Bony_rPalmC_rotateX";
 	rename -uid "A1AFF044-4B95-FB03-EA46-9481FC0654BD";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 21 0 40 0;
+	setAttr -s 5 ".ktv[0:4]"  0 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rPalmC_rotateY";
 	rename -uid "29F52F42-4193-FF46-721D-9EB8E4266450";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 21 0 40 0;
+	setAttr -s 5 ".ktv[0:4]"  0 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rPalmC_rotateZ";
 	rename -uid "58B79CAD-435F-4039-8779-64BAFE639996";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 15.670326205563924 21 15.670326205563924
-		 40 15.670326205563924;
+	setAttr -s 5 ".ktv[0:4]"  0 15.670326205563924 21 15.670326205563924
+		 40 15.670326205563924 45 15.670326205563924 73 15.670326205563924;
 createNode animCurveTL -n "Bony_ROOTC_translateX";
 	rename -uid "A6AEF812-4A22-E4BE-08C6-9B83FFD58515";
 	setAttr ".tan" 2;
@@ -1166,63 +5756,64 @@ createNode animCurveTL -n "Bony_ROOTC_translateY";
 	rename -uid "6FFB3A25-4386-ED32-BC5B-9595785B8742";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 11 0 12 0.63837835510511542 17 -0.96306081966316803
-		 40 0;
-	setAttr -s 5 ".kit[1:4]"  18 2 2 2;
-	setAttr -s 5 ".kot[1:4]"  18 2 2 2;
+	setAttr -s 7 ".ktv[0:6]"  0 0 11 0 12 0.63837835510511542 17 -0.96306081966316803
+		 40 0 45 0 73 0;
+	setAttr -s 7 ".kit[1:6]"  18 2 2 2 2 2;
+	setAttr -s 7 ".kot[1:6]"  18 2 2 2 2 2;
 createNode animCurveTL -n "Bony_ROOTC_translateZ";
 	rename -uid "D537F1E7-4234-9ACB-AEDF-CCB34FE523D6";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 12 -0.84153598045066702 17 0.54170889365395514
-		 36 -0.24968282301210121 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 12 -0.84153598045066702 17 0.54170889365395514
+		 36 -0.24968282301210121 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_ROOTC_rotateX";
 	rename -uid "F04E6BB7-46E2-BC22-8BD6-0EA2F87CC720";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 12 8.0827859062167438 17 0.32853310890389642
-		 36 1.7198442952894031 40 0;
-	setAttr -s 5 ".kit[1:4]"  18 2 2 2;
-	setAttr -s 5 ".kot[1:4]"  18 2 2 2;
+	setAttr -s 7 ".ktv[0:6]"  0 0 12 8.0827859062167438 17 0.32853310890389642
+		 36 1.7198442952894031 40 0 45 0 73 0;
+	setAttr -s 7 ".kit[1:6]"  18 2 2 2 2 2;
+	setAttr -s 7 ".kot[1:6]"  18 2 2 2 2 2;
 createNode animCurveTA -n "Bony_ROOTC_rotateY";
 	rename -uid "BE1A855A-4A8C-792A-3C1F-46B6598477AB";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 12 -16.500985311337182 17 23.041986454702389
-		 36 0.22715265248841923 40 0;
-	setAttr -s 5 ".kit[1:4]"  18 2 2 2;
-	setAttr -s 5 ".kot[1:4]"  18 2 2 2;
+	setAttr -s 7 ".ktv[0:6]"  0 0 12 -16.500985311337182 17 23.041986454702389
+		 36 0.22715265248841923 40 0 45 0 73 0;
+	setAttr -s 7 ".kit[1:6]"  18 2 2 2 2 2;
+	setAttr -s 7 ".kot[1:6]"  18 2 2 2 2 2;
 createNode animCurveTA -n "Bony_ROOTC_rotateZ";
 	rename -uid "BE9B76F7-4436-DF37-DE75-43991ABD5B64";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 12 -2.52615664241302 17 3.6149931506951001
-		 36 0.7760359022722092 40 0;
-	setAttr -s 5 ".kit[1:4]"  18 2 2 2;
-	setAttr -s 5 ".kot[1:4]"  18 2 2 2;
+	setAttr -s 7 ".ktv[0:6]"  0 0 12 -2.52615664241302 17 3.6149931506951001
+		 36 0.7760359022722092 40 0 45 0 73 0;
+	setAttr -s 7 ".kit[1:6]"  18 2 2 2 2 2;
+	setAttr -s 7 ".kot[1:6]"  18 2 2 2 2 2;
 createNode animCurveTA -n "Bony_lElbowFKC_rotateY";
 	rename -uid "BFD00017-4D0B-1717-6466-8CB47892CB54";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 -11.708313500871315 2 -47.488966760251493
+	setAttr -s 9 ".ktv[0:8]"  0 -11.708313500871315 2 -47.488966760251493
 		 4 -53.213234434817508 6 -83.048821147141638 8 -36.469444232740244 17 -33.874183470574849
-		 40 -11.708313500871315;
+		 40 -11.708313500871315 45 -11.708313500871315 73 -11.708313500871315;
 createNode animCurveTA -n "Bony_rThumbJ3C_rotateX";
 	rename -uid "F5889F22-43C5-C87F-0C7B-80A71F995560";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rThumbJ3C_rotateY";
 	rename -uid "8870A481-42E2-C06E-B3B0-A4AFA92AE84D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rThumbJ3C_rotateZ";
 	rename -uid "336FF351-4759-4D26-2596-DBAE1B28E078";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 -26.182413559166694 2 -26.182413559166694
-		 4 -26.182413559166694 21 -26.182413559166694 40 -26.182413559166694;
+	setAttr -s 7 ".ktv[0:6]"  0 -26.182413559166694 2 -26.182413559166694
+		 4 -26.182413559166694 21 -26.182413559166694 40 -26.182413559166694 45 -26.182413559166694
+		 73 -26.182413559166694;
 createNode animCurveTA -n "Bony_rShoulderFKC_rotateX";
 	rename -uid "0CF325B5-4908-4973-43ED-CCA548DFC532";
 	setAttr ".tan" 2;
@@ -1267,96 +5858,97 @@ createNode animCurveTA -n "Bony_lFinger1J2C_rotateX";
 	rename -uid "B6FA71CA-467D-46C4-0693-AFA0CC04950A";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger1J2C_rotateY";
 	rename -uid "A4077DF6-4620-915C-69B5-76A7F80F95D3";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger1J2C_rotateZ";
 	rename -uid "D7542853-4142-4F71-C8F1-1DAA8730E073";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -20.596660687803141 2 -42.823862261594819
-		 4 -85.647724523189638 40 -20.596660687803141;
+	setAttr -s 6 ".ktv[0:5]"  0 -20.596660687803141 2 -42.823862261594819
+		 4 -85.647724523189638 40 -20.596660687803141 45 -20.596660687803141 73 -20.596660687803141;
 createNode animCurveTU -n "Bony_rArmSwitchC_SwitchIkFk";
 	rename -uid "F882C091-4421-F9E4-6FAC-6F9AFF188324";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 1 17 0 21 1 40 1;
-	setAttr -s 4 ".kot[0:3]"  5 5 5 2;
+	setAttr -s 6 ".ktv[0:5]"  0 1 17 0 21 1 40 1 45 1 73 1;
+	setAttr -s 6 ".kot[0:5]"  5 5 5 2 2 2;
 createNode animCurveTA -n "Bony_Spine01FKC_rotateX";
 	rename -uid "69B96CC9-4394-11B9-EDA7-8FA15047F095";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 0 10 0 12 -18.240485131735682 14 -9.9164891872799377
-		 17 33.33534305189076 40 0;
-	setAttr -s 6 ".kit[0:5]"  2 1 18 18 18 1;
-	setAttr -s 6 ".kot[0:5]"  2 1 18 18 18 1;
-	setAttr -s 6 ".kix[1:5]"  1 1 0.22547831998504286 1 1;
-	setAttr -s 6 ".kiy[1:5]"  0 0 0.97424818563686466 0 0;
-	setAttr -s 6 ".kox[1:5]"  0.92224045280422517 1 0.22547831998504286 
-		1 1;
-	setAttr -s 6 ".koy[1:5]"  0.38661679633903329 0 0.97424818563686466 
-		0 0;
+	setAttr -s 8 ".ktv[0:7]"  0 0 10 0 12 -18.240485131735682 14 -9.9164891872799377
+		 17 33.33534305189076 40 0 45 0 73 0;
+	setAttr -s 8 ".kit[0:7]"  2 1 18 18 18 1 2 2;
+	setAttr -s 8 ".kot[0:7]"  2 1 18 18 18 1 2 2;
+	setAttr -s 8 ".kix[1:7]"  1 1 0.22547831998504286 1 1 1 1;
+	setAttr -s 8 ".kiy[1:7]"  0 0 0.97424818563686466 0 0 0 0;
+	setAttr -s 8 ".kox[1:7]"  0.92224045280422517 1 0.22547831998504286 
+		1 1 1 1;
+	setAttr -s 8 ".koy[1:7]"  0.38661679633903329 0 0.97424818563686466 
+		0 0 0 0;
 createNode animCurveTA -n "Bony_Spine01FKC_rotateY";
 	rename -uid "10818192-4879-7558-7D3F-6BB365A70337";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 0 10 0 12 0.72650848931531442 14 -1.2758622821892194
-		 17 2.2889794377719439 40 0;
-	setAttr -s 6 ".kit[0:5]"  2 1 18 18 18 1;
-	setAttr -s 6 ".kot[0:5]"  2 1 18 18 18 1;
-	setAttr -s 6 ".kix[1:5]"  1 1 1 1 1;
-	setAttr -s 6 ".kiy[1:5]"  0 0 0 0 0;
-	setAttr -s 6 ".kox[1:5]"  0.99912218992333457 1 1 1 1;
-	setAttr -s 6 ".koy[1:5]"  -0.041890925064983035 0 0 0 0;
+	setAttr -s 8 ".ktv[0:7]"  0 0 10 0 12 0.72650848931531442 14 -1.2758622821892194
+		 17 2.2889794377719439 40 0 45 0 73 0;
+	setAttr -s 8 ".kit[0:7]"  2 1 18 18 18 1 2 2;
+	setAttr -s 8 ".kot[0:7]"  2 1 18 18 18 1 2 2;
+	setAttr -s 8 ".kix[1:7]"  1 1 1 1 1 1 1;
+	setAttr -s 8 ".kiy[1:7]"  0 0 0 0 0 0 0;
+	setAttr -s 8 ".kox[1:7]"  0.99912218992333457 1 1 1 1 1 1;
+	setAttr -s 8 ".koy[1:7]"  -0.041890925064983035 0 0 0 0 0 0;
 createNode animCurveTA -n "Bony_Spine01FKC_rotateZ";
 	rename -uid "3F0D308B-4331-2CC6-C419-6F86D40299F5";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 0 10 0 12 8.0050013664209452 14 -11.048517643407305
-		 17 -8.1878114248465099 40 0;
-	setAttr -s 6 ".kit[0:5]"  2 1 18 18 18 1;
-	setAttr -s 6 ".kot[0:5]"  2 1 18 18 18 1;
-	setAttr -s 6 ".kix[1:5]"  1 1 1 0.98452483238932542 1;
-	setAttr -s 6 ".kiy[1:5]"  0 0 0 0.17524512663343997 0;
-	setAttr -s 6 ".kox[1:5]"  0.98116657902431348 1 1 0.98452483238932553 
-		1;
-	setAttr -s 6 ".koy[1:5]"  0.19316351675646565 0 0 0.17524512663343997 
-		0;
+	setAttr -s 8 ".ktv[0:7]"  0 0 10 0 12 8.0050013664209452 14 -11.048517643407305
+		 17 -8.1878114248465099 40 0 45 0 73 0;
+	setAttr -s 8 ".kit[0:7]"  2 1 18 18 18 1 2 2;
+	setAttr -s 8 ".kot[0:7]"  2 1 18 18 18 1 2 2;
+	setAttr -s 8 ".kix[1:7]"  1 1 1 0.98452483238932542 1 1 1;
+	setAttr -s 8 ".kiy[1:7]"  0 0 0 0.17524512663343997 0 0 0;
+	setAttr -s 8 ".kox[1:7]"  0.98116657902431348 1 1 0.98452483238932553 
+		1 1 1;
+	setAttr -s 8 ".koy[1:7]"  0.19316351675646565 0 0 0.17524512663343997 
+		0 0 0;
 createNode animCurveTA -n "Bony_lThumbJ3C_rotateX";
 	rename -uid "2BBADA02-4BDB-90FE-41E6-FAA6675008AE";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lThumbJ3C_rotateY";
 	rename -uid "B4E11CD4-4E02-3B2D-323E-08AF770B085D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lThumbJ3C_rotateZ";
 	rename -uid "CFBAE9E7-4329-2DB4-BE3C-E8A5D609294F";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -26.182413559166694 2 -13.091206779583347
-		 4 -26.182413559166694 40 -26.182413559166694;
+	setAttr -s 6 ".ktv[0:5]"  0 -26.182413559166694 2 -13.091206779583347
+		 4 -26.182413559166694 40 -26.182413559166694 45 -26.182413559166694 73 -26.182413559166694;
 createNode animCurveTA -n "Bony_rFinger1J3C_rotateX";
 	rename -uid "B5F3C921-4893-C1DB-2714-2FBF57170A5D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger1J3C_rotateY";
 	rename -uid "B0F51068-4DCD-CBC5-EA6F-3AA15B1C908B";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger1J3C_rotateZ";
 	rename -uid "9239E31D-49C7-98B7-B051-ADA86D36CC5F";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -15.526057132383293 2 -28.536269899460567
-		 4 -80.577120967769659 6 -93.587333734846936 21 -93.587333734846936 40 -15.526057132383293;
+	setAttr -s 8 ".ktv[0:7]"  0 -15.526057132383293 2 -28.536269899460567
+		 4 -80.577120967769659 6 -93.587333734846936 21 -93.587333734846936 40 -15.526057132383293
+		 45 -15.526057132383293 73 -15.526057132383293;
 createNode animCurveTA -n "Bony_rWristFKC_rotateX";
 	rename -uid "60129987-40BA-4EED-7C64-5181E7922318";
 	setAttr ".tan" 2;
@@ -1381,35 +5973,51 @@ createNode animCurveTL -n "Bony_SpineTopIKC_translateX";
 	rename -uid "7A1528AE-4C02-ECE9-82B3-478C38C8A703";
 	setAttr ".tan" 1;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 10 0 12 0.015376814400469473 17 0;
-	setAttr -s 4 ".kit[0:3]"  2 1 18 1;
-	setAttr -s 4 ".kot[0:3]"  2 1 18 1;
-	setAttr -s 4 ".kix[1:3]"  1 1 1;
-	setAttr -s 4 ".kiy[1:3]"  0 0 0;
-	setAttr -s 4 ".kox[1:3]"  0.9998575306818106 1 0.9998575306818106;
-	setAttr -s 4 ".koy[1:3]"  0.016879524248989964 0 0.016879524248989964;
+	setAttr -s 5 ".ktv[0:4]"  0 0 10 0 12 0.015376814400469473 17 0.05067348195390127
+		 19 0;
+	setAttr -s 5 ".kit[0:4]"  2 1 18 1 18;
+	setAttr -s 5 ".kot[0:4]"  2 1 18 1 18;
+	setAttr -s 5 ".kix[1:4]"  1 0.98524091086422527 1 1;
+	setAttr -s 5 ".kiy[1:4]"  0 0.17117344291516651 0 0;
+	setAttr -s 5 ".kox[1:4]"  0.9998575306818106 0.98524091086422527 
+		0.9998575306818106 1;
+	setAttr -s 5 ".koy[1:4]"  0.016879524248989964 0.17117344291516651 
+		0.016879524248989964 0;
 createNode animCurveTL -n "Bony_SpineTopIKC_translateY";
 	rename -uid "3C69FE62-46A6-4E6A-3542-43A59A3D84FA";
 	setAttr ".tan" 1;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 10 0 12 0.50079592642721904 17 0;
-	setAttr -s 4 ".kit[0:3]"  2 1 18 1;
-	setAttr -s 4 ".kot[0:3]"  2 1 18 1;
-	setAttr -s 4 ".kix[1:3]"  1 1 1;
-	setAttr -s 4 ".kiy[1:3]"  0 0 0;
-	setAttr -s 4 ".kox[1:3]"  0.87628439598765417 1 0.87628439598765417;
-	setAttr -s 4 ".koy[1:3]"  0.48179420642900217 0 0.48179420642900217;
+	setAttr -s 5 ".ktv[0:4]"  0 0 10 0 12 0.50079592642721904 17 0.90382485676532642
+		 19 0;
+	setAttr -s 5 ".kit[0:4]"  2 1 18 1 18;
+	setAttr -s 5 ".kot[0:4]"  2 1 18 1 18;
+	setAttr -s 5 ".kix[1:4]"  1 0.30710793432226841 1 1;
+	setAttr -s 5 ".kiy[1:4]"  0 0.95167469057252407 0 0;
+	setAttr -s 5 ".kox[1:4]"  0.87628439598765417 0.30710793432226841 
+		0.87628439598765417 1;
+	setAttr -s 5 ".koy[1:4]"  0.48179420642900217 0.95167469057252407 
+		0.48179420642900217 0;
 createNode animCurveTL -n "Bony_SpineTopIKC_translateZ";
 	rename -uid "264B8D77-432E-7D3B-34A4-708DAC7163B5";
-	setAttr ".tan" 1;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 10 0 12 0.0066899298245623956 17 0;
-	setAttr -s 4 ".kit[0:3]"  2 1 18 1;
-	setAttr -s 4 ".kot[0:3]"  2 1 18 1;
-	setAttr -s 4 ".kix[1:3]"  1 1 1;
-	setAttr -s 4 ".kiy[1:3]"  0 0 0;
-	setAttr -s 4 ".kox[1:3]"  0.9999730283836924 1 0.9999730283836924;
-	setAttr -s 4 ".koy[1:3]"  0.0073445561572465234 0 0.0073445561572465234;
+	setAttr -s 11 ".ktv[0:10]"  0 0 10 0 12 0.0066899298245623956 17 -0.3345476875355714
+		 19 0 45 0 49 -0.66143004639854741 53 -0.10187501067948812 57 -0.7886037021679474
+		 63 0.11039758245348574 73 0;
+	setAttr -s 11 ".kit[1:10]"  1 18 1 18 2 2 2 2 
+		2 2;
+	setAttr -s 11 ".kot[1:10]"  1 18 1 18 2 2 2 2 
+		2 2;
+	setAttr -s 11 ".kix[1:10]"  1 1 1 1 1 0.24434159161210064 0.28546195370182004 
+		0.23584993134969442 0.26791986210889707 0.96664582418738521;
+	setAttr -s 11 ".kiy[1:10]"  0 0 0 0 0 -0.96968922166252081 0.95839004220032442 
+		-0.97178948846051239 0.96344120084598284 -0.25611686898970698;
+	setAttr -s 11 ".kox[1:10]"  0.9999730283836924 1 0.9999730283836924 
+		1 0.24434159161210064 0.28546195370182004 0.23584993134969442 0.26791986210889707 
+		0.96664582418738521 1;
+	setAttr -s 11 ".koy[1:10]"  0.0073445561572465234 0 0.0073445561572465234 
+		0 -0.96968922166252081 0.95839004220032442 -0.97178948846051239 0.96344120084598284 
+		-0.25611686898970698 0;
 createNode animCurveTA -n "Bony_SpineTopIKC_rotateX";
 	rename -uid "16D0F7D6-41F6-EF17-9DF8-9A8BD75A69ED";
 	setAttr ".tan" 2;
@@ -1429,54 +6037,62 @@ createNode animCurveTA -n "Bony_lFinger2J3C_rotateX";
 	rename -uid "176EE82C-4D91-611E-1771-7BB186DB946E";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger2J3C_rotateY";
 	rename -uid "D77FF1EF-4844-9596-25D8-8F8B428A6C30";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger2J3C_rotateZ";
 	rename -uid "7CD28C42-4E28-DD48-2A56-B58B32D6CA99";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -14.99461934996417 2 -40.022841592675299
-		 4 -80.045683185350597 40 -14.99461934996417;
+	setAttr -s 6 ".ktv[0:5]"  0 -14.99461934996417 2 -40.022841592675299
+		 4 -80.045683185350597 40 -14.99461934996417 45 -14.99461934996417 73 -14.99461934996417;
 createNode animCurveTA -n "Bony_HeadC_rotateX";
 	rename -uid "E57536D1-45EF-7F83-7163-399C515B9201";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 6 6.4554220197391103 10 -1.774745041355638
-		 12 1.2023236107247706 14 2.4943770861591825 17 23.624271179342418 40 0;
-	setAttr -s 7 ".kit[0:6]"  2 18 18 18 1 18 1;
-	setAttr -s 7 ".kot[0:6]"  2 18 18 18 1 18 1;
-	setAttr -s 7 ".kix[4:6]"  1 1 1;
-	setAttr -s 7 ".kiy[4:6]"  0 0 0;
-	setAttr -s 7 ".kox[4:6]"  0.91234701474583202 1 0.64752915957065738;
-	setAttr -s 7 ".koy[4:6]"  0.40941778745478136 0 0.76204067313084944;
+	setAttr -s 9 ".ktv[0:8]"  0 0 6 6.4554220197391103 10 -1.774745041355638
+		 12 1.2023236107247706 14 2.4943770861591825 17 23.624271179342418 40 0 45 0 73 0;
+	setAttr -s 9 ".kit[0:8]"  2 18 18 18 1 18 1 2 
+		2;
+	setAttr -s 9 ".kot[0:8]"  2 18 18 18 1 18 1 2 
+		2;
+	setAttr -s 9 ".kix[4:8]"  1 1 1 1 1;
+	setAttr -s 9 ".kiy[4:8]"  0 0 0 0 0;
+	setAttr -s 9 ".kox[4:8]"  0.91234701474583202 1 0.64752915957065738 
+		1 1;
+	setAttr -s 9 ".koy[4:8]"  0.40941778745478136 0 0.76204067313084944 
+		0 0;
 createNode animCurveTA -n "Bony_HeadC_rotateY";
 	rename -uid "AA31A07F-4B67-5BA5-052C-FB82609C1360";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 6 10.699216292009254 10 12.940594518893397
-		 12 39.044014841616722 14 5.3879894144036875 17 4.7421634262912082 40 0;
-	setAttr -s 7 ".kit[0:6]"  2 18 18 18 18 18 1;
-	setAttr -s 7 ".kot[0:6]"  2 18 18 18 18 18 1;
-	setAttr -s 7 ".kix[6]"  1;
-	setAttr -s 7 ".kiy[6]"  0;
-	setAttr -s 7 ".kox[6]"  0.545678876093728;
-	setAttr -s 7 ".koy[6]"  0.83799437001992194;
+	setAttr -s 9 ".ktv[0:8]"  0 0 6 10.699216292009254 10 12.940594518893397
+		 12 39.044014841616722 14 5.3879894144036875 17 4.7421634262912082 40 0 45 0 73 0;
+	setAttr -s 9 ".kit[0:8]"  2 18 18 18 18 18 1 2 
+		2;
+	setAttr -s 9 ".kot[0:8]"  2 18 18 18 18 18 1 2 
+		2;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[6:8]"  0.545678876093728 1 1;
+	setAttr -s 9 ".koy[6:8]"  0.83799437001992194 0 0;
 createNode animCurveTA -n "Bony_HeadC_rotateZ";
 	rename -uid "74219A6C-4705-C2F1-0883-B2946AA2C423";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 6 -0.59129515295154955 10 2.0848963433421064
-		 12 0.75743139861993425 14 -3.1423018142491754 17 -9.4196201186386244 40 0;
-	setAttr -s 7 ".kit[0:6]"  2 18 18 18 18 18 1;
-	setAttr -s 7 ".kot[0:6]"  2 18 18 18 18 18 1;
-	setAttr -s 7 ".kix[6]"  1;
-	setAttr -s 7 ".kiy[6]"  0;
-	setAttr -s 7 ".kox[6]"  0.99950505281658553;
-	setAttr -s 7 ".koy[6]"  0.031458693458476343;
+	setAttr -s 9 ".ktv[0:8]"  0 0 6 -0.59129515295154955 10 2.0848963433421064
+		 12 0.75743139861993425 14 -3.1423018142491754 17 -9.4196201186386244 40 0 45 0 73 0;
+	setAttr -s 9 ".kit[0:8]"  2 18 18 18 18 18 1 2 
+		2;
+	setAttr -s 9 ".kot[0:8]"  2 18 18 18 18 18 1 2 
+		2;
+	setAttr -s 9 ".kix[6:8]"  1 1 1;
+	setAttr -s 9 ".kiy[6:8]"  0 0 0;
+	setAttr -s 9 ".kox[6:8]"  0.99950505281658553 1 1;
+	setAttr -s 9 ".koy[6:8]"  0.031458693458476343 0 0;
 createNode animCurveTU -n "Bony_HeadC_HeadOrient";
 	rename -uid "12000D43-4FEC-D525-634B-7AABBA559902";
 	setAttr ".tan" 2;
@@ -1487,18 +6103,18 @@ createNode animCurveTA -n "Bony_lFinger1J3C_rotateX";
 	rename -uid "0E43583F-40AF-53BA-66CD-B78673696F51";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger1J3C_rotateY";
 	rename -uid "1DC62996-4ED2-0331-64EE-C3819451EFEB";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lFinger1J3C_rotateZ";
 	rename -uid "5D173D4D-4E64-5695-62C5-DFADA592CEF2";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -15.526057132383293 2 -40.288560483884829
-		 4 -80.577120967769659 40 -15.526057132383293;
+	setAttr -s 6 ".ktv[0:5]"  0 -15.526057132383293 2 -40.288560483884829
+		 4 -80.577120967769659 40 -15.526057132383293 45 -15.526057132383293 73 -15.526057132383293;
 createNode animCurveTL -n "Bony_lKneeIKC_translateX";
 	rename -uid "7D3A2E64-4C93-CFD0-304F-CB8D86C357C9";
 	setAttr ".tan" 2;
@@ -1523,35 +6139,35 @@ createNode animCurveTA -n "Bony_lThumbJ1C_rotateX";
 	rename -uid "F33FBE32-4098-3FBA-DBB0-7B9ACFECD7B2";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 5.2526863394274006 2 9.647388492992663
-		 4 19.294776985985326 40 5.2526863394274006;
+	setAttr -s 6 ".ktv[0:5]"  0 5.2526863394274006 2 9.647388492992663
+		 4 19.294776985985326 40 5.2526863394274006 45 5.2526863394274006 73 5.2526863394274006;
 createNode animCurveTA -n "Bony_lThumbJ1C_rotateY";
 	rename -uid "EB809250-4392-6D30-7152-71B19612D1BF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 34.632115896192964 2 -4.744161381417614
-		 4 -9.488322762835228 40 34.632115896192964;
+	setAttr -s 6 ".ktv[0:5]"  0 34.632115896192964 2 -4.744161381417614
+		 4 -9.488322762835228 40 34.632115896192964 45 34.632115896192964 73 34.632115896192964;
 createNode animCurveTA -n "Bony_lThumbJ1C_rotateZ";
 	rename -uid "C31BC5ED-4CC5-7420-F5DF-58A7F9959DBF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -7.1508367581350267 2 -26.064140895779577
-		 4 -52.128281791559154 40 -7.1508367581350267;
+	setAttr -s 6 ".ktv[0:5]"  0 -7.1508367581350267 2 -26.064140895779577
+		 4 -52.128281791559154 40 -7.1508367581350267 45 -7.1508367581350267 73 -7.1508367581350267;
 createNode animCurveTU -n "Bony_lThumbJ1C_scaleX";
 	rename -uid "4BE4B85C-49DC-0329-3A73-8CB1375BFEB9";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lThumbJ1C_scaleY";
 	rename -uid "9031080B-4812-37BF-1C5A-769969E523DF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lThumbJ1C_scaleZ";
 	rename -uid "EF604799-4A8C-6DEC-8E35-EDB2CA04A326";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTL -n "Bony_rKneeIKC_translateX";
 	rename -uid "BB9D4ADC-4985-BE08-BBD4-DBBFC93FFC9B";
 	setAttr ".tan" 2;
@@ -1576,54 +6192,57 @@ createNode animCurveTA -n "Bony_rClavicleC_rotateX";
 	rename -uid "703B1804-4A2C-696C-0591-B08E564E1D03";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rClavicleC_rotateY";
 	rename -uid "DE723F03-44AD-14CC-49A5-60AB67D3510D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 10 54.425857271944217 40 0;
-	setAttr -s 3 ".kit[1:2]"  18 1;
-	setAttr -s 3 ".kot[1:2]"  18 1;
-	setAttr -s 3 ".kix[2]"  1;
-	setAttr -s 3 ".kiy[2]"  0;
-	setAttr -s 3 ".kox[2]"  0.40169326593477422;
-	setAttr -s 3 ".koy[2]"  0.91577427355361685;
+	setAttr -s 5 ".ktv[0:4]"  0 0 10 54.425857271944217 40 0 45 0 73 0;
+	setAttr -s 5 ".kit[1:4]"  18 1 2 2;
+	setAttr -s 5 ".kot[1:4]"  18 1 2 2;
+	setAttr -s 5 ".kix[2:4]"  1 1 1;
+	setAttr -s 5 ".kiy[2:4]"  0 0 0;
+	setAttr -s 5 ".kox[2:4]"  0.40169326593477422 1 1;
+	setAttr -s 5 ".koy[2:4]"  0.91577427355361685 0 0;
 createNode animCurveTA -n "Bony_rClavicleC_rotateZ";
 	rename -uid "E28F638A-4F5C-F397-AA82-AFB589CE8753";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lShoulderFKC_rotateX";
 	rename -uid "7CC3F9D5-4A52-2993-7865-62843B3AFA94";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 18.599691447056351 2 58.228358762244639
+	setAttr -s 11 ".ktv[0:10]"  0 18.599691447056351 2 58.228358762244639
 		 4 48.004367190040497 6 24.615016139365178 8 4.7088359100417483 10 16.646341993415586
-		 12 13.870923489879999 17 20.943684173965121 40 18.599691447056351;
+		 12 13.870923489879999 17 20.943684173965121 40 18.599691447056351 45 18.599691447056351
+		 73 18.599691447056351;
 createNode animCurveTA -n "Bony_lShoulderFKC_rotateY";
 	rename -uid "01CA60D4-48D2-B4F6-F4CD-DDBDBE5BC54D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 1.9493927899863774 2 -25.846614704996803
+	setAttr -s 11 ".ktv[0:10]"  0 1.9493927899863774 2 -25.846614704996803
 		 4 -32.87854584745493 6 -66.304154879032808 8 -68.494005641301172 10 -67.583114899798133
-		 12 -69.225627509561946 17 -21.184904704898756 40 1.9493927899863774;
+		 12 -69.225627509561946 17 -21.184904704898756 40 1.9493927899863774 45 1.9493927899863774
+		 73 1.9493927899863774;
 createNode animCurveTA -n "Bony_lShoulderFKC_rotateZ";
 	rename -uid "CCD9FE32-4ABE-5C0C-A0A7-6A8144D13918";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 -82.838832256540812 2 -75.225335094431955
+	setAttr -s 11 ".ktv[0:10]"  0 -82.838832256540812 2 -75.225335094431955
 		 4 -75.7794763633039 6 -37.464480170966418 8 -15.943501990806597 10 -28.807070208530607
-		 12 -34.351489384497334 17 -78.911276824812674 40 -82.838832256540812;
+		 12 -34.351489384497334 17 -78.911276824812674 40 -82.838832256540812 45 -82.838832256540812
+		 73 -82.838832256540812;
 createNode animCurveTU -n "Bony_lShoulderFKC_scaleX";
 	rename -uid "A413041E-48E2-C552-DE50-F789CB596013";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lShoulderFKC_ShoulderOrient";
 	rename -uid "0FB6F063-42BF-11D7-0E61-2CBC74E7C2D2";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTL -n "Bony_Main_CNT_translateX";
 	rename -uid "F3E318AA-45BE-95FF-54B6-D89854C75918";
 	setAttr ".tan" 2;
@@ -1638,7 +6257,8 @@ createNode animCurveTL -n "Bony_Main_CNT_translateZ";
 	rename -uid "3269A623-467C-1326-D915-72B1D28E738B";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 53 0 57 -1.3780902466645544 61 -2.6090948456395786
+		 65 -2.6160424772325968 69 -4.0531982105562419;
 createNode animCurveTA -n "Bony_Main_CNT_rotateX";
 	rename -uid "A2CCB10F-41AA-68F4-651C-5DBE6A099D70";
 	setAttr ".tan" 2;
@@ -1663,84 +6283,88 @@ createNode animCurveTA -n "Bony_rFinger1J1C_rotateX";
 	rename -uid "37FD13BF-4585-6CDE-C0EC-AC8E8A0DEBD2";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 4.5336369524385951 2 4.4741229929780815
-		 4 4.2360671551360305 6 4.1765531956755177 21 4.1765531956755177 40 4.5336369524385951;
+	setAttr -s 8 ".ktv[0:7]"  0 4.5336369524385951 2 4.4741229929780815
+		 4 4.2360671551360305 6 4.1765531956755177 21 4.1765531956755177 40 4.5336369524385951
+		 45 4.5336369524385951 73 4.5336369524385951;
 createNode animCurveTA -n "Bony_rFinger1J1C_rotateY";
 	rename -uid "7AF308E5-4FD3-5005-3205-79A74F2408FF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -3.3018407108769137 2 -2.1276017185623095
-		 4 2.5693542506961067 6 3.7435932430107099 21 3.7435932430107099 40 -3.3018407108769137;
+	setAttr -s 8 ".ktv[0:7]"  0 -3.3018407108769137 2 -2.1276017185623095
+		 4 2.5693542506961067 6 3.7435932430107099 21 3.7435932430107099 40 -3.3018407108769137
+		 45 -3.3018407108769137 73 -3.3018407108769137;
 createNode animCurveTA -n "Bony_rFinger1J1C_rotateZ";
 	rename -uid "1CD5D163-45E3-CEC3-6769-C089E73F12F6";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -23.349864397250141 2 -36.315528936600295
-		 4 -88.178187094000918 6 -101.14385163335108 21 -101.14385163335108 40 -23.349864397250141;
+	setAttr -s 8 ".ktv[0:7]"  0 -23.349864397250141 2 -36.315528936600295
+		 4 -88.178187094000918 6 -101.14385163335108 21 -101.14385163335108 40 -23.349864397250141
+		 45 -23.349864397250141 73 -23.349864397250141;
 createNode animCurveTU -n "Bony_rFinger1J1C_scaleX";
 	rename -uid "95218269-470A-4609-6605-A98878652F47";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_rFinger1J1C_scaleY";
 	rename -uid "296ADE16-4143-A47A-2EC5-BBA378E9CAC0";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_rFinger1J1C_scaleZ";
 	rename -uid "0AE1E44D-45DD-2360-F773-659C98D0026D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTA -n "Bony_lFinger2J1C_rotateX";
 	rename -uid "4318A287-485E-0438-5416-48B9BBC7011C";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 7.3053004812911064 2 -1.4521215673459964
-		 4 -2.9042431346919928 40 7.3053004812911064;
+	setAttr -s 6 ".ktv[0:5]"  0 7.3053004812911064 2 -1.4521215673459964
+		 4 -2.9042431346919928 40 7.3053004812911064 45 7.3053004812911064 73 7.3053004812911064;
 createNode animCurveTA -n "Bony_lFinger2J1C_rotateY";
 	rename -uid "C12DA415-4ABF-F33C-2AFF-0ABEC39C10B4";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 6.5388687848913074 2 4.0707497674912867
-		 4 8.1414995349825734 40 6.5388687848913074;
+	setAttr -s 6 ".ktv[0:5]"  0 6.5388687848913074 2 4.0707497674912867
+		 4 8.1414995349825734 40 6.5388687848913074 45 6.5388687848913074 73 6.5388687848913074;
 createNode animCurveTA -n "Bony_lFinger2J1C_rotateZ";
 	rename -uid "5091B9F2-4DB7-87D8-CD21-1E8C04C9DB91";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -27.377739169684862 2 -46.541074842720363
-		 4 -93.082149685440726 40 -27.377739169684862;
+	setAttr -s 6 ".ktv[0:5]"  0 -27.377739169684862 2 -46.541074842720363
+		 4 -93.082149685440726 40 -27.377739169684862 45 -27.377739169684862 73 -27.377739169684862;
 createNode animCurveTU -n "Bony_lFinger2J1C_scaleX";
 	rename -uid "EB7D3522-4638-0344-A909-D2B349582C83";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lFinger2J1C_scaleY";
 	rename -uid "33E1EC4E-45B3-01DC-6700-14943A4ABF44";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTU -n "Bony_lFinger2J1C_scaleZ";
 	rename -uid "19D99293-4706-91B8-476B-D68FFC1C8413";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 40 1;
+	setAttr -s 4 ".ktv[0:3]"  0 1 40 1 45 1 73 1;
 createNode animCurveTA -n "Bony_rFinger2J3C_rotateX";
 	rename -uid "457A1EB1-4533-11AC-01B2-14919BE3494F";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger2J3C_rotateY";
 	rename -uid "5823B0D7-440C-5347-3297-C8A139CC1838";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 2 0 4 0 21 0 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 2 0 4 0 21 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_rFinger2J3C_rotateZ";
 	rename -uid "C0438120-4DFE-9D8B-6A27-A4A9326DA34C";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 6 ".ktv[0:5]"  0 -14.99461934996417 2 -28.004832117041452
-		 4 -80.045683185350597 6 -93.055895952427875 21 -93.055895952427875 40 -14.99461934996417;
+	setAttr -s 8 ".ktv[0:7]"  0 -14.99461934996417 2 -28.004832117041452
+		 4 -80.045683185350597 6 -93.055895952427875 21 -93.055895952427875 40 -14.99461934996417
+		 45 -14.99461934996417 73 -14.99461934996417;
 createNode animCurveTA -n "Bony_Neck01C_rotateX";
 	rename -uid "3AA0BD73-431B-F849-DFCE-98AA43F8E434";
 	setAttr ".tan" 2;
@@ -1775,18 +6399,18 @@ createNode animCurveTA -n "Bony_lThumbJ2C_rotateX";
 	rename -uid "857A4023-4F2C-D99F-664B-D4B65A238386";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lThumbJ2C_rotateY";
 	rename -uid "441E9FC3-4BF9-7A2A-A4C0-EFAF7F48E0C1";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 2 0 4 0 40 0;
+	setAttr -s 6 ".ktv[0:5]"  0 0 2 0 4 0 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_lThumbJ2C_rotateZ";
 	rename -uid "242B315A-4E5C-D834-3251-0994AFC942D8";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -16.873688017257425 2 -29.405415850870547
-		 4 -58.810831701741094 40 -16.873688017257425;
+	setAttr -s 6 ".ktv[0:5]"  0 -16.873688017257425 2 -29.405415850870547
+		 4 -58.810831701741094 40 -16.873688017257425 45 -16.873688017257425 73 -16.873688017257425;
 createNode animCurveTA -n "Bony_rToeIKC_rotateX";
 	rename -uid "87EC5324-4276-3839-C6A2-43A0D280AB1C";
 	setAttr ".tan" 2;
@@ -1851,15 +6475,25 @@ createNode animCurveTL -n "Bony_MainHipC_translateY";
 	setAttr -s 4 ".koy[1:3]"  -0.50466010800072025 0 0;
 createNode animCurveTL -n "Bony_MainHipC_translateZ";
 	rename -uid "76562907-4880-B1DF-D8B5-39B66D2BE1C6";
-	setAttr ".tan" 18;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 14 0 17 0.013511956285183242 18 0;
-	setAttr -s 4 ".kit[0:3]"  2 1 18 18;
-	setAttr -s 4 ".kot[0:3]"  2 1 18 18;
-	setAttr -s 4 ".kix[1:3]"  1 1 1;
-	setAttr -s 4 ".kiy[1:3]"  0 0 0;
-	setAttr -s 4 ".kox[1:3]"  0.99628298999165699 1 1;
-	setAttr -s 4 ".koy[1:3]"  0.086140605136508619 0 0;
+	setAttr -s 11 ".ktv[0:10]"  0 0 14 0 17 0.013511956285183242 18 0 45 0
+		 47 -0.45138365385532775 49 -0.020998599066905932 53 -0.45138365385532775 57 -0.020998599066905932
+		 63 -0.45138365385532775 73 0;
+	setAttr -s 11 ".kit[1:10]"  1 18 18 2 2 2 2 2 
+		2 2;
+	setAttr -s 11 ".kot[1:10]"  1 18 18 2 2 2 2 2 
+		2 2;
+	setAttr -s 11 ".kix[1:10]"  1 1 1 1 0.18154951559915078 0.19009446564063465 
+		0.36111846714639456 0.36111846714639373 0.502284263382199 0.67828435011788935;
+	setAttr -s 11 ".kiy[1:10]"  0 0 0 0 -0.98338180448171497 0.9817658041166446 
+		-0.93251994760746992 0.93251994760747015 -0.86470256086043928 0.73479952394183856;
+	setAttr -s 11 ".kox[1:10]"  0.99628298999165699 1 1 0.18154951559915078 
+		0.19009446564063465 0.36111846714639456 0.36111846714639373 0.502284263382199 0.67828435011788935 
+		1;
+	setAttr -s 11 ".koy[1:10]"  0.086140605136508619 0 0 -0.98338180448171497 
+		0.9817658041166446 -0.93251994760746992 0.93251994760747015 -0.86470256086043928 
+		0.73479952394183856 0;
 createNode animCurveTA -n "Bony_MainHipC_rotateX";
 	rename -uid "EB3568BC-4288-52FC-CAF2-72B78D2778C1";
 	setAttr ".tan" 2;
@@ -1869,7 +6503,7 @@ createNode animCurveTA -n "Bony_MainHipC_rotateY";
 	rename -uid "4E65C184-4123-5A8C-5396-22B467A974D5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  0 0 12 -22 17 23 36 7 40 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 12 -22 17 23 36 7 40 0 45 0 73 0;
 createNode animCurveTA -n "Bony_MainHipC_rotateZ";
 	rename -uid "6A871441-441C-AB94-2B6B-189CD396036C";
 	setAttr ".tan" 2;
@@ -1877,80 +6511,116 @@ createNode animCurveTA -n "Bony_MainHipC_rotateZ";
 	setAttr ".ktv[0]"  0 0;
 createNode animCurveTL -n "Bony_rFootIKC_translateX";
 	rename -uid "0C0497C4-46FF-E6CA-8001-54BD32D60D0A";
-	setAttr ".tan" 3;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -0.301 17 -0.301 21 -0.301 27 -0.301;
-	setAttr -s 4 ".kit[0:3]"  2 3 3 2;
-	setAttr -s 4 ".kot[0:3]"  2 3 3 2;
+	setAttr -s 10 ".ktv[0:9]"  0 -0.301 17 -0.301 21 -0.301 27 -0.301 49 -0.301
+		 53 -0.301 57 -0.301 61 -0.301 65 -0.301 69 -0.301;
+	setAttr -s 10 ".kit[1:9]"  3 3 2 2 2 2 2 2 
+		2;
+	setAttr -s 10 ".kot[1:9]"  3 3 2 5 2 2 2 2 
+		2;
 createNode animCurveTL -n "Bony_rFootIKC_translateY";
 	rename -uid "1FACD693-4EC9-8B8C-8CFE-86A6C4E132C2";
-	setAttr ".tan" 3;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 11 -1.4146580025834961 12 -2.3140184992183008
-		 14 -1.4146580025834961 17 0 21 0 27 -1.0651130407815634 32 0;
-	setAttr -s 8 ".kit[0:7]"  2 1 3 3 3 3 2 2;
-	setAttr -s 8 ".kot[0:7]"  2 1 3 3 3 3 2 2;
-	setAttr -s 8 ".kix[1:7]"  1 1 1 1 1 0.22850680585613478 0.19195982548921739;
-	setAttr -s 8 ".kiy[1:7]"  0 0 0 0 0 -0.97354231529884039 0.98140278448664964;
-	setAttr -s 8 ".kox[1:7]"  1 1 1 1 1 0.19195982548921739 1;
-	setAttr -s 8 ".koy[1:7]"  0 0 0 0 0 0.98140278448664964 0;
+	setAttr -s 16 ".ktv[0:15]"  0 0 11 -1.4146580025834961 12 -2.3140184992183008
+		 14 -1.4146580025834961 17 0 21 0 27 -1.0651130407815634 32 0 45 0 49 -0.77818008086766333
+		 53 -0.424601720990881 57 0.019971889510485674 61 -0.77818008086766333 65 -0.424601720990881
+		 69 0.019971889510485674 73 0;
+	setAttr -s 16 ".kit[1:15]"  1 3 3 3 3 2 2 2 
+		2 2 2 2 2 2 2;
+	setAttr -s 16 ".kot[1:15]"  1 3 3 3 3 2 2 5 
+		5 2 2 2 2 2 2;
+	setAttr -s 16 ".kix[1:15]"  1 1 1 1 1 0.22850680585613478 0.19195982548921739 
+		1 0.20942551858783559 0.42637679517661287 0.35103399886922809 0.20440677781477562 
+		0.42637679517661287 0.35103399886922809 0.99289663527435279;
+	setAttr -s 16 ".kiy[1:15]"  0 0 0 0 0 -0.97354231529884039 0.98140278448664964 
+		0 -0.97782460194260623 0.90454564756839162 0.93636271371615321 -0.97888603482907088 
+		0.90454564756839162 0.93636271371615321 -0.11898013137019431;
+	setAttr -s 16 ".kox[1:15]"  1 1 1 1 1 0.19195982548921739 1 0 0 0.35103399886922809 
+		0.20440677781477562 0.42637679517661287 0.35103399886922809 0.99289663527435279 1;
+	setAttr -s 16 ".koy[1:15]"  0 0 0 0 0 0.98140278448664964 0 0 0 0.93636271371615321 
+		-0.97888603482907088 0.90454564756839162 0.93636271371615321 -0.11898013137019431 
+		0;
 createNode animCurveTL -n "Bony_rFootIKC_translateZ";
 	rename -uid "9D1904CF-4582-4160-E53E-AABC06D91F1B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 11 -0.99929302064512415 12 -0.99929302064512415
+	setAttr -s 16 ".ktv[0:15]"  0 0 11 -0.99929302064512415 12 -0.99929302064512415
 		 14 -0.99929302064512415 17 -1.2980689278726985 21 -1.2980689278726985 27 -0.034052510655516399
-		 32 0;
-	setAttr -s 8 ".kit[0:7]"  2 1 3 3 3 1 2 2;
-	setAttr -s 8 ".kot[0:7]"  2 1 3 3 3 1 2 2;
-	setAttr -s 8 ".kix[1:7]"  1 1 1 1 1 0.19402375203682859 0.98690355599664381;
-	setAttr -s 8 ".kiy[1:7]"  0 0 0 0 0 0.98099683161850793 0.16131141051140521;
-	setAttr -s 8 ".kox[1:7]"  1 1 1 1 1 0.98690355599664381 1;
-	setAttr -s 8 ".koy[1:7]"  0 0 0 0 0 0.16131141051140521 0;
+		 32 0 45 0 49 0.27023531741510393 53 1.1067527263088026 57 0.055538000233001115 61 0.27023531741510393
+		 65 1.1067527263088026 69 0.055538000233001115 73 0;
+	setAttr -s 16 ".kit[1:15]"  1 3 3 3 1 2 2 2 
+		2 2 2 2 2 2 2;
+	setAttr -s 16 ".kot[1:15]"  1 3 3 3 1 2 2 5 
+		5 2 2 2 2 2 2;
+	setAttr -s 16 ".kix[1:15]"  1 1 1 1 1 0.19402375203682859 0.98690355599664381 
+		1 0.52493788634188909 0.1953982026114825 0.15659083670349663 0.61320645374144034 
+		0.1953982026114825 0.15659083670349663 0.94871327272895611;
+	setAttr -s 16 ".kiy[1:15]"  0 0 0 0 0 0.98099683161850793 0.16131141051140521 
+		0 0.85114053803288559 0.980723988906258 -0.98766356106748154 0.78992268298223145 
+		0.980723988906258 -0.98766356106748154 -0.31613782777123234;
+	setAttr -s 16 ".kox[1:15]"  1 1 1 1 1 0.98690355599664381 1 0 0 0.15659083670349663 
+		0.61320645374144034 0.1953982026114825 0.15659083670349663 0.94871327272895611 1;
+	setAttr -s 16 ".koy[1:15]"  0 0 0 0 0 0.16131141051140521 0 0 0 -0.98766356106748154 
+		0.78992268298223145 0.980723988906258 -0.98766356106748154 -0.31613782777123234 0;
 createNode animCurveTA -n "Bony_rFootIKC_rotateX";
 	rename -uid "CFD91475-405A-3108-509C-73927E0E90D3";
-	setAttr ".tan" 3;
+	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 11 36.365420411569261 12 36.365420411569261
-		 14 36.365420411569261 17 0 21 0 27 43.285135547192588 32 0;
-	setAttr -s 8 ".kit[0:7]"  2 1 3 3 3 3 18 18;
-	setAttr -s 8 ".kot[0:7]"  2 1 3 3 3 3 18 18;
-	setAttr -s 8 ".kix[1:7]"  1 1 1 1 1 1 1;
-	setAttr -s 8 ".kiy[1:7]"  0 0 0 0 0 0 0;
-	setAttr -s 8 ".kox[1:7]"  1 1 1 1 1 1 1;
-	setAttr -s 8 ".koy[1:7]"  0 0 0 0 0 0 0;
+	setAttr -s 16 ".ktv[0:15]"  0 0 11 36.365420411569261 12 36.365420411569261
+		 14 36.365420411569261 17 0 21 0 27 43.285135547192588 32 0 45 0 49 38.685782153307954
+		 53 38.685782153307954 57 -2.9426233257742678 61 38.685782153307954 65 38.685782153307954
+		 69 -2.9426233257742678 73 0;
+	setAttr -s 16 ".kit[1:15]"  1 3 3 3 3 18 18 2 
+		2 2 2 2 2 2 2;
+	setAttr -s 16 ".kot[1:15]"  1 3 3 3 3 18 18 5 
+		5 2 2 2 2 2 2;
+	setAttr -s 16 ".kix[1:15]"  1 1 1 1 1 1 1 1 0.23964941970593645 1 0.22358645388666074 
+		0.22358645388666074 1 0.22358645388666074 0.95565576778396799;
+	setAttr -s 16 ".kiy[1:15]"  0 0 0 0 0 0 0 0 0.97085949325049503 0 -0.97468410145974393 
+		0.97468410145974393 0 -0.97468410145974393 0.2944860837140435;
+	setAttr -s 16 ".kox[1:15]"  1 1 1 1 1 1 1 0 0 0.22358645388666074 0.22358645388666074 
+		1 0.22358645388666074 0.95565576778396799 1;
+	setAttr -s 16 ".koy[1:15]"  0 0 0 0 0 0 0 0 0 -0.97468410145974393 
+		0.97468410145974393 0 -0.97468410145974393 0.2944860837140435 0;
 createNode animCurveTA -n "Bony_rFootIKC_rotateY";
 	rename -uid "10DD99DF-4AEB-7056-89B0-2BA3B3DB5BDF";
 	setAttr ".tan" 3;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 11 -3.5788885425708834 12 -3.5788885425708834
-		 14 -3.5788885425708834 17 0 21 0 27 0.3899406316281287 32 0;
-	setAttr -s 8 ".kit[0:7]"  2 1 3 3 3 3 18 18;
-	setAttr -s 8 ".kot[0:7]"  2 1 3 3 3 3 18 18;
-	setAttr -s 8 ".kix[1:7]"  1 1 1 1 1 1 1;
-	setAttr -s 8 ".kiy[1:7]"  0 0 0 0 0 0 0;
-	setAttr -s 8 ".kox[1:7]"  1 1 1 1 1 1 1;
-	setAttr -s 8 ".koy[1:7]"  0 0 0 0 0 0 0;
+	setAttr -s 10 ".ktv[0:9]"  0 0 11 -3.5788885425708834 12 -3.5788885425708834
+		 14 -3.5788885425708834 17 0 21 0 27 0.3899406316281287 32 0 45 0 73 0;
+	setAttr -s 10 ".kit[0:9]"  2 1 3 3 3 3 18 18 
+		2 2;
+	setAttr -s 10 ".kot[0:9]"  2 1 3 3 3 3 18 18 
+		5 2;
+	setAttr -s 10 ".kix[1:9]"  1 1 1 1 1 1 1 1 1;
+	setAttr -s 10 ".kiy[1:9]"  0 0 0 0 0 0 0 0 0;
+	setAttr -s 10 ".kox[1:9]"  1 1 1 1 1 1 1 0 1;
+	setAttr -s 10 ".koy[1:9]"  0 0 0 0 0 0 0 0 0;
 createNode animCurveTA -n "Bony_rFootIKC_rotateZ";
 	rename -uid "65041C70-4821-1BD4-E788-889E3588B47B";
 	setAttr ".tan" 3;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 11 -0.8518771678591075 12 -0.8518771678591075
-		 14 -0.8518771678591075 17 0 21 0 27 2.8469178134488851 32 0;
-	setAttr -s 8 ".kit[0:7]"  2 1 3 3 3 3 18 18;
-	setAttr -s 8 ".kot[0:7]"  2 1 3 3 3 3 18 18;
-	setAttr -s 8 ".kix[1:7]"  1 1 1 1 1 1 1;
-	setAttr -s 8 ".kiy[1:7]"  0 0 0 0 0 0 0;
-	setAttr -s 8 ".kox[1:7]"  1 1 1 1 1 1 1;
-	setAttr -s 8 ".koy[1:7]"  0 0 0 0 0 0 0;
+	setAttr -s 10 ".ktv[0:9]"  0 0 11 -0.8518771678591075 12 -0.8518771678591075
+		 14 -0.8518771678591075 17 0 21 0 27 2.8469178134488851 32 0 45 0 73 0;
+	setAttr -s 10 ".kit[0:9]"  2 1 3 3 3 3 18 18 
+		2 2;
+	setAttr -s 10 ".kot[0:9]"  2 1 3 3 3 3 18 18 
+		5 2;
+	setAttr -s 10 ".kix[1:9]"  1 1 1 1 1 1 1 1 1;
+	setAttr -s 10 ".kiy[1:9]"  0 0 0 0 0 0 0 0 0;
+	setAttr -s 10 ".kox[1:9]"  1 1 1 1 1 1 1 0 1;
+	setAttr -s 10 ".koy[1:9]"  0 0 0 0 0 0 0 0 0;
 createNode animCurveTU -n "Bony_rFootIKC_Stretch";
 	rename -uid "0BEBF3F2-4AA6-4B60-338B-BD8ECAC5973E";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 11 1 12 1;
-	setAttr -s 3 ".kit[0:2]"  2 1 18;
-	setAttr -s 3 ".kix[1:2]"  1 1;
-	setAttr -s 3 ".kiy[1:2]"  0 0;
+	setAttr -s 5 ".ktv[0:4]"  0 0 11 1 12 1 45 0 73 0;
+	setAttr -s 5 ".kit[0:4]"  2 1 18 2 2;
+	setAttr -s 5 ".kot[4]"  2;
+	setAttr -s 5 ".kix[1:4]"  1 1 0.80873608430318844 1;
+	setAttr -s 5 ".kiy[1:4]"  0 0 -0.58817169767504618 0;
 createNode animCurveTU -n "Bony_rFootIKC_KneeLock";
 	rename -uid "121C7F5A-4162-1649-4338-8482C745E06B";
 	setAttr ".tan" 2;
@@ -1970,7 +6640,8 @@ createNode animCurveTU -n "Bony_rFootIKC_toeUpDn";
 	rename -uid "8EBD97B8-4078-CF4A-02C2-32A3B3DE6EDE";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  0 0;
+	setAttr -s 7 ".ktv[0:6]"  0 0 45 0 53 2 57 0 65 2 69 0 73 0;
+	setAttr -s 7 ".kot[1:6]"  5 2 2 2 2 2;
 createNode animCurveTU -n "Bony_rFootIKC_ballSwivel";
 	rename -uid "8E65DF96-42A5-A473-D1AE-B6B732419DE4";
 	setAttr ".tan" 2;
@@ -1985,13 +6656,13 @@ createNode animCurveTA -n "Bony_lClavicleC_rotateY";
 	rename -uid "346346B2-4CA4-B54E-D614-308F00985FB5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 10 -22.012282254430197 40 0;
-	setAttr -s 3 ".kit[1:2]"  18 1;
-	setAttr -s 3 ".kot[1:2]"  18 1;
-	setAttr -s 3 ".kix[2]"  1;
-	setAttr -s 3 ".kiy[2]"  0;
-	setAttr -s 3 ".kox[2]"  0.73518022643722236;
-	setAttr -s 3 ".koy[2]"  -0.6778716948329635;
+	setAttr -s 5 ".ktv[0:4]"  0 0 10 -22.012282254430197 40 0 45 0 73 0;
+	setAttr -s 5 ".kit[1:4]"  18 1 2 2;
+	setAttr -s 5 ".kot[1:4]"  18 1 2 2;
+	setAttr -s 5 ".kix[2:4]"  1 1 1;
+	setAttr -s 5 ".kiy[2:4]"  0 0 0;
+	setAttr -s 5 ".kox[2:4]"  0.73518022643722236 1 1;
+	setAttr -s 5 ".koy[2:4]"  -0.6778716948329635 0 0;
 createNode animCurveTA -n "Bony_lClavicleC_rotateZ";
 	rename -uid "2F9CC628-4382-56BB-247B-998D9D3852EE";
 	setAttr ".tan" 2;
@@ -2032,10 +6703,11 @@ createNode animCurveTU -n "Bony_rWristIKC_Stretch";
 	rename -uid "B9097838-454A-9F6B-3A72-3C8B2A04C17B";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  15 0 16 1 17 0 18 1 19 0;
+	setAttr -s 5 ".ktv[0:4]"  15 0 16 1 17 0 18 1 20 0;
+	setAttr -s 5 ".kot[0:4]"  5 5 5 5 5;
 select -ne :time1;
-	setAttr ".o" 8;
-	setAttr ".unw" 8;
+	setAttr ".o" 45;
+	setAttr ".unw" 45;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
