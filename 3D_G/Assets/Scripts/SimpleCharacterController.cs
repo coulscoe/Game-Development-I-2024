@@ -13,7 +13,7 @@ public class SimpleCharacterController : MonoBehaviour
     private Transform thisTransform;
     private int jumpsRemaining;
 
-    public UnityEvent jumpEvent;
+    public UnityEvent jumpEvent, attackEvent;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -44,6 +44,11 @@ public class SimpleCharacterController : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
                 jumpsRemaining--;
             }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            attackEvent.Invoke();
         }
     }
 
