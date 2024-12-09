@@ -1,12 +1,13 @@
 //Maya ASCII 2025ff03 scene
 //Name: Final_animation.ma
-//Last modified: Sat, Dec 07, 2024 03:12:36 AM
+//Last modified: Sun, Dec 08, 2024 10:05:51 PM
 //Codeset: 1252
 file -rdi 1 -ns "full_body_rig" -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//scenes/full_body_rig.ma";
 file -r -ns "full_body_rig" -dr 1 -rfn "full_body_rigRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/3D_G/Assets/Maya//scenes/full_body_rig.ma";
 requires maya "2025ff03";
+requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.4.2.1";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -14,17 +15,17 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "83F8D487-4FA4-CDDF-9AAF-6F97299F32BC";
+fileInfo "UUID" "4EC4D013-4C97-1081-C977-8585C23976B3";
 createNode transform -s -n "persp";
 	rename -uid "FE8D627E-4EAD-03C8-21EC-A5BC2524550D";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -12.249841827445898 24.215568979370474 -19.85530894854174 ;
-	setAttr ".r" -type "double3" 0.26164722449864569 -1530.1999999999346 0 ;
+	setAttr ".t" -type "double3" 33.078144854330333 28.008797546226376 27.533804668442336 ;
+	setAttr ".r" -type "double3" -4.5383527756852002 -1356.1999999995589 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "1F9DE87B-41F6-A949-BD97-B3A7791C0893";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 14.236585491271395;
+	setAttr ".coi" 35.194943227712024;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -56,7 +57,7 @@ createNode camera -s -n "frontShape" -p "front";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".coi" 1000.1;
-	setAttr ".ow" 16.90193704077015;
+	setAttr ".ow" 40.395466312643094;
 	setAttr ".imn" -type "string" "front";
 	setAttr ".den" -type "string" "front_depth";
 	setAttr ".man" -type "string" "front_mask";
@@ -83,14 +84,14 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".ai_translator" -type "string" "orthographic";
 createNode transform -n "Main_Camera";
 	rename -uid "860DB9F6-4425-A2D3-F667-048B1C9EC38B";
-	setAttr ".t" -type "double3" -23.901487042292469 36.105654677446715 41.918594130813318 ;
-	setAttr ".r" -type "double3" -10.538352729601957 -29.000000000000441 0 ;
+	setAttr ".t" -type "double3" -49.160733558149822 43.56896125247205 33.339307767757852 ;
+	setAttr ".r" -type "double3" -15.938352729602077 -58.600000000000286 3.0522993118453145e-15 ;
 createNode camera -n "Main_CameraShape" -p "Main_Camera";
 	rename -uid "94110A0F-4C0D-1260-50EE-99BD8F47871F";
 	setAttr -k off ".v";
 	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 42.180248522892832;
+	setAttr ".coi" 55.271830282013163;
 	setAttr ".imn" -type "string" "persp1";
 	setAttr ".den" -type "string" "persp1_depth";
 	setAttr ".man" -type "string" "persp1_mask";
@@ -111,8 +112,8 @@ createNode mesh -n "pCubeShape1" -p "pCube1";
 	setAttr ".cdvm[0]"  0 1 1;
 createNode transform -n "pCube2";
 	rename -uid "9BD76AAC-4E55-7DCB-DAD2-9AA36A93EAF6";
-	setAttr ".t" -type "double3" 0 -3.8842643227715064 104.00193000795419 ;
-	setAttr ".s" -type "double3" 54.668245778785561 54.668245778785561 54.668245778785561 ;
+	setAttr ".t" -type "double3" 0 -16.071943990575221 102.22372566810961 ;
+	setAttr ".s" -type "double3" 54.668245778785561 30.524202057480725 54.668245778785561 ;
 createNode mesh -n "pCubeShape2" -p "pCube2";
 	rename -uid "866AB66F-4F38-D214-DC58-F79FF18BFA59";
 	setAttr -k off ".v";
@@ -163,39 +164,39 @@ createNode mesh -n "pCubeShape2" -p "pCube2";
 createNode transform -n "left";
 	rename -uid "A1D8A2DF-4DA1-81C5-BA5E-FD8A04993247";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -1000.6417141627056 26.702373648938273 -17.576713981004616 ;
+	setAttr ".t" -type "double3" -1001.3238669790315 23.44429501822265 -4.7332589368259299 ;
 	setAttr ".r" -type "double3" 0 -90 0 ;
 createNode camera -n "leftShape" -p "left";
 	rename -uid "7A714523-4843-4315-48ED-8FAFEF05150E";
 	setAttr -k off ".v";
 	setAttr ".rnd" no;
-	setAttr ".coi" 999.79940661453304;
-	setAttr ".ow" 23.601838925588634;
+	setAttr ".coi" 1001.3286122769933;
+	setAttr ".ow" 71.916655579301832;
 	setAttr ".imn" -type "string" "left1";
 	setAttr ".den" -type "string" "left1_depth";
 	setAttr ".man" -type "string" "left1_mask";
-	setAttr ".tp" -type "double3" -0.84230754817256626 24.687542267261954 -21.75874075914416 ;
+	setAttr ".tp" -type "double3" 0.0047452979617648161 23.44429501822265 -4.733258936825929 ;
 	setAttr ".hc" -type "string" "viewSet -ls %camera";
 	setAttr ".o" yes;
 	setAttr ".ai_translator" -type "string" "orthographic";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "497773DF-4A24-38AF-306E-449EBBB21899";
+	rename -uid "5B60701D-4693-E308-D2A6-B99F8794433E";
 	setAttr -s 4 ".lnk";
 	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "1CC0FB2F-454A-C3DA-7CF2-218A0856E428";
+	rename -uid "155245A4-4E9F-3912-9509-C08CEFCD43B2";
 	setAttr ".bsdt[0].bscd" -type "Int32Array" 1 0 ;
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "47817DFE-44DF-613A-7899-5E86936CD013";
+	rename -uid "418FFD14-4A25-1EDE-CA80-02A5FF5034BF";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "871A06F1-4AF2-D2DC-CFB3-01BE9050E240";
+	rename -uid "327AC055-4365-E662-6712-98A931FD4A51";
 	setAttr -s 2 ".dli[1]"  1;
 	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "1877610D-485C-2F45-7474-6BAE182CCE45";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "445B96B3-49F4-7A8B-F041-9DB20E97A510";
+	rename -uid "150799E1-4984-BB50-4475-1DA59D6D0799";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "FC09911F-474D-E211-00CE-98B6D1B6FE4F";
 	setAttr ".g" yes;
@@ -237,14 +238,18 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|Main_Camera\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n"
+		+ "                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n"
+		+ "                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n"
+		+ "                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n"
+		+ "\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
 		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1317\\n    -height 538\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1317\\n    -height 538\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "0A3CB701-4C38-1F57-0980-96A0E8CA95C7";
-	setAttr ".b" -type "string" "playbackOptions -min 35 -max 72 -ast 0 -aet 135 ";
+	setAttr ".b" -type "string" "playbackOptions -min 70 -max 100 -ast 0 -aet 135 ";
 	setAttr ".st" 6;
 createNode reference -n "full_body_rigRN";
 	rename -uid "C2FFB43C-4CFE-296D-E7C2-1F870C8891C3";
@@ -446,9 +451,11 @@ createNode reference -n "full_body_rigRN";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"full_body_rigRN"
 		"full_body_rigRN" 0
-		"full_body_rigRN" 2396
+		"full_body_rigRN" 2393
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT" "GlobalScale" " -k 1"
+		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Main_CNTShape" 
@@ -467,7 +474,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_NeckBtmClstrG|full_body_rig:Bony_NeckBtmClstrG_parentConstraint1" 
@@ -486,7 +493,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadClstrG|full_body_rig:Bony_HeadClstrG_parentConstraint1" 
@@ -507,7 +514,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTC|full_body_rig:Bony_ROOTCShape" 
@@ -526,7 +533,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_ROOTCG|full_body_rig:Bony_ROOTCG_parentConstraint1" 
@@ -547,7 +554,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipC|full_body_rig:Bony_MainHipCShape" 
@@ -566,7 +573,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_MainHipCG|full_body_rig:Bony_MainHipCG_parentConstraint1" 
@@ -587,7 +594,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKC|full_body_rig:Bony_Spine01FKCShape" 
@@ -606,7 +613,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine01FKCG|full_body_rig:Bony_Spine01FKCG_parentConstraint1" 
@@ -625,7 +632,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineMidIKCG|full_body_rig:Bony_SpineMidIKCG_parentConstraint1" 
@@ -644,7 +651,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKC|full_body_rig:Bony_SpineTopIKCShape" 
@@ -663,7 +670,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_SpineTopIKCG|full_body_rig:Bony_SpineTopIKCG_parentConstraint1" 
@@ -684,7 +691,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKC|full_body_rig:Bony_Spine02FKCShape" 
@@ -703,7 +710,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine02FKCG|full_body_rig:Bony_Spine02FKCG_parentConstraint1" 
@@ -724,7 +731,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKC|full_body_rig:Bony_Spine03FKCShape" 
@@ -743,7 +750,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine03FKCG|full_body_rig:Bony_Spine03FKCG_parentConstraint1" 
@@ -762,7 +769,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Spine04FKCG|full_body_rig:Bony_Spine04FKCG_parentConstraint1" 
@@ -783,7 +790,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadC|full_body_rig:curveShape17" 
@@ -802,7 +809,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG|full_body_rig:Bony_HeadCG_orientConstraint1" 
@@ -821,7 +828,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_HeadCG2|full_body_rig:Bony_HeadCG2_parentConstraint1" 
@@ -842,7 +849,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01C|full_body_rig:Bony_Neck01CShape" 
@@ -861,7 +868,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_Neck01CG|full_body_rig:Bony_Neck01CG_parentConstraint1" 
@@ -880,7 +887,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchC|full_body_rig:curveShape27" 
@@ -899,7 +906,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegSwitchCG|full_body_rig:Bony_lLegSwitchCG_parentConstraint1" 
@@ -920,19 +927,9 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
-		"Stretch" " -k 1"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
-		"KneeLock" " -k 1"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
-		"footTilt" " -k 1"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
-		"heelBall" " -k 1"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
 		"toeUpDn" " -k 1"
-		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC" 
-		"ballSwivel" " -k 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKC|full_body_rig:Bony_lFootIKCShape" 
@@ -951,7 +948,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lFootIKCG|full_body_rig:Bony_lFootIKCG_parentConstraint1" 
@@ -970,7 +967,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:curveShape22" 
@@ -989,7 +986,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKC|full_body_rig:Bony_lKneeIKC_aimConstraint1" 
@@ -1008,7 +1005,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeIKCG|full_body_rig:Bony_lKneeIKCG_parentConstraint1" 
@@ -1027,7 +1024,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lBallFKCG|full_body_rig:Bony_lBallFKCG_parentConstraint1" 
@@ -1046,7 +1043,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleFKCG|full_body_rig:Bony_lAnkleFKCG_parentConstraint1" 
@@ -1065,7 +1062,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lKneeFKCG|full_body_rig:Bony_lKneeFKCG_parentConstraint1" 
@@ -1084,7 +1081,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint1" 
@@ -1103,7 +1100,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lHipFKCG|full_body_rig:Bony_lHipFKCG_parentConstraint2" 
@@ -1122,7 +1119,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchC|full_body_rig:curveShape20" 
@@ -1141,7 +1138,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmSwitchCG|full_body_rig:Bony_lArmSwitchCG_parentConstraint1" 
@@ -1160,7 +1157,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowIKCG|full_body_rig:Bony_lElbowIKCG_parentConstraint1" 
@@ -1183,7 +1180,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristIKCG|full_body_rig:Bony_lWristIKCG_parentConstraint1" 
@@ -1204,7 +1201,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKC|full_body_rig:Bony_lWristFKCShape" 
@@ -1223,7 +1220,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristFKCG|full_body_rig:Bony_lWristFKCG_parentConstraint1" 
@@ -1244,7 +1241,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKC|full_body_rig:Bony_lElbowFKCShape" 
@@ -1263,7 +1260,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lElbowFKCG|full_body_rig:Bony_lElbowFKCG_parentConstraint1" 
@@ -1282,7 +1279,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKC|full_body_rig:Bony_lShoulderFKCShape" 
@@ -1301,7 +1298,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG|full_body_rig:Bony_lShoulderFKCG_parentConstraint1" 
@@ -1320,7 +1317,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lShoulderFKCG2|full_body_rig:Bony_lShoulderFKCG2_parentConstraint1" 
@@ -1341,7 +1338,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleC|full_body_rig:Bony_lClavicleCShape" 
@@ -1360,7 +1357,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lClavicleCG|full_body_rig:Bony_lClavicleCG_parentConstraint1" 
@@ -1379,7 +1376,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lArmIKFKG|full_body_rig:Bony_lArmIKFKG_parentConstraint1" 
@@ -1398,7 +1395,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lLegIKFKG|full_body_rig:Bony_lLegIKFKG_parentConstraint1" 
@@ -1419,7 +1416,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:curveShape21" 
@@ -1438,7 +1435,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lPalmC_scaleConstraint1" 
@@ -1457,7 +1454,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1C|full_body_rig:Bony_lFinger1J1CShape" 
@@ -1476,7 +1473,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J1CG|full_body_rig:Bony_lFinger1J1CG_parentConstraint1" 
@@ -1497,7 +1494,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2C|full_body_rig:Bony_lFinger1J2CShape" 
@@ -1516,7 +1513,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J2CG|full_body_rig:Bony_lFinger1J2CG_parentConstraint1" 
@@ -1537,7 +1534,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3C|full_body_rig:Bony_lFinger1J3CShape" 
@@ -1556,7 +1553,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger1J3CG|full_body_rig:Bony_lFinger1J3CG_parentConstraint1" 
@@ -1575,7 +1572,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1C|full_body_rig:Bony_lFinger2J1CShape" 
@@ -1594,7 +1591,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J1CG|full_body_rig:Bony_lFinger2J1CG_parentConstraint1" 
@@ -1615,7 +1612,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2C|full_body_rig:Bony_lFinger2J2CShape" 
@@ -1634,7 +1631,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J2CG|full_body_rig:Bony_lFinger2J2CG_parentConstraint1" 
@@ -1655,7 +1652,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3C|full_body_rig:Bony_lFinger2J3CShape" 
@@ -1674,7 +1671,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmC|full_body_rig:Bony_lFinger2J3CG|full_body_rig:Bony_lFinger2J3CG_parentConstraint1" 
@@ -1693,7 +1690,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lPalmCG|full_body_rig:Bony_lPalmCG_parentConstraint1" 
@@ -1712,7 +1709,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKC|full_body_rig:Bony_lToeIKCShape" 
@@ -1731,7 +1728,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lToeIKCG|full_body_rig:Bony_lToeIKCG_parentConstraint1" 
@@ -1750,7 +1747,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lAnkleIKLctrG|full_body_rig:Bony_lAnkleIKLctrG_parentConstraint1" 
@@ -1769,7 +1766,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchC|full_body_rig:curveShape28" 
@@ -1788,7 +1785,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegSwitchCG|full_body_rig:Bony_rLegSwitchCG_parentConstraint1" 
@@ -1808,8 +1805,10 @@ createNode reference -n "full_body_rigRN";
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC" 
+		"heelBall" " -k 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKC|full_body_rig:Bony_rFootIKCShape" 
@@ -1828,7 +1827,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rFootIKCG|full_body_rig:Bony_rFootIKCG_parentConstraint1" 
@@ -1847,7 +1846,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:curveShape26" 
@@ -1866,7 +1865,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKC|full_body_rig:Bony_rKneeIKC_aimConstraint1" 
@@ -1885,7 +1884,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeIKCG|full_body_rig:Bony_rKneeIKCG_parentConstraint1" 
@@ -1904,7 +1903,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rBallFKCG|full_body_rig:Bony_rBallFKCG_parentConstraint1" 
@@ -1923,7 +1922,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleFKCG|full_body_rig:Bony_rAnkleFKCG_parentConstraint1" 
@@ -1942,7 +1941,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rKneeFKCG|full_body_rig:Bony_rKneeFKCG_parentConstraint1" 
@@ -1961,7 +1960,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint1" 
@@ -1980,7 +1979,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rHipFKCG|full_body_rig:Bony_rHipFKCG_parentConstraint2" 
@@ -1999,7 +1998,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchC|full_body_rig:curveShape24" 
@@ -2018,7 +2017,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmSwitchCG|full_body_rig:Bony_rArmSwitchCG_parentConstraint1" 
@@ -2037,7 +2036,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowIKCG|full_body_rig:Bony_rElbowIKCG_parentConstraint1" 
@@ -2062,7 +2061,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristIKCG|full_body_rig:Bony_rWristIKCG_parentConstraint1" 
@@ -2083,7 +2082,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKC|full_body_rig:Bony_rWristFKCShape" 
@@ -2102,7 +2101,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristFKCG|full_body_rig:Bony_rWristFKCG_parentConstraint1" 
@@ -2123,7 +2122,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKC|full_body_rig:Bony_rElbowFKCShape" 
@@ -2142,7 +2141,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rElbowFKCG|full_body_rig:Bony_rElbowFKCG_parentConstraint1" 
@@ -2163,7 +2162,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKC|full_body_rig:Bony_rShoulderFKCShape" 
@@ -2182,7 +2181,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG|full_body_rig:Bony_rShoulderFKCG_parentConstraint1" 
@@ -2201,7 +2200,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rShoulderFKCG2|full_body_rig:Bony_rShoulderFKCG2_parentConstraint1" 
@@ -2222,7 +2221,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleC|full_body_rig:Bony_rClavicleCShape" 
@@ -2241,7 +2240,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rClavicleCG|full_body_rig:Bony_rClavicleCG_parentConstraint1" 
@@ -2260,7 +2259,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rArmIKFKG|full_body_rig:Bony_rArmIKFKG_parentConstraint1" 
@@ -2279,7 +2278,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rLegIKFKG|full_body_rig:Bony_rLegIKFKG_parentConstraint1" 
@@ -2300,7 +2299,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:curveShape25" 
@@ -2319,7 +2318,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rPalmC_scaleConstraint1" 
@@ -2338,7 +2337,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1C|full_body_rig:Bony_rFinger1J1CShape" 
@@ -2357,7 +2356,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J1CG|full_body_rig:Bony_rFinger1J1CG_parentConstraint1" 
@@ -2378,7 +2377,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2C|full_body_rig:Bony_rFinger1J2CShape" 
@@ -2397,7 +2396,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J2CG|full_body_rig:Bony_rFinger1J2CG_parentConstraint1" 
@@ -2418,7 +2417,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3C|full_body_rig:Bony_rFinger1J3CShape" 
@@ -2437,7 +2436,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger1J3CG|full_body_rig:Bony_rFinger1J3CG_parentConstraint1" 
@@ -2456,7 +2455,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1C|full_body_rig:Bony_rFinger2J1CShape" 
@@ -2475,7 +2474,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J1CG|full_body_rig:Bony_rFinger2J1CG_parentConstraint1" 
@@ -2496,7 +2495,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2C|full_body_rig:Bony_rFinger2J2CShape" 
@@ -2515,7 +2514,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J2CG|full_body_rig:Bony_rFinger2J2CG_parentConstraint1" 
@@ -2536,7 +2535,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3C|full_body_rig:Bony_rFinger2J3CShape" 
@@ -2555,7 +2554,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmC|full_body_rig:Bony_rFinger2J3CG|full_body_rig:Bony_rFinger2J3CG_parentConstraint1" 
@@ -2574,7 +2573,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rPalmCG|full_body_rig:Bony_rPalmCG_parentConstraint1" 
@@ -2595,7 +2594,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKC|full_body_rig:Bony_rToeIKCShape" 
@@ -2614,7 +2613,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rToeIKCG|full_body_rig:Bony_rToeIKCG_parentConstraint1" 
@@ -2633,7 +2632,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rAnkleIKLctrG|full_body_rig:Bony_rAnkleIKLctrG_parentConstraint1" 
@@ -2652,7 +2651,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopClstrG|full_body_rig:Bony_lLowerArmTopClstrG_parentConstraint1" 
@@ -2671,7 +2670,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_pointConstraint1" 
@@ -2690,7 +2689,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmClstrG|full_body_rig:Bony_lLowerArmBtmClstrG_aimConstraint1" 
@@ -2709,7 +2708,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmTopGuideClstrG|full_body_rig:Bony_lLowerArmTopGuideClstrG_parentConstraint1" 
@@ -2728,7 +2727,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_pointConstraint1" 
@@ -2747,7 +2746,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerArmBtmGuideClstrG|full_body_rig:Bony_lLowerArmBtmGuideClstrG_aimConstraint1" 
@@ -2766,7 +2765,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_pointConstraint1" 
@@ -2785,7 +2784,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonylUpperArmTopClstrG|full_body_rig:BonylUpperArmTopClstrG_aimConstraint1" 
@@ -2804,7 +2803,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmClstrG|full_body_rig:Bony_lUpperArmBtmClstrG_parentConstraint1" 
@@ -2823,7 +2822,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_pointConstraint1" 
@@ -2842,7 +2841,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmTopGuideClstrG|full_body_rig:Bony_lUpperArmTopGuideClstrG_aimConstraint1" 
@@ -2861,7 +2860,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperArmBtmGuideClstrG|full_body_rig:Bony_lUpperArmBtmGuideClstrG_parentConstraint1" 
@@ -2880,7 +2879,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_pointConstraint1" 
@@ -2899,7 +2898,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lElbowCurveCG|full_body_rig:Bony_lElbowCurveCG_orientConstraint1" 
@@ -2918,7 +2917,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopClstrG|full_body_rig:BonyrLowerArmTopClstrG_parentConstraint1" 
@@ -2937,7 +2936,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_pointConstraint1" 
@@ -2956,7 +2955,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmClstrG|full_body_rig:BonyrLowerArmBtmClstrG_aimConstraint1" 
@@ -2975,7 +2974,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmTopGuideClstrG|full_body_rig:BonyrLowerArmTopGuideClstrG_parentConstraint1" 
@@ -2994,7 +2993,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_pointConstraint1" 
@@ -3013,7 +3012,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:BonyrLowerArmBtmGuideClstrG|full_body_rig:BonyrLowerArmBtmGuideClstrG_aimConstraint1" 
@@ -3032,7 +3031,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_pointConstraint1" 
@@ -3051,7 +3050,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopClstrG|full_body_rig:Bony_rUpperArmTopClstrG_aimConstraint1" 
@@ -3070,7 +3069,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmClstrG|full_body_rig:Bony_rUpperArmBtmClstrG_parentConstraint1" 
@@ -3089,7 +3088,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_pointConstraint1" 
@@ -3108,7 +3107,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmTopGuideClstrG|full_body_rig:Bony_rUpperArmTopGuideClstrG_aimConstraint1" 
@@ -3127,7 +3126,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperArmBtmGuideClstrG|full_body_rig:Bony_rUpperArmBtmGuideClstrG_parentConstraint1" 
@@ -3146,7 +3145,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_pointConstraint1" 
@@ -3165,7 +3164,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rElbowCurveCG|full_body_rig:Bony_rElbowCurveCG_orientConstraint1" 
@@ -3184,7 +3183,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopClstrG|full_body_rig:Bony_lLowerLegTopClstrG_parentConstraint1" 
@@ -3203,7 +3202,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_pointConstraint1" 
@@ -3222,7 +3221,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmClstrG|full_body_rig:Bony_lLowerLegBtmClstrG_aimConstraint1" 
@@ -3241,7 +3240,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegTopGuideClstrG|full_body_rig:Bony_lLowerLegTopGuideClstrG_parentConstraint1" 
@@ -3260,7 +3259,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_pointConstraint1" 
@@ -3279,7 +3278,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lLowerLegBtmGuideClstrG|full_body_rig:Bony_lLowerLegBtmGuideClstrG_aimConstraint1" 
@@ -3298,7 +3297,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_pointConstraint1" 
@@ -3317,7 +3316,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopClstrG|full_body_rig:Bony_lUpperLegTopClstrG_aimConstraint1" 
@@ -3336,7 +3335,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmClstrG|full_body_rig:Bony_lUpperLegBtmClstrG_parentConstraint1" 
@@ -3355,7 +3354,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_pointConstraint1" 
@@ -3374,7 +3373,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegTopGuideClstrG|full_body_rig:Bony_lUpperLegTopGuideClstrG_aimConstraint1" 
@@ -3393,7 +3392,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lUpperLegBtmGuideClstrG|full_body_rig:Bony_lUpperLegBtmGuideClstrG_parentConstraint1" 
@@ -3412,7 +3411,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_pointConstraint1" 
@@ -3431,7 +3430,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_lKneeCurveCG|full_body_rig:Bony_lKneeCurveCG_orientConstraint1" 
@@ -3450,7 +3449,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopClstrG|full_body_rig:Bony_rLowerLegTopClstrG_parentConstraint1" 
@@ -3469,7 +3468,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_pointConstraint1" 
@@ -3488,7 +3487,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmClstrG|full_body_rig:Bony_rLowerLegBtmClstrG_aimConstraint1" 
@@ -3507,7 +3506,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegTopGuideClstrG|full_body_rig:Bony_rLowerLegTopGuideClstrG_parentConstraint1" 
@@ -3526,7 +3525,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_pointConstraint1" 
@@ -3545,7 +3544,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rLowerLegBtmGuideClstrG|full_body_rig:Bony_rLowerLegBtmGuideClstrG_aimConstraint1" 
@@ -3564,7 +3563,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_pointConstraint1" 
@@ -3583,7 +3582,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopClstrG|full_body_rig:Bony_rUpperLegTopClstrG_aimConstraint1" 
@@ -3602,7 +3601,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmClstrG|full_body_rig:Bony_rUpperLegBtmClstrG_parentConstraint1" 
@@ -3621,7 +3620,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_pointConstraint1" 
@@ -3640,7 +3639,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegTopGuideClstrG|full_body_rig:Bony_rUpperLegTopGuideClstrG_aimConstraint1" 
@@ -3659,7 +3658,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rUpperLegBtmGuideClstrG|full_body_rig:Bony_rUpperLegBtmGuideClstrG_parentConstraint1" 
@@ -3678,7 +3677,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_pointConstraint1" 
@@ -3697,7 +3696,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_curveNodesG|full_body_rig:Bony_rKneeCurveCG|full_body_rig:Bony_rKneeCurveCG_orientConstraint1" 
@@ -3716,7 +3715,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG2_parentConstraint1" 
@@ -3735,7 +3734,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_pointConstraint1" 
@@ -3756,7 +3755,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1C|full_body_rig:Bony_lThumbJ1CShape" 
@@ -3775,7 +3774,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ1CG|full_body_rig:Bony_lThumbJ1CG_parentConstraint1" 
@@ -3796,7 +3795,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2C|full_body_rig:Bony_lThumbJ2CShape" 
@@ -3815,7 +3814,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ2CG|full_body_rig:Bony_lThumbJ2CG_parentConstraint1" 
@@ -3834,7 +3833,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3C|full_body_rig:Bony_lThumbJ3CShape" 
@@ -3853,7 +3852,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lThumbJ3CG|full_body_rig:Bony_lThumbJ3CG_parentConstraint1" 
@@ -3872,7 +3871,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_lWristJG2|full_body_rig:Bony_lWristJG1|full_body_rig:Bony_lWristJG1_orientConstraint1" 
@@ -3891,7 +3890,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG2_parentConstraint1" 
@@ -3910,7 +3909,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_pointConstraint1" 
@@ -3929,7 +3928,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1C|full_body_rig:Bony_rThumbJ1CShape" 
@@ -3948,7 +3947,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ1CG|full_body_rig:Bony_rThumbJ1CG_parentConstraint1" 
@@ -3969,7 +3968,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2C|full_body_rig:Bony_rThumbJ2CShape" 
@@ -3988,7 +3987,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ2CG|full_body_rig:Bony_rThumbJ2CG_parentConstraint1" 
@@ -4009,7 +4008,7 @@ createNode reference -n "full_body_rigRN";
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3C|full_body_rig:Bony_rThumbJ3CShape" 
@@ -4028,7 +4027,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rThumbJ3CG|full_body_rig:Bony_rThumbJ3CG_parentConstraint1" 
@@ -4047,7 +4046,7 @@ createNode reference -n "full_body_rigRN";
 		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
 		
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
-		"ghosting" " 1"
+		"ghosting" " 0"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
 		"ghostingMode" " 1"
 		2 "|full_body_rig:Bony|full_body_rig:Bony_Main_CNT|full_body_rig:Bony_rWristJG2|full_body_rig:Bony_rWristJG1|full_body_rig:Bony_rWristJG1_orientConstraint1" 
@@ -5506,43 +5505,43 @@ createNode animCurveTL -n "Bony_Main_CNT_translateX";
 	rename -uid "8386C92D-4537-C373-40BC-3E90E86B17F4";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 34 0 38 0 40 0;
-	setAttr -s 4 ".kit[2:3]"  18 18;
-	setAttr -s 4 ".kot[2:3]"  18 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0.0047452979617648655 34 0.0047452979617648655
+		 38 0.0047452979617648655 40 0.0047452979617648655;
 createNode animCurveTL -n "Bony_Main_CNT_translateY";
 	rename -uid "5CE72DF7-4B18-2B8F-0C31-E0AB4A89A9C0";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 23.466195227742713 34 23.466195227742713
-		 38 23.466195227742713 40 23.466195227742713;
-	setAttr -s 4 ".kit[2:3]"  18 18;
-	setAttr -s 4 ".kot[2:3]"  18 18;
+	setAttr ".ktv[0]"  0 23.44429501822265;
 createNode animCurveTL -n "Bony_Main_CNT_translateZ";
 	rename -uid "FFD3B2CF-400B-8D35-2C21-719EE00E80EE";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 11 ".ktv[0:10]"  0 -20.595112491788083 34 -20.595112491788083
-		 38 -20.595112491788083 40 -19.55582051608781 42 -18.388380254395269 44 -17.66995547796909
-		 46 -15.67183656853377 48 -14.990011730107796 50 -11.280884609070506 52 -10.983110938761993
-		 54 -9.7547945487393743;
+	setAttr -s 27 ".ktv[0:26]"  0 -4.733258936825929 34 -4.733258936825929
+		 38 -4.733258936825929 40 -3.693966961125656 42 -2.1913931137410678 44 -0.9780004714347561
+		 46 0.19001698642838427 48 0.87184182485435868 49 2.824182198852994 50 4.4920809336371006
+		 52 4.8194839413637949 54 6.1070590062227765 55 6.6344603704267415 56 7.1531798946640199
+		 57 8.0616558203614961 58 9.6081648510807476 59 10.752875831217422 60 11.28120397589589
+		 62 15.206036351995182 64 16.09611712843239 66 16.647119513845897 67 17.325276295893293
+		 68 18.291649710310825 70 20.645524829046455 71 21.839519454492059 72 22.641201560148399
+		 73 22.906086893318761;
 createNode animCurveTL -n "Bony_MainHipC_translateX";
 	rename -uid "12240AED-451A-E7BC-DD1C-97AF03C38EA5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 4 0 34 0 48 0 50 6.9388939039072284e-18
-		 56 6.9388939039072284e-18 58 6.9388939039072284e-18 60 6.9388939039072284e-18;
+	setAttr -s 9 ".ktv[0:8]"  0 0 4 0 34 0 48 0 50 6.9388939039072284e-18
+		 56 6.9388939039072284e-18 58 6.9388939039072284e-18 60 6.9388939039072284e-18 73 0;
 createNode animCurveTL -n "Bony_MainHipC_translateY";
 	rename -uid "12185684-4876-D661-78A4-C88D49D3BE5C";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 0 4 0 34 0 48 0 50 0.26416936969392862
-		 52 0 56 0 58 0.32708125962778112 60 0;
+	setAttr -s 10 ".ktv[0:9]"  0 0 4 0 34 0 48 0 50 0.26416936969392862
+		 52 0 56 0 58 0.32708125962778112 60 0 73 0;
 createNode animCurveTL -n "Bony_MainHipC_translateZ";
 	rename -uid "1FAA4AD8-4751-44F0-1B7E-A5BB04FD86B4";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 0 4 0 34 0 48 0 50 -0.13948072639089981
-		 52 0 56 0 58 -0.17269803737878475 60 0;
+	setAttr -s 10 ".ktv[0:9]"  0 0 4 0 34 0 48 0 50 -0.13948072639089981
+		 52 0 56 0 58 -0.17269803737878475 60 0 73 0;
 createNode animCurveTL -n "Bony_ROOTC_translateX";
 	rename -uid "B42209EB-4269-3094-66A4-0CAEE08C98EE";
 	setAttr ".tan" 2;
@@ -5556,13 +5555,13 @@ createNode animCurveTL -n "Bony_ROOTC_translateY";
 	rename -uid "3F6567E3-4C84-84CC-23D4-978F9DE1C987";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 4 0 8 -0.43460690310089234 11 -0.43460690310089234
+	setAttr -s 28 ".ktv[0:27]"  0 0 4 0 8 -0.43460690310089234 11 -0.43460690310089234
 		 17 0 21 -0.29143396675295108 24 -0.29143396675295108 30 0 34 0 38 -0.50939331021517731
 		 40 -0.37344776531594803 42 -0.23448755094419482 44 0.098710217232486741 46 -0.51302520063095969
 		 48 -0.78677318764615123 50 -1.2923572292063845 52 -0.54074364769720873 54 -0.25651112216299243
 		 56 -0.10083576774759706 58 -0.71524985027363286 60 -0.95984313776353503 62 -1.3122437858944949
 		 64 -0.79153190133544626 66 -0.51077411413715268 68 -0.21129914112563952 70 -0.62307722901647011
-		 72 -1.0193530156987016;
+		 72 -1.0193530156987016 73 -0.78677318764615123;
 createNode animCurveTL -n "Bony_ROOTC_translateZ";
 	rename -uid "5555E6C3-4390-5D88-2096-BA874421F40C";
 	setAttr ".tan" 2;
@@ -5596,26 +5595,22 @@ createNode animCurveTL -n "Bony_lFootIKC_translateY";
 	rename -uid "3CC2D71D-4EAA-554B-3A88-D2816FB5A9A8";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 25 ".ktv[0:24]"  0 0 4 0 8 2.0143165845557967 11 2.0143165845557967
+	setAttr -s 26 ".ktv[0:25]"  0 0 4 0 8 2.0143165845557967 11 2.0143165845557967
 		 17 0 34 0 38 0 40 0 41 0.21033601912150907 42 0.51457938316546148 44 0.25507280702715107
 		 46 2.2586781219357199 48 2.8380648053651569 50 1.5353943341460692 52 1.6013644198676573
 		 54 1.0376616873351274 56 1.1602057596248088 58 1.1111881307089355 60 -0.065234963271986857
 		 62 -0.032586224329126168 64 -0.032586224329126168 66 -0.032586224329126168 68 -0.032586224329126168
-		 70 2.1198901441911175 72 3.0931838064785317;
-	setAttr -s 25 ".kit[8:24]"  18 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2;
-	setAttr -s 25 ".kot[8:24]"  18 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2;
+		 70 2.1198901441911175 72 3.0931838064785317 73 2.8380648053651569;
 createNode animCurveTL -n "Bony_lFootIKC_translateZ";
 	rename -uid "6E88DE98-4964-7FB5-E3E5-22A40E31AA88";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 24 ".ktv[0:23]"  0 0 4 0 8 -0.44501326460021673 11 -0.44501326460021673
+	setAttr -s 25 ".ktv[0:24]"  0 0 4 0 8 -0.44501326460021673 11 -0.44501326460021673
 		 17 0 34 0 38 0 40 -1.033845284310754 42 -1.7698858988760762 44 -3.0725687500923762
 		 46 -2.9939574602167447 48 -2.6138302082153402 50 -2.6232217810089296 52 -1.1304462697045423
 		 54 -0.0030408046394860833 56 0.90378533030414587 58 1.7370850218739697 60 2.4825174247970168
 		 62 -1.1033552661549635 64 -2.0017801851894994 66 -2.6007301312125257 68 -3.9109331381378922
-		 70 -3.6488925367528218 72 -3.0354477575668959;
+		 70 -3.6488925367528218 72 -3.0354477575668959 73 -2.6138302082153402;
 createNode animCurveTL -n "Bony_lKneeIKC_translateX";
 	rename -uid "A745F0A2-436A-848D-070E-AFA3DB0C266C";
 	setAttr ".tan" 2;
@@ -5637,29 +5632,29 @@ createNode animCurveTL -n "Bony_rFootIKC_translateX";
 	rename -uid "95879019-4B09-ABBB-F7B7-DCA25E6899CF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 10 ".ktv[0:9]"  0 -0.30405081569073927 4 -0.304 17 -0.304
+	setAttr -s 11 ".ktv[0:10]"  0 -0.30405081569073927 4 -0.304 17 -0.304
 		 21 -0.2069054341066523 24 -0.2069054341066523 30 -0.304 34 -0.30405081569073927 38 -0.30405081569073927
-		 40 0.32033126135852291 70 0.15349361403125439;
+		 40 0.32033126135852291 49 0.27027996716034236 70 0.15349361403125439;
 createNode animCurveTL -n "Bony_rFootIKC_translateY";
 	rename -uid "16B54693-481F-380E-EA3D-659376411228";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 25 ".ktv[0:24]"  0 0 4 0 17 0 21 -2.5834722066120719 24 -2.5834722066120719
+	setAttr -s 27 ".ktv[0:26]"  0 0 4 0 17 0 21 -2.5834722066120719 24 -2.5834722066120719
 		 30 0 34 0 38 -0.33789098591857702 40 -1.3651024546149844 42 -1.3361395712724544 44 -1.6481314782421883
-		 46 -1.462304715771829 48 -0.022305926910423324 50 0.014617118957815249 52 0.014617118957815138
-		 54 -0.35301509791122543 56 -0.35301509791122543 58 -1.7255087075556408 60 -3.1715287605738571
-		 62 -1.6367195238898593 64 -1.052188738142029 66 -0.94160183273028197 68 -1.518272974569705
-		 70 -1.3365550663436854 72 0.037882186630948222;
+		 46 -1.462304715771829 48 -0.022305926910423324 49 0.033831896192745736 50 0.014617118957815249
+		 52 0.014617118957815138 54 -0.35301509791122543 56 -0.35301509791122543 58 -1.7255087075556408
+		 60 -3.1715287605738571 62 -1.6367195238898593 64 -1.052188738142029 66 -0.94160183273028197
+		 68 -1.518272974569705 70 -1.3365550663436854 72 0.037882186630948222 73 -0.022305926910423324;
 createNode animCurveTL -n "Bony_rFootIKC_translateZ";
 	rename -uid "ECC56C37-453B-25D6-8850-C283235926EE";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 24 ".ktv[0:23]"  0 0 17 0 21 0.60490810690480856 24 0.60490810690480856
+	setAttr -s 26 ".ktv[0:25]"  0 0 17 0 21 0.60490810690480856 24 0.60490810690480856
 		 30 0 34 0 38 2.4502625758914398 40 1.44485641811562 42 0.41667405945580072 44 -0.83674779970061408
-		 46 -2.0874054804647102 48 -2.3257758095548944 50 1.0018330739404355 52 1.3234470815599089
-		 54 2.0832203297558998 56 3.1370993514471266 58 3.137099351447123 60 3.0390640936153694
-		 62 3.0390640936153659 64 1.1432885722710324 66 0.16380455290979157 68 -0.26688771127046707
-		 70 -2.7602125891180691 72 -2.6340436870979254;
+		 46 -2.0874054804647102 48 -2.3257758095548944 49 -0.66197136780723476 50 1.0018330739404355
+		 52 1.3234470815599089 54 2.0832203297558998 56 3.1370993514471266 58 3.137099351447123
+		 60 3.0390640936153694 62 3.0390640936153659 64 1.1432885722710324 66 0.16380455290979157
+		 68 -0.26688771127046707 70 -2.7602125891180691 72 -2.6340436870979254 73 -2.3257758095548944;
 createNode animCurveTL -n "Bony_rKneeIKC_translateX";
 	rename -uid "56A89277-42AB-A176-FA24-F3B8FD33743F";
 	setAttr ".tan" 2;
@@ -5729,13 +5724,13 @@ createNode animCurveTA -n "Bony_rElbowFKC_rotateY";
 	rename -uid "95900E81-4199-9222-C5CD-7289FBF45DE5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 24 ".ktv[0:23]"  0 -10.844957439151758 2 -10.844957439151758
+	setAttr -s 25 ".ktv[0:24]"  0 -10.844957439151758 2 -10.844957439151758
 		 8 -45.697451151639555 11 -45.697451151639555 17 -10.844957439151758 34 -10.844957439151758
 		 38 -54.69506508099628 40 -30.573299938654621 42 -61.055783184588897 44 -92.885412967068618
 		 46 -72.888485146175896 48 -66.516119617561387 50 -63.480525134099572 52 -53.101343624713365
-		 54 -33.549970802244097 56 -48.316223254800661 58 -48.316223254800661 60 -24.900407752923254
+		 54 -33.549970802244097 56 -48.316223254800668 58 -48.316223254800668 60 -24.900407752923254
 		 62 -24.900407752923254 64 -46.973380268452978 66 -69.313845648265541 68 -99.946229066871453
-		 70 -76.768955193863263 72 -65.750982988979743;
+		 70 -76.768955193863263 72 -65.750982988979743 73 -66.516119617561387;
 createNode animCurveTA -n "Bony_rToeIKC_rotateX";
 	rename -uid "462AEB17-4410-C19D-5B78-4AAB0ABFB2A1";
 	setAttr ".tan" 2;
@@ -5843,178 +5838,96 @@ createNode animCurveTA -n "Bony_MainHipC_rotateX";
 	rename -uid "A4B67FCD-4431-9ADC-FBBC-C782684F369A";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 21 ".ktv[0:20]"  0 0 4 0 34 0 38 -8.0858553291246853 40 -6.2498174821108892
+	setAttr -s 22 ".ktv[0:21]"  0 0 4 0 34 0 38 -8.0858553291246853 40 -6.2498174821108892
 		 42 0.19004543011425612 44 -4.4251539321251849 46 -18.707622722688868 48 -9.1220160203296903
 		 50 -11.530036788194991 52 -11.382691041199518 54 -10.581251707191019 56 -15.499646853105096
 		 58 -30.525047928363623 60 -29.9073146241759 62 -11.845880384766772 64 -11.389827449308672
-		 66 -14.465788579868347 68 -10.187485808376593 70 -43.170829990591599 72 -44.33518681281366;
+		 66 -14.465788579868347 68 -10.187485808376593 70 -43.170829990591599 72 -44.33518681281366
+		 73 -9.1220160203296903;
 createNode animCurveTA -n "Bony_MainHipC_rotateY";
 	rename -uid "605D1419-400D-862C-7472-AFBBF148DB92";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 21 ".ktv[0:20]"  0 0 4 0 34 0 38 -23.178528923372653 40 27.132477258957952
+	setAttr -s 22 ".ktv[0:21]"  0 0 4 0 34 0 38 -23.178528923372653 40 27.132477258957952
 		 42 27.789057635671739 44 39.98309262797634 46 51.087207097819075 48 24.773996768447486
 		 50 1.7293111819533444 52 -8.4731132769176885 54 -19.185412103708934 56 -34.060733808800983
 		 58 -43.815860778143083 60 -35.258877888740216 62 5.3908122804590821 64 23.45694897940983
-		 66 44.656430686292516 68 58.418566348258899 70 58.702222939951035 72 36.19584972887067;
+		 66 44.656430686292516 68 58.418566348258899 70 58.702222939951035 72 36.19584972887067
+		 73 24.773996768447486;
 createNode animCurveTA -n "Bony_MainHipC_rotateZ";
 	rename -uid "CFA60A46-4E10-4E75-C4E0-10A5A16BA38B";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 -1.2445360905136482 4 -1.2445360905136482
+	setAttr -s 28 ".ktv[0:27]"  0 -1.2445360905136482 4 -1.2445360905136482
 		 8 20.4133087658861 11 20.4133087658861 17 -1.2445360905136482 21 -23.182291481622638
 		 24 -23.182291481622638 30 0 34 -1.2445360905136482 38 17.066317125727252 40 3.8125362011278177
 		 42 17.723347258369149 44 8.0166096058566154 46 -10.14273285226702 48 2.8097656174626162
 		 50 -13.865322374463014 52 -5.3189474008966178 54 -11.326405991451921 56 -1.9964742126682657
-		 58 19.217013202447209 60 24.81919223371208 62 14.68879017394134 64 12.540404283764953
-		 66 6.3002985197315517 68 12.681372085110393 70 -27.344475963635947 72 -31.887861764966114;
+		 58 19.217013202447209 60 24.819192233712084 62 14.68879017394134 64 12.540404283764953
+		 66 6.3002985197315517 68 12.681372085110393 70 -27.344475963635947 72 -31.887861764966114
+		 73 2.8097656174626162;
 createNode animCurveTA -n "Bony_Main_CNT_rotateX";
 	rename -uid "CEA0B5AE-4B63-075C-48E8-C8A011CA1DAF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 34 0;
+	setAttr -s 2 ".ktv[0:1]"  0 0.0047452979617648655 34 0.0047452979617648655;
 createNode animCurveTA -n "Bony_Main_CNT_rotateY";
 	rename -uid "1E40560A-4F6E-C1FF-8266-42BE86E23143";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 34 0;
+	setAttr -s 2 ".ktv[0:1]"  0 0.0047452979617648655 34 0.0047452979617648655;
 createNode animCurveTA -n "Bony_Main_CNT_rotateZ";
 	rename -uid "201D8CF8-492D-68E5-AF47-669BBEE41E66";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 34 0;
+	setAttr -s 2 ".ktv[0:1]"  0 0.0047452979617648655 34 0.0047452979617648655;
 createNode animCurveTU -n "Bony_Main_CNT_GlobalScale";
 	rename -uid "5E8046A1-4C81-98F7-3180-5B9686B4913A";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1 34 1;
+	setAttr -s 2 ".ktv[0:1]"  0 1.0142358938852942 34 1.0142358938852942;
 createNode animCurveTA -n "Bony_lShoulderFKC_rotateX";
 	rename -uid "93BB3094-48F6-4308-547B-FF945E03D351";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 23 ".ktv[0:22]"  0 0 14 0 17 0 20 4.1871891267244141 24 0
+	setAttr -s 24 ".ktv[0:23]"  0 0 14 0 17 0 20 4.1871891267244141 24 0
 		 34 0 40 21.323474252355105 42 12.408209939000102 44 56.689547473879649 46 80.543465274889016
 		 48 30.119204340250413 50 29.621653186982467 52 -1.1893930769784082 54 -37.733746190332347
 		 56 -63.474638471925644 58 -84.76321105646737 60 -65.328437438460213 62 -22.661572398586401
-		 64 0 66 15.158903817888739 68 31.023493109504209 70 69.724297278733999 72 64.986480352037688;
-	setAttr -s 23 ".kit[2:22]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2;
-	setAttr -s 23 ".kot[2:22]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2;
-	setAttr -s 23 ".kix[2:22]"  1 0.86328682305612425 0.9158269691427382 
-		1 0.55761542815957976 0.47211491023616897 0.10720390405824608 0.19626888802138473 
-		0.094267840212909848 0.99461428753704417 0.15313763303071615 0.12955244466472848 
-		0.18237791671631579 0.21884551028973254 0.23858105556241202 0.1112111284151714 0.20616722266774493 
-		0.30042331008170287 0.2881934379739276 0.12244501354872105 0.70983931098435393;
-	setAttr -s 23 ".kiy[2:22]"  0 0.5047136427100658 -0.40157310989510481 
-		0 0.83009941228650963 -0.88153701654138961 0.99423705571391296 0.98055011274021542 
-		-0.9955468719761984 -0.10364564162171934 -0.98820487013055625 -0.9915725712631388 
-		-0.98322850624573355 -0.97575952089950246 0.97112258748662894 0.99379680262950354 
-		0.97851677364134559 0.95380597332977168 0.95757221258178116 0.9924752987641825 -0.70436365080919505;
-	setAttr -s 23 ".kox[2:22]"  1 0.9158269691427382 1 0.55761542815957976 
-		0.47211491023616897 0.10720390405824608 0.19626888802138473 0.094267840212909848 
-		0.99461428753704417 0.15313763303071615 0.12955244466472848 0.18237791671631579 0.21884551028973254 
-		0.23858105556241202 0.1112111284151714 0.20616722266774493 0.30042331008170287 0.2881934379739276 
-		0.12244501354872105 0.70983931098435393 1;
-	setAttr -s 23 ".koy[2:22]"  0 -0.40157310989510481 0 0.83009941228650963 
-		-0.88153701654138961 0.99423705571391296 0.98055011274021542 -0.9955468719761984 
-		-0.10364564162171934 -0.98820487013055625 -0.9915725712631388 -0.98322850624573355 
-		-0.97575952089950246 0.97112258748662894 0.99379680262950354 0.97851677364134559 
-		0.95380597332977168 0.95757221258178116 0.9924752987641825 -0.70436365080919505 0;
+		 64 0 66 15.158903817888739 68 31.023493109504209 70 69.724297278733999 72 64.986480352037688
+		 73 30.119204340250413;
 createNode animCurveTA -n "Bony_lShoulderFKC_rotateY";
 	rename -uid "EA19A48B-428D-A269-09D1-2FA9A4F9C8EF";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 24 ".ktv[0:23]"  0 8.385045569778125 14 8.385045569778125
+	setAttr -s 25 ".ktv[0:24]"  0 8.385045569778125 14 8.385045569778125
 		 17 8.385045569778125 20 7.271223666257554 24 8.385045569778125 34 8.385045569778125
 		 38 -31.889582679298286 40 -26.733394505256189 42 15.799778470860794 44 25.585244634867582
 		 46 20.653738538689741 48 1.2461557170098323 50 6.2940319878325628 52 -4.208272027639099
 		 54 -33.908637702594589 56 -36.920994200158589 58 -19.232982029465383 60 -42.376641618690805
 		 62 -48.546100095770527 64 -24.470022199824101 66 19.560056643418818 68 33.447374289394361
-		 70 12.56481050942498 72 23.445451991962763;
-	setAttr -s 24 ".kit[2:23]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2 2;
-	setAttr -s 24 ".kot[2:23]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2 2;
-	setAttr -s 24 ".kix[2:23]"  1 0.98812197305957905 0.99326628376529569 
-		1 0.23070815451480231 0.67943867591621976 0.11155634840235894 0.43851637821904299 
-		0.69558864672608534 0.23889625292400654 0.68717176504084942 0.41386571054232629 0.15872266088389697 
-		0.84574558527790422 0.26060912857049506 0.20204982359235121 0.61203640096785172 0.1945266708791891 
-		0.1078085753095429 0.32513353336686746 0.22289094191834283 0.40183350488935388;
-	setAttr -s 24 ".kiy[2:23]"  0 -0.1536716185795047 0.11585374199860497 
-		0 -0.97302299430197126 0.73373229836856302 0.99375810996999236 0.89872319767192688 
-		-0.71844027903909535 -0.97104509696453811 0.72649498644563515 -0.91033794474211349 
-		-0.98732320793240524 -0.53358636131645576 0.96544439617500877 -0.97937524411550225 
-		-0.79082959219437343 0.9808972292328384 0.99417167083443225 0.94566811592671129 -0.97484338640150492 
-		0.915712746634193;
-	setAttr -s 24 ".kox[2:23]"  1 0.99326628376529569 1 0.23070815451480231 
-		0.67943867591621976 0.11155634840235894 0.43851637821904299 0.69558864672608534 0.23889625292400654 
-		0.68717176504084942 0.41386571054232629 0.15872266088389697 0.84574558527790422 0.26060912857049506 
-		0.20204982359235121 0.61203640096785172 0.1945266708791891 0.1078085753095429 0.32513353336686746 
-		0.22289094191834283 0.40183350488935388 1;
-	setAttr -s 24 ".koy[2:23]"  0 0.11585374199860497 0 -0.97302299430197126 
-		0.73373229836856302 0.99375810996999236 0.89872319767192688 -0.71844027903909535 
-		-0.97104509696453811 0.72649498644563515 -0.91033794474211349 -0.98732320793240524 
-		-0.53358636131645576 0.96544439617500877 -0.97937524411550225 -0.79082959219437343 
-		0.9808972292328384 0.99417167083443225 0.94566811592671129 -0.97484338640150492 0.915712746634193 
-		0;
+		 70 12.56481050942498 72 23.445451991962763 73 1.2461557170098323;
 createNode animCurveTA -n "Bony_lShoulderFKC_rotateZ";
 	rename -uid "D0844236-4347-3B10-27F7-03B2040449AD";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 24 ".ktv[0:23]"  0 -79.766936627064069 14 -79.766936627064069
+	setAttr -s 25 ".ktv[0:24]"  0 -79.766936627064069 14 -79.766936627064069
 		 17 -79.766936627064069 20 -49.72028886461846 24 -79.766936627064069 34 -79.766936627064069
 		 38 -79.766936627064084 40 -79.766936627064112 42 -69.752868655846058 44 -22.971624707978226
 		 46 -36.740105879141495 48 -57.550930833202784 50 -63.736023543377122 52 -63.969291137597892
 		 54 -50.494266470946933 56 -8.4527425474044406 58 8.5037172292687409 60 -6.9695006460764359
 		 62 -50.645858243687336 64 -79.766936627064979 66 -69.565596176728732 68 -45.669376397688474
-		 70 -27.14960084666831 72 -34.823696757593424;
-	setAttr -s 24 ".kit[2:23]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2 2;
-	setAttr -s 24 ".kot[2:23]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2 2 2 2 2 2;
-	setAttr -s 24 ".kix[2:23]"  1 0.23186588807418909 0.30288680287298958 
-		1 1 1 0.43037765807636852 0.10153582827728588 0.32763968528888571 0.22362092939943987 
-		0.61106747569628772 0.99880870463237936 0.33398659449612023 0.11284441184531424 0.27104247016013111 
-		0.29485626045264429 0.10867141343637889 0.16179816062341304 0.42390753507989248 0.19593479537157313 
-		0.24965012784915275 0.52827439136924781;
-	setAttr -s 24 ".kiy[2:23]"  0 0.97274776275639285 -0.95302653931849068 
-		0 0 0 0.90264891925305057 0.99483188307173065 -0.94480275011443515 -0.97467619235032665 
-		-0.79157851167535276 -0.048797249416214508 0.94257782421234815 0.99361267036772694 
-		0.9625673895211152 -0.9555416190160857 -0.99407772528195182 -0.98682387244071079 
-		0.90570547182982719 0.98061692620650787 0.96833610573235462 -0.84907371141936239;
-	setAttr -s 24 ".kox[2:23]"  1 0.30288680287298958 1 1 1 0.43037765807636852 
-		0.10153582827728588 0.32763968528888571 0.22362092939943987 0.61106747569628772 0.99880870463237936 
-		0.33398659449612023 0.11284441184531424 0.27104247016013111 0.29485626045264429 0.10867141343637889 
-		0.16179816062341304 0.42390753507989248 0.19593479537157313 0.24965012784915275 0.52827439136924781 
-		1;
-	setAttr -s 24 ".koy[2:23]"  0 -0.95302653931849068 0 0 0 0.90264891925305057 
-		0.99483188307173065 -0.94480275011443515 -0.97467619235032665 -0.79157851167535276 
-		-0.048797249416214508 0.94257782421234815 0.99361267036772694 0.9625673895211152 
-		-0.9555416190160857 -0.99407772528195182 -0.98682387244071079 0.90570547182982719 
-		0.98061692620650787 0.96833610573235462 -0.84907371141936239 0;
+		 70 -27.14960084666831 72 -34.823696757593424 73 -57.550930833202784;
 createNode animCurveTU -n "Bony_lShoulderFKC_scaleX";
 	rename -uid "8BFAE4EC-4B1A-56F9-915E-99BD0598F8AC";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 4 ".ktv[0:3]"  0 1 17 1 24 1 34 1;
-	setAttr -s 4 ".kit[1:3]"  1 2 2;
-	setAttr -s 4 ".kot[1:3]"  1 2 2;
-	setAttr -s 4 ".kix[1:3]"  1 1 1;
-	setAttr -s 4 ".kiy[1:3]"  0 0 0;
-	setAttr -s 4 ".kox[1:3]"  1 1 1;
-	setAttr -s 4 ".koy[1:3]"  0 0 0;
 createNode animCurveTU -n "Bony_lShoulderFKC_ShoulderOrient";
 	rename -uid "28257A16-4980-6101-A945-39ABFC23C5B6";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 4 ".ktv[0:3]"  0 1 17 1 24 1 34 1;
-	setAttr -s 4 ".kit[1:3]"  1 2 2;
-	setAttr -s 4 ".kot[1:3]"  1 2 2;
-	setAttr -s 4 ".kix[1:3]"  1 1 1;
-	setAttr -s 4 ".kiy[1:3]"  0 0 0;
-	setAttr -s 4 ".kox[1:3]"  1 1 1;
-	setAttr -s 4 ".koy[1:3]"  0 0 0;
 createNode animCurveTA -n "Bony_rFinger2J2C_rotateX";
 	rename -uid "B96E290B-4A65-4A17-297C-F1B3C9E5D900";
 	setAttr ".tan" 2;
@@ -6052,48 +5965,36 @@ createNode animCurveTA -n "Bony_rShoulderFKC_rotateX";
 	rename -uid "0375A272-4D14-BAB6-D7B2-B5923BDB7F93";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 25 ".ktv[0:24]"  0 0 17 0 34 0 38 3.8617863258834278e-13
-		 42 -38.020907064545007 44 -38.566582958169263 45 83.127249038298572 46 112.34623750275605
+	setAttr -s 26 ".ktv[0:25]"  0 0 17 0 34 0 38 3.8617863258834278e-13
+		 42 -38.020907064545007 44 -38.566582958169263 45 83.127249038298586 46 112.34623750275605
 		 47 109.57713074293044 48 120.61645015537013 49 98.916882512169565 50 -59.344178734998543
 		 52 0 54 20.401634234249471 56 46.739504029804642 58 59.926533271957709 60 54.37077553125372
 		 62 1.3689214336130098 64 0 66 -14.190217925295018 68 -20.329192377113667 69 -86.879124159342425
-		 70 98.458002672418999 71 -87.052417188671001 72 -78.12509705444721;
-	setAttr -s 25 ".kit[6:24]"  18 2 18 2 18 2 2 2 
-		2 2 2 2 2 2 2 18 2 18 2;
-	setAttr -s 25 ".kot[6:24]"  18 2 18 2 18 2 2 2 
-		2 2 2 2 2 2 2 18 2 18 2;
+		 70 98.458002672418999 71 -87.052417188671001 72 -78.12509705444721 73 120.61645015537013;
 createNode animCurveTA -n "Bony_rShoulderFKC_rotateY";
 	rename -uid "F40907C5-4196-8F0B-DBF6-A0A78BEA2655";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 29 ".ktv[0:28]"  0 8.385045569778125 2 8.385045569778125
+	setAttr -s 30 ".ktv[0:29]"  0 8.385045569778125 2 8.385045569778125
 		 8 22.110526137042626 11 22.110526137042626 17 8.385045569778125 34 8.385045569778125
 		 38 63.287916978349536 40 8.3691101209466883 42 -42.425562810404237 44 -35.672760658461748
 		 45 -142.87501103149935 46 -150.65680951312106 47 -142.48456558109254 48 -138.54929975873142
 		 49 -123.11517365048617 50 -54.357588486036562 52 -50.875118292382318 54 -13.00496772838374
 		 56 19.490573606375825 58 18.946731570895878 60 23.402799897089935 62 19.822118241218153
 		 64 9.6887211889253848 66 -14.139025099733132 68 -25.060028433419728 69 -31.536009990528534
-		 70 -148.08758022207061 71 -36.445838410085045 72 -43.894889733941419;
-	setAttr -s 29 ".kit[10:28]"  18 2 18 2 18 2 2 2 
-		2 2 2 2 2 2 2 18 2 18 2;
-	setAttr -s 29 ".kot[10:28]"  18 2 18 2 18 2 2 2 
-		2 2 2 2 2 2 2 18 2 18 2;
+		 70 -148.08758022207061 71 -36.445838410085045 72 -43.894889733941419 73 -138.54929975873142;
 createNode animCurveTA -n "Bony_rShoulderFKC_rotateZ";
 	rename -uid "7F2829FB-4B5F-BDDC-BF63-2EBFD71B05F5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 29 ".ktv[0:28]"  0 -79.766936627064069 2 -79.766936627064069
+	setAttr -s 30 ".ktv[0:29]"  0 -79.766936627064069 2 -79.766936627064069
 		 8 -79.766936627064084 11 -79.766936627064084 17 -79.766936627064069 34 -79.766936627064069
-		 38 -79.766936627066471 40 -76.208679365094341 42 -39.885339283533781 44 -35.032575900020504
+		 38 -79.766936627066485 40 -76.208679365094341 42 -39.885339283533781 44 -35.032575900020504
 		 45 -159.33569752819747 46 -187.9284150163129 47 -196.46402046014404 48 -199.90553609848004
 		 49 -189.19195815484866 50 -15.486159399366642 52 -79.766936627062009 54 -81.15242766444527
 		 56 -57.217736421114772 58 -45.745062262109634 60 -55.971246497209137 62 -75.735920070374277
 		 64 -79.766936627062037 66 -61.069449324653668 68 -51.688674936821506 69 20.504123265888197
-		 70 -162.26521907083904 71 19.062062938411657 72 1.9382383004345243;
-	setAttr -s 29 ".kit[10:28]"  18 2 18 2 18 2 2 2 
-		2 2 2 2 2 2 2 18 2 18 2;
-	setAttr -s 29 ".kot[10:28]"  18 2 18 2 18 2 2 2 
-		2 2 2 2 2 2 2 18 2 18 2;
+		 70 -162.26521907083907 71 19.062062938411657 72 1.9382383004345243 73 -199.90553609848004;
 createNode animCurveTU -n "Bony_rShoulderFKC_scaleX";
 	rename -uid "956EDB87-4D95-9F93-AAA5-73B4998DD121";
 	setAttr ".tan" 2;
@@ -6108,8 +6009,8 @@ createNode animCurveTA -n "Bony_ROOTC_rotateX";
 	rename -uid "196151EE-465F-4E31-AF35-75BB5236858A";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 0 4 0 17 0 30 0 34 0 38 15.166795047477027
-		 40 27.833935078780492 44 27.833935078780492 46 27.833935078780492;
+	setAttr -s 10 ".ktv[0:9]"  0 0 4 0 17 0 30 0 34 0 38 15.166795047477027
+		 40 27.833935078780495 44 27.833935078780495 46 27.833935078780495 50 14.989024367866486;
 createNode animCurveTA -n "Bony_ROOTC_rotateY";
 	rename -uid "AA9EE000-4A13-DCB6-44BF-E6A4B744F48E";
 	setAttr ".tan" 2;
@@ -6141,11 +6042,11 @@ createNode animCurveTA -n "Bony_Spine02FKC_rotateX";
 	rename -uid "7D940860-4EE0-7F0F-3A70-15A4BFA8471A";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 19 ".ktv[0:18]"  0 0 2 0 8 -9.2041839962034047 11 -9.2041839962034047
+	setAttr -s 20 ".ktv[0:19]"  0 0 2 0 8 -9.2041839962034047 11 -9.2041839962034047
 		 17 0 21 -11.160155896500385 24 -11.160155896500385 30 0 34 0 38 18.448993989868008
 		 40 18.448993989868008 44 -0.15886827580233973 46 11.174014376238553 48 18.448993989868008
 		 56 -0.15886827580233973 58 11.174014376238553 60 18.448993989868008 68 -0.15886827580233973
-		 70 11.174014376238553;
+		 70 11.174014376238553 73 18.448993989868008;
 createNode animCurveTA -n "Bony_Spine02FKC_rotateY";
 	rename -uid "E0790BB4-41A4-51F2-6E30-C4A3F97B9D28";
 	setAttr ".tan" 2;
@@ -6161,35 +6062,35 @@ createNode animCurveTA -n "Bony_lClavicleC_rotateX";
 	rename -uid "89067AA9-4F4C-80F3-0584-B887B3B5D951";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 -9.4775296895867527 11 -9.4775296895867527
+	setAttr -s 28 ".ktv[0:27]"  0 0 2 0 8 -9.4775296895867527 11 -9.4775296895867527
 		 17 0 21 -7.9021942291731424 24 -7.9021942291731424 30 0 34 0 38 -3.6737638918444215
 		 40 2.805669053872514 42 11.306052189798294 44 7.5854314568739785 46 8.526260037381018
 		 48 12.13944186993764 50 0.66577862313030911 52 -23.42098404983707 54 -21.705300351826846
 		 56 -21.705300351826846 58 -17.383366007368497 60 -21.15917355573427 62 -25.963523513748044
 		 64 -41.001765302843268 66 -34.452849387579967 68 -42.134940577915543 70 -38.235179718109883
-		 72 -41.240878409746678;
+		 72 -41.240878409746678 73 12.13944186993764;
 createNode animCurveTA -n "Bony_lClavicleC_rotateY";
 	rename -uid "F2D5EB7C-428E-15C1-BB35-4C9C726F9859";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 39.907676903061116 11 39.907676903061116
+	setAttr -s 28 ".ktv[0:27]"  0 0 2 0 8 39.907676903061116 11 39.907676903061116
 		 17 0 21 -22.371054556467339 24 -22.371054556467339 30 0 34 0 38 32.862554098565276
 		 40 44.118566706008323 42 43.010349963834585 44 -6.5528318683588287 46 -5.2664056544163858
 		 48 -15.881161542231299 50 -40.602032498504812 52 4.0553887708173795 54 -12.374536670943579
 		 56 -12.374536670943579 58 4.7905524999477143 60 13.728187630021852 62 -18.964136785286374
 		 64 -36.794331423607836 66 -1.3490656782060155 68 14.296514720938047 70 -20.686888711729253
-		 72 -12.246584731714691;
+		 72 -12.246584731714691 73 -15.881161542231299;
 createNode animCurveTA -n "Bony_lClavicleC_rotateZ";
 	rename -uid "BBF8F863-41BA-3026-5AB2-65B35F56530D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 -1.2899561420568095 11 -1.2899561420568095
+	setAttr -s 28 ".ktv[0:27]"  0 0 2 0 8 -1.2899561420568095 11 -1.2899561420568095
 		 17 0 21 20.036181195185911 24 20.036181195185911 30 0 34 0 38 -8.6502146491601408
 		 40 3.1505244740211058 42 15.459291098683112 44 14.650195738328753 46 5.5320103658302058
 		 48 -7.4876404154297385 50 8.7983598718219014 52 30.714682674605164 54 25.242296553709021
 		 56 25.242296553709021 58 4.4036688821635783 60 -10.727850559068163 62 -19.961402680200088
 		 64 45.324569143661158 66 35.466443784974231 68 14.589850533252772 70 17.051895359444153
-		 72 27.599341882831261;
+		 72 27.599341882831261 73 -7.4876404154297385;
 createNode animCurveTA -n "Bony_rPalmC_rotateX";
 	rename -uid "02C55186-40A1-99BB-A5BC-D68DC7A7372A";
 	setAttr ".tan" 2;
@@ -6232,7 +6133,7 @@ createNode animCurveTA -n "Bony_rWristFKC_rotateY";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 14 ".ktv[0:13]"  0 0 17 0 30 0 34 0 38 0 40 36.40228497900646
-		 46 0 50 0 52 -38.934934810683259 54 0 58 0 60 33.435304904338871 68 33.435304904338871
+		 46 0 50 0 52 -38.934934810683259 54 0 58 0 60 33.435304904338878 68 33.435304904338878
 		 70 0;
 createNode animCurveTA -n "Bony_rWristFKC_rotateZ";
 	rename -uid "70B5EB88-4E78-B577-06D8-9E92435EB71C";
@@ -6287,12 +6188,12 @@ createNode animCurveTA -n "Bony_rFootIKC_rotateX";
 	rename -uid "77F12A1F-463A-5676-9247-FB8528CFD75A";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 24 ".ktv[0:23]"  0 0 17 0 21 154.67315392419624 24 154.67315392419624
+	setAttr -s 26 ".ktv[0:25]"  0 0 17 0 21 154.67315392419624 24 154.67315392419624
 		 30 0 34 0 38 52.352229816838438 40 81.404159406821222 42 53.008223601144024 44 -0.70524201713967716
-		 46 -30.723634725759251 48 -30.723634725759251 50 1.0960949901556996 52 1.0960949901556996
-		 54 37.899307509883357 56 37.899307509883357 58 145.07149215658163 60 145.07149215658163
-		 62 145.07149215658163 64 52.843633186691463 66 32.177502127150163 68 32.177502127150163
-		 70 -20.127950193338464 72 -35.217398247142029;
+		 46 -30.723634725759251 48 -30.723634725759251 49 0.16103425596730883 50 1.0960949901556996
+		 52 1.0960949901556996 54 37.899307509883357 56 37.899307509883357 58 145.07149215658163
+		 60 145.07149215658163 62 145.07149215658163 64 52.843633186691463 66 32.177502127150163
+		 68 32.177502127150163 70 -20.127950193338464 72 -35.217398247142029 73 -30.723634725759251;
 createNode animCurveTA -n "Bony_rFootIKC_rotateY";
 	rename -uid "0FB28EEF-4EBB-F569-B359-72BFD4718707";
 	setAttr ".tan" 2;
@@ -6322,17 +6223,13 @@ createNode animCurveTU -n "Bony_rFootIKC_heelBall";
 	rename -uid "077B4A86-4D22-A71F-EDA9-81B6F96F395D";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 7 ".ktv[0:6]"  0 0 17 0 30 0 34 0 48 0 50 3 54 0;
+	setAttr -s 9 ".ktv[0:8]"  0 0 17 0 30 0 34 0 48 0 49 0 50 3 54 0 73 0;
 createNode animCurveTU -n "Bony_rFootIKC_toeUpDn";
 	rename -uid "F06C5CE1-498A-40A5-44A9-DC927DEE8D6E";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 16 ".ktv[0:15]"  0 0 17 0 30 0 34 0 38 4 40 -5 42 -2 44 0
 		 52 0 54 2 56 2 58 0 62 -4 64 0 68 -4 70 0;
-	setAttr -s 16 ".kit[7:15]"  3 3 2 2 2 2 2 2 
-		2;
-	setAttr -s 16 ".kot[7:15]"  3 3 2 2 2 2 2 2 
-		2;
 createNode animCurveTU -n "Bony_rFootIKC_ballSwivel";
 	rename -uid "EC57B239-4A59-FC1B-FA0D-ECBAAAD83ECB";
 	setAttr ".tan" 2;
@@ -6342,32 +6239,12 @@ createNode animCurveTA -n "Bony_lFootIKC_rotateX";
 	rename -uid "6EAC65CD-4A17-94CE-5BDA-7085954BFB6F";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 23 ".ktv[0:22]"  0 0 4 0 8 189.12584739548075 11 189.12584739548075
+	setAttr -s 24 ".ktv[0:23]"  0 0 4 0 8 189.12584739548075 11 189.12584739548075
 		 17 0 34 0 40 0 42 56.695865639035418 44 52.348850283215242 46 134.81370868678744
 		 48 149.11497539743925 50 138.96538907874111 52 83.498963505814331 54 25.535999645503935
 		 56 25.535999645503935 58 -18.074554426335407 60 -26.653587133608429 62 1.1093146312147879
 		 64 1.1093146312147879 66 1.1093146312147879 68 1.1093146312147879 70 84.276844248987473
-		 72 137.0317927395356;
-	setAttr -s 23 ".kit[6:22]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2;
-	setAttr -s 23 ".kot[6:22]"  1 2 2 2 2 2 2 2 
-		2 2 2 2 2 2 2 2 2;
-	setAttr -s 23 ".kix[6:22]"  1 0.083918049901562375 0.73944453065182691 
-		0.057802382564919041 0.31667896968600451 0.4256782325819396 0.085764599244937512 
-		0.082096062267949688 1 0.10883344586682198 0.48630582642511 0.1694911900886972 1 
-		1 1 0.057315629178611917 0.090137746439475711;
-	setAttr -s 23 ".kiy[6:22]"  0 0.9964726593844504 -0.6732174879554893 
-		0.99832804456742508 0.94853277758789678 -0.90487460032090417 -0.99631542872543888 
-		-0.99662442101330073 0 -0.99405999872279016 -0.8737886719253064 0.98553170242378152 
-		0 0 0 0.9983561081356993 0.99592930806699975;
-	setAttr -s 23 ".kox[6:22]"  0.31923445813674156 0.73944453065182691 
-		0.057802382564919041 0.31667896968600451 0.4256782325819396 0.085764599244937512 
-		0.082096062267949688 1 0.10883344586682198 0.48630582642511 0.1694911900886972 1 
-		1 1 0.057315629178611917 0.090137746439475711 1;
-	setAttr -s 23 ".koy[6:22]"  0.94767576772762363 -0.6732174879554893 
-		0.99832804456742508 0.94853277758789678 -0.90487460032090417 -0.99631542872543888 
-		-0.99662442101330073 0 -0.99405999872279016 -0.8737886719253064 0.98553170242378152 
-		0 0 0 0.9983561081356993 0.99592930806699975 0;
+		 72 137.0317927395356 73 149.11497539743925;
 createNode animCurveTA -n "Bony_lFootIKC_rotateY";
 	rename -uid "C81A53D6-49C8-F833-2FC1-48B793FF459D";
 	setAttr ".tan" 2;
@@ -6403,7 +6280,7 @@ createNode animCurveTU -n "Bony_lFootIKC_toeUpDn";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 15 ".ktv[0:14]"  0 0 4 0 17 0 34 0 40 0 42 2 44 3 46 0 50 -5
-		 52 -3 54 -2 56 0 68 0 70 4 72 0;
+		 52 -3 54 -2 56 0 68 0 70 -4 72 0;
 createNode animCurveTU -n "Bony_lFootIKC_ballSwivel";
 	rename -uid "98CB7F8D-4148-F06B-43A8-D285EA0BE9B1";
 	setAttr ".tan" 2;
@@ -6418,13 +6295,13 @@ createNode animCurveTA -n "Bony_SpineTopIKC_rotateY";
 	rename -uid "EF22F7FA-4361-A75C-2A3A-0C9E3776FFBA";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 13.304176474192332 11 13.304176474192332
+	setAttr -s 28 ".ktv[0:27]"  0 0 2 0 8 13.304176474192332 11 13.304176474192332
 		 17 0 21 -19.309782386945805 24 -19.309782386945805 30 0 34 0 38 16.379813094400497
 		 40 16.58592026563166 42 29.970098629194094 44 42.761067591726217 46 50.258843267660673
 		 48 35.065108143006874 50 20.566688630200563 52 -12.26493839643453 54 -24.649949920481266
 		 56 -36.513069534978001 58 -49.291948704098864 60 -30.455397995828548 62 -10.681878021051229
 		 64 9.6627973471404847 66 26.756901165213261 68 39.149323029128631 70 50.800068667021577
-		 72 41.891837542479735;
+		 72 41.891837542479735 73 35.065108143006874;
 createNode animCurveTA -n "Bony_SpineTopIKC_rotateZ";
 	rename -uid "8998FE42-4E0E-BE37-2E8B-EC809344B0C9";
 	setAttr ".tan" 2;
@@ -6466,7 +6343,6 @@ createNode animCurveTU -n "Bony_rArmSwitchC_SwitchIkFk";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 6 ".ktv[0:5]"  0 1 17 1 21 0 24 0 30 1 34 1;
-	setAttr -s 6 ".kot[0:5]"  5 5 5 5 5 2;
 createNode animCurveTA -n "Bony_lThumbJ2C_rotateX";
 	rename -uid "2F755C3A-4085-AC1E-2077-B584409541F5";
 	setAttr ".tan" 2;
@@ -6487,10 +6363,6 @@ createNode animCurveTU -n "Bony_lArmSwitchC_SwitchIkFk";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr -s 7 ".ktv[0:6]"  0 1 2 1 8 0 11 0 17 1 30 1 34 1;
-	setAttr -s 7 ".kit[4:6]"  1 2 2;
-	setAttr -s 7 ".kot[0:6]"  5 5 5 5 5 2 2;
-	setAttr -s 7 ".kix[4:6]"  1 1 1;
-	setAttr -s 7 ".kiy[4:6]"  0 0 0;
 createNode animCurveTA -n "Bony_lFinger1J3C_rotateX";
 	rename -uid "925E13FE-4689-B1C0-FEAE-A798AC80A04C";
 	setAttr ".tan" 2;
@@ -6544,43 +6416,46 @@ createNode animCurveTA -n "Bony_lElbowFKC_rotateY";
 	rename -uid "CB1E5203-4F62-5BDB-6604-DFA2EF77DAB0";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 23 ".ktv[0:22]"  0 -10.844957439151758 14 -10.844957439151758
+	setAttr -s 24 ".ktv[0:23]"  0 -10.844957439151758 14 -10.844957439151758
 		 18 -42.651280388989164 24 -10.844957439151758 34 -10.844957439151758 38 -50.30549818000987
 		 40 -33.623816637312892 42 -70.036817480616079 44 -51.184979670891451 46 -31.524518767442331
 		 48 -49.705569069308332 50 -37.760655521908312 52 -37.760655521908312 54 -50.103752586210355
 		 56 -35.401445464223457 58 -70.265151208177059 60 -52.208790006130499 62 -52.208790006130499
 		 64 -41.151823048824618 66 -55.684701022738466 68 -68.930099332278459 70 -47.238452820872858
-		 72 -64.893880873110419;
+		 72 -64.893880873110419 73 -49.705569069308332;
 createNode animCurveTA -n "Bony_rClavicleC_rotateX";
 	rename -uid "47D7ED86-4343-9309-867C-138C353543E5";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 26 ".ktv[0:25]"  0 0 2 0 8 -8.6468877006081364 11 -8.6468877006081364
+	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 -8.6468877006081364 11 -8.6468877006081364
 		 17 0 21 -1.1090799578978912 24 -1.1090799578978912 30 0 34 0 40 -16.753172443778794
 		 42 -7.8414169426334315 44 -6.3391951799169064 46 -6.2354662693928704 48 -6.2354662693928704
 		 50 -11.443225273786313 52 -11.277613763859028 54 -11.678865845263761 56 -11.678865845263761
 		 58 -21.307467750265381 60 -20.518864778123614 62 -11.19411553449001 64 -33.654980503064117
-		 66 -29.42072170003701 68 -24.267528144437993 70 -22.432342775512421 72 -22.213091847604115;
+		 66 -29.42072170003701 68 -24.267528144437993 70 -22.432342775512421 72 -22.213091847604115
+		 73 -6.2354662693928704;
 createNode animCurveTA -n "Bony_rClavicleC_rotateY";
 	rename -uid "2467938F-4227-38B4-DBDA-DCA4C1F49582";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 -32.405810071148132 11 -32.405810071148132
+	setAttr -s 28 ".ktv[0:27]"  0 0 2 0 8 -32.405810071148132 11 -32.405810071148132
 		 17 0 21 11.72283792568807 24 11.72283792568807 30 0 34 0 38 -23.530472246590367 40 -35.327506146675063
 		 42 -37.944653805326105 44 -12.985197045284586 46 0.93144078348483172 48 0.93144078348483172
 		 50 -16.370596677986981 52 -1.84234992970377 54 11.980144681515656 56 11.980144681515656
 		 58 16.024776366279902 60 -4.865155511131432 62 -44.212748488021354 64 12.998726872630865
-		 66 -25.287620361524873 68 -21.839294212012444 70 1.2539203769431113 72 -3.4469045072224405;
+		 66 -25.287620361524873 68 -21.839294212012447 70 1.2539203769431113 72 -3.4469045072224405
+		 73 0.93144078348483172;
 createNode animCurveTA -n "Bony_rClavicleC_rotateZ";
 	rename -uid "F82E6A9B-42C2-57F2-A793-49BAB8BE12B8";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 26 ".ktv[0:25]"  0 0 2 0 8 15.842062497618137 11 15.842062497618137
+	setAttr -s 27 ".ktv[0:26]"  0 0 2 0 8 15.842062497618137 11 15.842062497618137
 		 17 0 21 -5.4429220566409882 24 -5.4429220566409882 30 0 34 0 40 27.500675089393191
-		 42 12.624227518419373 44 9.2137146132956147 46 4.6385583658024725 48 4.6385583658024725
+		 42 12.624227518419373 44 9.2137146132956147 46 4.6385583658024734 48 4.6385583658024734
 		 50 22.844231486057581 52 26.791953130142133 54 35.059356147927822 56 35.059356147927822
 		 58 6.7811482043972511 60 14.744547003766236 62 -2.184029589060672 64 12.830140973680766
-		 66 19.124544904018919 68 7.622052930174692 70 -2.4161762216087999 72 -13.826068254343889;
+		 66 19.124544904018919 68 7.622052930174692 70 -2.4161762216087999 72 -13.826068254343889
+		 73 4.6385583658024734;
 createNode animCurveTA -n "Bony_lFinger1J2C_rotateX";
 	rename -uid "9446454F-4E82-E8E9-9B3A-FC9F2E6FBA69";
 	setAttr ".tan" 2;
@@ -6601,8 +6476,9 @@ createNode animCurveTA -n "Bony_Spine03FKC_rotateX";
 	rename -uid "C9D68899-477B-0C13-A4BF-2C90F299ABFD";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 8 ".ktv[0:7]"  0 0 34 0 40 5.4685165666745821 48 5.4685165666745821
-		 50 20.209116294175303 52 5.4685165666745821 62 20.209116294175303 64 5.4685165666745821;
+	setAttr -s 9 ".ktv[0:8]"  0 0 34 0 40 5.4685165666745821 48 5.4685165666745821
+		 50 8.7579319095354062 52 5.4685165666745821 62 11.446185871127938 64 5.4685165666745821
+		 73 5.4685165666745821;
 createNode animCurveTA -n "Bony_Spine03FKC_rotateY";
 	rename -uid "7698524B-4217-E450-E8F9-0A9877806D15";
 	setAttr ".tan" 2;
@@ -6637,8 +6513,8 @@ createNode animCurveTA -n "Bony_HeadC_rotateX";
 	rename -uid "7C400A79-4CED-82F7-B35A-57B0EA540C30";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 9 ".ktv[0:8]"  0 0 34 0 40 0 48 0 50 19.847678643959647
-		 52 0 60 0 62 18.06660836985084 64 0;
+	setAttr -s 10 ".ktv[0:9]"  0 0 34 0 40 0 48 0 50 19.847678643959647
+		 52 0 60 0 62 18.06660836985084 64 0 73 0;
 createNode animCurveTA -n "Bony_HeadC_rotateY";
 	rename -uid "9E3EBAE5-4BD7-0065-8910-2EAB73193614";
 	setAttr ".tan" 2;
@@ -6770,9 +6646,9 @@ createNode animCurveTA -n "Bony_lWristFKC_rotateY";
 	rename -uid "802FF5CA-424B-0771-FFAD-C088E05DD678";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
-	setAttr -s 16 ".ktv[0:15]"  0 0 2 0 17 0 24 0 34 0 38 0 40 -51.038606416295146
+	setAttr -s 17 ".ktv[0:16]"  0 0 2 0 17 0 24 0 34 0 38 0 40 -51.038606416295146
 		 44 0 46 0 48 31.698825535096436 56 31.698825535096436 58 0 60 0 62 37.330373082622486
-		 64 37.330373082622486 66 0;
+		 64 37.330373082622486 66 0 73 31.698825535096436;
 createNode animCurveTA -n "Bony_lWristFKC_rotateZ";
 	rename -uid "9D570D47-48D2-014A-78C7-63954967B064";
 	setAttr ".tan" 2;
@@ -6834,8 +6710,8 @@ createNode animCurveTL -n "Bony_rWristIKC_translateY";
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  18 3.1755217428987841;
 select -ne :time1;
-	setAttr ".o" 35;
-	setAttr ".unw" 35;
+	setAttr ".o" 73;
+	setAttr ".unw" 73;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
