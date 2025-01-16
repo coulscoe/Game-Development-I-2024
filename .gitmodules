@@ -4,6 +4,3 @@
 [submodule "3D_G/Assets/tools"]
 	path = 3D_G/Assets/tools
 	url = https://github.com/coulscoe/ArtisanDream.Tools
-[submodule "Cave/Assets/tools"]
-	path = Cave/Assets/tools
-	url = https://github.com/coulscoe/ArtisanDream.Tools
