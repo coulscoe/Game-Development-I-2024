@@ -12,7 +12,7 @@ public class PlayerJump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // 0 is the left mouse button
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Jump();
         }
