@@ -1,24 +1,29 @@
-using System.Collections;
 using UnityEngine;
 
 public class SimplePlatformController : MonoBehaviour
 {
     public float speed = 5f;
     public float delay = 2f; // Time to wait before starting to move
+    private float elapsedTime = 0f;
+    private bool canMove = false;
 
     void Start()
     {
-        StartCoroutine(MoveOnXAxis());
+        elapsedTime = 0f;
+        canMove = false;
     }
 
-    private IEnumerator MoveOnXAxis()
+    void FixedUpdate()
     {
-        
-        yield return new WaitForSeconds(delay); // Wait for the specified delay
-        while (true)
+        elapsedTime += Time.fixedDeltaTime;
+        if (elapsedTime >= delay)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-            yield return null;
+            canMove = true;
+        }
+
+        if (canMove)
+        {
+            transform.Translate(Vector3.right * speed * Time.fixedDeltaTime);
         }
     }
 }
