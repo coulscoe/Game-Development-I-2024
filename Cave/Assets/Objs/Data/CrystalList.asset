@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b7b65241c1de64cb0ce2658aacbafd, type: 3}
+  m_Name: CrystalList
+  m_EditorClassIdentifier: 
+  vector3List:
+  - {fileID: 11400000, guid: 8328fbe05c233f2418e4b84986555c0b, type: 2}
+  - {fileID: 11400000, guid: 655f12870dea36c4d90cfe0d90e642ea, type: 2}
+  - {fileID: 11400000, guid: 69b4ff844955c1a44a757fdc5755a4ad, type: 2}
+  - {fileID: 11400000, guid: 3fd811a12a3628548b7be9117ebbc2c9, type: 2}
+  - {fileID: 11400000, guid: bd6a08216c35c684caf140a656169182, type: 2}

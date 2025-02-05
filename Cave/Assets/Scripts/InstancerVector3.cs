@@ -2,7 +2,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu]
-public class Instancer : ScriptableObject
+public class InstancerVector3 : ScriptableObject
 {
 
     public GameObject prefab;
