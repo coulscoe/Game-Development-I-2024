@@ -1,6 +1,6 @@
 //Maya ASCII 2025ff03 scene
-//Name: bot_model.ma
-//Last modified: Thu, Feb 06, 2025 07:03:52 PM
+//Name: bot_model_rig.ma
+//Last modified: Thu, Feb 06, 2025 07:04:44 PM
 //Codeset: 1252
 requires maya "2025ff03";
 requires "stereoCamera" "10.0";
@@ -12,7 +12,7 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26100)";
-fileInfo "UUID" "3512ACCF-4AAF-90F8-7B78-34BD0E21852B";
+fileInfo "UUID" "DD42958D-4A23-85E0-5CDA-A88A1B348347";
 createNode transform -s -n "persp";
 	rename -uid "EBB779B0-44CB-7CFD-F701-378E7642E03F";
 	setAttr ".v" no;
@@ -80385,4 +80385,4 @@ connectAttr "groupId616.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId617.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId618.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId619.msg" ":initialShadingGroup.gn" -na;
-// End of bot_model.ma
+// End of bot_model_rig.ma
