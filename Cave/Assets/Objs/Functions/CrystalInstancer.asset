@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec32f4b4608009747876f67f21ad3fbd, type: 3}
-  m_Name: Crystal
+  m_Name: CrystalInstancer
   m_EditorClassIdentifier: 
   prefab: {fileID: 7949354476424059882, guid: 93e687b795adac84c8d797385903e784, type: 3}

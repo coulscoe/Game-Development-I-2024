@@ -71,7 +71,7 @@ MonoBehaviour:
   repeatUntilFalseEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 39d031bbfe16ec34cb2bb89382054fc3, type: 2}
+      - m_Target: {fileID: 11400000, guid: c1c34012497c46f449e3b8beb149c08c, type: 2}
         m_TargetAssemblyTypeName: InstancerVector3, Assembly-CSharp
         m_MethodName: CreateInstanceListRandomly
         m_Mode: 2
