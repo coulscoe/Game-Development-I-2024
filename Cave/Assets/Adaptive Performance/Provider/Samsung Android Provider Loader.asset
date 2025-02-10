@@ -2,14 +2,13 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e259f11b1e8c34e6d99ae3b36e535d88, type: 3}
-  m_Name: V3B
+  m_Script: {fileID: 11500000, guid: 12368ffd90e3c4ac4889486ab7b2aa78, type: 3}
+  m_Name: Samsung Android Provider Loader
   m_EditorClassIdentifier: 
-  value: {x: 15, y: 6, z: 0}

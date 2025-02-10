@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8749065636162561368}
   - component: {fileID: 3257134096607010509}
   - component: {fileID: -5200888017997320609}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: crystal_test_hda13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
