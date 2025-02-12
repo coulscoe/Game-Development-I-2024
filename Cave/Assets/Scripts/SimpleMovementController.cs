@@ -1,22 +1,33 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerJump : MonoBehaviour
 {
     public float jumpForce = 5f;
     public float gravityStrength = 1f;
+    public float jumpDelay = 2f; // Delay before jump can be performed
     public float gravityDelay = 2f; // Delay before gravity starts
     private Rigidbody rb;
     private bool gravityEnabled = false;
+    public UnityEvent startEvent, gravEvent;
+    public Transform playerTransform;
+    public Vector3 newPosition;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; // Disable default gravity
-        StartCoroutine(CheckForJump());
+        startEvent.Invoke();
         StartCoroutine(StartGravityAfterDelay());
+        StartCoroutine(JumpDelay());
     }
-
+    private IEnumerator JumpDelay()
+    {
+        yield return new WaitForSeconds(jumpDelay);
+        StartCoroutine(CheckForJump());
+    }
     private IEnumerator CheckForJump()
     {
         while (true)
@@ -29,12 +40,23 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
+    public void StartMove()
+    {
+        StartCoroutine(MovePosition());
+    }
+    private IEnumerator MovePosition()
+    {
+        playerTransform.position = newPosition;
+        throw new InvalidOperationException();
+    }
     private IEnumerator StartGravityAfterDelay()
     {
+        
         yield return new WaitForSeconds(gravityDelay);
+        gravEvent.Invoke();
         gravityEnabled = true;
+        
     }
-
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);

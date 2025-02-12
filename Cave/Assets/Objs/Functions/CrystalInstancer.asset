@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec32f4b4608009747876f67f21ad3fbd, type: 3}
   m_Name: CrystalInstancer
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7949354476424059882, guid: 93e687b795adac84c8d797385903e784, type: 3}
+  prefab: {fileID: 8785780980760161981, guid: f5d6768e6ee04fc41a039e71feec243c, type: 3}

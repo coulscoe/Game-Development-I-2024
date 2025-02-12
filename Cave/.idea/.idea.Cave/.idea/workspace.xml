@@ -6,9 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/crystal_test_hda13.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/crystal_test_hda13.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/Materials/HEU_DEFAULT_MATERIAL_40_0.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/Materials/HEU_DEFAULT_MATERIAL_40_0.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/Meshes/crystal_test_hda__1.0_meshes.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/Meshes/crystal_test_hda__1.0_meshes.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/crystal_test_hda13.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda13/crystal_test_hda13.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/CrystalList.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Data/CrystalList.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3B.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Data/V3B.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3C.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Data/V3C.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3D.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Data/V3D.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3E.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Data/V3E.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3F.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Data/V3F.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3G.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3G.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3H.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Data/V3H.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Functions/CrystalInstancer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Functions/CrystalInstancer.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Objs/Prefabs/Instancer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Prefabs/Instancer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CoroutineCountingBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CoroutineCountingBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimpleMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimpleMovementController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +37,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Assets/Tools" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Vector3DataList.cs" root0="FORCE_HIGHLIGHTING" />
@@ -32,20 +53,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Unity.exe" />
@@ -123,6 +144,7 @@
       <workItem from="1739163946811" duration="2664000" />
       <workItem from="1739223426114" duration="76000" />
       <workItem from="1739223617032" duration="716000" />
+      <workItem from="1739324980629" duration="4321000" />
     </task>
     <servers />
   </component>
