@@ -20,7 +20,9 @@ public class PlayerJump : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false; // Disable default gravity
         startEvent.Invoke();
-        StartCoroutine(StartGravityAfterDelay());
+    }
+    public void startJumpDelay()
+    {
         StartCoroutine(JumpDelay());
     }
     private IEnumerator JumpDelay()
@@ -48,6 +50,10 @@ public class PlayerJump : MonoBehaviour
     {
         playerTransform.position = newPosition;
         throw new InvalidOperationException();
+    }
+    public void startingGravityAfterDelay()
+    {
+        StartCoroutine(StartGravityAfterDelay());
     }
     private IEnumerator StartGravityAfterDelay()
     {

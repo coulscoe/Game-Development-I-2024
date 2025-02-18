@@ -10,8 +10,8 @@ def group_tool():
             base_name=sel.rpartition('_')[0]
         else:
             base_name=sel
-        ctrl_name = f'{base_name}_Ctrl'
-        group_name = f'{ctrl_name}_Grp'
+        ctrl_name = f'{base_name}_ctrl'
+        group_name = f'{ctrl_name}_grp'
         # creates group and moves and rotates it to the joint
         obj_group = cmds.group( empty=True, name=group_name)
         cmds.xform(obj_group, ws=True, t=position)
