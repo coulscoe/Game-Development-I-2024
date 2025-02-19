@@ -10,7 +10,7 @@ public class PlayerJump : MonoBehaviour
     public float jumpDelay = 2f; // Delay before jump can be performed
     public float gravityDelay = 2f; // Delay before gravity starts
     private Rigidbody rb;
-    private bool gravityEnabled = false;
+    public bool gravityEnabled { get; set; } = false;
     public UnityEvent startEvent, gravEvent;
     public Transform playerTransform;
     public Vector3 newPosition;
@@ -21,15 +21,18 @@ public class PlayerJump : MonoBehaviour
         rb.useGravity = false; // Disable default gravity
         startEvent.Invoke();
     }
+
     public void startJumpDelay()
     {
         StartCoroutine(JumpDelay());
     }
+
     private IEnumerator JumpDelay()
     {
         yield return new WaitForSeconds(jumpDelay);
         StartCoroutine(CheckForJump());
     }
+
     private IEnumerator CheckForJump()
     {
         while (true)
@@ -46,23 +49,26 @@ public class PlayerJump : MonoBehaviour
     {
         StartCoroutine(MovePosition());
     }
+
     private IEnumerator MovePosition()
     {
         playerTransform.position = newPosition;
-        throw new InvalidOperationException();
+        yield return null;
     }
+
     public void startingGravityAfterDelay()
     {
+        gravityEnabled = false;
         StartCoroutine(StartGravityAfterDelay());
     }
+
     private IEnumerator StartGravityAfterDelay()
     {
-        
         yield return new WaitForSeconds(gravityDelay);
         gravEvent.Invoke();
         gravityEnabled = true;
-        
     }
+
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
@@ -74,6 +80,10 @@ public class PlayerJump : MonoBehaviour
         {
             Vector3 customGravity = new Vector3(0, -9.81f * gravityStrength, 0);
             rb.AddForce(customGravity, ForceMode.Acceleration);
+        }
+        else
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
     }
 }

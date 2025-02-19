@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/crystal_test_hda2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/crystal_test_hda2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/Materials/HEU_DEFAULT_MATERIAL_7_0.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/Materials/HEU_DEFAULT_MATERIAL_7_0.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/Meshes/crystal_test_hda__1.0_meshes.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/Meshes/crystal_test_hda__1.0_meshes.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/crystal_test_hda2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/crystal_test_hda2/crystal_test_hda2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objs/Functions/CrystalInstancer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objs/Functions/CrystalInstancer.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimpleMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimpleMovementController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimplePlatformController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimplePlatformController.cs" afterDir="false" />
@@ -19,7 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Assets/Tools" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Vector3DataList.cs" root0="FORCE_HIGHLIGHTING" />
@@ -35,20 +44,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.42f1\Editor\Unity.exe" />
@@ -129,6 +138,8 @@
       <workItem from="1739324980629" duration="4321000" />
       <workItem from="1739901309460" duration="8000" />
       <workItem from="1739901756697" duration="7453000" />
+      <workItem from="1739927096600" duration="3501000" />
+      <workItem from="1739935083897" duration="3723000" />
     </task>
     <servers />
   </component>
