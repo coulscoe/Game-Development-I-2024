@@ -1,6 +1,6 @@
 //Maya ASCII 2025ff03 scene
 //Name: RK_student_lamp_anim.ma
-//Last modified: Mon, Feb 24, 2025 11:50:00 AM
+//Last modified: Mon, Feb 24, 2025 05:15:05 PM
 //Codeset: 1252
 file -rdi 1 -ns "RK_Lamp_Model" -rfn "RK_Lamp_ModelRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_intro_rigging/Scenes//Lamp/RK_Lamp_Model.ma";
@@ -16,7 +16,7 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26100)";
-fileInfo "UUID" "9FA29E9F-489E-221B-1043-C3B136E810C1";
+fileInfo "UUID" "B6AA3A26-452C-6D14-BF1E-03AC3B00A1B0";
 createNode transform -s -n "persp";
 	rename -uid "5353E08B-449D-5826-3600-BA82EBC05A1A";
 	setAttr ".v" no;
@@ -879,8 +879,8 @@ createNode camera -n "main_cameraShape" -p "main_camera";
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode lightLinker -s -n "lightLinker1";
 	rename -uid "DFDA5472-49EE-5C08-AFC0-D582C5A31233";
-	setAttr -s 3 ".lnk";
-	setAttr -s 3 ".slnk";
+	setAttr -s 4 ".lnk";
+	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
 	rename -uid "8381C16C-4008-ACD5-57A3-C8A1C381239C";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
@@ -900,6 +900,7 @@ createNode renderLayer -n "defaultRenderLayer";
 	setAttr ".g" yes;
 createNode reference -n "RK_Lamp_ModelRN";
 	rename -uid "193BE0C8-42E8-381B-F498-E2ADD6D3AE9C";
+	setAttr ".fn[0]" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_intro_rigging/Scenes//Lamp/RK_Lamp_Model.ma";
 	setAttr -s 34 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
@@ -1119,7 +1120,7 @@ createNode reference -n "RK_Lamp_ModelRN";
 		2 "|RK_Lamp_Model:Lamp|RK_Lamp_Model:Skeleton|RK_Lamp_Model:ROOT_Jnt|RK_Lamp_Model:Transform_Jnt|RK_Lamp_Model:COG_Jnt|RK_Lamp_Model:Lower_Arm_FK_Jnt|RK_Lamp_Model:Lower_Arm_FK_Jnt_scaleConstraint1" 
 		"scaleZ" " -k 0"
 		2 "|RK_Lamp_Model:Lamp|RK_Lamp_Model:Skeleton|RK_Lamp_Model:ROOT_Jnt|RK_Lamp_Model:Transform_Jnt|RK_Lamp_Model:COG_Jnt|RK_Lamp_Model:Lower_Arm_IK_Jnt" 
-		"rotate" " -type \"double3\" 7.3774152537589079e-07 9.5582232648308524e-07 0"
+		"rotate" " -type \"double3\" 7.3774152537589037e-07 9.5582232648308567e-07 0"
 		2 "|RK_Lamp_Model:Lamp|RK_Lamp_Model:Skeleton|RK_Lamp_Model:ROOT_Jnt|RK_Lamp_Model:Transform_Jnt|RK_Lamp_Model:COG_Jnt|RK_Lamp_Model:Lower_Arm_IK_Jnt" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|RK_Lamp_Model:Lamp|RK_Lamp_Model:Skeleton|RK_Lamp_Model:ROOT_Jnt|RK_Lamp_Model:Transform_Jnt|RK_Lamp_Model:COG_Jnt|RK_Lamp_Model:Lower_Arm_IK_Jnt|RK_Lamp_Model:Upper_Arm_IK_Jnt" 
@@ -1586,6 +1587,10 @@ createNode animCurveTU -n "COG_Ctrl_scaleZ";
 	setAttr ".tan" 2;
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  0 1;
+createNode reference -n "sharedReferenceNode";
+	rename -uid "31A2FF13-4455-7B45-6D8C-ABB947F2437C";
+	setAttr ".ed" -type "dataReferenceEdits" 
+		"sharedReferenceNode";
 select -ne :time1;
 	setAttr ".o" 160;
 	setAttr ".unw" 160;
@@ -1674,6 +1679,7 @@ relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defau
 relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
+connectAttr "sharedReferenceNode.sr" "RK_Lamp_ModelRN.sr";
 connectAttr "layerManager.dli[1]" "Ground_and_puddle.id";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "pCubeShape2.iog" ":initialShadingGroup.dsm" -na;
