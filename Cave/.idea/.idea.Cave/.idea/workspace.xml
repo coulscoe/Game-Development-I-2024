@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="" />
+    <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Working/object_couls.final_crystal_da.1.0.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/heu_session.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/beauty_exterior_light_comp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/emission_exterior_light_comp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/shadow_matte_exterior_light_comp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/specular_exterior_light_comp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maya_Files/2025_intro_rigging/bot_model_rig.ma" beforeDir="false" afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_rigging/bot_model_rig.ma" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,6 +138,7 @@
       <workItem from="1740535607021" duration="42000" />
       <workItem from="1740535663027" duration="43000" />
       <workItem from="1740538159065" duration="611000" />
+      <workItem from="1741147078708" duration="591000" />
     </task>
     <servers />
   </component>
