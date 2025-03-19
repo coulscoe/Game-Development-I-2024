@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Working/object_couls.final_crystal_da.1.0.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/heu_session.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/beauty_exterior_light_comp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/emission_exterior_light_comp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/shadow_matte_exterior_light_comp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_to_comp/Exterior_light/images/specular_exterior_light_comp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Maya_Files/2025_intro_rigging/bot_model_rig.ma" beforeDir="false" afterPath="$PROJECT_DIR$/../Maya_Files/2025_intro_rigging/bot_model_rig.ma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Assets/Tools" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Vector3DataList.cs" root0="FORCE_HIGHLIGHTING" />
@@ -38,7 +33,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;bc0ae433&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -139,6 +134,9 @@
       <workItem from="1740535663027" duration="43000" />
       <workItem from="1740538159065" duration="611000" />
       <workItem from="1741147078708" duration="591000" />
+      <workItem from="1742358410378" duration="300000" />
+      <workItem from="1742358738647" duration="37000" />
+      <workItem from="1742358800117" duration="71000" />
     </task>
     <servers />
   </component>
