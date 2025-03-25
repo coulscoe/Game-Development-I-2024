@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 631d7d670cb044b3886e9bb5e37c12a3, type: 3}
+  m_Name: Red_mat
+  m_EditorClassIdentifier: 
+  value: {fileID: 2100000, guid: 4e9304b6880dbca45acc5683fd3a9ac8, type: 2}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
