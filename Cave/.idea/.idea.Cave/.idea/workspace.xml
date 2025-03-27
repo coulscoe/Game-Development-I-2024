@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/final_crystal_da1/final_crystal_da1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HoudiniEngineAssetCache/Baked/final_crystal_da1/final_crystal_da1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-    </list>
+    <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +139,7 @@
       <workItem from="1742945988843" duration="144000" />
       <workItem from="1742946192228" duration="936000" />
       <workItem from="1742947636256" duration="980000" />
-      <workItem from="1742952300222" duration="374000" />
+      <workItem from="1742952300222" duration="961000" />
     </task>
     <servers />
   </component>
