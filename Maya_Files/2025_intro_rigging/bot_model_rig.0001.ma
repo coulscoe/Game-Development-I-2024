@@ -1,6 +1,6 @@
 //Maya ASCII 2025ff03 scene
 //Name: bot_model_rig.0001.ma
-//Last modified: Thu, Mar 27, 2025 06:37:00 PM
+//Last modified: Thu, Mar 27, 2025 06:42:07 PM
 //Codeset: 1252
 requires maya "2025ff03";
 requires "stereoCamera" "10.0";
@@ -12,12 +12,12 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26100)";
-fileInfo "UUID" "AC45F954-4D82-1F86-EB11-008D47DEE69B";
+fileInfo "UUID" "565A82D5-448E-3ED7-3965-848B4EDD9F54";
 createNode transform -s -n "persp";
 	rename -uid "EBB779B0-44CB-7CFD-F701-378E7642E03F";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 9.331946240262015 9.7463749213883091 27.484011049098115 ;
-	setAttr ".r" -type "double3" -12.738497804387222 -5749.2004588504442 -0.0007677133365658641 ;
+	setAttr ".t" -type "double3" 2.8607206330180794 8.8296243555397567 28.173437113754201 ;
+	setAttr ".r" -type "double3" -10.938327614928555 -5762.0004588493102 -0.00075457605327760473 ;
 	setAttr ".rp" -type "double3" 0 -4.4408920985006262e-16 0 ;
 	setAttr ".rpt" -type "double3" -1.9001113671653646e-15 -1.1080931111936547e-15 4.5561621913187384e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
