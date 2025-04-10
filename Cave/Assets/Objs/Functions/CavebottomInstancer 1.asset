@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec32f4b4608009747876f67f21ad3fbd, type: 3}
   m_Name: CavebottomInstancer 1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1811104339819847726, guid: f309001373a207c4bbc6a27ca7ea2f04, type: 3}
+  prefab: {fileID: 7985611591290376809, guid: 3766a6ed7d923c041bc52be34fb2412f, type: 3}

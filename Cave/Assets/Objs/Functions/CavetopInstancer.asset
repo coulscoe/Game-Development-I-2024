@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec32f4b4608009747876f67f21ad3fbd, type: 3}
   m_Name: CavetopInstancer
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1811104339819847726, guid: 7fea6832e17167149889dc6ae5c35e9e, type: 3}
+  prefab: {fileID: 7985611591290376809, guid: 6413a9d634c7c524ba9b463e6af1204f, type: 3}

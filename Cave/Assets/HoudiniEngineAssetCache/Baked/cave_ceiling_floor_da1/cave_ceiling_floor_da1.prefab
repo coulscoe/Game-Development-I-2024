@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33e92b43689542cbba2b63d5a00d04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 3
+  seconds: 15
   useTrigger: 0
 --- !u!114 &5276006787547904318
 MonoBehaviour:
