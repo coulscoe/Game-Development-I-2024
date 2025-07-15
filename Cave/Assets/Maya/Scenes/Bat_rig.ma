@@ -1,6 +1,6 @@
 //Maya ASCII 2025ff03 scene
 //Name: Bat_rig.ma
-//Last modified: Sat, Jul 12, 2025 10:01:05 PM
+//Last modified: Mon, Jul 14, 2025 05:17:35 PM
 //Codeset: 1252
 requires maya "2025ff03";
 requires "stereoCamera" "10.0";
@@ -13,18 +13,18 @@ fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26100)";
-fileInfo "UUID" "359156F4-4394-7AFC-89E6-B387FF626C2B";
+fileInfo "UUID" "B6DC496F-4145-0B57-34A9-5F8515EF1490";
 createNode transform -s -n "persp";
 	rename -uid "A9ABE06B-490B-E3D1-82F9-868263ABE097";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 4.0780341949549825 -8.1265438611991243 20.870181148348617 ;
-	setAttr ".r" -type "double3" 1480.1999999999935 -1451.199999999907 -8.1057596367142569e-16 ;
+	setAttr ".t" -type "double3" -65.840187077009531 75.746686612645519 15.422454743917324 ;
+	setAttr ".r" -type "double3" 671.99999999999682 -3685.1999999998143 3.8009520258663728e-14 ;
 	setAttr ".rpt" -type "double3" -1.2515574084653486e-14 1.8322923207560271e-14 -3.7445302728799107e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "1678D787-402B-84A3-04C1-84AE8ECD688B";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
-	setAttr ".coi" 19.126306979279878;
+	setAttr ".coi" 97.354927182583026;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -33,14 +33,14 @@ createNode camera -s -n "perspShape" -p "persp";
 createNode transform -s -n "top";
 	rename -uid "0915B341-4396-93D0-8524-2C868FDE84C6";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 18.405649841735926 1000.1 6.8870354972681218 ;
+	setAttr ".t" -type "double3" 2.0547203979911046 1000.1 9.4386764942197097 ;
 	setAttr ".r" -type "double3" -90 0 0 ;
 createNode camera -s -n "topShape" -p "top";
 	rename -uid "D1096D8E-4492-DB32-B9F3-51B30CE5A50E";
 	setAttr -k off ".v" no;
 	setAttr ".rnd" no;
 	setAttr ".coi" 1000.1;
-	setAttr ".ow" 81.8919652487739;
+	setAttr ".ow" 32.989609517380337;
 	setAttr ".imn" -type "string" "top";
 	setAttr ".den" -type "string" "top_depth";
 	setAttr ".man" -type "string" "top_mask";
@@ -83,14 +83,14 @@ createNode camera -s -n "sideShape" -p "side";
 createNode transform -n "bottom";
 	rename -uid "3996B2E5-4959-0F03-C5FD-3A9589B765AF";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -0.18672904440248272 -1000.1 15.191761215100707 ;
+	setAttr ".t" -type "double3" 32.839500211800505 -1000.1 6.9814952401205108 ;
 	setAttr ".r" -type "double3" 90 0 0 ;
 createNode camera -n "bottomShape" -p "bottom";
 	rename -uid "EB8E5CE7-4933-F5FB-F762-B7BE2AD0171C";
 	setAttr -k off ".v";
 	setAttr ".rnd" no;
 	setAttr ".coi" 1000.1;
-	setAttr ".ow" 13.511567423972902;
+	setAttr ".ow" 54.345844047735362;
 	setAttr ".imn" -type "string" "bottom1";
 	setAttr ".den" -type "string" "bottom1_depth";
 	setAttr ".man" -type "string" "bottom1_mask";
@@ -117,13 +117,13 @@ createNode mesh -n "bat_geoShape" -p "bat_geo";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
-	setAttr ".pv" -type "double2" 0.5792972594499588 0.46787819266319275 ;
+	setAttr ".pv" -type "double2" 0.5 0.5 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 461 ".pt";
+	setAttr -s 445 ".pt";
 	setAttr ".pt[635]" -type "float3" 9.5367432e-07 0 0 ;
 	setAttr ".pt[637]" -type "float3" 9.5367432e-07 0 0 ;
 	setAttr ".pt[639]" -type "float3" -9.5367432e-07 9.5367432e-07 0 ;
@@ -261,8 +261,6 @@ createNode mesh -n "bat_geoShape" -p "bat_geo";
 	setAttr ".pt[1045]" -type "float3" 2.3841858e-07 -2.3841858e-07 0 ;
 	setAttr ".pt[1046]" -type "float3" 4.7683716e-07 -2.9802322e-08 0 ;
 	setAttr ".pt[1047]" -type "float3" 0 9.6857548e-08 0 ;
-	setAttr ".pt[1048]" -type "float3" 4.7683716e-07 -2.3841858e-07 0 ;
-	setAttr ".pt[1049]" -type "float3" 1.1920929e-07 1.1920929e-07 0 ;
 	setAttr ".pt[1050]" -type "float3" 1.7881393e-07 0 0 ;
 	setAttr ".pt[1051]" -type "float3" 2.3841858e-07 2.3841858e-07 0 ;
 	setAttr ".pt[1052]" -type "float3" -2.3841858e-07 -1.1920929e-07 0 ;
@@ -271,270 +269,6 @@ createNode mesh -n "bat_geoShape" -p "bat_geo";
 	setAttr ".pt[1055]" -type "float3" -2.3841858e-07 0 0 ;
 	setAttr ".pt[1056]" -type "float3" 2.3841858e-07 -4.4703484e-08 0 ;
 	setAttr ".pt[1057]" -type "float3" -5.9604645e-08 0 0 ;
-	setAttr ".pt[1058]" -type "float3" 0 2.3841858e-07 0 ;
-	setAttr ".pt[1059]" -type "float3" -5.9604645e-08 -4.7683716e-07 0 ;
-	setAttr ".pt[1060]" -type "float3" 5.9604645e-08 4.7683716e-07 0 ;
-	setAttr ".pt[1061]" -type "float3" 2.9802322e-08 -3.5762787e-07 0 ;
-	setAttr ".pt[1062]" -type "float3" -1.1920929e-07 1.1920929e-07 0 ;
-	setAttr ".pt[1064]" -type "float3" -1.1920929e-07 0 0 ;
-	setAttr ".pt[1065]" -type "float3" 1.1920929e-07 -5.9604645e-08 0 ;
-	setAttr ".pt[1066]" -type "float3" 0 -9.5367432e-07 0 ;
-	setAttr ".pt[1067]" -type "float3" 0 9.5367432e-07 0 ;
-	setAttr ".pt[1068]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1069]" -type "float3" -2.3841858e-07 -1.7881393e-07 0 ;
-	setAttr ".pt[1070]" -type "float3" 4.7683716e-07 1.1920929e-07 0 ;
-	setAttr ".pt[1071]" -type "float3" 4.7683716e-07 2.3841858e-07 0 ;
-	setAttr ".pt[1072]" -type "float3" 4.7683716e-07 -4.7683716e-07 0 ;
-	setAttr ".pt[1073]" -type "float3" 0 2.3841858e-07 0 ;
-	setAttr ".pt[1074]" -type "float3" 0 -7.1525574e-07 0 ;
-	setAttr ".pt[1075]" -type "float3" 2.3841858e-07 0 0 ;
-	setAttr ".pt[1076]" -type "float3" -2.3841858e-07 -4.7683716e-07 0 ;
-	setAttr ".pt[1077]" -type "float3" -2.3841858e-07 4.7683716e-07 0 ;
-	setAttr ".pt[1078]" -type "float3" 2.3841858e-07 4.7683716e-07 0 ;
-	setAttr ".pt[1079]" -type "float3" 0 4.7683716e-07 0 ;
-	setAttr ".pt[1080]" -type "float3" 2.3841858e-07 0 0 ;
-	setAttr ".pt[1081]" -type "float3" 2.3841858e-07 7.1525574e-07 0 ;
-	setAttr ".pt[1082]" -type "float3" -4.7683716e-07 0 0 ;
-	setAttr ".pt[1084]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1087]" -type "float3" 4.7683716e-07 2.3841858e-07 0 ;
-	setAttr ".pt[1088]" -type "float3" -4.7683716e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1089]" -type "float3" 4.7683716e-07 0 0 ;
-	setAttr ".pt[1090]" -type "float3" -4.7683716e-07 4.7683716e-07 0 ;
-	setAttr ".pt[1091]" -type "float3" -4.7683716e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1092]" -type "float3" -1.4305115e-06 0 0 ;
-	setAttr ".pt[1093]" -type "float3" -4.7683716e-07 -4.7683716e-07 0 ;
-	setAttr ".pt[1094]" -type "float3" -4.7683716e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1095]" -type "float3" 9.5367432e-07 0 0 ;
-	setAttr ".pt[1096]" -type "float3" -4.7683716e-07 0 0 ;
-	setAttr ".pt[1097]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1098]" -type "float3" 4.7683716e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1100]" -type "float3" -4.7683716e-07 4.7683716e-07 0 ;
-	setAttr ".pt[1101]" -type "float3" 4.7683716e-07 -4.7683716e-07 0 ;
-	setAttr ".pt[1103]" -type "float3" 9.5367432e-07 0 0 ;
-	setAttr ".pt[1104]" -type "float3" 9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1105]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1106]" -type "float3" -1.9073486e-06 -9.5367432e-07 0 ;
-	setAttr ".pt[1107]" -type "float3" 9.5367432e-07 -1.9073486e-06 0 ;
-	setAttr ".pt[1108]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1109]" -type "float3" 9.5367432e-07 2.8610229e-06 0 ;
-	setAttr ".pt[1110]" -type "float3" 2.8610229e-06 -9.5367432e-07 0 ;
-	setAttr ".pt[1111]" -type "float3" 9.5367432e-07 0 0 ;
-	setAttr ".pt[1112]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1113]" -type "float3" 0 -9.5367432e-07 0 ;
-	setAttr ".pt[1114]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1115]" -type "float3" 0 -9.5367432e-07 0 ;
-	setAttr ".pt[1116]" -type "float3" 0 -9.5367432e-07 0 ;
-	setAttr ".pt[1118]" -type "float3" 0 9.5367432e-07 0 ;
-	setAttr ".pt[1119]" -type "float3" 9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1120]" -type "float3" -9.5367432e-07 -2.8610229e-06 0 ;
-	setAttr ".pt[1122]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1123]" -type "float3" 1.9073486e-06 9.5367432e-07 0 ;
-	setAttr ".pt[1124]" -type "float3" -9.5367432e-07 -2.8610229e-06 0 ;
-	setAttr ".pt[1125]" -type "float3" 9.5367432e-07 -1.9073486e-06 0 ;
-	setAttr ".pt[1126]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1127]" -type "float3" -9.5367432e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1128]" -type "float3" 0 9.5367432e-07 0 ;
-	setAttr ".pt[1129]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1130]" -type "float3" -1.9073486e-06 9.5367432e-07 0 ;
-	setAttr ".pt[1131]" -type "float3" 1.9073486e-06 -2.8610229e-06 0 ;
-	setAttr ".pt[1132]" -type "float3" 9.5367432e-07 2.8610229e-06 0 ;
-	setAttr ".pt[1133]" -type "float3" 0 -9.5367432e-07 0 ;
-	setAttr ".pt[1134]" -type "float3" 9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1135]" -type "float3" 9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1136]" -type "float3" -9.5367432e-07 3.8146973e-06 0 ;
-	setAttr ".pt[1137]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1138]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1139]" -type "float3" 2.8610229e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1140]" -type "float3" -9.5367432e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1141]" -type "float3" -9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1142]" -type "float3" -1.9073486e-06 -2.8610229e-06 0 ;
-	setAttr ".pt[1143]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1144]" -type "float3" -9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1145]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1146]" -type "float3" 9.5367432e-07 9.5367432e-07 0 ;
-	setAttr ".pt[1147]" -type "float3" 9.5367432e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1148]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1149]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1150]" -type "float3" -9.5367432e-07 1.9073486e-06 0 ;
-	setAttr ".pt[1151]" -type "float3" -9.5367432e-07 0 0 ;
-	setAttr ".pt[1152]" -type "float3" 9.5367432e-07 1.9073486e-06 0 ;
-	setAttr ".pt[1153]" -type "float3" 9.5367432e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1154]" -type "float3" 0 9.5367432e-07 0 ;
-	setAttr ".pt[1156]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1157]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1158]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1159]" -type "float3" 9.5367432e-07 -9.5367432e-07 0 ;
-	setAttr ".pt[1160]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1161]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1162]" -type "float3" 3.8146973e-06 0 0 ;
-	setAttr ".pt[1163]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1164]" -type "float3" 9.5367432e-07 -1.9073486e-06 0 ;
-	setAttr ".pt[1165]" -type "float3" -9.5367432e-07 1.9073486e-06 0 ;
-	setAttr ".pt[1166]" -type "float3" 0 -5.7220459e-06 0 ;
-	setAttr ".pt[1167]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1168]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1170]" -type "float3" 9.5367432e-07 0 0 ;
-	setAttr ".pt[1171]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1172]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1173]" -type "float3" 9.5367432e-07 3.8146973e-06 0 ;
-	setAttr ".pt[1175]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1176]" -type "float3" -1.9073486e-06 5.7220459e-06 0 ;
-	setAttr ".pt[1177]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1178]" -type "float3" 3.8146973e-06 3.8146973e-06 0 ;
-	setAttr ".pt[1179]" -type "float3" 1.9073486e-06 5.7220459e-06 0 ;
-	setAttr ".pt[1180]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1181]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1182]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1183]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1184]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1185]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1186]" -type "float3" 1.9073486e-06 0 0 ;
-	setAttr ".pt[1188]" -type "float3" 1.9073486e-06 5.7220459e-06 0 ;
-	setAttr ".pt[1190]" -type "float3" 3.8146973e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1191]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1192]" -type "float3" 3.8146973e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1193]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1194]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1195]" -type "float3" -1.9073486e-06 7.6293945e-06 0 ;
-	setAttr ".pt[1196]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1197]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1198]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1200]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1201]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1202]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1203]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1204]" -type "float3" 0 -5.7220459e-06 0 ;
-	setAttr ".pt[1205]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1206]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1208]" -type "float3" 3.8146973e-06 0 0 ;
-	setAttr ".pt[1211]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1212]" -type "float3" -3.8146973e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1213]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1214]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1215]" -type "float3" 1.9073486e-06 0 0 ;
-	setAttr ".pt[1216]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1217]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1218]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1219]" -type "float3" 1.9073486e-06 7.6293945e-06 0 ;
-	setAttr ".pt[1220]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1221]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1222]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1223]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1224]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1225]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1227]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1228]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1229]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1231]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1232]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1233]" -type "float3" 1.9073486e-06 5.7220459e-06 0 ;
-	setAttr ".pt[1234]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1235]" -type "float3" -3.8146973e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1236]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1237]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1239]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1240]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1241]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1242]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1243]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1245]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1246]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1247]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1248]" -type "float3" 0 7.6293945e-06 0 ;
-	setAttr ".pt[1249]" -type "float3" 0 5.7220459e-06 0 ;
-	setAttr ".pt[1250]" -type "float3" 0 5.7220459e-06 0 ;
-	setAttr ".pt[1251]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1252]" -type "float3" -5.7220459e-06 3.8146973e-06 0 ;
-	setAttr ".pt[1253]" -type "float3" -3.8146973e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1254]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1255]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1256]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1257]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1258]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1259]" -type "float3" 0 -5.7220459e-06 0 ;
-	setAttr ".pt[1260]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1261]" -type "float3" 3.8146973e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1262]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1263]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1264]" -type "float3" -3.8146973e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1265]" -type "float3" 5.7220459e-06 -7.6293945e-06 0 ;
-	setAttr ".pt[1266]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1267]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1268]" -type "float3" 3.8146973e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1269]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1270]" -type "float3" -3.8146973e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1271]" -type "float3" 1.9073486e-06 3.8146973e-06 0 ;
-	setAttr ".pt[1272]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1273]" -type "float3" -3.8146973e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1274]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1275]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1276]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1277]" -type "float3" -3.8146973e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1278]" -type "float3" 1.9073486e-06 0 0 ;
-	setAttr ".pt[1279]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1280]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1281]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1282]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1283]" -type "float3" -3.8146973e-06 7.6293945e-06 0 ;
-	setAttr ".pt[1285]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1286]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1287]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1288]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1289]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1290]" -type "float3" -3.8146973e-06 3.8146973e-06 0 ;
-	setAttr ".pt[1291]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1292]" -type "float3" -3.8146973e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1293]" -type "float3" 1.9073486e-06 0 0 ;
-	setAttr ".pt[1294]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1295]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1296]" -type "float3" 3.8146973e-06 -5.7220459e-06 0 ;
-	setAttr ".pt[1298]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1299]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1300]" -type "float3" -1.9073486e-06 7.6293945e-06 0 ;
-	setAttr ".pt[1302]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1303]" -type "float3" 0 -7.6293945e-06 0 ;
-	setAttr ".pt[1304]" -type "float3" -1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1305]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1306]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1308]" -type "float3" 0 -1.9073486e-06 0 ;
-	setAttr ".pt[1309]" -type "float3" -3.8146973e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1310]" -type "float3" -5.7220459e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1311]" -type "float3" -1.9073486e-06 3.8146973e-06 0 ;
-	setAttr ".pt[1314]" -type "float3" 1.9073486e-06 -5.7220459e-06 0 ;
-	setAttr ".pt[1315]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1316]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1317]" -type "float3" 1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1318]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1319]" -type "float3" -3.8146973e-06 5.7220459e-06 0 ;
-	setAttr ".pt[1321]" -type "float3" 3.8146973e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1322]" -type "float3" 1.9073486e-06 -7.6293945e-06 0 ;
-	setAttr ".pt[1323]" -type "float3" 1.9073486e-06 0 0 ;
-	setAttr ".pt[1324]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1325]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1327]" -type "float3" -3.8146973e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1328]" -type "float3" 0 5.7220459e-06 0 ;
-	setAttr ".pt[1330]" -type "float3" 0 3.8146973e-06 0 ;
-	setAttr ".pt[1331]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1332]" -type "float3" -3.8146973e-06 -5.7220459e-06 0 ;
-	setAttr ".pt[1333]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1334]" -type "float3" -1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1336]" -type "float3" 0 -3.8146973e-06 0 ;
-	setAttr ".pt[1337]" -type "float3" 1.9073486e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1338]" -type "float3" 3.8146973e-06 1.9073486e-06 0 ;
-	setAttr ".pt[1339]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1340]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1341]" -type "float3" -1.9073486e-06 0 0 ;
-	setAttr ".pt[1343]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1344]" -type "float3" 1.9073486e-06 -5.7220459e-06 0 ;
-	setAttr ".pt[1345]" -type "float3" 0 -5.7220459e-06 0 ;
-	setAttr ".pt[1346]" -type "float3" 0 -5.7220459e-06 0 ;
-	setAttr ".pt[1347]" -type "float3" 3.8146973e-06 0 0 ;
-	setAttr ".pt[1348]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
-	setAttr ".pt[1349]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1351]" -type "float3" 0 1.9073486e-06 0 ;
-	setAttr ".pt[1353]" -type "float3" 1.9073486e-06 3.8146973e-06 0 ;
-	setAttr ".pt[1354]" -type "float3" -1.9073486e-06 -3.8146973e-06 0 ;
-	setAttr ".pt[1355]" -type "float3" 1.9073486e-06 -1.9073486e-06 0 ;
 	setAttr ".vcs" 2;
 createNode mesh -n "bat_geoShapeOrig" -p "bat_geo";
 	rename -uid "FB586DA7-4D06-B92C-FCC6-CD9A4625E172";
@@ -5479,6 +5213,18 @@ createNode transform -n "joints" -p "Bat_rig";
 createNode joint -n "COG" -p "joints";
 	rename -uid "1D7F8F59-4AEF-FBD6-2CEE-A68097A019C9";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
+	setAttr ".t" -type "double3" -0.38755810260772705 1.2594267129898071 4.2659549713134766 ;
+	setAttr -av ".tx";
+	setAttr -av ".ty";
+	setAttr -av ".tz";
+	setAttr ".r" -type "double3" 0 0 0 ;
+	setAttr -av ".rx";
+	setAttr -av ".ry";
+	setAttr -av ".rz";
+	setAttr ".s" -type "double3" 1 1 1 ;
+	setAttr -av ".sx";
+	setAttr -av ".sy";
+	setAttr -av ".sz";
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".jot" -type "string" "none";
@@ -5488,10 +5234,6 @@ createNode joint -n "R_wing_01_jnt" -p "COG";
 	rename -uid "0E2F889C-4AC4-3D81-AA45-AD857A34A990";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
 	setAttr ".uoc" 1;
-	setAttr ".r" -type "double3" 0 0 0 ;
-	setAttr -av ".rx";
-	setAttr -av ".ry";
-	setAttr -av ".rz";
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".jo" -type "double3" 24.130539596511198 -19.856525046409928 171.57067797158913 ;
@@ -5505,10 +5247,6 @@ createNode joint -n "R_wing_02_jnt" -p "R_wing_01_jnt";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
 	setAttr ".uoc" 1;
 	setAttr ".oc" 1;
-	setAttr ".r" -type "double3" 0 0 0 ;
-	setAttr -av ".rx";
-	setAttr -av ".ry";
-	setAttr -av ".rz";
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".jo" -type "double3" -16.364786094873732 17.304369550922438 -4.9918313569348651 ;
@@ -5585,7 +5323,7 @@ createNode parentConstraint -n "wing_01_jnt_parentConstraint1" -p "R_wing_01_jnt
 	setAttr ".tg[0].tot" -type "double3" 0 5.5511151231257827e-17 -7.2858385991025898e-16 ;
 	setAttr ".tg[0].tor" -type "double3" -1.272221872585407e-14 3.1805546814635168e-15 
 		-1.5902773407317584e-15 ;
-	setAttr ".lr" -type "double3" 2.5444437451708134e-14 -3.1805546814635176e-15 2.3854160110976368e-15 ;
+	setAttr ".lr" -type "double3" 1.9083328088781101e-14 1.3241718894150476e-31 -7.9513867036587919e-16 ;
 	setAttr ".rst" -type "double3" -8.2628840208053589 -0.4035649299621582 -0.89189529418945312 ;
 	setAttr ".rsrr" -type "double3" 1.5902773407317584e-14 0 0 ;
 	setAttr -k on ".w0";
@@ -5614,7 +5352,6 @@ createNode joint -n "head_jnt" -p "COG";
 	setAttr ".jot" -type "string" "none";
 	setAttr ".bps" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 1.6653345369377348e-16 1.2426732778549199 11.099074363708496 1;
 	setAttr ".radi" 2;
-	setAttr ".liw" yes;
 createNode parentConstraint -n "head_jnt_parentConstraint1" -p "head_jnt";
 	rename -uid "F1A8249F-46BC-37AD-F471-A999A95B8F9A";
 	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "head_ctrlW0" -dv 1 -min 0 -at "double";
@@ -5692,12 +5429,14 @@ createNode joint -n "L_wing_01_jnt" -p "COG";
 		 0.0035813703949898338 0.92311337599010501 -0.38451120770953479 0 0.36656430147132174 -0.35896024757397266 -0.85835782372415936 0
 		 7.8753300000000017 0.85586200000000001 3.3740600000000001 1;
 	setAttr ".radi" 2;
+	setAttr ".liw" yes;
 createNode joint -n "L_wing_02_jnt" -p "L_wing_01_jnt";
 	rename -uid "17527CC1-40D7-C218-F8B1-7C9E8BAE9EAE";
 	addAttr -ci true -sn "liw" -ln "lockInfluenceWeights" -min 0 -max 1 -at "bool";
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".jo" -type "double3" -16.364786094873736 17.30436955092242 -4.9918313569348758 ;
+	setAttr ".pa" -type "double3" -1.5902773407317584e-14 -1.0187714214062828e-14 -2.782985346280576e-15 ;
 	setAttr ".bps" -type "matrix" -0.99423691471380693 -0.10105031281784201 -0.035802118649392367 0
 		 -0.095156138882279348 0.98564780509003513 -0.1394407169883001 0 0.049378807735558639 -0.13523031686944725 -0.98958299032774544 0
 		 30.333900000000007 4.1840000000000002 11.573200000000009 1;
@@ -5728,7 +5467,7 @@ createNode parentConstraint -n "L_wing_02_jnt_parentConstraint1" -p "L_wing_02_j
 	setAttr ".tg[0].tot" -type "double3" -3.5527136788005009e-15 9.9920072216264089e-16 
 		-5.3290705182007514e-15 ;
 	setAttr ".tg[0].tor" -type "double3" 2.0673605429512864e-14 0 0 ;
-	setAttr ".lr" -type "double3" -1.9182720422576836e-14 -2.9618915471128998e-14 -2.3854160110976324e-15 ;
+	setAttr ".lr" -type "double3" -1.5902773407317584e-14 -1.0187714214062828e-14 -2.782985346280576e-15 ;
 	setAttr ".rst" -type "double3" -24.138967785080169 1.9939073206742819e-05 4.4816844729844707e-05 ;
 	setAttr ".rsrr" -type "double3" -1.2821611059649802e-14 -4.4726550208080719e-16 
 		-1.5902773407317584e-15 ;
@@ -5768,7 +5507,7 @@ createNode parentConstraint -n "L_wing_01_jnt_parentConstraint1" -p "L_wing_01_j
 	setAttr ".tg[0].tot" -type "double3" -1.7763568394002505e-15 -4.9960036108132044e-16 
 		-1.1102230246251565e-16 ;
 	setAttr ".tg[0].tor" -type "double3" 0 0 -1.5902773407317584e-15 ;
-	setAttr ".lr" -type "double3" 6.3490006054172144e-16 -37.12357625052455 -1.8907377022320161e-15 ;
+	setAttr ".lr" -type "double3" -6.8967285907033728e-34 -9.9392333795734899e-17 7.9513867036587919e-16 ;
 	setAttr ".rst" -type "double3" 8.2628881026077288 -0.40356471298980723 -0.89189497131347606 ;
 	setAttr ".rsrr" -type "double3" -6.8967285907033728e-34 -9.9392333795734899e-17 
 		7.9513867036587919e-16 ;
@@ -5917,7 +5656,7 @@ createNode transform -n "L_wing_01_ctrl_grp" -p "COG_ctrl";
 createNode transform -n "L_wing_01_ctrl" -p "L_wing_01_ctrl_grp";
 	rename -uid "5650D831-4123-4BF5-D70A-75A390AF52C8";
 	setAttr ".rp" -type "double3" 0 5.5511151231257827e-16 8.3266726846886741e-16 ;
-	setAttr ".rpt" -type "double3" 0 -4.5359502050208179e-30 -3.944304526105059e-31 ;
+	setAttr ".rpt" -type "double3" 4.9303806576313238e-32 -5.8178491760049621e-30 -3.944304526105059e-31 ;
 	setAttr ".sp" -type "double3" 0 5.5511151231257827e-16 8.3266726846886741e-16 ;
 createNode nurbsCurve -n "L_wing_01_ctrlShape" -p "L_wing_01_ctrl";
 	rename -uid "C4FCF6EA-41EB-901F-617E-7D9FA4F71492";
@@ -5933,6 +5672,7 @@ createNode transform -n "L_wing_02_ctrl_grp" -p "L_wing_01_ctrl";
 createNode transform -n "L_wing_02_ctrl" -p "L_wing_02_ctrl_grp";
 	rename -uid "F3DA5AB7-42C0-2051-026D-5EB41519F0C5";
 	setAttr ".rp" -type "double3" 7.1054273576010019e-15 1.0547118733938987e-15 1.7763568394002505e-15 ;
+	setAttr ".rpt" -type "double3" -1.9504585881589517e-28 -1.5777218104420236e-30 -1.5777218104420236e-30 ;
 	setAttr ".sp" -type "double3" 7.1054273576010019e-15 1.0547118733938987e-15 1.7763568394002505e-15 ;
 createNode nurbsCurve -n "L_wing_02_ctrlShape" -p "L_wing_02_ctrl";
 	rename -uid "BB20CFDF-42E7-D0AB-F91E-F78C95DDFA60";
@@ -5941,15 +5681,15 @@ createNode nurbsCurve -n "L_wing_02_ctrlShape" -p "L_wing_02_ctrl";
 	setAttr ".ovc" 6;
 	setAttr ".tw" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "F270BE27-4F44-149D-63F8-DAAE252DC4C0";
+	rename -uid "BBCC13BB-4A28-E3D0-E665-D7A3CE549481";
 	setAttr -s 2 ".lnk";
 	setAttr -s 2 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "55CB404B-4ABE-0D6A-E403-318ACE261F23";
+	rename -uid "D0D750E0-454C-26D1-7CEC-A48192279879";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "40859F00-4EBD-AD42-039C-01A367963D54";
+	rename -uid "BBAE8876-42DA-5F2B-5399-EBB9CB29CE2E";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "B9D38B18-4289-C382-A482-F98FFAA7230B";
+	rename -uid "A5994D18-4B38-FC25-7F1E-1C85F37F0BFC";
 	setAttr ".cdl" 3;
 	setAttr -s 4 ".dli[1:3]"  1 2 3;
 	setAttr -s 4 ".dli";
@@ -5957,7 +5697,7 @@ createNode displayLayer -n "defaultLayer";
 	rename -uid "000B9B04-410F-587E-BC46-A28BE647687A";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "3DC51804-46DF-55F0-A1D6-F3808F25E708";
+	rename -uid "AE657CBF-40B1-9B07-C6C1-76B1B9174A3C";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "30D90108-4940-C222-7E52-ABA896D3A2CD";
 	setAttr ".g" yes;
@@ -5966,15 +5706,15 @@ createNode script -n "uiConfigurationScriptNode";
 	setAttr ".b" -type "string" (
 		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n"
-		+ "            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n"
-		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 555\n            -height 345\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|bottom\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n"
+		+ "            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 0\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n"
+		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 555\n            -height 341\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n"
 		+ "            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n"
-		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 555\n            -height 346\n            -sceneRenderFilter 0\n"
+		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 555\n            -height 341\n            -sceneRenderFilter 0\n"
 		+ "            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n"
 		+ "            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n"
 		+ "            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n"
-		+ "            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 555\n            -height 345\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n"
+		+ "            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 555\n            -height 341\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 1\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n"
 		+ "            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n"
 		+ "            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 0\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n"
 		+ "            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1117\n            -height 729\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n"
@@ -6004,8 +5744,8 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n"
 		+ "                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n"
 		+ "\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1117\\n    -height 729\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1117\\n    -height 729\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1117\\n    -height 729\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 0\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1117\\n    -height 729\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -6095,660 +5835,660 @@ createNode dagPose -n "bindPose1";
 createNode skinCluster -n "skinCluster1";
 	rename -uid "3EB123A2-4663-407F-99F1-309130611157";
 	setAttr -s 1623 ".wl";
-	setAttr ".wl[0:499].w"
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1;
-	setAttr ".wl[500:947].w"
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		2 3 0.075227737426757812 5 0.92477226257324219
-		1 5 1
-		2 3 0.21202725172042847 5 0.78797274827957153
-		1 5 1
-		2 3 0.19409728050231934 5 0.80590271949768066
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
+	setAttr ".wl[0:450].w"
+		2 2 0.99748380808159709 5 0.0025161919184029102
+		1 2 1
+		1 2 1
+		2 2 0.99695717776194215 5 0.0030428222380578518
+		2 2 0.9979845485650003 5 0.0020154514349997044
+		1 2 1
+		1 2 1
+		2 2 0.99907017283840105 5 0.00092982716159895062
+		2 2 0.99966334769851528 5 0.00033665230148471892
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.99999533417394559 5 4.6658260544063523e-06
+		2 2 0.99872540682554245 5 0.00127459317445755
+		2 2 0.99112589843571186 5 0.0088741015642881393
+		1 2 1
+		1 2 1
+		2 2 0.99979855220590252 5 0.00020144779409747571
+		2 2 0.94484716653823853 5 0.055152833461761475
+		2 2 0.99985868998919614 5 0.00014131001080386341
+		2 2 0.93940955772995949 5 0.060590442270040512
+		2 2 0.91312208026647568 5 0.086877919733524323
+		2 2 0.90924058109521866 5 0.090759418904781342
+		2 2 0.91440907865762711 5 0.085590921342372894
+		2 2 0.91698259860277176 5 0.083017401397228241
+		2 2 0.9734471756964922 5 0.026552824303507805
+		2 2 0.89135997742414474 5 0.10864002257585526
+		2 2 0.97174008376896381 5 0.028259916231036186
+		2 2 0.82962238788604736 5 0.17037761211395264
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.9761432409286499 5 0.023856759071350098
+		1 2 1
+		2 2 0.95210007950663567 5 0.047899920493364334
+		2 2 0.85403484106063843 5 0.14596515893936157
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.99986911861924455 5 0.0001308813807554543
+		2 2 0.95609235391020775 5 0.043907646089792252
+		2 2 0.95505017042160034 5 0.044949829578399658
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.99916058301459998 5 0.00083941698540002108
+		1 2 1
+		1 2 1
+		2 2 0.97457318194210529 5 0.025426818057894707
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.99784821970388293 5 0.0021517802961170673
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.99902208847925067 5 0.00097791152074933052
+		1 2 1
+		1 2 1
+		2 2 0.99693702394142747 5 0.0030629760585725307
+		1 2 1
+		2 2 0.98026593774557114 5 0.019734062254428864
+		1 2 1
+		2 2 0.89327813684940338 5 0.10672186315059662
+		2 2 0.97347120754420757 5 0.026528792455792427
+		1 2 1
+		1 2 1
+		2 2 0.70761269330978394 5 0.29238730669021606
+		2 2 0.68521291017532349 5 0.31478708982467651
+		2 2 0.67782646417617798 5 0.32217353582382202
+		2 2 0.67381644248962402 5 0.32618355751037598
+		2 2 0.68094712495803833 5 0.31905287504196167
+		2 2 0.73489558696746826 5 0.26510441303253174
+		2 2 0.65506738424301147 5 0.34493261575698853
+		2 2 0.74615019559860229 5 0.25384980440139771
+		2 2 0.60753190517425537 5 0.39246809482574463
+		2 2 0.70685881376266479 5 0.29314118623733521
+		2 2 0.60892045497894287 5 0.39107954502105713
+		2 2 0.73367747664451599 5 0.26632252335548401
+		2 2 0.69067889451980591 5 0.30932110548019409
+		2 2 0.81299318373203278 5 0.18700681626796722
+		2 2 0.85467827320098877 5 0.14532172679901123
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1;
+	setAttr ".wl[451:859].w"
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		1 2 1
+		2 2 0.87236618995666504 5 0.12763381004333496
+		2 2 0.87098461389541626 5 0.12901538610458374
+		2 2 0.84970366954803467 5 0.15029633045196533
+		2 2 0.85597306489944458 5 0.14402693510055542
+		2 2 0.86389195919036865 5 0.13610804080963135
+		2 2 0.74622386693954468 5 0.25377613306045532
+		2 2 0.8439982533454895 5 0.1560017466545105
+		2 2 0.70374426245689392 5 0.29625573754310608
+		2 2 0.79303795099258423 5 0.20696204900741577
+		2 2 0.86659848690032959 5 0.13340151309967041
+		2 2 0.83312410116195679 5 0.16687589883804321
+		2 2 0.4081760048866272 5 0.5918239951133728
+		2 2 0.39841574430465698 5 0.60158425569534302
+		2 2 0.40799954533576965 5 0.59200045466423035
+		2 2 0.39277374744415283 5 0.60722625255584717
+		2 2 0.40594559907913208 5 0.59405440092086792
+		2 2 0.43889030814170837 5 0.56110969185829163
+		2 2 0.3626539409160614 5 0.6373460590839386
+		2 2 0.46414816379547119 5 0.53585183620452881
+		2 2 0.28770241141319275 5 0.71229758858680725
+		2 2 0.44837546348571777 5 0.55162453651428223
+		2 2 0.27380290627479553 5 0.72619709372520447
+		2 2 0.49913156032562256 5 0.50086843967437744
+		2 2 0.33746027946472168 5 0.66253972053527832
+		2 2 0.57138654589653015 5 0.42861345410346985
+		2 2 0.54240822792053223 5 0.45759177207946777
+		2 2 0.63229751586914062 5 0.36770248413085938
+		2 2 0.65205544233322144 5 0.34794455766677856
+		2 2 0.64669960737228394 5 0.35330039262771606
+		2 2 0.65022844076156616 5 0.34977155923843384
+		2 2 0.65295344591140747 5 0.34704655408859253
+		2 2 0.4412519633769989 5 0.5587480366230011
+		2 2 0.54867798089981079 5 0.45132201910018921
+		2 2 0.4888140857219696 5 0.5111859142780304
+		2 2 0.56149709224700928 5 0.43850290775299072
+		2 2 0.59618252515792847 5 0.40381747484207153
+		2 2 0.62028461694717407 5 0.37971538305282593
+		2 2 0.1256331205368042 5 0.8743668794631958
+		2 2 0.1383364349603653 5 0.8616635650396347
+		2 2 0.14336754381656647 5 0.85663245618343353
+		2 2 0.10499866306781769 5 0.89500133693218231
+		2 2 0.14607074856758118 5 0.85392925143241882
+		2 2 0.15332931280136108 5 0.84667068719863892
+		2 2 0.064565941691398621 5 0.93543405830860138
+		2 2 0.15078270435333252 5 0.84921729564666748
+		2 2 0.0078165717422962189 5 0.99218342825770378
+		3 2 0.22986316680908203 3 0.075227737426757812 5 0.69490909576416016
+		2 2 0.0092883408069610596 5 0.99071165919303894
+		3 2 0.2495235949754715 3 0.21202725172042847 5 0.53844915330410004
+		2 2 0.025285203009843826 5 0.97471479699015617
+		3 2 0.3141455352306366 3 0.19409728050231934 5 0.49175718426704407
+		2 2 0.24253574013710022 5 0.75746425986289978
+		2 2 0.27749615907669067 5 0.72250384092330933
+		2 2 0.30457744002342224 5 0.69542255997657776
+		2 2 0.31225597858428955 5 0.68774402141571045
+		2 2 0.31700772047042847 5 0.68299227952957153
+		2 2 0.31430074572563171 5 0.68569925427436829
+		2 2 0.076814770698547363 5 0.92318522930145264
+		2 2 0.2003910094499588 5 0.7996089905500412
+		2 2 0.14455877244472504 5 0.85544122755527496
+		2 2 0.23119586706161499 5 0.76880413293838501
+		2 2 0.24009393155574799 5 0.75990606844425201
+		2 2 0.28894352912902832 5 0.71105647087097168
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6760,8 +6500,8 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		2 3 0.14977383613586426 5 0.85022616386413574
 		1 5 1
-		2 3 0.34874743223190308 5 0.65125256776809692
-		2 3 0.14084017276763916 5 0.85915982723236084
+		2 3 0.35342118144035339 5 0.64657881855964661
+		2 3 0.14529478549957275 5 0.85470521450042725
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6770,12 +6510,12 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		2 3 0.6990283727645874 5 0.3009716272354126
+		2 3 0.66273397207260132 5 0.33726602792739868
 		2 3 0.53982490301132202 5 0.46017509698867798
 		1 3 1
-		2 3 0.99923309567384422 5 0.00076690432615578175
 		1 3 1
 		1 3 1
+		1 3 1
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6788,7 +6528,7 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		2 3 0.072410106658935547 5 0.92758989334106445
+		2 3 0.12119132280349731 5 0.87880867719650269
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6801,7 +6541,7 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		2 3 0.15409231185913086 5 0.84590768814086914
+		2 3 0.14959979057312012 5 0.85040020942687988
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6814,7 +6554,20 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		2 3 0.12194919586181641 5 0.87805080413818359
+		2 3 0.11687999963760376 5 0.88312000036239624
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		2 3 0.027070164680480957 5 0.97292983531951904
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6828,20 +6581,7 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		2 3 0.73166757822036743 5 0.26833242177963257
+		2 3 0.67090281844139099 5 0.32909718155860901
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6853,9 +6593,9 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		2 3 0.25403815507888794 5 0.74596184492111206
 		1 5 1
-		2 3 0.47214764356613159 5 0.52785235643386841
+		2 3 0.47275027632713318 5 0.52724972367286682
 		1 5 1
-		2 3 0.77068358659744263 5 0.22931641340255737
+		2 3 0.71104440093040466 5 0.28895559906959534
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6867,9 +6607,9 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		2 3 0.32859373092651367 5 0.67140626907348633
 		1 5 1
-		2 3 0.56938052177429199 5 0.43061947822570801
+		2 3 0.55961793661117554 5 0.44038206338882446
 		1 5 1
-		2 3 0.75291329622268677 5 0.24708670377731323
+		2 3 0.74632328748703003 5 0.25367671251296997
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6882,9 +6622,9 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		2 3 0.34742391109466553 5 0.65257608890533447
 		1 5 1
-		2 3 0.62757068872451782 5 0.37242931127548218
+		2 3 0.61018723249435425 5 0.38981276750564575
 		1 5 1
-		2 3 0.81327448785305023 5 0.18672551214694977
+		2 3 0.77468910813331604 5 0.22531089186668396
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6897,9 +6637,9 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		2 3 0.34145703911781311 5 0.65854296088218689
 		1 5 1
-		2 3 0.6300351619720459 5 0.3699648380279541
+		2 3 0.61358720064163208 5 0.38641279935836792
 		1 5 1
-		2 3 0.82921399176120758 5 0.17078600823879242
+		2 3 0.76508338749408722 5 0.23491661250591278
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6912,9 +6652,9 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		2 3 0.27342867851257324 5 0.72657132148742676
 		1 5 1
-		2 3 0.58273875713348389 5 0.41726124286651611
+		2 3 0.57437252998352051 5 0.42562747001647949
 		1 5 1
-		2 3 0.81665468215942383 5 0.18334531784057617
+		2 3 0.75145407021045685 5 0.24854592978954315
 		1 5 1
 		1 5 1
 		1 5 1
@@ -6956,6 +6696,8 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
+		1 5 1;
+	setAttr ".wl[860:1242].w"
 		1 5 1
 		1 5 1
 		1 5 1
@@ -7005,34 +6747,33 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
+		2 3 0.18665832281112671 5 0.81334167718887329
+		2 3 0.51015567779541016 5 0.48984432220458984
+		2 3 0.72045159339904785 5 0.27954840660095215
 		1 5 1
-		2 3 0.20449399948120117 5 0.79550600051879883
-		2 3 0.51139384508132935 5 0.48860615491867065
-		2 3 0.76226076483726501 5 0.23773923516273499
-		1 5 1
-		2 3 0.1692383885383606 5 0.8307616114616394
-		2 3 0.44227224588394165 5 0.55772775411605835
-		2 3 0.70204678177833557 5 0.29795321822166443
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		1 5 1
-		2 3 0.13531631231307983 5 0.86468368768692017
-		2 3 0.054623007774353027 5 0.94537699222564697
-		2 3 0.35191476345062256 5 0.64808523654937744
-		2 3 0.11331474781036377 5 0.88668525218963623
-		2 3 0.052283227443695068 5 0.94771677255630493
-		2 3 0.0554085373878479 5 0.9445914626121521
-		2 3 0.37361603975296021 5 0.62638396024703979
-		2 3 0.32673835754394531 5 0.67326164245605469
-		2 3 0.32970899343490601 5 0.67029100656509399
-		2 3 0.35786288976669312 5 0.64213711023330688
-		2 3 0.33872252702713013 5 0.66127747297286987
-		2 3 0.3572954535484314 5 0.6427045464515686
-		2 3 0.28703153133392334 5 0.71296846866607666
-		2 3 0.86071527004241943 5 0.13928472995758057
-		2 3 0.60412472486495972 5 0.39587527513504028
+		2 3 0.13332599401473999 5 0.86667400598526001
+		2 3 0.46268865466117859 5 0.53731134533882141
+		2 3 0.71448171138763428 5 0.28551828861236572
+		1 5 1
+		1 5 1
+		1 5 1
+		1 5 1
+		2 3 0.0050698518753051758 5 0.99493014812469482
+		2 3 0.14236152172088623 5 0.85763847827911377
+		2 3 0.047834992408752441 5 0.95216500759124756
+		2 3 0.38276314735412598 5 0.61723685264587402
+		2 3 0.10142926871776581 5 0.89857073128223419
+		2 3 0.062604844570159912 5 0.93739515542984009
+		2 3 0.054611504077911377 5 0.94538849592208862
+		2 3 0.43419173359870911 5 0.56580826640129089
+		2 3 0.41495907306671143 5 0.58504092693328857
+		2 3 0.37214657664299011 5 0.62785342335700989
+		2 3 0.35913527011871338 5 0.64086472988128662
+		2 3 0.34002852439880371 5 0.65997147560119629
+		2 3 0.35530573129653931 5 0.64469426870346069
+		2 3 0.28692489862442017 5 0.71307510137557983
+		2 3 0.75347958505153656 5 0.24652041494846344
+		2 3 0.61217331886291504 5 0.38782668113708496
 		2 3 0.593843013048172 5 0.406156986951828
 		2 3 0.60946720838546753 5 0.39053279161453247
 		2 3 0.52450835704803467 5 0.47549164295196533
@@ -7044,58 +6785,58 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		1 5 1;
-	setAttr ".wl[948:1411].w"
 		1 5 1
 		1 5 1
 		1 5 1
-		2 3 0.91999459266662598 5 0.080005407333374023
-		2 3 0.85854433476924896 5 0.14145566523075104
+		1 5 1
+		2 3 0.87644011527299881 5 0.12355988472700119
+		2 3 0.83894005417823792 5 0.16105994582176208
 		2 3 0.82978847622871399 5 0.17021152377128601
 		2 3 0.83543172478675842 5 0.16456827521324158
 		2 3 0.79722841084003448 5 0.20277158915996552
-		2 3 0.70259600877761841 5 0.29740399122238159
-		2 3 0.64171293377876282 5 0.35828706622123718
-		2 3 0.60550493001937866 5 0.39449506998062134
-		2 3 0.62398287653923035 5 0.37601712346076965
-		2 3 0.91632264852523804 5 0.083677351474761963
-		2 3 0.98225533962249756 5 0.017744660377502441
-		2 3 0.8563951849937439 5 0.1436048150062561
-		2 3 0.87442183494567871 5 0.12557816505432129
-		2 3 0.90819651633501053 5 0.091803483664989471
+		2 3 0.72584596276283264 5 0.27415403723716736
+		2 3 0.72195926308631897 5 0.27804073691368103
+		2 3 0.73289757966995239 5 0.26710242033004761
+		2 3 0.73003455996513367 5 0.26996544003486633
+		2 3 0.8134397566318512 5 0.1865602433681488
+		2 3 0.91080823540687561 5 0.08919176459312439
+		2 3 0.80109146237373352 5 0.19890853762626648
+		2 3 0.8735661506652832 5 0.1264338493347168
+		2 3 0.90469332784414291 5 0.095306672155857086
 		2 3 0.93491589277982712 5 0.065084107220172882
 		2 3 0.94401686266064644 5 0.055983137339353561
 		2 3 0.94442516937851906 5 0.055574830621480942
 		2 3 0.92936806380748749 5 0.070631936192512512
-		2 3 0.89936891198158264 5 0.10063108801841736
+		2 3 0.92627626657485962 5 0.073723733425140381
+		2 3 0.9971579909324646 5 0.0028420090675354004
 		1 3 1
-		1 3 1
-		2 3 0.99993610972887836 5 6.3890271121636033e-05
-		2 3 0.9844023808836937 5 0.015597619116306305
-		2 3 0.90605559945106506 5 0.093944400548934937
-		2 3 0.86488492786884308 5 0.13511507213115692
-		2 3 0.83325211703777313 5 0.16674788296222687
-		2 3 0.84259328246116638 5 0.15740671753883362
-		2 3 0.95675071328878403 5 0.043249286711215973
-		2 3 0.99898596899583936 5 0.0010140310041606426
-		2 3 0.99973953134031035 5 0.00026046865968964994
-		2 3 0.99916603730525821 5 0.00083396269474178553
-		2 3 0.9995030093123205 5 0.00049699068767949939
-		1 3 1
-		1 3 1
-		2 3 0.9959002323448658 5 0.004099767655134201
-		1 3 1
+		2 3 0.98603544197976589 5 0.013964558020234108
+		2 3 0.93903596699237823 5 0.060964033007621765
+		2 3 0.90732384473085403 5 0.092676155269145966
+		2 3 0.89172492921352386 5 0.10827507078647614
+		2 3 0.92782814800739288 5 0.072171851992607117
+		2 3 0.92813493311405182 5 0.071865066885948181
+		2 3 0.91849493980407715 5 0.081505060195922852
+		2 3 0.96699267625808716 5 0.033007323741912842
+		2 3 0.98151659965515137 5 0.018483400344848633
+		2 3 0.99139648675918579 5 0.008603513240814209
+		2 3 0.99509514635428786 5 0.0049048536457121372
+		2 3 0.99563295766711235 5 0.0043670423328876495
+		2 3 0.99475472047924995 5 0.0052452795207500458
+		2 3 0.99563131527975202 5 0.0043686847202479839
+		2 3 0.99979544285451993 5 0.00020455714548006654
 		1 3 1
 		1 3 1
 		1 3 1
 		2 3 0.99976136378245428 5 0.00023863621754571795
 		2 3 0.98616604506969452 5 0.013833954930305481
 		2 3 0.9660535454750061 5 0.033946454524993896
-		2 3 0.9459778368473053 5 0.054022163152694702
-		2 3 0.94656993448734283 5 0.053430065512657166
+		2 3 0.99829447269439697 5 0.0017055273056030273
 		1 3 1
 		1 3 1
 		1 3 1
+		2 3 0.99985045194625854 5 0.00014954805374145508
+		2 3 0.99988716840744019 5 0.00011283159255981445
 		1 3 1
 		1 3 1
 		1 3 1
@@ -7145,6 +6886,8 @@ createNode skinCluster -n "skinCluster1";
 		1 3 1
 		1 3 1
 		1 3 1
+		2 3 0.52604728937149048 4 0.47395271062850952
+		2 3 0.66026729345321655 4 0.33973270654678345
 		1 3 1
 		1 3 1
 		1 3 1
@@ -7153,307 +6896,305 @@ createNode skinCluster -n "skinCluster1";
 		1 3 1
 		1 3 1
 		1 3 1
+		2 3 0.81073927879333496 4 0.18926072120666504
+		2 3 0.88431620597839355 4 0.11568379402160645
+		2 3 0.93039548397064209 4 0.06960451602935791
 		1 3 1
 		1 3 1
 		1 3 1
 		1 3 1
 		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
-		1 3 1
+		2 3 0.086055174469947815 4 0.91394482553005219
+		2 3 0.12465883791446686 4 0.87534116208553314
+		2 3 0.72273159027099609 4 0.27726840972900391
+		2 3 0.68621402978897095 4 0.31378597021102905
+		2 3 0.68981081247329712 4 0.31018918752670288
+		2 3 0.69809681177139282 4 0.30190318822860718
+		2 3 0.71239209175109863 4 0.28760790824890137
+		2 3 0.71643602848052979 4 0.28356397151947021
+		2 3 0.68475115299224854 4 0.31524884700775146
+		2 3 0.66021263599395752 4 0.33978736400604248
+		2 3 0.23080608248710632 4 0.76919391751289368
+		2 3 0.37265694141387939 4 0.62734305858612061
+		2 3 0.50061601400375366 4 0.49938398599624634
+		2 3 0.58449745178222656 4 0.41550254821777344
+		2 3 0.62711745500564575 4 0.37288254499435425
+		2 3 0.6619880199432373 4 0.3380119800567627
+		2 3 0.66390132904052734 4 0.33609867095947266
+		2 3 0.64589774608612061 4 0.35410225391387939
+		1 4 1
+		2 3 0.032446052879095078 4 0.96755394712090492
+		2 3 0.40836772322654724 4 0.59163227677345276
+		2 3 0.37345370650291443 4 0.62654629349708557
+		2 3 0.3663078248500824 4 0.6336921751499176
+		2 3 0.34118908643722534 4 0.65881091356277466
+		2 3 0.29641306400299072 4 0.70358693599700928
+		2 3 0.23578029870986938 4 0.76421970129013062
+		2 3 0.22289973497390747 4 0.77710026502609253
+		2 3 0.21085339784622192 4 0.78914660215377808
+		2 3 0.050786454230546951 4 0.94921354576945305
+		2 3 0.093402117490768433 4 0.90659788250923157
+		2 3 0.13290727138519287 4 0.86709272861480713
+		2 3 0.16004008054733276 4 0.83995991945266724
+		2 3 0.16653406620025635 4 0.83346593379974365
+		2 3 0.19125467538833618 4 0.80874532461166382
+		2 3 0.18507468700408936 4 0.81492531299591064
+		2 3 0.1740957498550415 4 0.8259042501449585
+		1 4 1
+		2 3 0.057257097214460373 4 0.94274290278553963
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		2 3 7.199483661679551e-06 4 0.99999280051633832
+		1 4 1
+		1 4 1
+		2 3 0.0024745832197368145 4 0.99752541678026319
+		2 3 0.0071441186591982841 4 0.99285588134080172
+		2 3 0.0070797274820506573 4 0.99292027251794934
+		2 3 0.0044794585555791855 4 0.99552054144442081
+		2 3 0.0010218413081020117 4 0.99897815869189799
+		1 4 1
+		1 4 1
+		2 3 2.0748944734805264e-05 4 0.99997925105526519
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		2 3 3.3753549359971657e-05 4 0.99996624645064003
+		2 3 1.0229466170130763e-05 4 0.99998977053382987
+		1 4 1
+		1 4 1
+		2 3 5.3012833234333812e-08 4 0.99999994698716677
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1;
+	setAttr ".wl[1243:1622].w"
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
+		1 4 1
 		1 5 1
 		1 5 1
 		1 5 1
@@ -7509,8 +7250,7 @@ createNode skinCluster -n "skinCluster1";
 		1 5 1
 		1 5 1
 		1 5 1
-		1 5 1;
-	setAttr ".wl[1412:1622].w"
+		1 5 1
 		1 5 1
 		1 5 1
 		1 5 1
@@ -7736,7 +7476,7 @@ createNode skinCluster -n "skinCluster1";
 	setAttr ".pm[4]" -type "matrix" -0.99423691471380826 -0.095156138882279487 0.04937880773555859 0
 		 -0.10105031281784214 0.98564780509003647 -0.13523031686944745 0 -0.035802118649392513 -0.13944071698830024 -0.98958299032774633 0
 		 30.996222735620194 0.37628169059346284 10.520593693473192 1;
-	setAttr ".pm[5]" -type "matrix" 1 -0 0 -0 -0 1 -0 0 0 -0 1 -0 0.38755810260772705 -1.2594267129898071 -4.2659549713134766 1;
+	setAttr ".pm[5]" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0.38755810260772705 -1.2594267129898071 -4.2659549713134766 1;
 	setAttr ".gm" -type "matrix" 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1;
 	setAttr -s 6 ".ma";
 	setAttr -s 6 ".dpf[0:5]"  4 4 4 4 4 4;
@@ -7747,49 +7487,4534 @@ createNode skinCluster -n "skinCluster1";
 	setAttr ".ucm" yes;
 	setAttr -s 6 ".ifcl";
 	setAttr -s 6 ".ifcl";
-createNode animCurveTL -n "L_wing_01_ctrl_translateX";
-	rename -uid "918AB874-4630-3F52-CF39-4CBD420BA7E4";
+createNode animCurveTL -n "bat_geoShape_pnts_1048__pntx";
+	rename -uid "4FD790BE-458A-0FAF-D032-D29425BAC241";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 17 ".ktv[0:16]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 -9.9332726721308209 50 0 60 0 70 0 80 0 90 0 110 0 120 0;
-createNode animCurveTL -n "L_wing_01_ctrl_translateY";
-	rename -uid "F6D1F123-41A5-A113-9629-4C910016C872";
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1048__pnty";
+	rename -uid "A6253581-4B78-6DDB-F349-18958926D387";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 17 ".ktv[0:16]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 -2.2204460492503131e-16 50 0 60 0 70 0 80 0 90 0 110 0 120 0;
-createNode animCurveTL -n "L_wing_01_ctrl_translateZ";
-	rename -uid "D14219E1-4D65-C8AD-4382-CEAA6C63F517";
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1048__pntz";
+	rename -uid "A82FAA4D-4CE8-5418-06CE-7BBBEF35429F";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 17 ".ktv[0:16]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 -8.8817841970012523e-16 50 0 60 0 70 0 80 0 90 0 110 0 120 0;
-createNode animCurveTA -n "L_wing_01_ctrl_rotateX";
-	rename -uid "BBECBA3A-431A-71BA-C6F3-B084FBD07DCD";
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1049__pntx";
+	rename -uid "60AD132E-43AC-C6DD-D050-25A8A88CDC54";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 18 ".ktv[0:17]"  0 0 5 0 10 0 15 0 20 0 25 0 30 0 35 0 40 0
-		 45 0 50 0 60 0 70 0 80 0 90 0 100 0 110 0 120 0;
-createNode animCurveTA -n "L_wing_01_ctrl_rotateY";
-	rename -uid "407B940E-4F16-2612-35DE-B99F31E70589";
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1049__pnty";
+	rename -uid "71B04613-4894-81F7-935E-05B76EF38C09";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 18 ".ktv[0:17]"  0 0 5 0 10 0 15 0 20 0 25 -37.12357625052455
-		 30 0 35 42.429182800308546 40 0 45 0 50 0 60 0 70 0 80 0 90 0 100 0 110 0 120 0;
-createNode animCurveTA -n "L_wing_01_ctrl_rotateZ";
-	rename -uid "6639F51D-4798-05AC-94E4-2B80BA31B3CA";
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1049__pntz";
+	rename -uid "123D2F87-4914-243D-53E9-32849D961CDF";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 18 ".ktv[0:17]"  0 0 5 -90.049066981176296 10 0 15 92.384186001439616
-		 20 0 25 0 30 0 35 0 40 0 45 0 50 0 60 0 70 0 80 0 90 0 100 0 110 0 120 0;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1058__pntx";
+	rename -uid "C6824B17-4581-7122-6950-D0BCFF2AD645";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1058__pnty";
+	rename -uid "9F3169A5-41D7-F76F-F3CF-E798B72C0B7A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1058__pntz";
+	rename -uid "2553A719-43F1-53B2-8567-AE9B6FE96379";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1059__pntx";
+	rename -uid "57958302-4210-0B28-415F-0DAAFD40EF61";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1059__pnty";
+	rename -uid "29AF8B82-499E-03F0-7672-D1A1D4464694";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1059__pntz";
+	rename -uid "67BE62C1-4559-7E10-E3DE-74868C1B9096";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1060__pntx";
+	rename -uid "49ECBDE8-4F82-8D2C-BF01-AB9CEB0D918B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1060__pnty";
+	rename -uid "48F5FD9E-4F26-39AC-CD2C-47AB5129028C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1060__pntz";
+	rename -uid "1F1CF44E-4454-2483-B8D2-FFB3224409BD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1061__pntx";
+	rename -uid "4A8DCEBF-40A5-BBA9-40FC-2DABEA09D05D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1061__pnty";
+	rename -uid "EEA7C2FE-4EEB-1C2D-68B9-42BA80A7E21A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1061__pntz";
+	rename -uid "56B56BB9-4E20-2FE2-B564-85BA634BAB0F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1062__pntx";
+	rename -uid "4FED2BC3-47DF-A704-668E-B4985E0B34A5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1062__pnty";
+	rename -uid "C58F3547-4661-A909-F36E-809F4EB75ADC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1062__pntz";
+	rename -uid "77F4264B-4C0E-6B49-5174-CA8190DF6321";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1064__pntx";
+	rename -uid "D09ECB6E-45F2-8DFE-BC25-FB952FB09422";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1064__pnty";
+	rename -uid "3FBE70CE-479E-BBF0-8D1E-FB9D7364F93F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1064__pntz";
+	rename -uid "42724EEF-425F-9837-CA0E-63A17FE07E30";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1065__pntx";
+	rename -uid "A13304C2-4627-5CDC-3A2F-479A188F4E48";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1065__pnty";
+	rename -uid "D28929ED-4956-2CF2-52AA-4EBCD9792C61";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -6.67572021484375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1065__pntz";
+	rename -uid "433BEFCB-4DEB-1413-63E8-298B7866E41C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1066__pntx";
+	rename -uid "89F699AC-46E6-98D0-D0F6-7BB4C4D10342";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1066__pnty";
+	rename -uid "602FD58E-48CC-B118-F6ED-22996900871D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1066__pntz";
+	rename -uid "EF88740A-4230-3DF2-2E24-5090149F6476";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1067__pntx";
+	rename -uid "8D1C3504-4419-5A32-2054-D7800E5C1948";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1067__pnty";
+	rename -uid "FABEC0C0-4EFE-06FB-F522-2192671CC753";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1067__pntz";
+	rename -uid "1CA6896F-4346-BF86-1BEF-ECB4F4C08556";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1068__pntx";
+	rename -uid "1532115E-4B11-245A-E635-678498833081";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1068__pnty";
+	rename -uid "A4A5CF17-428A-FC6F-7FB5-CB8F8E4AEFA9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1068__pntz";
+	rename -uid "BBEBAD78-4D89-3BE2-FBD9-039B515558EA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1069__pntx";
+	rename -uid "B4B0D81D-4C88-4A51-4D81-C5B11606FFA8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1069__pnty";
+	rename -uid "8B9DE1EB-4028-4E00-E2AB-5F8D7979F1BF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1069__pntz";
+	rename -uid "E2B1D9A2-435D-2102-F6C7-A89C7748C81D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1070__pntx";
+	rename -uid "0B875DB9-4F5A-431D-0D5E-ACA7E2A551F8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1070__pnty";
+	rename -uid "5D2F4CEF-431F-4037-3794-AEA327301282";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1070__pntz";
+	rename -uid "85922F0A-4060-8A1D-AE7F-B68887C68929";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1071__pntx";
+	rename -uid "37BA3CAD-4BCA-4BAF-E449-01B70CDDA4A4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1071__pnty";
+	rename -uid "01F6D425-45DE-7760-E402-80B3AEAADB65";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1071__pntz";
+	rename -uid "94B4E1CF-4D59-5280-F627-A3873E56B487";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1072__pntx";
+	rename -uid "58C7B89D-4AB1-5BCF-0DE4-B5A5881F639D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1072__pnty";
+	rename -uid "AD4AB3A6-4598-F119-1B33-53BB3450F421";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1072__pntz";
+	rename -uid "4E38F721-42D2-420C-7F23-6A93DE6E9AD4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1073__pntx";
+	rename -uid "B073B5A6-4E50-471E-6B33-458B7A0D5BBE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1073__pnty";
+	rename -uid "46CEBC3E-4595-1541-F24F-08B1C8440988";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1073__pntz";
+	rename -uid "BCEB873D-4CF1-0FBA-3B21-85BA4F3BD808";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1074__pntx";
+	rename -uid "A79BBEE1-438B-3132-D9E1-0DB9650FC294";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1074__pnty";
+	rename -uid "96FD66EA-4A4B-06B8-B421-E882C3E450CC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1074__pntz";
+	rename -uid "D6770F38-434A-57E9-8CEC-8685327AF608";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1075__pntx";
+	rename -uid "51B4FFFB-4DE2-3F8A-3B82-0593ED6E9A04";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1075__pnty";
+	rename -uid "E2CA37DF-4D62-D20B-3120-2281EBB6C840";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1075__pntz";
+	rename -uid "051065DA-4707-81C1-DB5D-9C91CA7C472C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1076__pntx";
+	rename -uid "5E149999-4388-7DA8-864F-F09C0ABC8FB1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1076__pnty";
+	rename -uid "53FDF973-4429-2F22-F800-62AB037B0E35";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1076__pntz";
+	rename -uid "D3EAF148-4661-044A-D87A-CD8DCF60C1BB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1077__pntx";
+	rename -uid "1B26E6EE-4F54-FBAD-2E4F-A6998B780A2C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1077__pnty";
+	rename -uid "FD839A1C-42AF-37C9-7F83-CCB4D96E41A2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1077__pntz";
+	rename -uid "37AFD8D6-4802-C973-2F1F-F9B45CF39530";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1078__pntx";
+	rename -uid "F74914E1-41AC-74BE-B7EC-3A97E8486E19";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1078__pnty";
+	rename -uid "72104888-42B1-E622-CE41-A4B7A1CBCB58";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1078__pntz";
+	rename -uid "E731265F-42A9-AD16-AC44-868E0B656E2B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1079__pntx";
+	rename -uid "367D106C-4D40-81F8-ACE6-728C04329336";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.152557373046875e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1079__pnty";
+	rename -uid "F2F52574-4F3D-93CF-7C1C-5A8E42CB6255";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1079__pntz";
+	rename -uid "87119C7F-4898-5CDE-B3A1-148819654001";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1080__pntx";
+	rename -uid "F5899D3F-4D92-C60E-B08C-148571FD2225";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1080__pnty";
+	rename -uid "E3EEBBE4-474D-4022-8CA3-1DBEC21757B8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1080__pntz";
+	rename -uid "981C6658-4C42-E4DD-70F2-8AB6923E19D0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1081__pntx";
+	rename -uid "4B8EB009-4CEE-8D6A-78AA-76A02A590049";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1081__pnty";
+	rename -uid "941D402F-4F63-6644-A47A-95B8434F5CCD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1081__pntz";
+	rename -uid "9AEAF16A-454C-1DC7-B1E4-1DA2A343297C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1082__pntx";
+	rename -uid "83226D68-4034-6267-50A6-B1AA38B597A5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1082__pnty";
+	rename -uid "501FE171-4B04-36D2-AA37-6CBBD1A2112C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1082__pntz";
+	rename -uid "19F537AB-4B8F-A4E6-8011-D6AE92371833";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1083__pntx";
+	rename -uid "EF7B1CCA-4257-C8B4-3DE3-FF918651CF12";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1083__pnty";
+	rename -uid "AAFC2D81-4931-85BC-C406-3A822294D73F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1083__pntz";
+	rename -uid "203C484A-4EBB-8AF3-CCB8-95A10BF2AD53";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1084__pntx";
+	rename -uid "31EF68FF-4E8B-D488-1158-DEAF4672BF3E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1084__pnty";
+	rename -uid "703FDACC-4B62-FB94-144C-4ABDA5908FA5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1084__pntz";
+	rename -uid "6D9676E4-4657-EC8F-22B7-139ED5AB0099";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1085__pntx";
+	rename -uid "B00EE947-439C-E323-838E-ED936B5FCC93";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1085__pnty";
+	rename -uid "74B613E8-4458-A31F-1002-A6AA4F301BE7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1085__pntz";
+	rename -uid "34B7CDE7-4067-BA5B-4F0D-7EB32FC433EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1086__pntx";
+	rename -uid "B4A84D4C-4A73-B41D-D31E-E2A4A3509163";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1086__pnty";
+	rename -uid "AF096F69-44DC-32ED-540C-4883DEC3B4C4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1086__pntz";
+	rename -uid "17BDD6BE-4D5C-F808-24B6-8D8F4A2A4B3A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1087__pntx";
+	rename -uid "8811D430-4E47-01DE-2912-6AA30202C06C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1087__pnty";
+	rename -uid "845882E4-4B44-203A-1FE9-3C84A416D576";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1087__pntz";
+	rename -uid "904056B5-4F26-3F15-1305-4E97544824E7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1088__pntx";
+	rename -uid "4F31679D-4756-FF1D-2E5E-2F89EC1B1796";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1088__pnty";
+	rename -uid "FA42EB8B-4EA6-B13F-F022-1B93BC6C3844";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1088__pntz";
+	rename -uid "5AA3EBDA-4D20-7E97-635F-5997FFCC8013";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1089__pntx";
+	rename -uid "D2493DC6-4935-7A39-4B71-798BA651E0E3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1089__pnty";
+	rename -uid "78D240D0-4DD2-0DEC-7CAC-A39BF672D68A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1089__pntz";
+	rename -uid "67711888-4C80-25C2-D960-69A79671CE4F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1090__pntx";
+	rename -uid "507DAF65-4E15-C7C2-F104-AAA82E9FCB70";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1090__pnty";
+	rename -uid "29FD2254-4A07-578D-0698-1E90E3E6FFD2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1090__pntz";
+	rename -uid "7DF7C718-4062-E8D0-FC0B-CC84CEF81902";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1091__pntx";
+	rename -uid "26E7807C-4354-1511-D855-FF9F5A1E97D9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1091__pnty";
+	rename -uid "993F4416-44A0-A1D7-5901-4DB4023BD446";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1091__pntz";
+	rename -uid "593F1071-4140-99EF-7AF0-51A7ABE7B286";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1092__pntx";
+	rename -uid "F0E603EA-494E-C94E-D323-98A2C03BA0DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1092__pnty";
+	rename -uid "2DA5E6C3-4FD1-EB0F-EAA5-C08D8B440FF3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1092__pntz";
+	rename -uid "F1B64182-417A-63C3-868D-89AB0FBD706B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1093__pntx";
+	rename -uid "D23C476F-4B83-B0D4-EB58-2D89E8A52817";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.1920928955078125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1093__pnty";
+	rename -uid "5B2D3AFD-4EF8-391D-5766-6FA40EA8B2C3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1093__pntz";
+	rename -uid "A80E0AE7-4D55-BA1D-823C-B7B4EC181985";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1094__pntx";
+	rename -uid "5B276AD1-40CB-E97D-EB06-D9936C75C79C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.152557373046875e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1094__pnty";
+	rename -uid "1A4E41FA-4CD2-0D9A-357A-0DB7F3E2CF8C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1094__pntz";
+	rename -uid "3E101567-449B-233C-EB41-F5AD1C573FF7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1095__pntx";
+	rename -uid "F4F3F631-4404-E9DB-5DA9-FE8B12479FED";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1095__pnty";
+	rename -uid "727458B9-46CB-8D30-BE74-EBB23E4B4B3B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1095__pntz";
+	rename -uid "95B1CE1F-4064-16F8-7BC0-DDBDFBAC6954";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1096__pntx";
+	rename -uid "A0D3A6C4-4A82-6F8A-776D-C6961D0EBD84";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1096__pnty";
+	rename -uid "CC44E903-4C65-35BE-4FF8-DBA542C40FCC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1096__pntz";
+	rename -uid "736C4D4B-4015-A359-E8CA-7E96D9010C66";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1097__pntx";
+	rename -uid "26439D79-42D9-B426-A75C-E1AF18C20C55";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.1920928955078125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1097__pnty";
+	rename -uid "77BE38BD-425D-5364-EFC2-D18EC4F51050";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1097__pntz";
+	rename -uid "3FF04B92-468F-7E79-5083-04969B9380BD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1098__pntx";
+	rename -uid "444EA19D-4E96-D0B9-E4E8-5B9C9234B810";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.1920928955078125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1098__pnty";
+	rename -uid "7FADC392-4792-FE66-79B4-CF82A6E433C7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -8.58306884765625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1098__pntz";
+	rename -uid "E22D6325-4B12-5DD2-8E13-5C9724E661B9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1099__pntx";
+	rename -uid "FDFD8C0A-4C67-D275-8948-968095ED3B24";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1099__pnty";
+	rename -uid "35B7B610-461C-E579-77A9-30B806B29911";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1099__pntz";
+	rename -uid "03C9CFA0-4F2D-B12F-3E1C-1EB1FD6BE0EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1100__pntx";
+	rename -uid "4BB9295A-4854-C55E-E9EA-73A699D206DA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1100__pnty";
+	rename -uid "DA455B20-48C1-0E2B-85F5-8DADCE4690EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1100__pntz";
+	rename -uid "5067A454-4CE6-08F1-D7C1-2DB2C1865B70";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1101__pntx";
+	rename -uid "A9EB6ABF-449B-0BEE-4713-94904C0F94BA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1101__pnty";
+	rename -uid "62F10336-4EEE-3CA1-DE11-A0AF198AD4A6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1101__pntz";
+	rename -uid "CD5CB81D-47EE-196B-D509-3D910BAA3249";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1102__pntx";
+	rename -uid "CA07CD2E-401C-62D3-A8B6-ABBE3CB46EB2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1102__pnty";
+	rename -uid "552A8632-473D-0035-1C97-7C85D8119432";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1102__pntz";
+	rename -uid "53A7B7A1-45F6-FD9A-9114-6AA81FFB7069";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1103__pntx";
+	rename -uid "78AB1DC2-41D1-023A-EA27-90B0162F4BD4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1103__pnty";
+	rename -uid "6745DC70-4F0A-CDD4-4F96-37A008A44250";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1103__pntz";
+	rename -uid "B220977C-48A5-1F15-CBEA-4284AA3C2B75";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1104__pntx";
+	rename -uid "1096CD02-4108-0721-171E-158BDA308AED";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1104__pnty";
+	rename -uid "02984F75-47F8-F3BC-BDB1-48AA97B8EF92";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1104__pntz";
+	rename -uid "45D6644A-4FF0-B395-BFA7-159BEC865D78";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1105__pntx";
+	rename -uid "44880857-443E-BF4C-7073-A295E034FCB0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1105__pnty";
+	rename -uid "814EDE5C-49F3-7643-53FA-9EA0E953BC24";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1105__pntz";
+	rename -uid "FAB3555D-4B7D-5FB7-806B-8BAD1968D02A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1106__pntx";
+	rename -uid "4AB5C0EE-4A09-8CAC-4A64-7F909B1E31FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1106__pnty";
+	rename -uid "5254706E-4AA6-4F92-0F52-02B0FEA208FC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1106__pntz";
+	rename -uid "DC205EBB-4ADA-D2B7-E500-61BC250B2C48";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1107__pntx";
+	rename -uid "D9BE220F-408B-F890-64F4-069A40AE8D52";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1107__pnty";
+	rename -uid "9CDB3EC5-4A7F-C093-9F04-76BEDD48D16F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1107__pntz";
+	rename -uid "96BC0CF5-4DFF-FD70-0C11-25957149669A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1108__pntx";
+	rename -uid "6DFCB60E-40E3-1275-957A-A1B2D1C4B21B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1108__pnty";
+	rename -uid "40A52176-4C06-BD13-0728-368CBC084820";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1108__pntz";
+	rename -uid "691E375B-4D7F-1335-4497-259620D08FAD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1109__pntx";
+	rename -uid "9B48E1F5-4272-7421-5514-478B23BB4D77";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1109__pnty";
+	rename -uid "704804DC-49AB-F851-3ACA-CA9114843CF6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1109__pntz";
+	rename -uid "1864D6A7-4546-A7C9-DC1D-D2A929B2DCA1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1110__pntx";
+	rename -uid "507CCC83-410C-758E-7805-FD89780BE183";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.291534423828125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1110__pnty";
+	rename -uid "48075F5D-40C2-6087-7870-0AA5DE35B172";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1110__pntz";
+	rename -uid "BD77CCBE-4760-7CAA-29AC-4CBA74E258D2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1111__pntx";
+	rename -uid "41D641C7-4136-2792-5D1E-A7A21557F5EB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1111__pnty";
+	rename -uid "F35C95B2-4EED-7F41-6950-64A4E3036E25";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1111__pntz";
+	rename -uid "3717D43A-4F4C-5717-B022-3CAD207BB754";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1112__pntx";
+	rename -uid "925DDDD4-47E5-9A59-DB92-9B9EDF7573C9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1112__pnty";
+	rename -uid "398AE5A0-45E0-B282-1929-F4964C85C19E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1112__pntz";
+	rename -uid "6A13C204-4B03-CFEC-A4DC-DCBDABCDB728";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1113__pntx";
+	rename -uid "A5FD1D09-467F-FE38-B26E-69A366CD0DBE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1113__pnty";
+	rename -uid "C292AC85-4E4F-2F8B-D9F9-83A076DEA564";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1113__pntz";
+	rename -uid "5993513C-414A-3BAD-8089-47B2E825009B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1114__pntx";
+	rename -uid "6CC7074E-434A-F450-039A-B7BBE47D03D6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.1920928955078125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1114__pnty";
+	rename -uid "1AEB6DA1-4F1C-0794-022F-628ABCF91A9D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1114__pntz";
+	rename -uid "C451F167-4393-240E-E736-FA8809B01349";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1115__pntx";
+	rename -uid "93B33613-4363-59F0-C494-84B0E8828819";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1115__pnty";
+	rename -uid "B76A3BC1-4C46-BDE1-C769-58981FA3291F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1115__pntz";
+	rename -uid "272CDFE5-442A-307E-A818-4CB37FB1DF94";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1116__pntx";
+	rename -uid "F1D1C87D-4208-D413-BA22-97BEC24D5277";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1116__pnty";
+	rename -uid "547C0C82-4A8C-601B-7A63-ECB59A6B9408";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1116__pntz";
+	rename -uid "49CEF0FA-4F4B-58F5-2BA5-BFA4803322FF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1117__pntx";
+	rename -uid "87BA2829-4216-656F-7A99-53A314A07741";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1117__pnty";
+	rename -uid "23316247-46FB-918D-8F62-EC98118A2388";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1117__pntz";
+	rename -uid "E2E59D11-4CDA-6D88-EE96-4BB481C303B9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1118__pntx";
+	rename -uid "21D1C030-465A-E419-F6B1-C4B7ACA2092E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1118__pnty";
+	rename -uid "9AA1F033-4937-C0D6-845A-5DA4E5057C0E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1118__pntz";
+	rename -uid "83B1AC4D-4E00-C9E7-EE6C-9B8F3BA3EAE5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1119__pntx";
+	rename -uid "5CC693E9-42FB-DE6E-C020-BB8D16858685";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1119__pnty";
+	rename -uid "93ADF505-433D-A619-E00E-2B8342576DFD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -6.67572021484375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1119__pntz";
+	rename -uid "FE258F3E-4D0D-1653-18EE-7784DDF475F9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1120__pntx";
+	rename -uid "0B8B8A1E-4668-F8CB-75A3-9A92D3EA566F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1120__pnty";
+	rename -uid "837D6860-4262-F8C9-5197-9794B7C4B52C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1120__pntz";
+	rename -uid "5DB43C1E-455E-8E89-1712-64AE18338802";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1121__pntx";
+	rename -uid "DC5CDE3C-420E-3BD0-BCB8-309B33EC95C5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1121__pnty";
+	rename -uid "0D135F36-4EE6-85F8-FA46-2B97579820CB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1121__pntz";
+	rename -uid "0958A3CA-4283-4B79-77A6-5C97C1DD3232";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1122__pntx";
+	rename -uid "334E6B58-45E1-5E9F-124D-5692DFAFA401";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1122__pnty";
+	rename -uid "E571CA42-4380-8068-D62F-1A9063C95860";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1122__pntz";
+	rename -uid "20E8D9FE-477D-9B57-9013-C18B6D92020B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1123__pntx";
+	rename -uid "9354AF04-47AE-3EA2-3277-3096734C405C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1123__pnty";
+	rename -uid "D4DBB133-4FF3-CD4A-1CF6-20A37FC5CBE0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1123__pntz";
+	rename -uid "DF172DB0-4007-E93D-785C-2791EB22562B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1124__pntx";
+	rename -uid "70555D33-43CE-B1D2-3C56-BA8E7E04E99D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1124__pnty";
+	rename -uid "CD537061-4AC2-EBB2-EFE0-9AB1E5438598";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1124__pntz";
+	rename -uid "D26EC9F5-4AB1-D8A3-7028-529176020FAC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1125__pntx";
+	rename -uid "6E41A350-4CA3-1615-C291-128BE0217CCD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1125__pnty";
+	rename -uid "97985A07-4EAA-131C-750F-5E89BA16BE37";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1125__pntz";
+	rename -uid "7906AA93-424B-3205-CD75-F2B0BE89BF25";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1126__pntx";
+	rename -uid "1F95B1C9-4EDA-DFF0-6E1C-02AC2A7DF8D5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1126__pnty";
+	rename -uid "4D836ACD-4B62-ECCF-94F4-21B7C72F8942";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1126__pntz";
+	rename -uid "E91AD7C5-451B-E82C-6C1C-8FA1B5D50C95";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1127__pntx";
+	rename -uid "FE31188F-4862-F166-36DD-B78C54A57005";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1127__pnty";
+	rename -uid "08AACF71-4A2C-6CDF-D7E8-95B4194AC08E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1127__pntz";
+	rename -uid "F223930B-4287-078D-3C79-C287206FA9A1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1128__pntx";
+	rename -uid "13975D0F-4955-26FC-D223-0EADF9793EC5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1128__pnty";
+	rename -uid "65B7F77D-4FEF-829C-69F1-37A24592F640";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1128__pntz";
+	rename -uid "CD202EAE-4F67-A894-882A-DF84973D06AA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1129__pntx";
+	rename -uid "3962B7E3-427A-0261-EF1F-83B26E12A044";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1129__pnty";
+	rename -uid "4D967956-4283-024B-C5B3-A39AA1C27502";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1129__pntz";
+	rename -uid "8A4CB6C3-4CAD-01E9-4945-A083614C6610";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1130__pntx";
+	rename -uid "34D44B7F-4AFB-3FF7-A823-1196C8EE9FCB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1130__pnty";
+	rename -uid "1725B07A-4E51-A74B-171A-D4A131B695CA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1130__pntz";
+	rename -uid "125A45F7-490A-F1A9-6346-A997BBAFD55C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1131__pntx";
+	rename -uid "F3FA71C4-44BE-4B49-F0F4-22A313C4F66C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1131__pnty";
+	rename -uid "0D03A5BB-4749-E93B-C4AC-A994A87A80F5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1131__pntz";
+	rename -uid "CA11D2DF-452A-6830-D4F9-AC8574C36386";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1132__pntx";
+	rename -uid "C247B0D4-4B25-1752-A07B-EAAB0BD1F222";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1132__pnty";
+	rename -uid "14607115-475F-15D5-D19A-658939E48094";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1132__pntz";
+	rename -uid "32F93C9E-490E-184B-2671-1CA2D2B7F47A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1133__pntx";
+	rename -uid "D16D723F-4EFD-92B9-8EED-8C9582C3E6E3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1133__pnty";
+	rename -uid "912585C7-42FA-2FBE-BA00-539AED817832";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1133__pntz";
+	rename -uid "CDEE26EB-4413-40D4-0EAC-98BF9DA0C1FD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1134__pntx";
+	rename -uid "BD2F429A-496F-2412-289A-C485458F9111";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.152557373046875e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1134__pnty";
+	rename -uid "9A2629FF-434C-9937-D62D-B6A27C98EA7E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1134__pntz";
+	rename -uid "1F8A0275-46ED-08A1-1462-0F8D482B9051";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1135__pntx";
+	rename -uid "B8DF1B25-48A5-DDD5-23FD-D79EDBD24845";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1135__pnty";
+	rename -uid "88A5DF97-43D5-16FD-A6EF-E6B2F304E757";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1135__pntz";
+	rename -uid "7306CD7B-4473-E37D-7A57-8CA0A6F1C1F4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1136__pntx";
+	rename -uid "705CF81F-4C5D-FAF3-DE37-B48D3AAEB2AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1136__pnty";
+	rename -uid "0BA43D36-4407-B17A-3785-0DA4A258FFBD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1136__pntz";
+	rename -uid "F9188745-4584-9079-1BD7-1583F3CC445C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1137__pntx";
+	rename -uid "8532ECF7-4098-93D7-9988-8EAE27A9E0C5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1137__pnty";
+	rename -uid "C24F49D6-418E-2822-AD86-1B82F2F8D4C5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1137__pntz";
+	rename -uid "B4358B69-4952-9374-0454-D8A0722B5EB1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1138__pntx";
+	rename -uid "5CC41A76-494C-1031-F136-F886CC19C9EF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1138__pnty";
+	rename -uid "DDEB5421-476C-A509-B23A-85A830562093";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1138__pntz";
+	rename -uid "18ECE483-4A5F-89E0-15A0-219FE7E406DE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1139__pntx";
+	rename -uid "25010E3A-4035-905B-ABC1-31B2FA9CBB8F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1139__pnty";
+	rename -uid "CE698727-4FF3-0EA3-A1B9-BBBDC99D7116";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1139__pntz";
+	rename -uid "43216CE4-408D-2726-2D93-879201294170";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1140__pntx";
+	rename -uid "4CE79D43-4DDB-BDFB-9AA9-D69D1AF7EDC0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1140__pnty";
+	rename -uid "10F99AE3-4006-BC27-FFFB-27B94AA47077";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1140__pntz";
+	rename -uid "B4A37B6D-4D91-11A3-B1F1-D7A4179D1F84";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1141__pntx";
+	rename -uid "CA39FCBD-458F-2776-8D3E-26A39E25883F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1141__pnty";
+	rename -uid "0B85DE7B-4FC3-68B1-1BCD-0C8D29494DB8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1141__pntz";
+	rename -uid "40397721-4BA4-49CE-AE4C-1F81AB755760";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1142__pntx";
+	rename -uid "88D0BB0B-4184-BA35-1C80-05B79F4CFF27";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1142__pnty";
+	rename -uid "E2B02B47-4CD9-6971-4429-B9B0EC8D21D4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1142__pntz";
+	rename -uid "A5433F63-42E0-BC09-0D9F-C7AD99B1E33F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1143__pntx";
+	rename -uid "2ED13FD4-4027-AAC3-D190-EC8811C83662";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1143__pnty";
+	rename -uid "AAF7CBFA-42AD-DB1A-E9AC-B29BE8850B92";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1143__pntz";
+	rename -uid "48575929-409A-A310-C8E1-868B4E912EC9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1144__pntx";
+	rename -uid "1DAFD8B5-4E0F-60E3-E880-A1B33BC33371";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1144__pnty";
+	rename -uid "BBE6EBEA-4037-7CE2-D3BC-699FE7A8A59E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1144__pntz";
+	rename -uid "69C458A2-4340-7B37-E4F6-2DA92462CEDF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1145__pntx";
+	rename -uid "71F5E7FE-4207-2F8B-5593-A8A0AA47A04B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1145__pnty";
+	rename -uid "E62918D6-4D37-6CE1-EFDF-EBB8E7E0ACDA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1145__pntz";
+	rename -uid "F9858FE1-469F-3AF9-A585-3F934748241B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1146__pntx";
+	rename -uid "A4A9FE12-438D-F9E0-8F95-AE857D33464D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1146__pnty";
+	rename -uid "4A682DD2-42D2-CEC6-61CA-5BBD7827B9F2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1146__pntz";
+	rename -uid "F07FFCE7-47D0-B032-937D-DA8AEE2B19CF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1147__pntx";
+	rename -uid "659054D1-4FEB-53DF-35A5-28BC3C793215";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1147__pnty";
+	rename -uid "7E286A8D-49E7-23EB-2899-5593E5325520";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1147__pntz";
+	rename -uid "88D43506-4D1B-A08B-08D7-5D8A452D6735";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1148__pntx";
+	rename -uid "60FE2729-47C2-2940-F60D-55B2EBA3DE4F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1148__pnty";
+	rename -uid "5737C9FE-4731-6CF5-56CD-589A554B38F3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1148__pntz";
+	rename -uid "C1D4DCD1-47D2-8022-FC09-6EBE940B504E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1149__pntx";
+	rename -uid "28DD87BD-4358-FA06-27DD-86BD28B6949C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1149__pnty";
+	rename -uid "806F56B2-4EE8-78BA-194A-7AA093335AD7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1149__pntz";
+	rename -uid "CB476A34-4953-77B4-C0D5-3890355792DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1150__pntx";
+	rename -uid "91B8BCF4-4FBD-EA22-C130-E98C6E943362";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1150__pnty";
+	rename -uid "9F5DFEF3-4801-BBE3-9544-07909CC1BC6F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1150__pntz";
+	rename -uid "68EC72C1-4A5F-0BEB-11ED-5895CF1179A7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1151__pntx";
+	rename -uid "60F680AE-4F79-F3DD-0D23-8EA8459569F5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1151__pnty";
+	rename -uid "5452139B-4B39-0EDB-E21C-FF8585995F95";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1151__pntz";
+	rename -uid "828EEB2E-4404-92FC-0F31-7AB0841C8BB2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1152__pntx";
+	rename -uid "45F6A7BC-4341-E4DA-83C1-9DAAD8C3359C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1152__pnty";
+	rename -uid "D85BCA98-47AF-3ED8-AB7A-D2A92FD4868E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1152__pntz";
+	rename -uid "649EC5FE-4B72-23EA-7222-EFA5840EE6CE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1153__pntx";
+	rename -uid "1A93AA68-49A9-A4C1-03AE-58ABDAF515F3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1153__pnty";
+	rename -uid "2E77ACC0-468A-8F39-7868-F3A99AAB5AC9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1153__pntz";
+	rename -uid "404755A2-4DC1-C768-437C-BBB85CC27C74";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1154__pntx";
+	rename -uid "099BFEB0-44E1-D149-E933-F2945F68489B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1154__pnty";
+	rename -uid "B9A36077-4405-3F77-0CED-748C8D84E95D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1154__pntz";
+	rename -uid "8889FF00-4783-FCA0-84A8-859E06434ED0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1155__pntx";
+	rename -uid "2B6406F8-4455-098E-1700-85BAB29C1AF6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1155__pnty";
+	rename -uid "FB32F678-4191-05E2-6CEA-7D8A893040C8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1155__pntz";
+	rename -uid "FAB4AA97-4222-7C3E-FC09-7497B45541D8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1156__pntx";
+	rename -uid "5CE3641A-420C-D2DC-61C6-5693E3F0F77B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1156__pnty";
+	rename -uid "0BF1D5F7-4CCF-4F1C-F718-268AEE2207E8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1156__pntz";
+	rename -uid "395B2270-4B82-9E84-0296-3FB5E13312E0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1157__pntx";
+	rename -uid "D2A712A6-41A1-0D35-4BFB-2598AF295BA8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1157__pnty";
+	rename -uid "D7EB86B1-406D-9F4E-5704-CFBCB4A01909";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1157__pntz";
+	rename -uid "12621F31-4FD6-DC91-00BC-79A5D83EFB2D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1158__pntx";
+	rename -uid "20E52608-4598-9FDF-F04A-9098E15D6D4A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1158__pnty";
+	rename -uid "868DC726-4D2B-BD91-C397-418C2D87CD6E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 8.58306884765625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1158__pntz";
+	rename -uid "17793A7A-49B4-FCD6-651B-5CAB683ABECA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1159__pntx";
+	rename -uid "98403A06-470D-05C2-F95F-04B44A524F20";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1159__pnty";
+	rename -uid "7EF6ED0C-46E5-A160-EAAD-FF93DB417BC1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1159__pntz";
+	rename -uid "EE79B102-4EAA-DF13-D960-8F9264C65FE0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1160__pntx";
+	rename -uid "193FD5F1-42B9-3602-B824-6C8441DECF58";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1160__pnty";
+	rename -uid "203F1B62-4A58-1B24-25B1-2D8FC7F56D26";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1160__pntz";
+	rename -uid "BE58A00D-4DF4-1606-B528-8A85AD347EB1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1161__pntx";
+	rename -uid "D4E9DD3A-46C5-A72E-34AA-63AB6FC520A7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1161__pnty";
+	rename -uid "F027ED6E-47F5-B701-C5AA-B1B13BAD8030";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1161__pntz";
+	rename -uid "288A30DE-497F-B99E-B04D-FEAA347810B3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1162__pntx";
+	rename -uid "E786B2C8-4D13-0DFB-7C8C-2BA7DB44931B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1162__pnty";
+	rename -uid "BB5EC75F-44B2-DC54-29FC-A6847B131662";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1162__pntz";
+	rename -uid "C30D6E14-45C2-AD06-0B20-87B969C2403D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1163__pntx";
+	rename -uid "1D5FEBBD-4619-9512-B485-8BBCBFF8185B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1163__pnty";
+	rename -uid "97220AA8-41D6-77E7-FDD0-DBA7829D3AC1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1163__pntz";
+	rename -uid "F6F74C35-406F-0212-F45F-E0A6FB1E6C3B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1164__pntx";
+	rename -uid "3FCD15D2-4190-3E3E-65AA-AFB4A74DC9E3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1164__pnty";
+	rename -uid "12CB0F31-4A51-8B17-EEAA-B99DABAEDDEE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1164__pntz";
+	rename -uid "25DE05B5-49F7-AE6D-A7DB-4EB6E694C538";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1165__pntx";
+	rename -uid "834660B2-4D4A-DA92-1B5E-0EAF0BB0838E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1165__pnty";
+	rename -uid "20028C5C-4394-A0E3-F0E0-36B08342B288";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1165__pntz";
+	rename -uid "52EA1FB8-4197-DE83-90A8-72B1441CD1F1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1166__pntx";
+	rename -uid "5B2899C8-4C1B-E936-81C5-9DA93520F208";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1166__pnty";
+	rename -uid "B40212C4-4DBC-0D2B-3C45-729981C429E9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1166__pntz";
+	rename -uid "ABA6ED8A-48B3-D33C-B187-81BEEAC0DA22";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1167__pntx";
+	rename -uid "DC417933-49F9-5035-4542-9FB0438C9067";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1167__pnty";
+	rename -uid "7FB5C642-44EF-2FF7-88F4-56B1954BB3DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1167__pntz";
+	rename -uid "D14B7245-4043-9B6D-1D31-1A800FA04E43";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1168__pntx";
+	rename -uid "155B80D6-4CB6-6841-41FA-02B3AE8BCB83";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1168__pnty";
+	rename -uid "8A7EF9C1-4F82-14D4-A96B-6E85C89D331A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1168__pntz";
+	rename -uid "FA1818B7-4E7D-DA8C-D416-F18DC51FAF58";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1169__pntx";
+	rename -uid "43804A81-41B5-6858-7BA8-16A31F4F1F92";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1169__pnty";
+	rename -uid "C63D26CA-41C1-E02E-9D72-B28487BA8807";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1169__pntz";
+	rename -uid "AE13DD13-4147-DA14-ED3B-539CC25E5BC4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1170__pntx";
+	rename -uid "F38C6FF5-47A2-6C40-0009-B4A9B61AD0EE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1170__pnty";
+	rename -uid "A6B68973-41FA-81B3-A776-E198F0FA2D47";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1170__pntz";
+	rename -uid "DCE38188-4429-C15C-D76C-71A8F915DBFD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1171__pntx";
+	rename -uid "FC184D4F-4A26-6B76-B2C1-5A97E1D1C8A5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1171__pnty";
+	rename -uid "151BD7C9-4BBE-BA4C-2846-51A6E03BFE6E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1171__pntz";
+	rename -uid "498238F6-44E0-487C-5F00-98963D481B89";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1172__pntx";
+	rename -uid "DDCBF174-412A-5612-9173-B9B35C82C59D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1172__pnty";
+	rename -uid "E17D85BC-49CA-C6F6-E327-68AD0874C0B2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1172__pntz";
+	rename -uid "7CF6BAE7-4D73-38B6-0503-5FA11DC29346";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1173__pntx";
+	rename -uid "36DFCE03-4037-6C9B-7A41-5E8C7F310650";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1173__pnty";
+	rename -uid "2763C5E2-4093-5B97-F8CE-1E8774AD6E0F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1173__pntz";
+	rename -uid "301F80F1-43FB-0F33-1A72-38B88FA714E1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1174__pntx";
+	rename -uid "8D9C9A92-414B-455F-7AD9-099201E83A76";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1174__pnty";
+	rename -uid "BB2BA5BA-4E22-7DB6-9D7F-269F87E739CE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1174__pntz";
+	rename -uid "7BC60B13-4439-1424-4AD3-85ABA56CA818";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1175__pntx";
+	rename -uid "BCB0C5C7-4368-1461-29BD-868DDC04D5EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1175__pnty";
+	rename -uid "04C44A3A-468C-D1AE-5B9A-0A978C46556D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1175__pntz";
+	rename -uid "FAE15BE0-431C-2E9C-A1D8-A796F091D930";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1176__pntx";
+	rename -uid "5FAD21F8-4586-7D25-1007-4284A2A4420F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1176__pnty";
+	rename -uid "9AB1FF96-462B-9AED-5AC6-6B81557CE7DA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1176__pntz";
+	rename -uid "7F351745-4EC1-F5BC-C138-029B354D5C10";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1177__pntx";
+	rename -uid "09F79055-4B42-A39E-B192-53A7A782BCE7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1177__pnty";
+	rename -uid "443FA9D5-40B3-85D0-07D7-DE86FB74997C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1177__pntz";
+	rename -uid "DA4A33FB-4211-3527-E5CB-6D998F14E897";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1178__pntx";
+	rename -uid "B2271CF5-410D-9AFC-ADAF-258B641A08B8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1178__pnty";
+	rename -uid "0C11CE32-4BA6-0B3D-2A92-ECBB70869066";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1178__pntz";
+	rename -uid "B98741A6-438C-19DC-75E9-D3A9D84CB163";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1179__pntx";
+	rename -uid "8CBAD763-495A-CED0-5A48-7E99AAA35051";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1179__pnty";
+	rename -uid "85C1AA31-43C2-7DCA-B93A-6E9F3591F3BA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1179__pntz";
+	rename -uid "318A4E74-4CF3-9CCA-DC21-C5B83514EF2B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1180__pntx";
+	rename -uid "29D8E0E2-4457-FCC5-DC3D-338ABD72FB91";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1180__pnty";
+	rename -uid "154F7AC8-465A-9018-A168-75825A3DCDB9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1180__pntz";
+	rename -uid "9B4CC52E-479A-4756-F201-E69A174825E0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1181__pntx";
+	rename -uid "400061EC-4945-D834-65E2-EF8A1ADB123B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1181__pnty";
+	rename -uid "7EA842B2-4743-AE71-2164-86A675C738A1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1181__pntz";
+	rename -uid "A6717A9C-41F9-B373-0F12-3F9D46963E32";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1182__pntx";
+	rename -uid "E37B1DCE-4A27-58E9-FABC-D288C653FD08";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1182__pnty";
+	rename -uid "D1092036-4DF8-64E9-44EF-64A0EA03B551";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1182__pntz";
+	rename -uid "EF09A174-42A5-3D27-66E6-B3837D086F2C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1183__pntx";
+	rename -uid "BC790ABB-415D-5F82-B6F3-CF83C94D6B1A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1183__pnty";
+	rename -uid "0D107F7F-4967-9257-FE5B-3D92100A21F6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1183__pntz";
+	rename -uid "67501B04-44E2-E12D-61B4-F99D204A2E5D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1184__pntx";
+	rename -uid "9C626096-45E9-4D9F-C15C-A9957A6EDB50";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1184__pnty";
+	rename -uid "F45EF2E7-422C-1FA9-AD15-F7840D55A736";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1184__pntz";
+	rename -uid "FF99671A-48C0-7A97-5DFE-DBBC96BD1CAA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1185__pntx";
+	rename -uid "A5DE610A-4AAE-599A-38E4-04B480F2004F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1185__pnty";
+	rename -uid "AC49F774-4B1B-D155-C124-4DA677802BCD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1185__pntz";
+	rename -uid "B2E47219-4BDF-A7A6-11C8-D3ACE2384150";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1186__pntx";
+	rename -uid "70ECB034-41E8-B6AB-C02E-B8A736261DC5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1186__pnty";
+	rename -uid "97DD66B7-4041-7543-001B-E797D5B2EF71";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1186__pntz";
+	rename -uid "3FA851ED-4817-459E-2E18-69AB2749D5FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1187__pntx";
+	rename -uid "45959C48-4D91-65F0-4795-C98652437D90";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1187__pnty";
+	rename -uid "B8D57DAE-4C12-F3BA-2F71-6DB4160FB564";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1187__pntz";
+	rename -uid "88E02839-4C1F-40B9-7FF2-929014357DA1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1188__pntx";
+	rename -uid "E962127E-4A8B-97B2-A596-A4AC7023851C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1188__pnty";
+	rename -uid "6462D534-449F-BCC7-0D34-D1AD9F3AB85C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1188__pntz";
+	rename -uid "A6325AC6-4E4B-D011-5456-A98D73AF62EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1189__pntx";
+	rename -uid "EE2AF18A-4059-C434-3A60-BDB2949AD692";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1189__pnty";
+	rename -uid "06B73E89-40C1-7DEF-EB55-4F915962FD96";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1189__pntz";
+	rename -uid "118FF62C-4C73-7166-D946-B1BF62AC58E6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1190__pntx";
+	rename -uid "D5008CCD-4FDE-9522-4DF3-A9B7AE714752";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1190__pnty";
+	rename -uid "6D80302B-4F6F-2C08-8B8C-F79519E77349";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1190__pntz";
+	rename -uid "07CA6363-40C7-04A4-58E3-04999DCB8299";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1191__pntx";
+	rename -uid "8D3CB942-4108-52E2-0F81-2FAB36D955FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1191__pnty";
+	rename -uid "52DCCA94-4688-5134-DFAF-1B8CEA835441";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1191__pntz";
+	rename -uid "A6784DA4-4017-DC32-7C2D-3BA566FB95D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1192__pntx";
+	rename -uid "4425FB90-45C0-58A3-0A43-978FF12AA40D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1192__pnty";
+	rename -uid "A5A5F5A9-45F8-AE20-A5FA-D59B204A4952";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1192__pntz";
+	rename -uid "42E540EE-460D-A327-7DC6-C7A45278D815";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1193__pntx";
+	rename -uid "DE70AB3E-4140-FD69-9A55-F1BDC0DA5736";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1193__pnty";
+	rename -uid "B94C41F3-4028-C83A-9653-D78690EA384B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1193__pntz";
+	rename -uid "7B4AAB4D-4956-76DC-9F3D-03968C93082D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1194__pntx";
+	rename -uid "80778599-47EF-F3D2-80FE-C8995D11D6CF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1194__pnty";
+	rename -uid "DF499EE0-41C2-DDA9-7C57-83A4629DAC6A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1194__pntz";
+	rename -uid "3F785550-4AF4-BF0C-A444-81B47A8770C2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1195__pntx";
+	rename -uid "1BBFBF15-4A60-4E51-563B-E0A098F84719";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1195__pnty";
+	rename -uid "C71CA206-45AE-5068-6456-2D82997C3151";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1195__pntz";
+	rename -uid "3ED688E4-4B90-DBF2-9601-EBBB74C9D26A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1196__pntx";
+	rename -uid "7245EAF7-4D18-2429-2688-32A8BE727096";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1196__pnty";
+	rename -uid "77B0847E-4EBC-DD82-2686-6890ACE5D9DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1196__pntz";
+	rename -uid "67DAEFE9-4FFB-19FC-2D41-83BD122F663B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1197__pntx";
+	rename -uid "31382442-40AC-42FC-44CC-DB8ECAF15D18";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1197__pnty";
+	rename -uid "9B8D4BD4-429F-1C83-C99F-2DB57BEF74C7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1197__pntz";
+	rename -uid "5D3189A4-4A48-CD78-E713-318B20D1CE48";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1198__pntx";
+	rename -uid "6073353B-458D-D758-708D-489A71D4D23B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1198__pnty";
+	rename -uid "F6D777D7-4993-F925-DE36-87BDE7AA4BE0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1198__pntz";
+	rename -uid "5149035D-4E1C-921F-4FF5-23AEBFDDA36D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1199__pntx";
+	rename -uid "C96DF664-439D-C6A6-97EF-D4A30AFCE3FF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1199__pnty";
+	rename -uid "BF196FCB-4741-4A84-AEA8-0684BDA880EE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1199__pntz";
+	rename -uid "35C633B0-4D9C-0B8A-E5F3-9F974C1425F3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1200__pntx";
+	rename -uid "E9D0C375-468D-8754-32F8-699EF6904245";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1200__pnty";
+	rename -uid "C9A6E7AE-4CF2-541E-4B3A-57934762F04D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1200__pntz";
+	rename -uid "2373298D-4BFE-4DB1-1F4C-4AA2285BBEDD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1201__pntx";
+	rename -uid "7CCA2A58-4549-E06D-C4D6-DD937D101D1E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1201__pnty";
+	rename -uid "072A018F-498A-1AB7-1AE2-D1802D27949C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1201__pntz";
+	rename -uid "D8091E61-4ABB-AB87-976B-498EA35B554B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1202__pntx";
+	rename -uid "44C0910F-4648-ADF5-8495-D685024D0D07";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1202__pnty";
+	rename -uid "429D75D1-4BC7-8E52-BF13-A8AE146DD6A3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1202__pntz";
+	rename -uid "BCFF3FA2-495E-13FE-1306-0AA392B74D37";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1203__pntx";
+	rename -uid "603F4F2B-4FDD-3493-A1D7-C3AD0E23A9C2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1203__pnty";
+	rename -uid "0169A8BE-4A28-C526-17F4-A6BE86F954FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1203__pntz";
+	rename -uid "D84C6314-435F-9B6E-68C1-3BA3507FD639";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1204__pntx";
+	rename -uid "50AE1A0C-4BD5-8572-C0A5-F385DC5F4BBC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1204__pnty";
+	rename -uid "A81EBED7-4D73-EC73-03F5-FC8D47640215";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.52587890625e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1204__pntz";
+	rename -uid "76485884-44C4-95D7-AF9C-19830317C8DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1205__pntx";
+	rename -uid "F87FDF67-4A90-CA66-D9F2-7E8BF42341AE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1205__pnty";
+	rename -uid "7491ABE7-43FB-6049-E0EE-B6BA364BC6DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1205__pntz";
+	rename -uid "745D0C38-4264-37FE-6904-E2904E5CAE24";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1206__pntx";
+	rename -uid "576D50E4-4865-4266-0F70-7992910B24FC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1206__pnty";
+	rename -uid "2EA6DCA4-448F-D2EE-7053-BA909F218738";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1206__pntz";
+	rename -uid "9C6B0668-4E6F-087A-C267-0798F4A9E022";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1207__pntx";
+	rename -uid "46648177-4400-1185-4442-7B939EB624FD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1207__pnty";
+	rename -uid "8AB690CA-4B9E-DE80-EFBE-229E915C3145";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1207__pntz";
+	rename -uid "58D5532E-46CE-B52C-3C3B-AB8094717ACD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1208__pntx";
+	rename -uid "05778A99-44E6-6A0C-1137-45A6874C723C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1208__pnty";
+	rename -uid "5A06D23B-4888-C720-6117-808CC1304D67";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1208__pntz";
+	rename -uid "646B04FA-474B-305E-A036-2FA3ED6892C8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1209__pntx";
+	rename -uid "CC595480-47F1-7450-FFD8-989082F5F01A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1209__pnty";
+	rename -uid "419F9CF7-41E2-42D0-5225-AE85E703FAFB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1209__pntz";
+	rename -uid "4DCC3D55-4270-F577-C441-0392FBE33EE2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1210__pntx";
+	rename -uid "F2259546-4FF4-3441-316A-D89D68BA6F0F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1210__pnty";
+	rename -uid "EA459227-40C4-00E6-6F8E-2CBE39E59AF0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1210__pntz";
+	rename -uid "BB997FCE-44A6-175E-BCAC-9D8490FA47DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1211__pntx";
+	rename -uid "4F155637-4ED0-F1CB-8653-C082699F61DD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1211__pnty";
+	rename -uid "E473E4D5-4AB2-E7CB-E1FC-E39C09505462";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1211__pntz";
+	rename -uid "E146A8A8-4BDB-DACB-A549-FDB5FDE799E7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1212__pntx";
+	rename -uid "00E0AE62-4E57-A0CB-A203-7C9E92160893";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1212__pnty";
+	rename -uid "6AFF71FB-4870-D16A-F3E1-08B67F547F6E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1212__pntz";
+	rename -uid "D2BA4281-4FC1-CBE3-E077-3496D1E6297D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1213__pntx";
+	rename -uid "072ECFC7-4011-A9B2-C380-258FC0776E1A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1213__pnty";
+	rename -uid "60CA0CA0-41D8-EAB4-0509-32A61D7EA2B2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.52587890625e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1213__pntz";
+	rename -uid "C8D2A2DB-465C-FBFE-71B8-7684150C4220";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1214__pntx";
+	rename -uid "12D2DCE1-4153-28FD-E8B6-A48BC4ABBA16";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1214__pnty";
+	rename -uid "4C0DEDD1-4945-8C51-0782-9CA14EA4CF39";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1214__pntz";
+	rename -uid "3889CC44-4815-84FF-ABA9-0BB0926FE939";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1215__pntx";
+	rename -uid "267673E9-4928-8ACC-F24C-9792E2F579F4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1215__pnty";
+	rename -uid "AE472A2B-4115-E941-D250-9DA8C525C4E0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1215__pntz";
+	rename -uid "5E452832-439D-C2CD-E918-1EA5EA4F8832";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1216__pntx";
+	rename -uid "1A040566-4316-C4A9-7F27-DC9AFA8FA0E2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1216__pnty";
+	rename -uid "3C42FFEA-48B8-3584-9080-48B6F22CCCAA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1216__pntz";
+	rename -uid "CC49A983-4246-588F-DDD7-4CA731BACFD3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1217__pntx";
+	rename -uid "DD175C1C-4FFD-EFED-2F1D-1FA69DAA55D9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1217__pnty";
+	rename -uid "95CF4E09-4100-8DD1-0A38-A8ACD8DFF574";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1217__pntz";
+	rename -uid "B448D19A-483C-FA19-45B6-D5B58C793CEC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1218__pntx";
+	rename -uid "9DE5CA6A-4A68-662D-C60B-70A2808CD0DD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1218__pnty";
+	rename -uid "5C3E64C8-4AA8-A3D9-A7BF-17AEE6EEFB72";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1218__pntz";
+	rename -uid "C399B135-40DD-3CA3-C001-6DAAF485256F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1219__pntx";
+	rename -uid "87487BE2-4818-8E19-1924-C3A5A75DF4BE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1219__pnty";
+	rename -uid "C39F8D46-4DFF-33E6-96F1-F3BBFED72766";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1219__pntz";
+	rename -uid "4CBA8425-4EF9-2B46-1F0D-F090E26FEE3A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1220__pntx";
+	rename -uid "62E9ADDA-400F-51E9-B69E-74A3AFFABC4A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1220__pnty";
+	rename -uid "59C7B67D-4825-4054-F823-5EAF48EF0C76";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1220__pntz";
+	rename -uid "A60A1B6E-4BCA-E79C-76F4-1DA9BB837D70";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1221__pntx";
+	rename -uid "364CEC84-41CC-F6A0-CA71-0FA96BD624C1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1221__pnty";
+	rename -uid "3325FB3D-46A2-21A6-E20A-EC98F539FDF9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1221__pntz";
+	rename -uid "8BE3DD0E-4941-0BFE-0F11-F0964E401E92";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1222__pntx";
+	rename -uid "4BC195E9-41A9-544A-7ABD-EB936DA815B2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.337860107421875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1222__pnty";
+	rename -uid "04ECE04B-49DF-A004-91AD-C6966EDF2140";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1222__pntz";
+	rename -uid "9FD94AD4-4EBC-0FE7-AB2A-EEB83EB039C2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1223__pntx";
+	rename -uid "914B2C7F-43A0-1E8B-BC01-0A9ED5AF7563";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1223__pnty";
+	rename -uid "3D27F495-480D-9AB2-0B70-8BAED35667BA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1223__pntz";
+	rename -uid "7344CF57-4484-52BC-E137-D7A629188078";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1224__pntx";
+	rename -uid "0697FDCC-4580-FCA8-F8BA-838597B231BB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1224__pnty";
+	rename -uid "0E81E8A4-4EAB-22ED-6E12-6BAFC1754ECA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1224__pntz";
+	rename -uid "6E78CF32-4DD7-2194-CFB5-86998A21050A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1225__pntx";
+	rename -uid "F512DCFB-425B-778B-64DC-DBB347888FE9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1225__pnty";
+	rename -uid "AD619F64-4B29-9115-372A-78BFF56063B1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1225__pntz";
+	rename -uid "14586859-4362-95F4-F15F-79A450C478C2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1226__pntx";
+	rename -uid "47B5E825-445D-7348-23C6-9086FC02076C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1226__pnty";
+	rename -uid "FE57061F-43D7-8194-6B34-EDAE13F0EC8F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1226__pntz";
+	rename -uid "1E69097B-47B5-EFA5-8689-5B9743995AD7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1227__pntx";
+	rename -uid "290A8741-43B1-FDC0-7011-B190A099EBA5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1227__pnty";
+	rename -uid "8E59D259-4B3D-56F6-2EBA-5FB543330E04";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.33514404296875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1227__pntz";
+	rename -uid "16B65172-40DC-A592-AAEA-93B3A0EEF689";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1228__pntx";
+	rename -uid "E495D025-4CB9-5036-2798-7F8069E8C6C9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1228__pnty";
+	rename -uid "8ECB2A81-4CD1-19F0-20A5-5F86B10F4FC3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1228__pntz";
+	rename -uid "6C8694B4-4AF4-1FC6-0A94-C18E3EEF66E3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1229__pntx";
+	rename -uid "F2764F2A-4D51-8D23-D3E9-77B8E66C457E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1229__pnty";
+	rename -uid "91B79FED-4278-F01D-BF7D-94BA59ABB2D4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.33514404296875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1229__pntz";
+	rename -uid "6D87CD10-4E18-6528-F574-B9B5B738B5D9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1230__pntx";
+	rename -uid "AF52EDC6-4B2E-E3E6-D78A-7B9276980D19";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1230__pnty";
+	rename -uid "6B78BF98-4131-2F88-4AAB-B7B4405EC21B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1230__pntz";
+	rename -uid "6EED3225-4DFF-5E0D-A44D-CB91311304AD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1231__pntx";
+	rename -uid "6CFF82A7-41A0-A9E3-729B-CAB58EBD05ED";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1231__pnty";
+	rename -uid "30900C09-49E7-65D9-7342-2A9A17E6779C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1231__pntz";
+	rename -uid "481ABF1F-4E98-86AD-AE5E-A6BF24A6058B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1232__pntx";
+	rename -uid "B813A5C4-4149-1517-E35C-57B1D471E6BC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1232__pnty";
+	rename -uid "58488AB9-49EE-7CA0-66B4-8FAC363FE5B4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1232__pntz";
+	rename -uid "B4DE1F54-4D0C-F04C-8857-4CAB151167A9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1233__pntx";
+	rename -uid "1A1C8EED-4AF1-CA6A-2B71-C88930BFEBBF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1233__pnty";
+	rename -uid "4F86EFB7-4EC9-7F73-99DB-2483753C917A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1233__pntz";
+	rename -uid "4380D347-4BC4-1AD8-BB3C-BD9DFB91C368";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1234__pntx";
+	rename -uid "E09E7A98-4FD6-BA77-038F-1D8B3CA9B5B1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1234__pnty";
+	rename -uid "C9B8A4E3-4CD9-6CB8-73B2-38902CF0CA81";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1234__pntz";
+	rename -uid "68DA9ECF-4891-7232-D3A1-4DA7F827A603";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1235__pntx";
+	rename -uid "F101AC6F-4C48-B4AA-E619-67B55AB9924F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.291534423828125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1235__pnty";
+	rename -uid "08EB6CA4-451A-30B0-056C-C8B509CB053C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1235__pntz";
+	rename -uid "30D1D9FC-4B70-94D4-B990-258F038EC6D5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1236__pntx";
+	rename -uid "2CCBA5EB-4AC9-2B93-8A7A-BCBEB0FEA613";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1236__pnty";
+	rename -uid "C2186F97-4F57-3479-4AB4-029F7CC60E1A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1236__pntz";
+	rename -uid "F08977AE-48DA-EE37-2D60-7BAF40E294D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1237__pntx";
+	rename -uid "8BAE9632-47C6-D6B2-CDE7-8E8FD45634AF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1237__pnty";
+	rename -uid "4C478FEE-47BC-F2CA-CB03-C08369D4472E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1237__pntz";
+	rename -uid "B839AB87-44CC-D4AA-74F3-6B93BCE29D76";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1238__pntx";
+	rename -uid "504A876B-4DD1-25A2-721C-19A822C72417";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1238__pnty";
+	rename -uid "467DDFA5-42FE-C32A-DB85-CFBDD934BD9C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1238__pntz";
+	rename -uid "4BAC94E4-47A1-8B6A-6D44-1B9D9F5EFB31";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1239__pntx";
+	rename -uid "97D1C720-4988-B133-1ACE-C2A4967F8DB1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1239__pnty";
+	rename -uid "C1656688-49B6-B63A-DFD0-4685D932D546";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1239__pntz";
+	rename -uid "C072CD2F-4306-C136-2FFA-77AF032CC956";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1240__pntx";
+	rename -uid "AAE69838-4D0E-5B20-4C48-FA9B8D958931";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1240__pnty";
+	rename -uid "4CD73872-45CB-55C9-63D9-C8BFB5637A7C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1240__pntz";
+	rename -uid "21D94E43-4013-E2E8-454E-A289DD74D409";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1241__pntx";
+	rename -uid "3213B68D-4513-A318-0751-13A577BB3287";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1241__pnty";
+	rename -uid "B1E1C103-4E22-D976-9EE0-80B4C071752F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1241__pntz";
+	rename -uid "A4B56223-4758-7055-004D-A28D50633868";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1242__pntx";
+	rename -uid "79571AEF-48FE-6895-F2A2-4180BFF55CFC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1242__pnty";
+	rename -uid "C3D7AD2C-4026-013D-9884-C380266585A0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1242__pntz";
+	rename -uid "7F05BE04-465A-A030-580C-A481C9239BCB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1243__pntx";
+	rename -uid "309BF730-4D2E-54EC-8367-80B63706DFFC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1243__pnty";
+	rename -uid "930497E3-45CE-57A8-11C1-FEB9830C06EF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1243__pntz";
+	rename -uid "58A4FEB1-4268-EC31-9F45-9DA6F8100FDA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1244__pntx";
+	rename -uid "817A97C0-4FF9-0979-0C23-C38E5AAADA19";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1244__pnty";
+	rename -uid "2AC6C632-4476-F6CE-2724-009C0385F933";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1244__pntz";
+	rename -uid "43182EDB-46F3-21B1-97D4-149A4D11B0B7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1245__pntx";
+	rename -uid "A378806E-48EE-8964-31F3-4285F11F6A00";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1245__pnty";
+	rename -uid "EB2F3C5C-451E-D175-E2D9-1A9A5539C5C9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1245__pntz";
+	rename -uid "944193F2-4B8E-E258-E1FD-4F834F87D9C0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1246__pntx";
+	rename -uid "04108864-40AD-C4C4-60C1-A690B581AE6C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1246__pnty";
+	rename -uid "1216A683-4557-D04B-DF4A-91B5C33B715F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1246__pntz";
+	rename -uid "52B4BB1B-4CA8-A262-C254-0697524CBDC2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1247__pntx";
+	rename -uid "6796520E-4583-C570-8571-A9AD551156BE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1247__pnty";
+	rename -uid "85AC88F8-4B1A-014B-77C0-65A805351E91";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1247__pntz";
+	rename -uid "A8C2C5A8-436C-A17F-BEEE-5B95C62C0723";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1248__pntx";
+	rename -uid "B1E70B2F-4FB0-7527-40CC-56AA5E20A6D8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1248__pnty";
+	rename -uid "C787E56F-4FB7-B4E1-3A1B-DA98057E57F7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1248__pntz";
+	rename -uid "5DB255AB-4A19-B649-0D1A-CFB79DC21FE9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1249__pntx";
+	rename -uid "55BD8EAB-46AD-0D9A-B723-A8BEC9BE72CE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1249__pnty";
+	rename -uid "779971B8-456F-9519-15A9-F7BC6548297F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.33514404296875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1249__pntz";
+	rename -uid "1832AEBB-4B17-B1DE-77E8-4E87DBAA133E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1250__pntx";
+	rename -uid "D5DBA24D-4AC9-AE25-EC1D-E49B3CD04A17";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1250__pnty";
+	rename -uid "18E8C0A0-4E2C-0A91-81C5-539101678CC3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1250__pntz";
+	rename -uid "A3E8E293-46EE-9E8D-58D0-529233BDFEE0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1251__pntx";
+	rename -uid "6DC3FA7A-4FE2-9258-5B51-32BECA1A66A5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1251__pnty";
+	rename -uid "C99EA3C3-4743-7651-5827-A8B22604D5B6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1251__pntz";
+	rename -uid "38AF14B7-4D97-66DF-A1E5-7AA6ECCF8D6B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1252__pntx";
+	rename -uid "CEBE2380-4408-CBF0-B90D-50AECE6B0B39";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -6.198883056640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1252__pnty";
+	rename -uid "57A6CF5C-4D97-046F-B2E3-14A42B786CCB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1252__pntz";
+	rename -uid "FA869D31-4C39-7178-9014-1DA05AB20C42";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1253__pntx";
+	rename -uid "B646A780-46D0-2B74-7C83-1EBC9EC7CAEC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.291534423828125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1253__pnty";
+	rename -uid "87C05109-41D1-92DA-9D21-68A736ED5FCE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1253__pntz";
+	rename -uid "35670E98-4049-3D78-F491-A493EAF208D6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1254__pntx";
+	rename -uid "1AE81118-449A-8216-9BBD-2D91C69B569D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1254__pnty";
+	rename -uid "1370E723-4B0F-1FA6-AE43-AE998E94DB3F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1254__pntz";
+	rename -uid "75CE3971-401F-60BB-7C83-FBBBE46FA692";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1255__pntx";
+	rename -uid "AB63403A-412E-39BF-1FB1-B9AF90ADB1F5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1255__pnty";
+	rename -uid "47536A11-426A-7FEE-4FAF-E1B793A2EB62";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1255__pntz";
+	rename -uid "DF42B63D-4895-42EE-8798-E2ABEF011FBA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1256__pntx";
+	rename -uid "640E5DF7-4708-3691-36CE-088F0D0A3168";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1256__pnty";
+	rename -uid "2E702114-4F6D-A24B-BA7D-E5AB255003BD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1256__pntz";
+	rename -uid "D7BA7ADE-40A8-41C8-CDB5-E688F337CA0B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1257__pntx";
+	rename -uid "B1BCE340-40D6-1982-3E86-A6838F17C5BB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1257__pnty";
+	rename -uid "39810A9C-48A8-343D-912D-AE9926BE5E87";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1257__pntz";
+	rename -uid "A1160058-44B0-49BA-C619-E88BCD51D397";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1258__pntx";
+	rename -uid "A6E713BB-438D-8DC2-E8A8-C28FE687EBBD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1258__pnty";
+	rename -uid "3785A7A8-464A-D4EE-24CB-20A126F43B76";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1258__pntz";
+	rename -uid "B2057D26-4784-FD28-3505-A1A21DA57987";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1259__pntx";
+	rename -uid "A5C01BC9-4F31-BA3A-F268-218CCEC9BAC8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1259__pnty";
+	rename -uid "7627F91E-4902-5D27-C233-D383AD8BD920";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1259__pntz";
+	rename -uid "D42279F0-4FD1-C370-271B-AA920560FFE0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1260__pntx";
+	rename -uid "204F1596-48A1-84AE-7B79-0B99D6C21FC3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1260__pnty";
+	rename -uid "F06AA741-44E7-C98F-6781-2CB50C47AEA9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1260__pntz";
+	rename -uid "EEA7982C-419D-C107-3193-8EACBACC4ADD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1261__pntx";
+	rename -uid "E6D1A34A-4BE2-E59E-215B-00935E27D703";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.337860107421875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1261__pnty";
+	rename -uid "8C4DF5BB-4F26-364D-514A-B2B4FB78C021";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1261__pntz";
+	rename -uid "C868A970-48CE-6C10-A2A3-79B09F3A551D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1262__pntx";
+	rename -uid "8BC39B14-454D-5C28-19BC-9BB2FA1F1652";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1262__pnty";
+	rename -uid "8FED3828-4119-D511-78C4-EBA6BE53524C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1262__pntz";
+	rename -uid "7AC5B419-4AA6-668E-1CEE-2A945F0E6B35";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1263__pntx";
+	rename -uid "6F3C03EB-4576-6160-ED91-D88BC303FD1E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1263__pnty";
+	rename -uid "86E8A32F-4038-58E6-852C-CA929C460461";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1263__pntz";
+	rename -uid "FC43870B-457A-FD70-0687-5DA3CD23BC5D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1264__pntx";
+	rename -uid "0FB06DA0-4C72-CF4E-2B10-5BA06C20236C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.291534423828125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1264__pnty";
+	rename -uid "C6788BEF-4057-A019-5AB6-E3A4A5A6F338";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1264__pntz";
+	rename -uid "92987E82-41E7-446F-FC74-E0AAF2B4FAD1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1265__pntx";
+	rename -uid "37C56B8E-4454-41DE-C0CC-4DAE92BF9599";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.245208740234375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1265__pnty";
+	rename -uid "667B0134-4464-000A-95EE-93A9F21D1BB1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1265__pntz";
+	rename -uid "1FACC630-47FD-A0AF-67A7-A390EC3F7F35";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1266__pntx";
+	rename -uid "C63371AC-4A16-A678-F28F-DEB5FDC6D448";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1266__pnty";
+	rename -uid "BC28A1A0-4302-0408-CDA1-E3979D7F75F5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1266__pntz";
+	rename -uid "738DC576-4601-1FDD-523A-C69776863360";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1267__pntx";
+	rename -uid "4ED7712D-48B8-0C8A-9609-FD8330C545CF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1267__pnty";
+	rename -uid "ED5C06FD-4D44-10E0-82B6-9D8CCD6C8D81";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1267__pntz";
+	rename -uid "A1A58DAB-4696-480A-7450-CABFCD34BFCB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1268__pntx";
+	rename -uid "3AF59B03-4860-FA89-6AB3-728070C3DA3E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1268__pnty";
+	rename -uid "A9C03D92-4E89-7CA1-4827-2BA55A53E9ED";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1268__pntz";
+	rename -uid "27C99F9C-44F3-C805-250C-3FB2479B2362";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1269__pntx";
+	rename -uid "E9270140-4802-8CE2-298F-A7A7BEB6ADA2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1269__pnty";
+	rename -uid "072E90A8-4D1F-698D-4F00-FC846007658A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1269__pntz";
+	rename -uid "E84882D0-4976-372D-4CCE-3EAA68497B4E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1270__pntx";
+	rename -uid "6F8D9FCB-447A-C156-C0C9-AB95925D8AB3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1270__pnty";
+	rename -uid "3C7F482E-4A5E-7D03-D823-9C8A12C7FE0D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1270__pntz";
+	rename -uid "17EAE783-43EB-80F6-6775-1D9E62E6BEDE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1271__pntx";
+	rename -uid "31A8D100-4B15-8FEF-7750-44A98C45C8A0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1271__pnty";
+	rename -uid "AE38F610-48DB-EDA3-B0A7-708A5684BAF1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1271__pntz";
+	rename -uid "1C2E00F7-48B1-71D6-45DF-4399CC975CA7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1272__pntx";
+	rename -uid "15AA0D4B-4C00-5EE1-5D96-9CA2D89E8768";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1272__pnty";
+	rename -uid "65EFB81D-407F-B1EF-3DC8-FFBBBD9611C6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1272__pntz";
+	rename -uid "2664BC0D-460E-C3CD-8551-FE8E63F3684C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1273__pntx";
+	rename -uid "BC1527E0-46E3-FFB9-98D2-74BC9C3F11F9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.337860107421875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1273__pnty";
+	rename -uid "668AFBE4-4B53-CFC3-27C0-3D80699D7D9B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1273__pntz";
+	rename -uid "9EADF567-4DCD-153E-AE5A-9D83C1652D05";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1274__pntx";
+	rename -uid "ED27ECBB-4DD5-0D12-34D5-448802623C86";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1274__pnty";
+	rename -uid "9313E661-400D-C52D-3BFF-E3BDBC1FAB1A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.33514404296875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1274__pntz";
+	rename -uid "92403C7C-412A-11D2-F4F4-37B72CAE9624";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1275__pntx";
+	rename -uid "71E1A9B5-423F-44AB-6052-5EA0D67416EA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1275__pnty";
+	rename -uid "92ED724D-4DA9-20CE-1858-A29B0237C9EF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1275__pntz";
+	rename -uid "4011DD00-473A-CDE1-762E-38BD324174D2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1276__pntx";
+	rename -uid "88FF980C-4B33-1FD4-E7DE-3BA85C8FD011";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1276__pnty";
+	rename -uid "95F5BBEE-48FF-5A76-EBB3-7FBDDF93A337";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1276__pntz";
+	rename -uid "AFEFB43F-4834-06BB-AEBB-E8A239DF0316";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1277__pntx";
+	rename -uid "DC9D0E83-4727-9E8D-9FD5-9F9E0E76AF94";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1277__pnty";
+	rename -uid "B7B12CB7-4BD6-EDC6-B3CF-3CB9F13F259F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1277__pntz";
+	rename -uid "0E015153-4B7E-4482-F88E-1FA8E42A2F38";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1278__pntx";
+	rename -uid "DF1632D6-4F4C-F78D-DFE3-DDBBB676BA7E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1278__pnty";
+	rename -uid "9A889B85-4B93-F647-6223-64A86411284A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1278__pntz";
+	rename -uid "912F49DA-4F7D-AFB2-0C96-D091E25E15D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1279__pntx";
+	rename -uid "13880648-4FCC-DA80-4472-749597EB2983";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1279__pnty";
+	rename -uid "1308D219-4689-1FF3-BC9B-3E90613E00E7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1279__pntz";
+	rename -uid "4D1FA250-4849-E8BB-AE8F-EC9535205613";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1280__pntx";
+	rename -uid "2BD1002E-4AD8-FC18-B4DC-35A449B45029";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1280__pnty";
+	rename -uid "71A6DC99-44A3-DCD5-2CA5-5489B94AFF66";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1280__pntz";
+	rename -uid "C0DDAB2A-4126-D437-66EB-04BC51EBEE8A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1281__pntx";
+	rename -uid "EACB1369-4788-C391-3C00-2FB250199F0F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1281__pnty";
+	rename -uid "B9D9F478-45CF-B32E-F8E1-35BFB0EF2D2F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1281__pntz";
+	rename -uid "08E725D9-48C0-A99F-DEC5-91AA43422B42";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1282__pntx";
+	rename -uid "6940D861-4E9F-32B8-6788-D795ACB20DB6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1282__pnty";
+	rename -uid "F13F97BD-4CA6-E71E-2309-22A18B424E9A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1282__pntz";
+	rename -uid "0855295C-4A42-B11E-1AF8-EBA1D2CF5ADA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1283__pntx";
+	rename -uid "D2B78E1A-483D-5151-E720-70BFEFDE3805";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1283__pnty";
+	rename -uid "6F829011-4337-F13B-ADA5-F78CBE8348E3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.52587890625e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1283__pntz";
+	rename -uid "9603F5DF-44C8-3CC9-7B62-3B936F972737";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1284__pntx";
+	rename -uid "BF8C27C6-482E-0934-B9A8-D8AE26C3E5E4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1284__pnty";
+	rename -uid "8E08E14B-42BB-0F4D-77FB-35BAE14B8C77";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1284__pntz";
+	rename -uid "B357321E-41F6-1810-31F8-E7B6BECCE4D7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1285__pntx";
+	rename -uid "79B491DB-4DEC-C6C5-904E-928FB4BBA353";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1285__pnty";
+	rename -uid "86D5C1DC-4893-7752-7095-4AB2587CBC38";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1285__pntz";
+	rename -uid "7AAB46B5-493E-3E11-1E08-28A8779577EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1286__pntx";
+	rename -uid "33162849-440C-692C-4425-3AA61D8C909E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1286__pnty";
+	rename -uid "3425CEFA-413B-EA1D-602B-CBAD2685A69A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1286__pntz";
+	rename -uid "70253A64-4933-2A31-7DF8-6FBDB33702D0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1287__pntx";
+	rename -uid "408ECD42-4C7E-D9B1-A1BD-288A12925B9A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1287__pnty";
+	rename -uid "87AB151B-4923-853B-8154-BC86C0E56E5A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1287__pntz";
+	rename -uid "79CBD3BA-4185-AEF8-2DB2-90A649B01ECD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1288__pntx";
+	rename -uid "A4E25255-48A4-09AA-E8C5-948874DA4E3B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1288__pnty";
+	rename -uid "89A6CCAC-44C2-5FF4-4C4D-0BB832ACF75C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1288__pntz";
+	rename -uid "76C4334B-43D1-8222-04DE-E88CB0120DCC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1289__pntx";
+	rename -uid "9E08F59B-48D6-9AD6-7C4F-209AD0AD8DB1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1289__pnty";
+	rename -uid "AEF703A7-441B-CC86-5C01-A2B814D5CAFD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1289__pntz";
+	rename -uid "E458E130-4328-F4F5-9BA9-F59CFB28B905";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1290__pntx";
+	rename -uid "7D278F27-4DF6-1DC5-59FC-54A86A74AF2E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1290__pnty";
+	rename -uid "95E8EA7D-4193-1760-1B99-00832DB9A8CE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1290__pntz";
+	rename -uid "68BBDC42-45AE-028A-7959-38A3CC532F65";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1291__pntx";
+	rename -uid "51D2EEE7-42E7-929A-2DA7-27BA6AC32CD3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1291__pnty";
+	rename -uid "449FD0A6-42F3-4FE9-CFF8-908920E2A568";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1291__pntz";
+	rename -uid "FCB68D58-4AF4-A207-FF32-43B328D6436B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1292__pntx";
+	rename -uid "2FF1190C-4DD3-0BF0-F646-49ABCABBD1AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1292__pnty";
+	rename -uid "C2236B0D-48FE-6772-30FF-B185530C37AC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1292__pntz";
+	rename -uid "1375B3DE-4F64-7DC6-8208-2DAA5253D1F3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1293__pntx";
+	rename -uid "A3BCAEF3-4A4D-0804-0B98-1294E6587C4F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1293__pnty";
+	rename -uid "FA6E5D94-4195-F051-1D2F-C8AB955404AE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1293__pntz";
+	rename -uid "15EE8993-4AB0-6367-B87A-88B1BFB686BF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1294__pntx";
+	rename -uid "F6C0CC89-4A67-0D95-1697-A6B2E1059427";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1294__pnty";
+	rename -uid "AE4E2D77-4A32-E0FF-A651-75A1FDAF5222";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1294__pntz";
+	rename -uid "B71AFC70-41B6-1AE1-4207-F59B13CBBF07";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1295__pntx";
+	rename -uid "A56335FA-4B05-6207-CBBC-09A7BD1150F2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1295__pnty";
+	rename -uid "86AF3444-44D2-E41F-67F9-1CADBE45D37E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1295__pntz";
+	rename -uid "C6797BFA-4B1A-D22D-4212-0C801505B22B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1296__pntx";
+	rename -uid "28B42587-4DED-C72B-969A-B893B6EC47D5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.291534423828125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1296__pnty";
+	rename -uid "97856BD6-4D59-35FB-E926-A68AA4E0FD58";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1296__pntz";
+	rename -uid "8C2CF75C-4B3E-2658-FDB4-C4AC3F5AD8D6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1297__pntx";
+	rename -uid "CD3E7012-4DE2-80FE-5B66-E691C045C1FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1297__pnty";
+	rename -uid "D93A4356-403E-51C9-BAD7-36990C34F1CB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1297__pntz";
+	rename -uid "F438BC97-40F3-B591-723D-EA9C4859BED1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1298__pntx";
+	rename -uid "B0624DDE-4B05-0FAC-5020-EAA037ADF5F4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1298__pnty";
+	rename -uid "F183364B-47A6-178D-41EC-CAA37C3A5172";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1298__pntz";
+	rename -uid "55EAD0C9-4357-A37A-53C9-0F8B64A1014C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1299__pntx";
+	rename -uid "BCB5BCC5-4B51-AA3A-39D3-1D8760B0B0BF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1299__pnty";
+	rename -uid "ACEA8A3F-4FB7-9E44-E1FE-A6A77245D0A9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1299__pntz";
+	rename -uid "4B711576-44D9-94CB-3ABA-0684F86BF06D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1300__pntx";
+	rename -uid "78B12D5C-41F4-683C-AD11-8C8BADC20860";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1300__pnty";
+	rename -uid "FCA7C191-40DB-2396-CFF4-E198C1AF670E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1300__pntz";
+	rename -uid "127099D5-4A99-60C0-6A0E-718EBA6CCD98";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1301__pntx";
+	rename -uid "43BB0BC9-4248-02F3-9340-F1A3340A654C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1301__pnty";
+	rename -uid "06A2B4CE-430D-20AA-8F40-FA97D9146E28";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1301__pntz";
+	rename -uid "10E6F724-40E0-13FE-778B-1CB0E5570DF4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1302__pntx";
+	rename -uid "0B297918-47D1-D49A-D921-C0A8B5E60621";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1302__pnty";
+	rename -uid "D38CF5EB-4087-8F1A-3641-E68C437275E1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1302__pntz";
+	rename -uid "897311AD-4E8B-B196-3203-AC9CB10D5317";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1303__pntx";
+	rename -uid "E7BC9B23-4FA5-2348-0652-6EAA565AA1BE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1303__pnty";
+	rename -uid "2DB478E5-442C-E0AF-8BE6-66A75FA34B41";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1303__pntz";
+	rename -uid "9CF7819B-4838-1EF7-D514-A2BA31287163";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1304__pntx";
+	rename -uid "F3BE82D2-40D8-2132-B8BB-238D112BF718";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1304__pnty";
+	rename -uid "D255B2AC-4728-55DD-0C8A-06A2E61DC371";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1304__pntz";
+	rename -uid "F4C376C6-4B6B-0080-E88F-569A86498124";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1305__pntx";
+	rename -uid "3A4D0BD2-4D96-E408-7A01-8CA58CD17CF5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1305__pnty";
+	rename -uid "D5CD4752-404C-9E89-835A-4CA4E9583812";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1305__pntz";
+	rename -uid "420AE6FC-41A2-CD9E-1D80-75B915EB30B7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1306__pntx";
+	rename -uid "5E77291E-4799-59BF-71DE-6C81D7C9EE12";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1306__pnty";
+	rename -uid "2D82EA59-4224-2590-7AEA-56809DB29C4E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1306__pntz";
+	rename -uid "F6B6B08E-4955-F668-FB12-49BEF0CA8D6E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1307__pntx";
+	rename -uid "9580567B-4B8C-52A6-D121-E2A3BC4BE131";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1307__pnty";
+	rename -uid "7F7C6637-4991-5722-BEDE-06B461B09E55";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1307__pntz";
+	rename -uid "386FE79A-41B2-E7F1-6179-9B8AAF05F995";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1308__pntx";
+	rename -uid "72E8A99F-4DF6-6829-3CA5-3DA0D3F8845D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1308__pnty";
+	rename -uid "3776731F-4A73-0E21-8835-A292F878B198";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1308__pntz";
+	rename -uid "CE17C094-44FF-C0A9-4213-BCA5A536F4B9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1309__pntx";
+	rename -uid "3123CAC1-4C69-EFFA-971E-1C98CC88DF4B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1309__pnty";
+	rename -uid "E06A3B87-4B3F-D311-E919-5AB90D884623";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1309__pntz";
+	rename -uid "4231AE23-4BE5-0A7B-113A-AFB6FC72EFCD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1310__pntx";
+	rename -uid "C4E4FBE5-4AC6-B174-50D1-1CA8E4CE5C39";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -6.67572021484375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1310__pnty";
+	rename -uid "F0D13B55-4317-F9C4-47AD-D3999DE0DB7F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1310__pntz";
+	rename -uid "07DDDA80-4C12-48DF-48D0-3F82AB7FC835";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1311__pntx";
+	rename -uid "4887CDA0-4566-3E48-B104-779042939BAC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.337860107421875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1311__pnty";
+	rename -uid "C9010ADD-4BB3-2DAE-01AC-4FBEB5E0FDC4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1311__pntz";
+	rename -uid "219BE4C2-4C8A-F92E-9298-F1AA3ACD033C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1312__pntx";
+	rename -uid "EA17B794-4E20-FC65-174C-8EAE3805C2DE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1312__pnty";
+	rename -uid "766E6D18-46E3-FA2D-2D7E-6299DE65CFE3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1312__pntz";
+	rename -uid "D845FD02-4D2B-7822-DB48-C88A5741CD30";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1313__pntx";
+	rename -uid "4EB2994A-47DB-FC64-9B9A-7EB5466F37FC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1313__pnty";
+	rename -uid "3ED61AC2-4D78-32B0-E578-BAA27E37125D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1313__pntz";
+	rename -uid "3D829358-4513-485F-BC50-05AD3941615B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1314__pntx";
+	rename -uid "77BA87E9-4D90-0420-CF13-4099F5DFC508";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1314__pnty";
+	rename -uid "57C323C4-4AAD-BA00-694D-1FAA0E3DA669";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1314__pntz";
+	rename -uid "D0AD850D-456C-7670-2F7B-01A639D897EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1315__pntx";
+	rename -uid "5DF3A68A-48BF-AF16-6D8C-48B0123EE303";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1315__pnty";
+	rename -uid "5C2EAD74-405F-098F-13ED-BEA603C597D0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1315__pntz";
+	rename -uid "1C3C2ADF-4551-93B5-9D81-57B21839B2F2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1316__pntx";
+	rename -uid "228CB1F8-4A63-FE02-F669-40AF0D298927";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1316__pnty";
+	rename -uid "9ABB5D08-4C73-E7CD-94F7-5E8705E41955";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1316__pntz";
+	rename -uid "D4E7B406-4321-C3FB-3A11-2AB5F93C3868";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1317__pntx";
+	rename -uid "6DA59A9D-4974-7850-6862-2EAAA62A4E3B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1317__pnty";
+	rename -uid "5D4E0A31-42D7-3A1A-3526-688017C290BB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1317__pntz";
+	rename -uid "37673A60-4522-FB89-9B80-BE86240E20FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1318__pntx";
+	rename -uid "43A6297B-4A4A-8544-C438-8DA9FF19DBC6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1318__pnty";
+	rename -uid "93D4EDDB-4548-BDA4-0498-E3AC2F25FEFA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1318__pntz";
+	rename -uid "B72D83D4-4CC7-80EB-2BCA-28B401380D5A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1319__pntx";
+	rename -uid "9084211F-4AB9-C82F-1CFC-72870ECD4B7A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1319__pnty";
+	rename -uid "8A662409-40DD-DAEC-22E2-90B068F9F7DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1319__pntz";
+	rename -uid "C4837263-46C0-7DE9-C1FE-53982A9491E0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1320__pntx";
+	rename -uid "7633A1FD-4D17-BFD2-2CF7-49A6A59FD6A3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1320__pnty";
+	rename -uid "14838A34-4109-6942-B971-A69E2E335CCC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1320__pntz";
+	rename -uid "D91E012A-47A6-9951-93F2-F5A19D8811F0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1321__pntx";
+	rename -uid "75C87E0C-4A4E-2EBE-D0D0-BE918EAA5224";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1321__pnty";
+	rename -uid "04F66C4E-4997-8CC8-97CA-07AF63C28049";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1321__pntz";
+	rename -uid "46106417-4152-B6FC-6A0A-659FB81D6F94";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1322__pntx";
+	rename -uid "FF9293D3-4065-E1B6-98B9-6A85A4DC6CC5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1322__pnty";
+	rename -uid "5C51ED01-4B94-7E2F-B0A6-D48D86AC8E60";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1322__pntz";
+	rename -uid "484B70BD-468D-B2F7-0047-559F07DDE1E4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1323__pntx";
+	rename -uid "42C521CB-4524-BA17-10AE-71841E09B24E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1323__pnty";
+	rename -uid "400E9ACD-46A4-37D2-30F3-9AB6F0C2E160";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1323__pntz";
+	rename -uid "6669B15B-422D-DB64-8F98-A9BD29628235";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1324__pntx";
+	rename -uid "F0EFBB08-4F31-9238-B512-7EBA32946C17";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.337860107421875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1324__pnty";
+	rename -uid "454CEAFA-470B-7A8C-38B9-C5BA72C399AD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1324__pntz";
+	rename -uid "B6346450-496F-C233-9AE6-F298C8F35510";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1325__pntx";
+	rename -uid "360F70BB-430F-35C2-1AA2-3EA28EA2B10E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1325__pnty";
+	rename -uid "3E1531D8-49A8-C29D-2815-91BA0E36C9DA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1325__pntz";
+	rename -uid "256A7175-4F6A-F854-2570-D2A05B515070";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1326__pntx";
+	rename -uid "35E8592B-4B35-5B84-133E-95857F49255D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1326__pnty";
+	rename -uid "F17FF82E-401D-FAE0-427D-8789BB615739";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1326__pntz";
+	rename -uid "1DDC42AD-48F6-A6CF-F0E0-C8961A4893C2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1327__pntx";
+	rename -uid "CC3E5C8E-4917-16CE-35CB-FFA14B3137F0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1327__pnty";
+	rename -uid "03189C03-489A-B590-7586-548C1F97C772";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1327__pntz";
+	rename -uid "747C43BF-431D-AF37-9B6A-32B4DF36D168";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1328__pntx";
+	rename -uid "841C6F92-4801-7F23-0B1A-0DA3EB89AF21";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1328__pnty";
+	rename -uid "3CF8509D-4829-E1E1-1B41-D094516DF5E9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1328__pntz";
+	rename -uid "A691E3C8-4821-DC4D-7C00-369863BC1385";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1329__pntx";
+	rename -uid "AEA54A09-4D03-EC2B-8E84-36ACE408347C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1329__pnty";
+	rename -uid "8AD7DD03-434E-ECFC-A62F-B4A05366A96E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1329__pntz";
+	rename -uid "4196E79E-44CA-D08C-D542-A9BCED509E21";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1330__pntx";
+	rename -uid "FB46D474-439C-336F-CB56-319F666159D2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1330__pnty";
+	rename -uid "AF994A42-4C5E-6CBA-A651-30AC046CDA2B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1330__pntz";
+	rename -uid "B7AF27F6-4EE7-07EA-F6B7-49859822BF26";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1331__pntx";
+	rename -uid "4A709D07-45E9-8280-15A3-76AFF04971DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1331__pnty";
+	rename -uid "BB7FBD31-4A27-FA07-31E2-AAA1CD66A466";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1331__pntz";
+	rename -uid "7EFD4266-44EB-C814-FA00-96856530A9A5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1332__pntx";
+	rename -uid "E7815BA0-4245-3B9C-81C7-AB9BF6168122";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.291534423828125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1332__pnty";
+	rename -uid "DA9CF16B-44A6-0E0E-535B-6D862AEB79CC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1332__pntz";
+	rename -uid "E8287C42-4E58-5A9B-DB57-DB9801B6F598";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1333__pntx";
+	rename -uid "FF519F8C-4BE1-83B6-5EA5-2EA6AAB1AFCD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1333__pnty";
+	rename -uid "10DEA8D5-4A2D-7831-9108-0B8AE04D06FA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1333__pntz";
+	rename -uid "B3FB3DD6-44E1-DB27-62D3-B08FEDB71C02";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1334__pntx";
+	rename -uid "CC6D1513-41E7-5097-D9D8-64A47AA7973A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1334__pnty";
+	rename -uid "0D7DC75C-49CB-8191-6C42-BAA518C6B495";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1334__pntz";
+	rename -uid "7E29D42D-416A-6746-65B3-7C964755E950";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1335__pntx";
+	rename -uid "F3339988-4458-BF76-2517-43993D08732F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1335__pnty";
+	rename -uid "C01196F5-4C04-5C18-D446-6AA8BF036D23";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1335__pntz";
+	rename -uid "1A187C95-4D70-F43A-8B09-B689E3543795";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1336__pntx";
+	rename -uid "C7FE86D6-4AED-1BD7-77B4-5C9A60C463DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1336__pnty";
+	rename -uid "6879E9DC-4079-C5C6-01A7-A69291599D31";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1336__pntz";
+	rename -uid "61C773E4-4D3F-92CF-E5E8-4AA6EC8D9108";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1337__pntx";
+	rename -uid "F45F0D1C-461E-04CF-B699-2A93ECACBE55";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1337__pnty";
+	rename -uid "126FC469-492D-F452-7657-CBBA441EFE49";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1337__pntz";
+	rename -uid "DF5010C6-43AF-E79D-CA81-38B20060AA68";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1338__pntx";
+	rename -uid "B99B60EE-4FAA-9015-6755-098BDC181AC9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1338__pnty";
+	rename -uid "DF53AF8A-4DF1-7DA2-9442-C2BFC56F0794";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1338__pntz";
+	rename -uid "5B002865-480C-3A01-56EF-58ABFE117D28";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1339__pntx";
+	rename -uid "DEAA86D6-46F4-3B4F-22F3-DBBFA03DBEDF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1339__pnty";
+	rename -uid "78EB5EB8-4875-A15D-76D1-47AF3852561D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1339__pntz";
+	rename -uid "180D35BE-451B-A28F-53A7-2ABBF8D1436E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1340__pntx";
+	rename -uid "63FDD999-4490-87D1-3003-1AA4F1C4D46F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1340__pnty";
+	rename -uid "A0EB0E9D-4FAD-0ED0-A470-6E8E7FB3D725";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1340__pntz";
+	rename -uid "DD9E63B2-48D2-97FA-C7AC-BE93A3684DB8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1341__pntx";
+	rename -uid "02BCFB81-4B6C-62BE-6CEC-84B9637DF3D9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -2.384185791015625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1341__pnty";
+	rename -uid "5A3DAEFE-47BF-4AD2-B69C-519515993DAB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1341__pntz";
+	rename -uid "138EA2ED-4B72-DAD6-C20A-43BAE4D9CEDD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1342__pntx";
+	rename -uid "76C25ECF-4B01-CC49-A672-4DB7E9B07B7A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1342__pnty";
+	rename -uid "0DF1C098-42AA-8E7A-727D-C6BEA15C2ED4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1342__pntz";
+	rename -uid "156EBA39-410B-A08C-239D-9FA2312AB539";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1343__pntx";
+	rename -uid "0731DE04-4E6F-4C65-A81C-27B2131F55CF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1343__pnty";
+	rename -uid "156AE69F-44BE-80C2-0306-069B833A2858";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1343__pntz";
+	rename -uid "732887A9-48B3-B9FD-ADE9-5AB906412A41";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1344__pntx";
+	rename -uid "725207D5-4CE0-071D-C610-268E57E782E3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1344__pnty";
+	rename -uid "C6D8B2CE-4931-75F7-C3FD-828372CCF805";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1344__pntz";
+	rename -uid "54EFA81B-4399-1105-AE2A-469B0E0FDEC5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1345__pntx";
+	rename -uid "1B0494FC-4A5C-F701-81BD-BF8CC4516D97";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1345__pnty";
+	rename -uid "95C6EDB9-44A7-56C6-4F0E-729758074289";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1345__pntz";
+	rename -uid "F1F509DC-495E-8364-7DE4-819360B269D4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1346__pntx";
+	rename -uid "EE84DA2F-4C10-1650-ECD7-FC93D140E367";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1346__pnty";
+	rename -uid "7F481C72-4442-7BF1-44D2-918015C6CE24";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -5.7220458984375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1346__pntz";
+	rename -uid "05F72A8F-4E29-67C0-FB18-2EA160942869";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1347__pntx";
+	rename -uid "E86B7E89-442C-0D75-D43E-1E8F019789AD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1347__pnty";
+	rename -uid "E41F7E37-4B98-B4B9-91B0-C0B4EB7D7D34";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1347__pntz";
+	rename -uid "EE67546D-454F-8C54-6829-1BBCC8F3041C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1348__pntx";
+	rename -uid "E41A07A2-4D46-5170-0D70-A28E569D05B0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 3.337860107421875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1348__pnty";
+	rename -uid "2EC5CB84-49C5-B3F9-775A-DF9DE5EEAA35";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1348__pntz";
+	rename -uid "65323660-4EE6-C4A1-0E0A-1587730C9E83";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1349__pntx";
+	rename -uid "689575D0-4560-25F0-6923-C280DE90E91B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1349__pnty";
+	rename -uid "593C4324-4DF6-35AB-81AF-05942D9B3C30";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1349__pntz";
+	rename -uid "EA129CD3-44DE-BE69-59FE-E98D61E5099E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1350__pntx";
+	rename -uid "F6FEEC11-4FC0-AFD2-DF6E-92AB4A8A27BA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.430511474609375e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1350__pnty";
+	rename -uid "0B401351-47FA-62EA-BDE4-86BB2E87F039";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1350__pntz";
+	rename -uid "492537DF-4CFD-678D-BCB0-5793E0EF8A23";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1351__pntx";
+	rename -uid "5DC0DBCB-476E-EB71-A1DE-C1B2817888BE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1351__pnty";
+	rename -uid "BBEF3712-4CF6-5E30-6581-85B99FC9EACD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1351__pntz";
+	rename -uid "2DFD6228-40AD-1389-502F-538635AA175D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1352__pntx";
+	rename -uid "ABC8E4BB-493C-651F-37AF-57876AC48C92";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 4.76837158203125e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1352__pnty";
+	rename -uid "28325708-46BA-5BA1-816C-738F34684869";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -3.814697265625e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1352__pntz";
+	rename -uid "3D1DF2F9-468B-57E7-E727-1A8AE2C62483";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1353__pntx";
+	rename -uid "30C4DBC7-488E-A2C5-FB44-ED8397738B2D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 2.86102294921875e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1353__pnty";
+	rename -uid "C4C47B1E-4D39-C482-0C7B-DFA6B3F6CA79";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1353__pntz";
+	rename -uid "5284EDA5-49B3-E7AA-B8FC-0B8D506AF3F8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1354__pntx";
+	rename -uid "D5347D7A-4852-6715-09D9-318DB141B20A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.9073486328125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1354__pnty";
+	rename -uid "2BA73EF0-4A44-ED3C-26A4-498123006BC0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -7.62939453125e-06;
+createNode animCurveTL -n "bat_geoShape_pnts_1354__pntz";
+	rename -uid "8A1AB77C-49FD-4903-12BC-AF856BA83E8E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "bat_geoShape_pnts_1355__pntx";
+	rename -uid "4CA03C1B-4F39-AAF5-270F-B3849CA21F82";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 9.5367431640625e-07;
+createNode animCurveTL -n "bat_geoShape_pnts_1355__pnty";
+	rename -uid "CD53DC4D-4371-9803-3474-659F05088352";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 -1.1444091796875e-05;
+createNode animCurveTL -n "bat_geoShape_pnts_1355__pntz";
+	rename -uid "631600FE-40FB-D130-8AC8-29B8EF05E093";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  70 0;
+createNode animCurveTL -n "head_ctrl_translateX";
+	rename -uid "85256C89-4498-F6CB-8875-12BB12292A8E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0 10 0 20 0 30 0 40 0 50 0 60 0 70 0 80 0
+		 90 0 100 0 120 0;
+createNode animCurveTL -n "head_ctrl_translateY";
+	rename -uid "0A4852BE-4D03-1B23-8762-16BF288E98B9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0 10 0 20 0 30 0 40 0 50 0 60 0 70 0 80 0
+		 90 0 100 0 120 0;
+createNode animCurveTL -n "head_ctrl_translateZ";
+	rename -uid "49121E23-40C5-74AB-1DCA-808CB7B94CA1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0 10 0 20 0 30 0 40 0 50 0 60 0 70 0 80 0
+		 90 7.0492561313099635 100 0 120 0;
+createNode animCurveTA -n "head_ctrl_rotateX";
+	rename -uid "D469C715-4D6C-851C-75CC-CB8BF89A3335";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0 10 55.575986796863141 20 0 30 -44.713979093788318
+		 40 0 50 0 60 0 70 0 80 0 90 0 100 0 120 0;
+createNode animCurveTA -n "head_ctrl_rotateY";
+	rename -uid "369BF741-485C-DE69-211F-D58F602C0062";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0 10 0 20 0 30 0 40 0 50 -40.924960904567406
+		 60 0 70 40.440166558903584 80 0 90 0 100 0 120 0;
+createNode animCurveTA -n "head_ctrl_rotateZ";
+	rename -uid "D1BA125D-4175-67ED-C675-3C9EABD92AB9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 12 ".ktv[0:11]"  0 0 10 0 20 0 30 0 40 0 50 0 60 0 70 0 80 0
+		 90 0 100 0 120 0;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -k on ".o" 25;
-	setAttr -av ".unw" 25;
+	setAttr -k on ".o" 0;
+	setAttr -av ".unw";
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -8043,15 +12268,912 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".hwel";
 connectAttr "Geo.di" "bat_geo.do";
 connectAttr "skinCluster1.og[0]" "bat_geoShape.i";
-connectAttr "COG_scaleConstraint1.csx" "COG.sx";
-connectAttr "COG_scaleConstraint1.csy" "COG.sy";
-connectAttr "COG_scaleConstraint1.csz" "COG.sz";
+connectAttr "bat_geoShape_pnts_1048__pntx.o" "bat_geoShape.pt[1048].px";
+connectAttr "bat_geoShape_pnts_1048__pnty.o" "bat_geoShape.pt[1048].py";
+connectAttr "bat_geoShape_pnts_1048__pntz.o" "bat_geoShape.pt[1048].pz";
+connectAttr "bat_geoShape_pnts_1049__pntx.o" "bat_geoShape.pt[1049].px";
+connectAttr "bat_geoShape_pnts_1049__pnty.o" "bat_geoShape.pt[1049].py";
+connectAttr "bat_geoShape_pnts_1049__pntz.o" "bat_geoShape.pt[1049].pz";
+connectAttr "bat_geoShape_pnts_1058__pntx.o" "bat_geoShape.pt[1058].px";
+connectAttr "bat_geoShape_pnts_1058__pnty.o" "bat_geoShape.pt[1058].py";
+connectAttr "bat_geoShape_pnts_1058__pntz.o" "bat_geoShape.pt[1058].pz";
+connectAttr "bat_geoShape_pnts_1059__pntx.o" "bat_geoShape.pt[1059].px";
+connectAttr "bat_geoShape_pnts_1059__pnty.o" "bat_geoShape.pt[1059].py";
+connectAttr "bat_geoShape_pnts_1059__pntz.o" "bat_geoShape.pt[1059].pz";
+connectAttr "bat_geoShape_pnts_1060__pntx.o" "bat_geoShape.pt[1060].px";
+connectAttr "bat_geoShape_pnts_1060__pnty.o" "bat_geoShape.pt[1060].py";
+connectAttr "bat_geoShape_pnts_1060__pntz.o" "bat_geoShape.pt[1060].pz";
+connectAttr "bat_geoShape_pnts_1061__pntx.o" "bat_geoShape.pt[1061].px";
+connectAttr "bat_geoShape_pnts_1061__pnty.o" "bat_geoShape.pt[1061].py";
+connectAttr "bat_geoShape_pnts_1061__pntz.o" "bat_geoShape.pt[1061].pz";
+connectAttr "bat_geoShape_pnts_1062__pntx.o" "bat_geoShape.pt[1062].px";
+connectAttr "bat_geoShape_pnts_1062__pnty.o" "bat_geoShape.pt[1062].py";
+connectAttr "bat_geoShape_pnts_1062__pntz.o" "bat_geoShape.pt[1062].pz";
+connectAttr "bat_geoShape_pnts_1064__pntx.o" "bat_geoShape.pt[1064].px";
+connectAttr "bat_geoShape_pnts_1064__pnty.o" "bat_geoShape.pt[1064].py";
+connectAttr "bat_geoShape_pnts_1064__pntz.o" "bat_geoShape.pt[1064].pz";
+connectAttr "bat_geoShape_pnts_1065__pntx.o" "bat_geoShape.pt[1065].px";
+connectAttr "bat_geoShape_pnts_1065__pnty.o" "bat_geoShape.pt[1065].py";
+connectAttr "bat_geoShape_pnts_1065__pntz.o" "bat_geoShape.pt[1065].pz";
+connectAttr "bat_geoShape_pnts_1066__pntx.o" "bat_geoShape.pt[1066].px";
+connectAttr "bat_geoShape_pnts_1066__pnty.o" "bat_geoShape.pt[1066].py";
+connectAttr "bat_geoShape_pnts_1066__pntz.o" "bat_geoShape.pt[1066].pz";
+connectAttr "bat_geoShape_pnts_1067__pntx.o" "bat_geoShape.pt[1067].px";
+connectAttr "bat_geoShape_pnts_1067__pnty.o" "bat_geoShape.pt[1067].py";
+connectAttr "bat_geoShape_pnts_1067__pntz.o" "bat_geoShape.pt[1067].pz";
+connectAttr "bat_geoShape_pnts_1068__pntx.o" "bat_geoShape.pt[1068].px";
+connectAttr "bat_geoShape_pnts_1068__pnty.o" "bat_geoShape.pt[1068].py";
+connectAttr "bat_geoShape_pnts_1068__pntz.o" "bat_geoShape.pt[1068].pz";
+connectAttr "bat_geoShape_pnts_1069__pntx.o" "bat_geoShape.pt[1069].px";
+connectAttr "bat_geoShape_pnts_1069__pnty.o" "bat_geoShape.pt[1069].py";
+connectAttr "bat_geoShape_pnts_1069__pntz.o" "bat_geoShape.pt[1069].pz";
+connectAttr "bat_geoShape_pnts_1070__pntx.o" "bat_geoShape.pt[1070].px";
+connectAttr "bat_geoShape_pnts_1070__pnty.o" "bat_geoShape.pt[1070].py";
+connectAttr "bat_geoShape_pnts_1070__pntz.o" "bat_geoShape.pt[1070].pz";
+connectAttr "bat_geoShape_pnts_1071__pntx.o" "bat_geoShape.pt[1071].px";
+connectAttr "bat_geoShape_pnts_1071__pnty.o" "bat_geoShape.pt[1071].py";
+connectAttr "bat_geoShape_pnts_1071__pntz.o" "bat_geoShape.pt[1071].pz";
+connectAttr "bat_geoShape_pnts_1072__pntx.o" "bat_geoShape.pt[1072].px";
+connectAttr "bat_geoShape_pnts_1072__pnty.o" "bat_geoShape.pt[1072].py";
+connectAttr "bat_geoShape_pnts_1072__pntz.o" "bat_geoShape.pt[1072].pz";
+connectAttr "bat_geoShape_pnts_1073__pntx.o" "bat_geoShape.pt[1073].px";
+connectAttr "bat_geoShape_pnts_1073__pnty.o" "bat_geoShape.pt[1073].py";
+connectAttr "bat_geoShape_pnts_1073__pntz.o" "bat_geoShape.pt[1073].pz";
+connectAttr "bat_geoShape_pnts_1074__pntx.o" "bat_geoShape.pt[1074].px";
+connectAttr "bat_geoShape_pnts_1074__pnty.o" "bat_geoShape.pt[1074].py";
+connectAttr "bat_geoShape_pnts_1074__pntz.o" "bat_geoShape.pt[1074].pz";
+connectAttr "bat_geoShape_pnts_1075__pntx.o" "bat_geoShape.pt[1075].px";
+connectAttr "bat_geoShape_pnts_1075__pnty.o" "bat_geoShape.pt[1075].py";
+connectAttr "bat_geoShape_pnts_1075__pntz.o" "bat_geoShape.pt[1075].pz";
+connectAttr "bat_geoShape_pnts_1076__pntx.o" "bat_geoShape.pt[1076].px";
+connectAttr "bat_geoShape_pnts_1076__pnty.o" "bat_geoShape.pt[1076].py";
+connectAttr "bat_geoShape_pnts_1076__pntz.o" "bat_geoShape.pt[1076].pz";
+connectAttr "bat_geoShape_pnts_1077__pntx.o" "bat_geoShape.pt[1077].px";
+connectAttr "bat_geoShape_pnts_1077__pnty.o" "bat_geoShape.pt[1077].py";
+connectAttr "bat_geoShape_pnts_1077__pntz.o" "bat_geoShape.pt[1077].pz";
+connectAttr "bat_geoShape_pnts_1078__pntx.o" "bat_geoShape.pt[1078].px";
+connectAttr "bat_geoShape_pnts_1078__pnty.o" "bat_geoShape.pt[1078].py";
+connectAttr "bat_geoShape_pnts_1078__pntz.o" "bat_geoShape.pt[1078].pz";
+connectAttr "bat_geoShape_pnts_1079__pntx.o" "bat_geoShape.pt[1079].px";
+connectAttr "bat_geoShape_pnts_1079__pnty.o" "bat_geoShape.pt[1079].py";
+connectAttr "bat_geoShape_pnts_1079__pntz.o" "bat_geoShape.pt[1079].pz";
+connectAttr "bat_geoShape_pnts_1080__pntx.o" "bat_geoShape.pt[1080].px";
+connectAttr "bat_geoShape_pnts_1080__pnty.o" "bat_geoShape.pt[1080].py";
+connectAttr "bat_geoShape_pnts_1080__pntz.o" "bat_geoShape.pt[1080].pz";
+connectAttr "bat_geoShape_pnts_1081__pntx.o" "bat_geoShape.pt[1081].px";
+connectAttr "bat_geoShape_pnts_1081__pnty.o" "bat_geoShape.pt[1081].py";
+connectAttr "bat_geoShape_pnts_1081__pntz.o" "bat_geoShape.pt[1081].pz";
+connectAttr "bat_geoShape_pnts_1082__pntx.o" "bat_geoShape.pt[1082].px";
+connectAttr "bat_geoShape_pnts_1082__pnty.o" "bat_geoShape.pt[1082].py";
+connectAttr "bat_geoShape_pnts_1082__pntz.o" "bat_geoShape.pt[1082].pz";
+connectAttr "bat_geoShape_pnts_1083__pntx.o" "bat_geoShape.pt[1083].px";
+connectAttr "bat_geoShape_pnts_1083__pnty.o" "bat_geoShape.pt[1083].py";
+connectAttr "bat_geoShape_pnts_1083__pntz.o" "bat_geoShape.pt[1083].pz";
+connectAttr "bat_geoShape_pnts_1084__pntx.o" "bat_geoShape.pt[1084].px";
+connectAttr "bat_geoShape_pnts_1084__pnty.o" "bat_geoShape.pt[1084].py";
+connectAttr "bat_geoShape_pnts_1084__pntz.o" "bat_geoShape.pt[1084].pz";
+connectAttr "bat_geoShape_pnts_1085__pntx.o" "bat_geoShape.pt[1085].px";
+connectAttr "bat_geoShape_pnts_1085__pnty.o" "bat_geoShape.pt[1085].py";
+connectAttr "bat_geoShape_pnts_1085__pntz.o" "bat_geoShape.pt[1085].pz";
+connectAttr "bat_geoShape_pnts_1086__pntx.o" "bat_geoShape.pt[1086].px";
+connectAttr "bat_geoShape_pnts_1086__pnty.o" "bat_geoShape.pt[1086].py";
+connectAttr "bat_geoShape_pnts_1086__pntz.o" "bat_geoShape.pt[1086].pz";
+connectAttr "bat_geoShape_pnts_1087__pntx.o" "bat_geoShape.pt[1087].px";
+connectAttr "bat_geoShape_pnts_1087__pnty.o" "bat_geoShape.pt[1087].py";
+connectAttr "bat_geoShape_pnts_1087__pntz.o" "bat_geoShape.pt[1087].pz";
+connectAttr "bat_geoShape_pnts_1088__pntx.o" "bat_geoShape.pt[1088].px";
+connectAttr "bat_geoShape_pnts_1088__pnty.o" "bat_geoShape.pt[1088].py";
+connectAttr "bat_geoShape_pnts_1088__pntz.o" "bat_geoShape.pt[1088].pz";
+connectAttr "bat_geoShape_pnts_1089__pntx.o" "bat_geoShape.pt[1089].px";
+connectAttr "bat_geoShape_pnts_1089__pnty.o" "bat_geoShape.pt[1089].py";
+connectAttr "bat_geoShape_pnts_1089__pntz.o" "bat_geoShape.pt[1089].pz";
+connectAttr "bat_geoShape_pnts_1090__pntx.o" "bat_geoShape.pt[1090].px";
+connectAttr "bat_geoShape_pnts_1090__pnty.o" "bat_geoShape.pt[1090].py";
+connectAttr "bat_geoShape_pnts_1090__pntz.o" "bat_geoShape.pt[1090].pz";
+connectAttr "bat_geoShape_pnts_1091__pntx.o" "bat_geoShape.pt[1091].px";
+connectAttr "bat_geoShape_pnts_1091__pnty.o" "bat_geoShape.pt[1091].py";
+connectAttr "bat_geoShape_pnts_1091__pntz.o" "bat_geoShape.pt[1091].pz";
+connectAttr "bat_geoShape_pnts_1092__pntx.o" "bat_geoShape.pt[1092].px";
+connectAttr "bat_geoShape_pnts_1092__pnty.o" "bat_geoShape.pt[1092].py";
+connectAttr "bat_geoShape_pnts_1092__pntz.o" "bat_geoShape.pt[1092].pz";
+connectAttr "bat_geoShape_pnts_1093__pntx.o" "bat_geoShape.pt[1093].px";
+connectAttr "bat_geoShape_pnts_1093__pnty.o" "bat_geoShape.pt[1093].py";
+connectAttr "bat_geoShape_pnts_1093__pntz.o" "bat_geoShape.pt[1093].pz";
+connectAttr "bat_geoShape_pnts_1094__pntx.o" "bat_geoShape.pt[1094].px";
+connectAttr "bat_geoShape_pnts_1094__pnty.o" "bat_geoShape.pt[1094].py";
+connectAttr "bat_geoShape_pnts_1094__pntz.o" "bat_geoShape.pt[1094].pz";
+connectAttr "bat_geoShape_pnts_1095__pntx.o" "bat_geoShape.pt[1095].px";
+connectAttr "bat_geoShape_pnts_1095__pnty.o" "bat_geoShape.pt[1095].py";
+connectAttr "bat_geoShape_pnts_1095__pntz.o" "bat_geoShape.pt[1095].pz";
+connectAttr "bat_geoShape_pnts_1096__pntx.o" "bat_geoShape.pt[1096].px";
+connectAttr "bat_geoShape_pnts_1096__pnty.o" "bat_geoShape.pt[1096].py";
+connectAttr "bat_geoShape_pnts_1096__pntz.o" "bat_geoShape.pt[1096].pz";
+connectAttr "bat_geoShape_pnts_1097__pntx.o" "bat_geoShape.pt[1097].px";
+connectAttr "bat_geoShape_pnts_1097__pnty.o" "bat_geoShape.pt[1097].py";
+connectAttr "bat_geoShape_pnts_1097__pntz.o" "bat_geoShape.pt[1097].pz";
+connectAttr "bat_geoShape_pnts_1098__pntx.o" "bat_geoShape.pt[1098].px";
+connectAttr "bat_geoShape_pnts_1098__pnty.o" "bat_geoShape.pt[1098].py";
+connectAttr "bat_geoShape_pnts_1098__pntz.o" "bat_geoShape.pt[1098].pz";
+connectAttr "bat_geoShape_pnts_1099__pntx.o" "bat_geoShape.pt[1099].px";
+connectAttr "bat_geoShape_pnts_1099__pnty.o" "bat_geoShape.pt[1099].py";
+connectAttr "bat_geoShape_pnts_1099__pntz.o" "bat_geoShape.pt[1099].pz";
+connectAttr "bat_geoShape_pnts_1100__pntx.o" "bat_geoShape.pt[1100].px";
+connectAttr "bat_geoShape_pnts_1100__pnty.o" "bat_geoShape.pt[1100].py";
+connectAttr "bat_geoShape_pnts_1100__pntz.o" "bat_geoShape.pt[1100].pz";
+connectAttr "bat_geoShape_pnts_1101__pntx.o" "bat_geoShape.pt[1101].px";
+connectAttr "bat_geoShape_pnts_1101__pnty.o" "bat_geoShape.pt[1101].py";
+connectAttr "bat_geoShape_pnts_1101__pntz.o" "bat_geoShape.pt[1101].pz";
+connectAttr "bat_geoShape_pnts_1102__pntx.o" "bat_geoShape.pt[1102].px";
+connectAttr "bat_geoShape_pnts_1102__pnty.o" "bat_geoShape.pt[1102].py";
+connectAttr "bat_geoShape_pnts_1102__pntz.o" "bat_geoShape.pt[1102].pz";
+connectAttr "bat_geoShape_pnts_1103__pntx.o" "bat_geoShape.pt[1103].px";
+connectAttr "bat_geoShape_pnts_1103__pnty.o" "bat_geoShape.pt[1103].py";
+connectAttr "bat_geoShape_pnts_1103__pntz.o" "bat_geoShape.pt[1103].pz";
+connectAttr "bat_geoShape_pnts_1104__pntx.o" "bat_geoShape.pt[1104].px";
+connectAttr "bat_geoShape_pnts_1104__pnty.o" "bat_geoShape.pt[1104].py";
+connectAttr "bat_geoShape_pnts_1104__pntz.o" "bat_geoShape.pt[1104].pz";
+connectAttr "bat_geoShape_pnts_1105__pntx.o" "bat_geoShape.pt[1105].px";
+connectAttr "bat_geoShape_pnts_1105__pnty.o" "bat_geoShape.pt[1105].py";
+connectAttr "bat_geoShape_pnts_1105__pntz.o" "bat_geoShape.pt[1105].pz";
+connectAttr "bat_geoShape_pnts_1106__pntx.o" "bat_geoShape.pt[1106].px";
+connectAttr "bat_geoShape_pnts_1106__pnty.o" "bat_geoShape.pt[1106].py";
+connectAttr "bat_geoShape_pnts_1106__pntz.o" "bat_geoShape.pt[1106].pz";
+connectAttr "bat_geoShape_pnts_1107__pntx.o" "bat_geoShape.pt[1107].px";
+connectAttr "bat_geoShape_pnts_1107__pnty.o" "bat_geoShape.pt[1107].py";
+connectAttr "bat_geoShape_pnts_1107__pntz.o" "bat_geoShape.pt[1107].pz";
+connectAttr "bat_geoShape_pnts_1108__pntx.o" "bat_geoShape.pt[1108].px";
+connectAttr "bat_geoShape_pnts_1108__pnty.o" "bat_geoShape.pt[1108].py";
+connectAttr "bat_geoShape_pnts_1108__pntz.o" "bat_geoShape.pt[1108].pz";
+connectAttr "bat_geoShape_pnts_1109__pntx.o" "bat_geoShape.pt[1109].px";
+connectAttr "bat_geoShape_pnts_1109__pnty.o" "bat_geoShape.pt[1109].py";
+connectAttr "bat_geoShape_pnts_1109__pntz.o" "bat_geoShape.pt[1109].pz";
+connectAttr "bat_geoShape_pnts_1110__pntx.o" "bat_geoShape.pt[1110].px";
+connectAttr "bat_geoShape_pnts_1110__pnty.o" "bat_geoShape.pt[1110].py";
+connectAttr "bat_geoShape_pnts_1110__pntz.o" "bat_geoShape.pt[1110].pz";
+connectAttr "bat_geoShape_pnts_1111__pntx.o" "bat_geoShape.pt[1111].px";
+connectAttr "bat_geoShape_pnts_1111__pnty.o" "bat_geoShape.pt[1111].py";
+connectAttr "bat_geoShape_pnts_1111__pntz.o" "bat_geoShape.pt[1111].pz";
+connectAttr "bat_geoShape_pnts_1112__pntx.o" "bat_geoShape.pt[1112].px";
+connectAttr "bat_geoShape_pnts_1112__pnty.o" "bat_geoShape.pt[1112].py";
+connectAttr "bat_geoShape_pnts_1112__pntz.o" "bat_geoShape.pt[1112].pz";
+connectAttr "bat_geoShape_pnts_1113__pntx.o" "bat_geoShape.pt[1113].px";
+connectAttr "bat_geoShape_pnts_1113__pnty.o" "bat_geoShape.pt[1113].py";
+connectAttr "bat_geoShape_pnts_1113__pntz.o" "bat_geoShape.pt[1113].pz";
+connectAttr "bat_geoShape_pnts_1114__pntx.o" "bat_geoShape.pt[1114].px";
+connectAttr "bat_geoShape_pnts_1114__pnty.o" "bat_geoShape.pt[1114].py";
+connectAttr "bat_geoShape_pnts_1114__pntz.o" "bat_geoShape.pt[1114].pz";
+connectAttr "bat_geoShape_pnts_1115__pntx.o" "bat_geoShape.pt[1115].px";
+connectAttr "bat_geoShape_pnts_1115__pnty.o" "bat_geoShape.pt[1115].py";
+connectAttr "bat_geoShape_pnts_1115__pntz.o" "bat_geoShape.pt[1115].pz";
+connectAttr "bat_geoShape_pnts_1116__pntx.o" "bat_geoShape.pt[1116].px";
+connectAttr "bat_geoShape_pnts_1116__pnty.o" "bat_geoShape.pt[1116].py";
+connectAttr "bat_geoShape_pnts_1116__pntz.o" "bat_geoShape.pt[1116].pz";
+connectAttr "bat_geoShape_pnts_1117__pntx.o" "bat_geoShape.pt[1117].px";
+connectAttr "bat_geoShape_pnts_1117__pnty.o" "bat_geoShape.pt[1117].py";
+connectAttr "bat_geoShape_pnts_1117__pntz.o" "bat_geoShape.pt[1117].pz";
+connectAttr "bat_geoShape_pnts_1118__pntx.o" "bat_geoShape.pt[1118].px";
+connectAttr "bat_geoShape_pnts_1118__pnty.o" "bat_geoShape.pt[1118].py";
+connectAttr "bat_geoShape_pnts_1118__pntz.o" "bat_geoShape.pt[1118].pz";
+connectAttr "bat_geoShape_pnts_1119__pntx.o" "bat_geoShape.pt[1119].px";
+connectAttr "bat_geoShape_pnts_1119__pnty.o" "bat_geoShape.pt[1119].py";
+connectAttr "bat_geoShape_pnts_1119__pntz.o" "bat_geoShape.pt[1119].pz";
+connectAttr "bat_geoShape_pnts_1120__pntx.o" "bat_geoShape.pt[1120].px";
+connectAttr "bat_geoShape_pnts_1120__pnty.o" "bat_geoShape.pt[1120].py";
+connectAttr "bat_geoShape_pnts_1120__pntz.o" "bat_geoShape.pt[1120].pz";
+connectAttr "bat_geoShape_pnts_1121__pntx.o" "bat_geoShape.pt[1121].px";
+connectAttr "bat_geoShape_pnts_1121__pnty.o" "bat_geoShape.pt[1121].py";
+connectAttr "bat_geoShape_pnts_1121__pntz.o" "bat_geoShape.pt[1121].pz";
+connectAttr "bat_geoShape_pnts_1122__pntx.o" "bat_geoShape.pt[1122].px";
+connectAttr "bat_geoShape_pnts_1122__pnty.o" "bat_geoShape.pt[1122].py";
+connectAttr "bat_geoShape_pnts_1122__pntz.o" "bat_geoShape.pt[1122].pz";
+connectAttr "bat_geoShape_pnts_1123__pntx.o" "bat_geoShape.pt[1123].px";
+connectAttr "bat_geoShape_pnts_1123__pnty.o" "bat_geoShape.pt[1123].py";
+connectAttr "bat_geoShape_pnts_1123__pntz.o" "bat_geoShape.pt[1123].pz";
+connectAttr "bat_geoShape_pnts_1124__pntx.o" "bat_geoShape.pt[1124].px";
+connectAttr "bat_geoShape_pnts_1124__pnty.o" "bat_geoShape.pt[1124].py";
+connectAttr "bat_geoShape_pnts_1124__pntz.o" "bat_geoShape.pt[1124].pz";
+connectAttr "bat_geoShape_pnts_1125__pntx.o" "bat_geoShape.pt[1125].px";
+connectAttr "bat_geoShape_pnts_1125__pnty.o" "bat_geoShape.pt[1125].py";
+connectAttr "bat_geoShape_pnts_1125__pntz.o" "bat_geoShape.pt[1125].pz";
+connectAttr "bat_geoShape_pnts_1126__pntx.o" "bat_geoShape.pt[1126].px";
+connectAttr "bat_geoShape_pnts_1126__pnty.o" "bat_geoShape.pt[1126].py";
+connectAttr "bat_geoShape_pnts_1126__pntz.o" "bat_geoShape.pt[1126].pz";
+connectAttr "bat_geoShape_pnts_1127__pntx.o" "bat_geoShape.pt[1127].px";
+connectAttr "bat_geoShape_pnts_1127__pnty.o" "bat_geoShape.pt[1127].py";
+connectAttr "bat_geoShape_pnts_1127__pntz.o" "bat_geoShape.pt[1127].pz";
+connectAttr "bat_geoShape_pnts_1128__pntx.o" "bat_geoShape.pt[1128].px";
+connectAttr "bat_geoShape_pnts_1128__pnty.o" "bat_geoShape.pt[1128].py";
+connectAttr "bat_geoShape_pnts_1128__pntz.o" "bat_geoShape.pt[1128].pz";
+connectAttr "bat_geoShape_pnts_1129__pntx.o" "bat_geoShape.pt[1129].px";
+connectAttr "bat_geoShape_pnts_1129__pnty.o" "bat_geoShape.pt[1129].py";
+connectAttr "bat_geoShape_pnts_1129__pntz.o" "bat_geoShape.pt[1129].pz";
+connectAttr "bat_geoShape_pnts_1130__pntx.o" "bat_geoShape.pt[1130].px";
+connectAttr "bat_geoShape_pnts_1130__pnty.o" "bat_geoShape.pt[1130].py";
+connectAttr "bat_geoShape_pnts_1130__pntz.o" "bat_geoShape.pt[1130].pz";
+connectAttr "bat_geoShape_pnts_1131__pntx.o" "bat_geoShape.pt[1131].px";
+connectAttr "bat_geoShape_pnts_1131__pnty.o" "bat_geoShape.pt[1131].py";
+connectAttr "bat_geoShape_pnts_1131__pntz.o" "bat_geoShape.pt[1131].pz";
+connectAttr "bat_geoShape_pnts_1132__pntx.o" "bat_geoShape.pt[1132].px";
+connectAttr "bat_geoShape_pnts_1132__pnty.o" "bat_geoShape.pt[1132].py";
+connectAttr "bat_geoShape_pnts_1132__pntz.o" "bat_geoShape.pt[1132].pz";
+connectAttr "bat_geoShape_pnts_1133__pntx.o" "bat_geoShape.pt[1133].px";
+connectAttr "bat_geoShape_pnts_1133__pnty.o" "bat_geoShape.pt[1133].py";
+connectAttr "bat_geoShape_pnts_1133__pntz.o" "bat_geoShape.pt[1133].pz";
+connectAttr "bat_geoShape_pnts_1134__pntx.o" "bat_geoShape.pt[1134].px";
+connectAttr "bat_geoShape_pnts_1134__pnty.o" "bat_geoShape.pt[1134].py";
+connectAttr "bat_geoShape_pnts_1134__pntz.o" "bat_geoShape.pt[1134].pz";
+connectAttr "bat_geoShape_pnts_1135__pntx.o" "bat_geoShape.pt[1135].px";
+connectAttr "bat_geoShape_pnts_1135__pnty.o" "bat_geoShape.pt[1135].py";
+connectAttr "bat_geoShape_pnts_1135__pntz.o" "bat_geoShape.pt[1135].pz";
+connectAttr "bat_geoShape_pnts_1136__pntx.o" "bat_geoShape.pt[1136].px";
+connectAttr "bat_geoShape_pnts_1136__pnty.o" "bat_geoShape.pt[1136].py";
+connectAttr "bat_geoShape_pnts_1136__pntz.o" "bat_geoShape.pt[1136].pz";
+connectAttr "bat_geoShape_pnts_1137__pntx.o" "bat_geoShape.pt[1137].px";
+connectAttr "bat_geoShape_pnts_1137__pnty.o" "bat_geoShape.pt[1137].py";
+connectAttr "bat_geoShape_pnts_1137__pntz.o" "bat_geoShape.pt[1137].pz";
+connectAttr "bat_geoShape_pnts_1138__pntx.o" "bat_geoShape.pt[1138].px";
+connectAttr "bat_geoShape_pnts_1138__pnty.o" "bat_geoShape.pt[1138].py";
+connectAttr "bat_geoShape_pnts_1138__pntz.o" "bat_geoShape.pt[1138].pz";
+connectAttr "bat_geoShape_pnts_1139__pntx.o" "bat_geoShape.pt[1139].px";
+connectAttr "bat_geoShape_pnts_1139__pnty.o" "bat_geoShape.pt[1139].py";
+connectAttr "bat_geoShape_pnts_1139__pntz.o" "bat_geoShape.pt[1139].pz";
+connectAttr "bat_geoShape_pnts_1140__pntx.o" "bat_geoShape.pt[1140].px";
+connectAttr "bat_geoShape_pnts_1140__pnty.o" "bat_geoShape.pt[1140].py";
+connectAttr "bat_geoShape_pnts_1140__pntz.o" "bat_geoShape.pt[1140].pz";
+connectAttr "bat_geoShape_pnts_1141__pntx.o" "bat_geoShape.pt[1141].px";
+connectAttr "bat_geoShape_pnts_1141__pnty.o" "bat_geoShape.pt[1141].py";
+connectAttr "bat_geoShape_pnts_1141__pntz.o" "bat_geoShape.pt[1141].pz";
+connectAttr "bat_geoShape_pnts_1142__pntx.o" "bat_geoShape.pt[1142].px";
+connectAttr "bat_geoShape_pnts_1142__pnty.o" "bat_geoShape.pt[1142].py";
+connectAttr "bat_geoShape_pnts_1142__pntz.o" "bat_geoShape.pt[1142].pz";
+connectAttr "bat_geoShape_pnts_1143__pntx.o" "bat_geoShape.pt[1143].px";
+connectAttr "bat_geoShape_pnts_1143__pnty.o" "bat_geoShape.pt[1143].py";
+connectAttr "bat_geoShape_pnts_1143__pntz.o" "bat_geoShape.pt[1143].pz";
+connectAttr "bat_geoShape_pnts_1144__pntx.o" "bat_geoShape.pt[1144].px";
+connectAttr "bat_geoShape_pnts_1144__pnty.o" "bat_geoShape.pt[1144].py";
+connectAttr "bat_geoShape_pnts_1144__pntz.o" "bat_geoShape.pt[1144].pz";
+connectAttr "bat_geoShape_pnts_1145__pntx.o" "bat_geoShape.pt[1145].px";
+connectAttr "bat_geoShape_pnts_1145__pnty.o" "bat_geoShape.pt[1145].py";
+connectAttr "bat_geoShape_pnts_1145__pntz.o" "bat_geoShape.pt[1145].pz";
+connectAttr "bat_geoShape_pnts_1146__pntx.o" "bat_geoShape.pt[1146].px";
+connectAttr "bat_geoShape_pnts_1146__pnty.o" "bat_geoShape.pt[1146].py";
+connectAttr "bat_geoShape_pnts_1146__pntz.o" "bat_geoShape.pt[1146].pz";
+connectAttr "bat_geoShape_pnts_1147__pntx.o" "bat_geoShape.pt[1147].px";
+connectAttr "bat_geoShape_pnts_1147__pnty.o" "bat_geoShape.pt[1147].py";
+connectAttr "bat_geoShape_pnts_1147__pntz.o" "bat_geoShape.pt[1147].pz";
+connectAttr "bat_geoShape_pnts_1148__pntx.o" "bat_geoShape.pt[1148].px";
+connectAttr "bat_geoShape_pnts_1148__pnty.o" "bat_geoShape.pt[1148].py";
+connectAttr "bat_geoShape_pnts_1148__pntz.o" "bat_geoShape.pt[1148].pz";
+connectAttr "bat_geoShape_pnts_1149__pntx.o" "bat_geoShape.pt[1149].px";
+connectAttr "bat_geoShape_pnts_1149__pnty.o" "bat_geoShape.pt[1149].py";
+connectAttr "bat_geoShape_pnts_1149__pntz.o" "bat_geoShape.pt[1149].pz";
+connectAttr "bat_geoShape_pnts_1150__pntx.o" "bat_geoShape.pt[1150].px";
+connectAttr "bat_geoShape_pnts_1150__pnty.o" "bat_geoShape.pt[1150].py";
+connectAttr "bat_geoShape_pnts_1150__pntz.o" "bat_geoShape.pt[1150].pz";
+connectAttr "bat_geoShape_pnts_1151__pntx.o" "bat_geoShape.pt[1151].px";
+connectAttr "bat_geoShape_pnts_1151__pnty.o" "bat_geoShape.pt[1151].py";
+connectAttr "bat_geoShape_pnts_1151__pntz.o" "bat_geoShape.pt[1151].pz";
+connectAttr "bat_geoShape_pnts_1152__pntx.o" "bat_geoShape.pt[1152].px";
+connectAttr "bat_geoShape_pnts_1152__pnty.o" "bat_geoShape.pt[1152].py";
+connectAttr "bat_geoShape_pnts_1152__pntz.o" "bat_geoShape.pt[1152].pz";
+connectAttr "bat_geoShape_pnts_1153__pntx.o" "bat_geoShape.pt[1153].px";
+connectAttr "bat_geoShape_pnts_1153__pnty.o" "bat_geoShape.pt[1153].py";
+connectAttr "bat_geoShape_pnts_1153__pntz.o" "bat_geoShape.pt[1153].pz";
+connectAttr "bat_geoShape_pnts_1154__pntx.o" "bat_geoShape.pt[1154].px";
+connectAttr "bat_geoShape_pnts_1154__pnty.o" "bat_geoShape.pt[1154].py";
+connectAttr "bat_geoShape_pnts_1154__pntz.o" "bat_geoShape.pt[1154].pz";
+connectAttr "bat_geoShape_pnts_1155__pntx.o" "bat_geoShape.pt[1155].px";
+connectAttr "bat_geoShape_pnts_1155__pnty.o" "bat_geoShape.pt[1155].py";
+connectAttr "bat_geoShape_pnts_1155__pntz.o" "bat_geoShape.pt[1155].pz";
+connectAttr "bat_geoShape_pnts_1156__pntx.o" "bat_geoShape.pt[1156].px";
+connectAttr "bat_geoShape_pnts_1156__pnty.o" "bat_geoShape.pt[1156].py";
+connectAttr "bat_geoShape_pnts_1156__pntz.o" "bat_geoShape.pt[1156].pz";
+connectAttr "bat_geoShape_pnts_1157__pntx.o" "bat_geoShape.pt[1157].px";
+connectAttr "bat_geoShape_pnts_1157__pnty.o" "bat_geoShape.pt[1157].py";
+connectAttr "bat_geoShape_pnts_1157__pntz.o" "bat_geoShape.pt[1157].pz";
+connectAttr "bat_geoShape_pnts_1158__pntx.o" "bat_geoShape.pt[1158].px";
+connectAttr "bat_geoShape_pnts_1158__pnty.o" "bat_geoShape.pt[1158].py";
+connectAttr "bat_geoShape_pnts_1158__pntz.o" "bat_geoShape.pt[1158].pz";
+connectAttr "bat_geoShape_pnts_1159__pntx.o" "bat_geoShape.pt[1159].px";
+connectAttr "bat_geoShape_pnts_1159__pnty.o" "bat_geoShape.pt[1159].py";
+connectAttr "bat_geoShape_pnts_1159__pntz.o" "bat_geoShape.pt[1159].pz";
+connectAttr "bat_geoShape_pnts_1160__pntx.o" "bat_geoShape.pt[1160].px";
+connectAttr "bat_geoShape_pnts_1160__pnty.o" "bat_geoShape.pt[1160].py";
+connectAttr "bat_geoShape_pnts_1160__pntz.o" "bat_geoShape.pt[1160].pz";
+connectAttr "bat_geoShape_pnts_1161__pntx.o" "bat_geoShape.pt[1161].px";
+connectAttr "bat_geoShape_pnts_1161__pnty.o" "bat_geoShape.pt[1161].py";
+connectAttr "bat_geoShape_pnts_1161__pntz.o" "bat_geoShape.pt[1161].pz";
+connectAttr "bat_geoShape_pnts_1162__pntx.o" "bat_geoShape.pt[1162].px";
+connectAttr "bat_geoShape_pnts_1162__pnty.o" "bat_geoShape.pt[1162].py";
+connectAttr "bat_geoShape_pnts_1162__pntz.o" "bat_geoShape.pt[1162].pz";
+connectAttr "bat_geoShape_pnts_1163__pntx.o" "bat_geoShape.pt[1163].px";
+connectAttr "bat_geoShape_pnts_1163__pnty.o" "bat_geoShape.pt[1163].py";
+connectAttr "bat_geoShape_pnts_1163__pntz.o" "bat_geoShape.pt[1163].pz";
+connectAttr "bat_geoShape_pnts_1164__pntx.o" "bat_geoShape.pt[1164].px";
+connectAttr "bat_geoShape_pnts_1164__pnty.o" "bat_geoShape.pt[1164].py";
+connectAttr "bat_geoShape_pnts_1164__pntz.o" "bat_geoShape.pt[1164].pz";
+connectAttr "bat_geoShape_pnts_1165__pntx.o" "bat_geoShape.pt[1165].px";
+connectAttr "bat_geoShape_pnts_1165__pnty.o" "bat_geoShape.pt[1165].py";
+connectAttr "bat_geoShape_pnts_1165__pntz.o" "bat_geoShape.pt[1165].pz";
+connectAttr "bat_geoShape_pnts_1166__pntx.o" "bat_geoShape.pt[1166].px";
+connectAttr "bat_geoShape_pnts_1166__pnty.o" "bat_geoShape.pt[1166].py";
+connectAttr "bat_geoShape_pnts_1166__pntz.o" "bat_geoShape.pt[1166].pz";
+connectAttr "bat_geoShape_pnts_1167__pntx.o" "bat_geoShape.pt[1167].px";
+connectAttr "bat_geoShape_pnts_1167__pnty.o" "bat_geoShape.pt[1167].py";
+connectAttr "bat_geoShape_pnts_1167__pntz.o" "bat_geoShape.pt[1167].pz";
+connectAttr "bat_geoShape_pnts_1168__pntx.o" "bat_geoShape.pt[1168].px";
+connectAttr "bat_geoShape_pnts_1168__pnty.o" "bat_geoShape.pt[1168].py";
+connectAttr "bat_geoShape_pnts_1168__pntz.o" "bat_geoShape.pt[1168].pz";
+connectAttr "bat_geoShape_pnts_1169__pntx.o" "bat_geoShape.pt[1169].px";
+connectAttr "bat_geoShape_pnts_1169__pnty.o" "bat_geoShape.pt[1169].py";
+connectAttr "bat_geoShape_pnts_1169__pntz.o" "bat_geoShape.pt[1169].pz";
+connectAttr "bat_geoShape_pnts_1170__pntx.o" "bat_geoShape.pt[1170].px";
+connectAttr "bat_geoShape_pnts_1170__pnty.o" "bat_geoShape.pt[1170].py";
+connectAttr "bat_geoShape_pnts_1170__pntz.o" "bat_geoShape.pt[1170].pz";
+connectAttr "bat_geoShape_pnts_1171__pntx.o" "bat_geoShape.pt[1171].px";
+connectAttr "bat_geoShape_pnts_1171__pnty.o" "bat_geoShape.pt[1171].py";
+connectAttr "bat_geoShape_pnts_1171__pntz.o" "bat_geoShape.pt[1171].pz";
+connectAttr "bat_geoShape_pnts_1172__pntx.o" "bat_geoShape.pt[1172].px";
+connectAttr "bat_geoShape_pnts_1172__pnty.o" "bat_geoShape.pt[1172].py";
+connectAttr "bat_geoShape_pnts_1172__pntz.o" "bat_geoShape.pt[1172].pz";
+connectAttr "bat_geoShape_pnts_1173__pntx.o" "bat_geoShape.pt[1173].px";
+connectAttr "bat_geoShape_pnts_1173__pnty.o" "bat_geoShape.pt[1173].py";
+connectAttr "bat_geoShape_pnts_1173__pntz.o" "bat_geoShape.pt[1173].pz";
+connectAttr "bat_geoShape_pnts_1174__pntx.o" "bat_geoShape.pt[1174].px";
+connectAttr "bat_geoShape_pnts_1174__pnty.o" "bat_geoShape.pt[1174].py";
+connectAttr "bat_geoShape_pnts_1174__pntz.o" "bat_geoShape.pt[1174].pz";
+connectAttr "bat_geoShape_pnts_1175__pntx.o" "bat_geoShape.pt[1175].px";
+connectAttr "bat_geoShape_pnts_1175__pnty.o" "bat_geoShape.pt[1175].py";
+connectAttr "bat_geoShape_pnts_1175__pntz.o" "bat_geoShape.pt[1175].pz";
+connectAttr "bat_geoShape_pnts_1176__pntx.o" "bat_geoShape.pt[1176].px";
+connectAttr "bat_geoShape_pnts_1176__pnty.o" "bat_geoShape.pt[1176].py";
+connectAttr "bat_geoShape_pnts_1176__pntz.o" "bat_geoShape.pt[1176].pz";
+connectAttr "bat_geoShape_pnts_1177__pntx.o" "bat_geoShape.pt[1177].px";
+connectAttr "bat_geoShape_pnts_1177__pnty.o" "bat_geoShape.pt[1177].py";
+connectAttr "bat_geoShape_pnts_1177__pntz.o" "bat_geoShape.pt[1177].pz";
+connectAttr "bat_geoShape_pnts_1178__pntx.o" "bat_geoShape.pt[1178].px";
+connectAttr "bat_geoShape_pnts_1178__pnty.o" "bat_geoShape.pt[1178].py";
+connectAttr "bat_geoShape_pnts_1178__pntz.o" "bat_geoShape.pt[1178].pz";
+connectAttr "bat_geoShape_pnts_1179__pntx.o" "bat_geoShape.pt[1179].px";
+connectAttr "bat_geoShape_pnts_1179__pnty.o" "bat_geoShape.pt[1179].py";
+connectAttr "bat_geoShape_pnts_1179__pntz.o" "bat_geoShape.pt[1179].pz";
+connectAttr "bat_geoShape_pnts_1180__pntx.o" "bat_geoShape.pt[1180].px";
+connectAttr "bat_geoShape_pnts_1180__pnty.o" "bat_geoShape.pt[1180].py";
+connectAttr "bat_geoShape_pnts_1180__pntz.o" "bat_geoShape.pt[1180].pz";
+connectAttr "bat_geoShape_pnts_1181__pntx.o" "bat_geoShape.pt[1181].px";
+connectAttr "bat_geoShape_pnts_1181__pnty.o" "bat_geoShape.pt[1181].py";
+connectAttr "bat_geoShape_pnts_1181__pntz.o" "bat_geoShape.pt[1181].pz";
+connectAttr "bat_geoShape_pnts_1182__pntx.o" "bat_geoShape.pt[1182].px";
+connectAttr "bat_geoShape_pnts_1182__pnty.o" "bat_geoShape.pt[1182].py";
+connectAttr "bat_geoShape_pnts_1182__pntz.o" "bat_geoShape.pt[1182].pz";
+connectAttr "bat_geoShape_pnts_1183__pntx.o" "bat_geoShape.pt[1183].px";
+connectAttr "bat_geoShape_pnts_1183__pnty.o" "bat_geoShape.pt[1183].py";
+connectAttr "bat_geoShape_pnts_1183__pntz.o" "bat_geoShape.pt[1183].pz";
+connectAttr "bat_geoShape_pnts_1184__pntx.o" "bat_geoShape.pt[1184].px";
+connectAttr "bat_geoShape_pnts_1184__pnty.o" "bat_geoShape.pt[1184].py";
+connectAttr "bat_geoShape_pnts_1184__pntz.o" "bat_geoShape.pt[1184].pz";
+connectAttr "bat_geoShape_pnts_1185__pntx.o" "bat_geoShape.pt[1185].px";
+connectAttr "bat_geoShape_pnts_1185__pnty.o" "bat_geoShape.pt[1185].py";
+connectAttr "bat_geoShape_pnts_1185__pntz.o" "bat_geoShape.pt[1185].pz";
+connectAttr "bat_geoShape_pnts_1186__pntx.o" "bat_geoShape.pt[1186].px";
+connectAttr "bat_geoShape_pnts_1186__pnty.o" "bat_geoShape.pt[1186].py";
+connectAttr "bat_geoShape_pnts_1186__pntz.o" "bat_geoShape.pt[1186].pz";
+connectAttr "bat_geoShape_pnts_1187__pntx.o" "bat_geoShape.pt[1187].px";
+connectAttr "bat_geoShape_pnts_1187__pnty.o" "bat_geoShape.pt[1187].py";
+connectAttr "bat_geoShape_pnts_1187__pntz.o" "bat_geoShape.pt[1187].pz";
+connectAttr "bat_geoShape_pnts_1188__pntx.o" "bat_geoShape.pt[1188].px";
+connectAttr "bat_geoShape_pnts_1188__pnty.o" "bat_geoShape.pt[1188].py";
+connectAttr "bat_geoShape_pnts_1188__pntz.o" "bat_geoShape.pt[1188].pz";
+connectAttr "bat_geoShape_pnts_1189__pntx.o" "bat_geoShape.pt[1189].px";
+connectAttr "bat_geoShape_pnts_1189__pnty.o" "bat_geoShape.pt[1189].py";
+connectAttr "bat_geoShape_pnts_1189__pntz.o" "bat_geoShape.pt[1189].pz";
+connectAttr "bat_geoShape_pnts_1190__pntx.o" "bat_geoShape.pt[1190].px";
+connectAttr "bat_geoShape_pnts_1190__pnty.o" "bat_geoShape.pt[1190].py";
+connectAttr "bat_geoShape_pnts_1190__pntz.o" "bat_geoShape.pt[1190].pz";
+connectAttr "bat_geoShape_pnts_1191__pntx.o" "bat_geoShape.pt[1191].px";
+connectAttr "bat_geoShape_pnts_1191__pnty.o" "bat_geoShape.pt[1191].py";
+connectAttr "bat_geoShape_pnts_1191__pntz.o" "bat_geoShape.pt[1191].pz";
+connectAttr "bat_geoShape_pnts_1192__pntx.o" "bat_geoShape.pt[1192].px";
+connectAttr "bat_geoShape_pnts_1192__pnty.o" "bat_geoShape.pt[1192].py";
+connectAttr "bat_geoShape_pnts_1192__pntz.o" "bat_geoShape.pt[1192].pz";
+connectAttr "bat_geoShape_pnts_1193__pntx.o" "bat_geoShape.pt[1193].px";
+connectAttr "bat_geoShape_pnts_1193__pnty.o" "bat_geoShape.pt[1193].py";
+connectAttr "bat_geoShape_pnts_1193__pntz.o" "bat_geoShape.pt[1193].pz";
+connectAttr "bat_geoShape_pnts_1194__pntx.o" "bat_geoShape.pt[1194].px";
+connectAttr "bat_geoShape_pnts_1194__pnty.o" "bat_geoShape.pt[1194].py";
+connectAttr "bat_geoShape_pnts_1194__pntz.o" "bat_geoShape.pt[1194].pz";
+connectAttr "bat_geoShape_pnts_1195__pntx.o" "bat_geoShape.pt[1195].px";
+connectAttr "bat_geoShape_pnts_1195__pnty.o" "bat_geoShape.pt[1195].py";
+connectAttr "bat_geoShape_pnts_1195__pntz.o" "bat_geoShape.pt[1195].pz";
+connectAttr "bat_geoShape_pnts_1196__pntx.o" "bat_geoShape.pt[1196].px";
+connectAttr "bat_geoShape_pnts_1196__pnty.o" "bat_geoShape.pt[1196].py";
+connectAttr "bat_geoShape_pnts_1196__pntz.o" "bat_geoShape.pt[1196].pz";
+connectAttr "bat_geoShape_pnts_1197__pntx.o" "bat_geoShape.pt[1197].px";
+connectAttr "bat_geoShape_pnts_1197__pnty.o" "bat_geoShape.pt[1197].py";
+connectAttr "bat_geoShape_pnts_1197__pntz.o" "bat_geoShape.pt[1197].pz";
+connectAttr "bat_geoShape_pnts_1198__pntx.o" "bat_geoShape.pt[1198].px";
+connectAttr "bat_geoShape_pnts_1198__pnty.o" "bat_geoShape.pt[1198].py";
+connectAttr "bat_geoShape_pnts_1198__pntz.o" "bat_geoShape.pt[1198].pz";
+connectAttr "bat_geoShape_pnts_1199__pntx.o" "bat_geoShape.pt[1199].px";
+connectAttr "bat_geoShape_pnts_1199__pnty.o" "bat_geoShape.pt[1199].py";
+connectAttr "bat_geoShape_pnts_1199__pntz.o" "bat_geoShape.pt[1199].pz";
+connectAttr "bat_geoShape_pnts_1200__pntx.o" "bat_geoShape.pt[1200].px";
+connectAttr "bat_geoShape_pnts_1200__pnty.o" "bat_geoShape.pt[1200].py";
+connectAttr "bat_geoShape_pnts_1200__pntz.o" "bat_geoShape.pt[1200].pz";
+connectAttr "bat_geoShape_pnts_1201__pntx.o" "bat_geoShape.pt[1201].px";
+connectAttr "bat_geoShape_pnts_1201__pnty.o" "bat_geoShape.pt[1201].py";
+connectAttr "bat_geoShape_pnts_1201__pntz.o" "bat_geoShape.pt[1201].pz";
+connectAttr "bat_geoShape_pnts_1202__pntx.o" "bat_geoShape.pt[1202].px";
+connectAttr "bat_geoShape_pnts_1202__pnty.o" "bat_geoShape.pt[1202].py";
+connectAttr "bat_geoShape_pnts_1202__pntz.o" "bat_geoShape.pt[1202].pz";
+connectAttr "bat_geoShape_pnts_1203__pntx.o" "bat_geoShape.pt[1203].px";
+connectAttr "bat_geoShape_pnts_1203__pnty.o" "bat_geoShape.pt[1203].py";
+connectAttr "bat_geoShape_pnts_1203__pntz.o" "bat_geoShape.pt[1203].pz";
+connectAttr "bat_geoShape_pnts_1204__pntx.o" "bat_geoShape.pt[1204].px";
+connectAttr "bat_geoShape_pnts_1204__pnty.o" "bat_geoShape.pt[1204].py";
+connectAttr "bat_geoShape_pnts_1204__pntz.o" "bat_geoShape.pt[1204].pz";
+connectAttr "bat_geoShape_pnts_1205__pntx.o" "bat_geoShape.pt[1205].px";
+connectAttr "bat_geoShape_pnts_1205__pnty.o" "bat_geoShape.pt[1205].py";
+connectAttr "bat_geoShape_pnts_1205__pntz.o" "bat_geoShape.pt[1205].pz";
+connectAttr "bat_geoShape_pnts_1206__pntx.o" "bat_geoShape.pt[1206].px";
+connectAttr "bat_geoShape_pnts_1206__pnty.o" "bat_geoShape.pt[1206].py";
+connectAttr "bat_geoShape_pnts_1206__pntz.o" "bat_geoShape.pt[1206].pz";
+connectAttr "bat_geoShape_pnts_1207__pntx.o" "bat_geoShape.pt[1207].px";
+connectAttr "bat_geoShape_pnts_1207__pnty.o" "bat_geoShape.pt[1207].py";
+connectAttr "bat_geoShape_pnts_1207__pntz.o" "bat_geoShape.pt[1207].pz";
+connectAttr "bat_geoShape_pnts_1208__pntx.o" "bat_geoShape.pt[1208].px";
+connectAttr "bat_geoShape_pnts_1208__pnty.o" "bat_geoShape.pt[1208].py";
+connectAttr "bat_geoShape_pnts_1208__pntz.o" "bat_geoShape.pt[1208].pz";
+connectAttr "bat_geoShape_pnts_1209__pntx.o" "bat_geoShape.pt[1209].px";
+connectAttr "bat_geoShape_pnts_1209__pnty.o" "bat_geoShape.pt[1209].py";
+connectAttr "bat_geoShape_pnts_1209__pntz.o" "bat_geoShape.pt[1209].pz";
+connectAttr "bat_geoShape_pnts_1210__pntx.o" "bat_geoShape.pt[1210].px";
+connectAttr "bat_geoShape_pnts_1210__pnty.o" "bat_geoShape.pt[1210].py";
+connectAttr "bat_geoShape_pnts_1210__pntz.o" "bat_geoShape.pt[1210].pz";
+connectAttr "bat_geoShape_pnts_1211__pntx.o" "bat_geoShape.pt[1211].px";
+connectAttr "bat_geoShape_pnts_1211__pnty.o" "bat_geoShape.pt[1211].py";
+connectAttr "bat_geoShape_pnts_1211__pntz.o" "bat_geoShape.pt[1211].pz";
+connectAttr "bat_geoShape_pnts_1212__pntx.o" "bat_geoShape.pt[1212].px";
+connectAttr "bat_geoShape_pnts_1212__pnty.o" "bat_geoShape.pt[1212].py";
+connectAttr "bat_geoShape_pnts_1212__pntz.o" "bat_geoShape.pt[1212].pz";
+connectAttr "bat_geoShape_pnts_1213__pntx.o" "bat_geoShape.pt[1213].px";
+connectAttr "bat_geoShape_pnts_1213__pnty.o" "bat_geoShape.pt[1213].py";
+connectAttr "bat_geoShape_pnts_1213__pntz.o" "bat_geoShape.pt[1213].pz";
+connectAttr "bat_geoShape_pnts_1214__pntx.o" "bat_geoShape.pt[1214].px";
+connectAttr "bat_geoShape_pnts_1214__pnty.o" "bat_geoShape.pt[1214].py";
+connectAttr "bat_geoShape_pnts_1214__pntz.o" "bat_geoShape.pt[1214].pz";
+connectAttr "bat_geoShape_pnts_1215__pntx.o" "bat_geoShape.pt[1215].px";
+connectAttr "bat_geoShape_pnts_1215__pnty.o" "bat_geoShape.pt[1215].py";
+connectAttr "bat_geoShape_pnts_1215__pntz.o" "bat_geoShape.pt[1215].pz";
+connectAttr "bat_geoShape_pnts_1216__pntx.o" "bat_geoShape.pt[1216].px";
+connectAttr "bat_geoShape_pnts_1216__pnty.o" "bat_geoShape.pt[1216].py";
+connectAttr "bat_geoShape_pnts_1216__pntz.o" "bat_geoShape.pt[1216].pz";
+connectAttr "bat_geoShape_pnts_1217__pntx.o" "bat_geoShape.pt[1217].px";
+connectAttr "bat_geoShape_pnts_1217__pnty.o" "bat_geoShape.pt[1217].py";
+connectAttr "bat_geoShape_pnts_1217__pntz.o" "bat_geoShape.pt[1217].pz";
+connectAttr "bat_geoShape_pnts_1218__pntx.o" "bat_geoShape.pt[1218].px";
+connectAttr "bat_geoShape_pnts_1218__pnty.o" "bat_geoShape.pt[1218].py";
+connectAttr "bat_geoShape_pnts_1218__pntz.o" "bat_geoShape.pt[1218].pz";
+connectAttr "bat_geoShape_pnts_1219__pntx.o" "bat_geoShape.pt[1219].px";
+connectAttr "bat_geoShape_pnts_1219__pnty.o" "bat_geoShape.pt[1219].py";
+connectAttr "bat_geoShape_pnts_1219__pntz.o" "bat_geoShape.pt[1219].pz";
+connectAttr "bat_geoShape_pnts_1220__pntx.o" "bat_geoShape.pt[1220].px";
+connectAttr "bat_geoShape_pnts_1220__pnty.o" "bat_geoShape.pt[1220].py";
+connectAttr "bat_geoShape_pnts_1220__pntz.o" "bat_geoShape.pt[1220].pz";
+connectAttr "bat_geoShape_pnts_1221__pntx.o" "bat_geoShape.pt[1221].px";
+connectAttr "bat_geoShape_pnts_1221__pnty.o" "bat_geoShape.pt[1221].py";
+connectAttr "bat_geoShape_pnts_1221__pntz.o" "bat_geoShape.pt[1221].pz";
+connectAttr "bat_geoShape_pnts_1222__pntx.o" "bat_geoShape.pt[1222].px";
+connectAttr "bat_geoShape_pnts_1222__pnty.o" "bat_geoShape.pt[1222].py";
+connectAttr "bat_geoShape_pnts_1222__pntz.o" "bat_geoShape.pt[1222].pz";
+connectAttr "bat_geoShape_pnts_1223__pntx.o" "bat_geoShape.pt[1223].px";
+connectAttr "bat_geoShape_pnts_1223__pnty.o" "bat_geoShape.pt[1223].py";
+connectAttr "bat_geoShape_pnts_1223__pntz.o" "bat_geoShape.pt[1223].pz";
+connectAttr "bat_geoShape_pnts_1224__pntx.o" "bat_geoShape.pt[1224].px";
+connectAttr "bat_geoShape_pnts_1224__pnty.o" "bat_geoShape.pt[1224].py";
+connectAttr "bat_geoShape_pnts_1224__pntz.o" "bat_geoShape.pt[1224].pz";
+connectAttr "bat_geoShape_pnts_1225__pntx.o" "bat_geoShape.pt[1225].px";
+connectAttr "bat_geoShape_pnts_1225__pnty.o" "bat_geoShape.pt[1225].py";
+connectAttr "bat_geoShape_pnts_1225__pntz.o" "bat_geoShape.pt[1225].pz";
+connectAttr "bat_geoShape_pnts_1226__pntx.o" "bat_geoShape.pt[1226].px";
+connectAttr "bat_geoShape_pnts_1226__pnty.o" "bat_geoShape.pt[1226].py";
+connectAttr "bat_geoShape_pnts_1226__pntz.o" "bat_geoShape.pt[1226].pz";
+connectAttr "bat_geoShape_pnts_1227__pntx.o" "bat_geoShape.pt[1227].px";
+connectAttr "bat_geoShape_pnts_1227__pnty.o" "bat_geoShape.pt[1227].py";
+connectAttr "bat_geoShape_pnts_1227__pntz.o" "bat_geoShape.pt[1227].pz";
+connectAttr "bat_geoShape_pnts_1228__pntx.o" "bat_geoShape.pt[1228].px";
+connectAttr "bat_geoShape_pnts_1228__pnty.o" "bat_geoShape.pt[1228].py";
+connectAttr "bat_geoShape_pnts_1228__pntz.o" "bat_geoShape.pt[1228].pz";
+connectAttr "bat_geoShape_pnts_1229__pntx.o" "bat_geoShape.pt[1229].px";
+connectAttr "bat_geoShape_pnts_1229__pnty.o" "bat_geoShape.pt[1229].py";
+connectAttr "bat_geoShape_pnts_1229__pntz.o" "bat_geoShape.pt[1229].pz";
+connectAttr "bat_geoShape_pnts_1230__pntx.o" "bat_geoShape.pt[1230].px";
+connectAttr "bat_geoShape_pnts_1230__pnty.o" "bat_geoShape.pt[1230].py";
+connectAttr "bat_geoShape_pnts_1230__pntz.o" "bat_geoShape.pt[1230].pz";
+connectAttr "bat_geoShape_pnts_1231__pntx.o" "bat_geoShape.pt[1231].px";
+connectAttr "bat_geoShape_pnts_1231__pnty.o" "bat_geoShape.pt[1231].py";
+connectAttr "bat_geoShape_pnts_1231__pntz.o" "bat_geoShape.pt[1231].pz";
+connectAttr "bat_geoShape_pnts_1232__pntx.o" "bat_geoShape.pt[1232].px";
+connectAttr "bat_geoShape_pnts_1232__pnty.o" "bat_geoShape.pt[1232].py";
+connectAttr "bat_geoShape_pnts_1232__pntz.o" "bat_geoShape.pt[1232].pz";
+connectAttr "bat_geoShape_pnts_1233__pntx.o" "bat_geoShape.pt[1233].px";
+connectAttr "bat_geoShape_pnts_1233__pnty.o" "bat_geoShape.pt[1233].py";
+connectAttr "bat_geoShape_pnts_1233__pntz.o" "bat_geoShape.pt[1233].pz";
+connectAttr "bat_geoShape_pnts_1234__pntx.o" "bat_geoShape.pt[1234].px";
+connectAttr "bat_geoShape_pnts_1234__pnty.o" "bat_geoShape.pt[1234].py";
+connectAttr "bat_geoShape_pnts_1234__pntz.o" "bat_geoShape.pt[1234].pz";
+connectAttr "bat_geoShape_pnts_1235__pntx.o" "bat_geoShape.pt[1235].px";
+connectAttr "bat_geoShape_pnts_1235__pnty.o" "bat_geoShape.pt[1235].py";
+connectAttr "bat_geoShape_pnts_1235__pntz.o" "bat_geoShape.pt[1235].pz";
+connectAttr "bat_geoShape_pnts_1236__pntx.o" "bat_geoShape.pt[1236].px";
+connectAttr "bat_geoShape_pnts_1236__pnty.o" "bat_geoShape.pt[1236].py";
+connectAttr "bat_geoShape_pnts_1236__pntz.o" "bat_geoShape.pt[1236].pz";
+connectAttr "bat_geoShape_pnts_1237__pntx.o" "bat_geoShape.pt[1237].px";
+connectAttr "bat_geoShape_pnts_1237__pnty.o" "bat_geoShape.pt[1237].py";
+connectAttr "bat_geoShape_pnts_1237__pntz.o" "bat_geoShape.pt[1237].pz";
+connectAttr "bat_geoShape_pnts_1238__pntx.o" "bat_geoShape.pt[1238].px";
+connectAttr "bat_geoShape_pnts_1238__pnty.o" "bat_geoShape.pt[1238].py";
+connectAttr "bat_geoShape_pnts_1238__pntz.o" "bat_geoShape.pt[1238].pz";
+connectAttr "bat_geoShape_pnts_1239__pntx.o" "bat_geoShape.pt[1239].px";
+connectAttr "bat_geoShape_pnts_1239__pnty.o" "bat_geoShape.pt[1239].py";
+connectAttr "bat_geoShape_pnts_1239__pntz.o" "bat_geoShape.pt[1239].pz";
+connectAttr "bat_geoShape_pnts_1240__pntx.o" "bat_geoShape.pt[1240].px";
+connectAttr "bat_geoShape_pnts_1240__pnty.o" "bat_geoShape.pt[1240].py";
+connectAttr "bat_geoShape_pnts_1240__pntz.o" "bat_geoShape.pt[1240].pz";
+connectAttr "bat_geoShape_pnts_1241__pntx.o" "bat_geoShape.pt[1241].px";
+connectAttr "bat_geoShape_pnts_1241__pnty.o" "bat_geoShape.pt[1241].py";
+connectAttr "bat_geoShape_pnts_1241__pntz.o" "bat_geoShape.pt[1241].pz";
+connectAttr "bat_geoShape_pnts_1242__pntx.o" "bat_geoShape.pt[1242].px";
+connectAttr "bat_geoShape_pnts_1242__pnty.o" "bat_geoShape.pt[1242].py";
+connectAttr "bat_geoShape_pnts_1242__pntz.o" "bat_geoShape.pt[1242].pz";
+connectAttr "bat_geoShape_pnts_1243__pntx.o" "bat_geoShape.pt[1243].px";
+connectAttr "bat_geoShape_pnts_1243__pnty.o" "bat_geoShape.pt[1243].py";
+connectAttr "bat_geoShape_pnts_1243__pntz.o" "bat_geoShape.pt[1243].pz";
+connectAttr "bat_geoShape_pnts_1244__pntx.o" "bat_geoShape.pt[1244].px";
+connectAttr "bat_geoShape_pnts_1244__pnty.o" "bat_geoShape.pt[1244].py";
+connectAttr "bat_geoShape_pnts_1244__pntz.o" "bat_geoShape.pt[1244].pz";
+connectAttr "bat_geoShape_pnts_1245__pntx.o" "bat_geoShape.pt[1245].px";
+connectAttr "bat_geoShape_pnts_1245__pnty.o" "bat_geoShape.pt[1245].py";
+connectAttr "bat_geoShape_pnts_1245__pntz.o" "bat_geoShape.pt[1245].pz";
+connectAttr "bat_geoShape_pnts_1246__pntx.o" "bat_geoShape.pt[1246].px";
+connectAttr "bat_geoShape_pnts_1246__pnty.o" "bat_geoShape.pt[1246].py";
+connectAttr "bat_geoShape_pnts_1246__pntz.o" "bat_geoShape.pt[1246].pz";
+connectAttr "bat_geoShape_pnts_1247__pntx.o" "bat_geoShape.pt[1247].px";
+connectAttr "bat_geoShape_pnts_1247__pnty.o" "bat_geoShape.pt[1247].py";
+connectAttr "bat_geoShape_pnts_1247__pntz.o" "bat_geoShape.pt[1247].pz";
+connectAttr "bat_geoShape_pnts_1248__pntx.o" "bat_geoShape.pt[1248].px";
+connectAttr "bat_geoShape_pnts_1248__pnty.o" "bat_geoShape.pt[1248].py";
+connectAttr "bat_geoShape_pnts_1248__pntz.o" "bat_geoShape.pt[1248].pz";
+connectAttr "bat_geoShape_pnts_1249__pntx.o" "bat_geoShape.pt[1249].px";
+connectAttr "bat_geoShape_pnts_1249__pnty.o" "bat_geoShape.pt[1249].py";
+connectAttr "bat_geoShape_pnts_1249__pntz.o" "bat_geoShape.pt[1249].pz";
+connectAttr "bat_geoShape_pnts_1250__pntx.o" "bat_geoShape.pt[1250].px";
+connectAttr "bat_geoShape_pnts_1250__pnty.o" "bat_geoShape.pt[1250].py";
+connectAttr "bat_geoShape_pnts_1250__pntz.o" "bat_geoShape.pt[1250].pz";
+connectAttr "bat_geoShape_pnts_1251__pntx.o" "bat_geoShape.pt[1251].px";
+connectAttr "bat_geoShape_pnts_1251__pnty.o" "bat_geoShape.pt[1251].py";
+connectAttr "bat_geoShape_pnts_1251__pntz.o" "bat_geoShape.pt[1251].pz";
+connectAttr "bat_geoShape_pnts_1252__pntx.o" "bat_geoShape.pt[1252].px";
+connectAttr "bat_geoShape_pnts_1252__pnty.o" "bat_geoShape.pt[1252].py";
+connectAttr "bat_geoShape_pnts_1252__pntz.o" "bat_geoShape.pt[1252].pz";
+connectAttr "bat_geoShape_pnts_1253__pntx.o" "bat_geoShape.pt[1253].px";
+connectAttr "bat_geoShape_pnts_1253__pnty.o" "bat_geoShape.pt[1253].py";
+connectAttr "bat_geoShape_pnts_1253__pntz.o" "bat_geoShape.pt[1253].pz";
+connectAttr "bat_geoShape_pnts_1254__pntx.o" "bat_geoShape.pt[1254].px";
+connectAttr "bat_geoShape_pnts_1254__pnty.o" "bat_geoShape.pt[1254].py";
+connectAttr "bat_geoShape_pnts_1254__pntz.o" "bat_geoShape.pt[1254].pz";
+connectAttr "bat_geoShape_pnts_1255__pntx.o" "bat_geoShape.pt[1255].px";
+connectAttr "bat_geoShape_pnts_1255__pnty.o" "bat_geoShape.pt[1255].py";
+connectAttr "bat_geoShape_pnts_1255__pntz.o" "bat_geoShape.pt[1255].pz";
+connectAttr "bat_geoShape_pnts_1256__pntx.o" "bat_geoShape.pt[1256].px";
+connectAttr "bat_geoShape_pnts_1256__pnty.o" "bat_geoShape.pt[1256].py";
+connectAttr "bat_geoShape_pnts_1256__pntz.o" "bat_geoShape.pt[1256].pz";
+connectAttr "bat_geoShape_pnts_1257__pntx.o" "bat_geoShape.pt[1257].px";
+connectAttr "bat_geoShape_pnts_1257__pnty.o" "bat_geoShape.pt[1257].py";
+connectAttr "bat_geoShape_pnts_1257__pntz.o" "bat_geoShape.pt[1257].pz";
+connectAttr "bat_geoShape_pnts_1258__pntx.o" "bat_geoShape.pt[1258].px";
+connectAttr "bat_geoShape_pnts_1258__pnty.o" "bat_geoShape.pt[1258].py";
+connectAttr "bat_geoShape_pnts_1258__pntz.o" "bat_geoShape.pt[1258].pz";
+connectAttr "bat_geoShape_pnts_1259__pntx.o" "bat_geoShape.pt[1259].px";
+connectAttr "bat_geoShape_pnts_1259__pnty.o" "bat_geoShape.pt[1259].py";
+connectAttr "bat_geoShape_pnts_1259__pntz.o" "bat_geoShape.pt[1259].pz";
+connectAttr "bat_geoShape_pnts_1260__pntx.o" "bat_geoShape.pt[1260].px";
+connectAttr "bat_geoShape_pnts_1260__pnty.o" "bat_geoShape.pt[1260].py";
+connectAttr "bat_geoShape_pnts_1260__pntz.o" "bat_geoShape.pt[1260].pz";
+connectAttr "bat_geoShape_pnts_1261__pntx.o" "bat_geoShape.pt[1261].px";
+connectAttr "bat_geoShape_pnts_1261__pnty.o" "bat_geoShape.pt[1261].py";
+connectAttr "bat_geoShape_pnts_1261__pntz.o" "bat_geoShape.pt[1261].pz";
+connectAttr "bat_geoShape_pnts_1262__pntx.o" "bat_geoShape.pt[1262].px";
+connectAttr "bat_geoShape_pnts_1262__pnty.o" "bat_geoShape.pt[1262].py";
+connectAttr "bat_geoShape_pnts_1262__pntz.o" "bat_geoShape.pt[1262].pz";
+connectAttr "bat_geoShape_pnts_1263__pntx.o" "bat_geoShape.pt[1263].px";
+connectAttr "bat_geoShape_pnts_1263__pnty.o" "bat_geoShape.pt[1263].py";
+connectAttr "bat_geoShape_pnts_1263__pntz.o" "bat_geoShape.pt[1263].pz";
+connectAttr "bat_geoShape_pnts_1264__pntx.o" "bat_geoShape.pt[1264].px";
+connectAttr "bat_geoShape_pnts_1264__pnty.o" "bat_geoShape.pt[1264].py";
+connectAttr "bat_geoShape_pnts_1264__pntz.o" "bat_geoShape.pt[1264].pz";
+connectAttr "bat_geoShape_pnts_1265__pntx.o" "bat_geoShape.pt[1265].px";
+connectAttr "bat_geoShape_pnts_1265__pnty.o" "bat_geoShape.pt[1265].py";
+connectAttr "bat_geoShape_pnts_1265__pntz.o" "bat_geoShape.pt[1265].pz";
+connectAttr "bat_geoShape_pnts_1266__pntx.o" "bat_geoShape.pt[1266].px";
+connectAttr "bat_geoShape_pnts_1266__pnty.o" "bat_geoShape.pt[1266].py";
+connectAttr "bat_geoShape_pnts_1266__pntz.o" "bat_geoShape.pt[1266].pz";
+connectAttr "bat_geoShape_pnts_1267__pntx.o" "bat_geoShape.pt[1267].px";
+connectAttr "bat_geoShape_pnts_1267__pnty.o" "bat_geoShape.pt[1267].py";
+connectAttr "bat_geoShape_pnts_1267__pntz.o" "bat_geoShape.pt[1267].pz";
+connectAttr "bat_geoShape_pnts_1268__pntx.o" "bat_geoShape.pt[1268].px";
+connectAttr "bat_geoShape_pnts_1268__pnty.o" "bat_geoShape.pt[1268].py";
+connectAttr "bat_geoShape_pnts_1268__pntz.o" "bat_geoShape.pt[1268].pz";
+connectAttr "bat_geoShape_pnts_1269__pntx.o" "bat_geoShape.pt[1269].px";
+connectAttr "bat_geoShape_pnts_1269__pnty.o" "bat_geoShape.pt[1269].py";
+connectAttr "bat_geoShape_pnts_1269__pntz.o" "bat_geoShape.pt[1269].pz";
+connectAttr "bat_geoShape_pnts_1270__pntx.o" "bat_geoShape.pt[1270].px";
+connectAttr "bat_geoShape_pnts_1270__pnty.o" "bat_geoShape.pt[1270].py";
+connectAttr "bat_geoShape_pnts_1270__pntz.o" "bat_geoShape.pt[1270].pz";
+connectAttr "bat_geoShape_pnts_1271__pntx.o" "bat_geoShape.pt[1271].px";
+connectAttr "bat_geoShape_pnts_1271__pnty.o" "bat_geoShape.pt[1271].py";
+connectAttr "bat_geoShape_pnts_1271__pntz.o" "bat_geoShape.pt[1271].pz";
+connectAttr "bat_geoShape_pnts_1272__pntx.o" "bat_geoShape.pt[1272].px";
+connectAttr "bat_geoShape_pnts_1272__pnty.o" "bat_geoShape.pt[1272].py";
+connectAttr "bat_geoShape_pnts_1272__pntz.o" "bat_geoShape.pt[1272].pz";
+connectAttr "bat_geoShape_pnts_1273__pntx.o" "bat_geoShape.pt[1273].px";
+connectAttr "bat_geoShape_pnts_1273__pnty.o" "bat_geoShape.pt[1273].py";
+connectAttr "bat_geoShape_pnts_1273__pntz.o" "bat_geoShape.pt[1273].pz";
+connectAttr "bat_geoShape_pnts_1274__pntx.o" "bat_geoShape.pt[1274].px";
+connectAttr "bat_geoShape_pnts_1274__pnty.o" "bat_geoShape.pt[1274].py";
+connectAttr "bat_geoShape_pnts_1274__pntz.o" "bat_geoShape.pt[1274].pz";
+connectAttr "bat_geoShape_pnts_1275__pntx.o" "bat_geoShape.pt[1275].px";
+connectAttr "bat_geoShape_pnts_1275__pnty.o" "bat_geoShape.pt[1275].py";
+connectAttr "bat_geoShape_pnts_1275__pntz.o" "bat_geoShape.pt[1275].pz";
+connectAttr "bat_geoShape_pnts_1276__pntx.o" "bat_geoShape.pt[1276].px";
+connectAttr "bat_geoShape_pnts_1276__pnty.o" "bat_geoShape.pt[1276].py";
+connectAttr "bat_geoShape_pnts_1276__pntz.o" "bat_geoShape.pt[1276].pz";
+connectAttr "bat_geoShape_pnts_1277__pntx.o" "bat_geoShape.pt[1277].px";
+connectAttr "bat_geoShape_pnts_1277__pnty.o" "bat_geoShape.pt[1277].py";
+connectAttr "bat_geoShape_pnts_1277__pntz.o" "bat_geoShape.pt[1277].pz";
+connectAttr "bat_geoShape_pnts_1278__pntx.o" "bat_geoShape.pt[1278].px";
+connectAttr "bat_geoShape_pnts_1278__pnty.o" "bat_geoShape.pt[1278].py";
+connectAttr "bat_geoShape_pnts_1278__pntz.o" "bat_geoShape.pt[1278].pz";
+connectAttr "bat_geoShape_pnts_1279__pntx.o" "bat_geoShape.pt[1279].px";
+connectAttr "bat_geoShape_pnts_1279__pnty.o" "bat_geoShape.pt[1279].py";
+connectAttr "bat_geoShape_pnts_1279__pntz.o" "bat_geoShape.pt[1279].pz";
+connectAttr "bat_geoShape_pnts_1280__pntx.o" "bat_geoShape.pt[1280].px";
+connectAttr "bat_geoShape_pnts_1280__pnty.o" "bat_geoShape.pt[1280].py";
+connectAttr "bat_geoShape_pnts_1280__pntz.o" "bat_geoShape.pt[1280].pz";
+connectAttr "bat_geoShape_pnts_1281__pntx.o" "bat_geoShape.pt[1281].px";
+connectAttr "bat_geoShape_pnts_1281__pnty.o" "bat_geoShape.pt[1281].py";
+connectAttr "bat_geoShape_pnts_1281__pntz.o" "bat_geoShape.pt[1281].pz";
+connectAttr "bat_geoShape_pnts_1282__pntx.o" "bat_geoShape.pt[1282].px";
+connectAttr "bat_geoShape_pnts_1282__pnty.o" "bat_geoShape.pt[1282].py";
+connectAttr "bat_geoShape_pnts_1282__pntz.o" "bat_geoShape.pt[1282].pz";
+connectAttr "bat_geoShape_pnts_1283__pntx.o" "bat_geoShape.pt[1283].px";
+connectAttr "bat_geoShape_pnts_1283__pnty.o" "bat_geoShape.pt[1283].py";
+connectAttr "bat_geoShape_pnts_1283__pntz.o" "bat_geoShape.pt[1283].pz";
+connectAttr "bat_geoShape_pnts_1284__pntx.o" "bat_geoShape.pt[1284].px";
+connectAttr "bat_geoShape_pnts_1284__pnty.o" "bat_geoShape.pt[1284].py";
+connectAttr "bat_geoShape_pnts_1284__pntz.o" "bat_geoShape.pt[1284].pz";
+connectAttr "bat_geoShape_pnts_1285__pntx.o" "bat_geoShape.pt[1285].px";
+connectAttr "bat_geoShape_pnts_1285__pnty.o" "bat_geoShape.pt[1285].py";
+connectAttr "bat_geoShape_pnts_1285__pntz.o" "bat_geoShape.pt[1285].pz";
+connectAttr "bat_geoShape_pnts_1286__pntx.o" "bat_geoShape.pt[1286].px";
+connectAttr "bat_geoShape_pnts_1286__pnty.o" "bat_geoShape.pt[1286].py";
+connectAttr "bat_geoShape_pnts_1286__pntz.o" "bat_geoShape.pt[1286].pz";
+connectAttr "bat_geoShape_pnts_1287__pntx.o" "bat_geoShape.pt[1287].px";
+connectAttr "bat_geoShape_pnts_1287__pnty.o" "bat_geoShape.pt[1287].py";
+connectAttr "bat_geoShape_pnts_1287__pntz.o" "bat_geoShape.pt[1287].pz";
+connectAttr "bat_geoShape_pnts_1288__pntx.o" "bat_geoShape.pt[1288].px";
+connectAttr "bat_geoShape_pnts_1288__pnty.o" "bat_geoShape.pt[1288].py";
+connectAttr "bat_geoShape_pnts_1288__pntz.o" "bat_geoShape.pt[1288].pz";
+connectAttr "bat_geoShape_pnts_1289__pntx.o" "bat_geoShape.pt[1289].px";
+connectAttr "bat_geoShape_pnts_1289__pnty.o" "bat_geoShape.pt[1289].py";
+connectAttr "bat_geoShape_pnts_1289__pntz.o" "bat_geoShape.pt[1289].pz";
+connectAttr "bat_geoShape_pnts_1290__pntx.o" "bat_geoShape.pt[1290].px";
+connectAttr "bat_geoShape_pnts_1290__pnty.o" "bat_geoShape.pt[1290].py";
+connectAttr "bat_geoShape_pnts_1290__pntz.o" "bat_geoShape.pt[1290].pz";
+connectAttr "bat_geoShape_pnts_1291__pntx.o" "bat_geoShape.pt[1291].px";
+connectAttr "bat_geoShape_pnts_1291__pnty.o" "bat_geoShape.pt[1291].py";
+connectAttr "bat_geoShape_pnts_1291__pntz.o" "bat_geoShape.pt[1291].pz";
+connectAttr "bat_geoShape_pnts_1292__pntx.o" "bat_geoShape.pt[1292].px";
+connectAttr "bat_geoShape_pnts_1292__pnty.o" "bat_geoShape.pt[1292].py";
+connectAttr "bat_geoShape_pnts_1292__pntz.o" "bat_geoShape.pt[1292].pz";
+connectAttr "bat_geoShape_pnts_1293__pntx.o" "bat_geoShape.pt[1293].px";
+connectAttr "bat_geoShape_pnts_1293__pnty.o" "bat_geoShape.pt[1293].py";
+connectAttr "bat_geoShape_pnts_1293__pntz.o" "bat_geoShape.pt[1293].pz";
+connectAttr "bat_geoShape_pnts_1294__pntx.o" "bat_geoShape.pt[1294].px";
+connectAttr "bat_geoShape_pnts_1294__pnty.o" "bat_geoShape.pt[1294].py";
+connectAttr "bat_geoShape_pnts_1294__pntz.o" "bat_geoShape.pt[1294].pz";
+connectAttr "bat_geoShape_pnts_1295__pntx.o" "bat_geoShape.pt[1295].px";
+connectAttr "bat_geoShape_pnts_1295__pnty.o" "bat_geoShape.pt[1295].py";
+connectAttr "bat_geoShape_pnts_1295__pntz.o" "bat_geoShape.pt[1295].pz";
+connectAttr "bat_geoShape_pnts_1296__pntx.o" "bat_geoShape.pt[1296].px";
+connectAttr "bat_geoShape_pnts_1296__pnty.o" "bat_geoShape.pt[1296].py";
+connectAttr "bat_geoShape_pnts_1296__pntz.o" "bat_geoShape.pt[1296].pz";
+connectAttr "bat_geoShape_pnts_1297__pntx.o" "bat_geoShape.pt[1297].px";
+connectAttr "bat_geoShape_pnts_1297__pnty.o" "bat_geoShape.pt[1297].py";
+connectAttr "bat_geoShape_pnts_1297__pntz.o" "bat_geoShape.pt[1297].pz";
+connectAttr "bat_geoShape_pnts_1298__pntx.o" "bat_geoShape.pt[1298].px";
+connectAttr "bat_geoShape_pnts_1298__pnty.o" "bat_geoShape.pt[1298].py";
+connectAttr "bat_geoShape_pnts_1298__pntz.o" "bat_geoShape.pt[1298].pz";
+connectAttr "bat_geoShape_pnts_1299__pntx.o" "bat_geoShape.pt[1299].px";
+connectAttr "bat_geoShape_pnts_1299__pnty.o" "bat_geoShape.pt[1299].py";
+connectAttr "bat_geoShape_pnts_1299__pntz.o" "bat_geoShape.pt[1299].pz";
+connectAttr "bat_geoShape_pnts_1300__pntx.o" "bat_geoShape.pt[1300].px";
+connectAttr "bat_geoShape_pnts_1300__pnty.o" "bat_geoShape.pt[1300].py";
+connectAttr "bat_geoShape_pnts_1300__pntz.o" "bat_geoShape.pt[1300].pz";
+connectAttr "bat_geoShape_pnts_1301__pntx.o" "bat_geoShape.pt[1301].px";
+connectAttr "bat_geoShape_pnts_1301__pnty.o" "bat_geoShape.pt[1301].py";
+connectAttr "bat_geoShape_pnts_1301__pntz.o" "bat_geoShape.pt[1301].pz";
+connectAttr "bat_geoShape_pnts_1302__pntx.o" "bat_geoShape.pt[1302].px";
+connectAttr "bat_geoShape_pnts_1302__pnty.o" "bat_geoShape.pt[1302].py";
+connectAttr "bat_geoShape_pnts_1302__pntz.o" "bat_geoShape.pt[1302].pz";
+connectAttr "bat_geoShape_pnts_1303__pntx.o" "bat_geoShape.pt[1303].px";
+connectAttr "bat_geoShape_pnts_1303__pnty.o" "bat_geoShape.pt[1303].py";
+connectAttr "bat_geoShape_pnts_1303__pntz.o" "bat_geoShape.pt[1303].pz";
+connectAttr "bat_geoShape_pnts_1304__pntx.o" "bat_geoShape.pt[1304].px";
+connectAttr "bat_geoShape_pnts_1304__pnty.o" "bat_geoShape.pt[1304].py";
+connectAttr "bat_geoShape_pnts_1304__pntz.o" "bat_geoShape.pt[1304].pz";
+connectAttr "bat_geoShape_pnts_1305__pntx.o" "bat_geoShape.pt[1305].px";
+connectAttr "bat_geoShape_pnts_1305__pnty.o" "bat_geoShape.pt[1305].py";
+connectAttr "bat_geoShape_pnts_1305__pntz.o" "bat_geoShape.pt[1305].pz";
+connectAttr "bat_geoShape_pnts_1306__pntx.o" "bat_geoShape.pt[1306].px";
+connectAttr "bat_geoShape_pnts_1306__pnty.o" "bat_geoShape.pt[1306].py";
+connectAttr "bat_geoShape_pnts_1306__pntz.o" "bat_geoShape.pt[1306].pz";
+connectAttr "bat_geoShape_pnts_1307__pntx.o" "bat_geoShape.pt[1307].px";
+connectAttr "bat_geoShape_pnts_1307__pnty.o" "bat_geoShape.pt[1307].py";
+connectAttr "bat_geoShape_pnts_1307__pntz.o" "bat_geoShape.pt[1307].pz";
+connectAttr "bat_geoShape_pnts_1308__pntx.o" "bat_geoShape.pt[1308].px";
+connectAttr "bat_geoShape_pnts_1308__pnty.o" "bat_geoShape.pt[1308].py";
+connectAttr "bat_geoShape_pnts_1308__pntz.o" "bat_geoShape.pt[1308].pz";
+connectAttr "bat_geoShape_pnts_1309__pntx.o" "bat_geoShape.pt[1309].px";
+connectAttr "bat_geoShape_pnts_1309__pnty.o" "bat_geoShape.pt[1309].py";
+connectAttr "bat_geoShape_pnts_1309__pntz.o" "bat_geoShape.pt[1309].pz";
+connectAttr "bat_geoShape_pnts_1310__pntx.o" "bat_geoShape.pt[1310].px";
+connectAttr "bat_geoShape_pnts_1310__pnty.o" "bat_geoShape.pt[1310].py";
+connectAttr "bat_geoShape_pnts_1310__pntz.o" "bat_geoShape.pt[1310].pz";
+connectAttr "bat_geoShape_pnts_1311__pntx.o" "bat_geoShape.pt[1311].px";
+connectAttr "bat_geoShape_pnts_1311__pnty.o" "bat_geoShape.pt[1311].py";
+connectAttr "bat_geoShape_pnts_1311__pntz.o" "bat_geoShape.pt[1311].pz";
+connectAttr "bat_geoShape_pnts_1312__pntx.o" "bat_geoShape.pt[1312].px";
+connectAttr "bat_geoShape_pnts_1312__pnty.o" "bat_geoShape.pt[1312].py";
+connectAttr "bat_geoShape_pnts_1312__pntz.o" "bat_geoShape.pt[1312].pz";
+connectAttr "bat_geoShape_pnts_1313__pntx.o" "bat_geoShape.pt[1313].px";
+connectAttr "bat_geoShape_pnts_1313__pnty.o" "bat_geoShape.pt[1313].py";
+connectAttr "bat_geoShape_pnts_1313__pntz.o" "bat_geoShape.pt[1313].pz";
+connectAttr "bat_geoShape_pnts_1314__pntx.o" "bat_geoShape.pt[1314].px";
+connectAttr "bat_geoShape_pnts_1314__pnty.o" "bat_geoShape.pt[1314].py";
+connectAttr "bat_geoShape_pnts_1314__pntz.o" "bat_geoShape.pt[1314].pz";
+connectAttr "bat_geoShape_pnts_1315__pntx.o" "bat_geoShape.pt[1315].px";
+connectAttr "bat_geoShape_pnts_1315__pnty.o" "bat_geoShape.pt[1315].py";
+connectAttr "bat_geoShape_pnts_1315__pntz.o" "bat_geoShape.pt[1315].pz";
+connectAttr "bat_geoShape_pnts_1316__pntx.o" "bat_geoShape.pt[1316].px";
+connectAttr "bat_geoShape_pnts_1316__pnty.o" "bat_geoShape.pt[1316].py";
+connectAttr "bat_geoShape_pnts_1316__pntz.o" "bat_geoShape.pt[1316].pz";
+connectAttr "bat_geoShape_pnts_1317__pntx.o" "bat_geoShape.pt[1317].px";
+connectAttr "bat_geoShape_pnts_1317__pnty.o" "bat_geoShape.pt[1317].py";
+connectAttr "bat_geoShape_pnts_1317__pntz.o" "bat_geoShape.pt[1317].pz";
+connectAttr "bat_geoShape_pnts_1318__pntx.o" "bat_geoShape.pt[1318].px";
+connectAttr "bat_geoShape_pnts_1318__pnty.o" "bat_geoShape.pt[1318].py";
+connectAttr "bat_geoShape_pnts_1318__pntz.o" "bat_geoShape.pt[1318].pz";
+connectAttr "bat_geoShape_pnts_1319__pntx.o" "bat_geoShape.pt[1319].px";
+connectAttr "bat_geoShape_pnts_1319__pnty.o" "bat_geoShape.pt[1319].py";
+connectAttr "bat_geoShape_pnts_1319__pntz.o" "bat_geoShape.pt[1319].pz";
+connectAttr "bat_geoShape_pnts_1320__pntx.o" "bat_geoShape.pt[1320].px";
+connectAttr "bat_geoShape_pnts_1320__pnty.o" "bat_geoShape.pt[1320].py";
+connectAttr "bat_geoShape_pnts_1320__pntz.o" "bat_geoShape.pt[1320].pz";
+connectAttr "bat_geoShape_pnts_1321__pntx.o" "bat_geoShape.pt[1321].px";
+connectAttr "bat_geoShape_pnts_1321__pnty.o" "bat_geoShape.pt[1321].py";
+connectAttr "bat_geoShape_pnts_1321__pntz.o" "bat_geoShape.pt[1321].pz";
+connectAttr "bat_geoShape_pnts_1322__pntx.o" "bat_geoShape.pt[1322].px";
+connectAttr "bat_geoShape_pnts_1322__pnty.o" "bat_geoShape.pt[1322].py";
+connectAttr "bat_geoShape_pnts_1322__pntz.o" "bat_geoShape.pt[1322].pz";
+connectAttr "bat_geoShape_pnts_1323__pntx.o" "bat_geoShape.pt[1323].px";
+connectAttr "bat_geoShape_pnts_1323__pnty.o" "bat_geoShape.pt[1323].py";
+connectAttr "bat_geoShape_pnts_1323__pntz.o" "bat_geoShape.pt[1323].pz";
+connectAttr "bat_geoShape_pnts_1324__pntx.o" "bat_geoShape.pt[1324].px";
+connectAttr "bat_geoShape_pnts_1324__pnty.o" "bat_geoShape.pt[1324].py";
+connectAttr "bat_geoShape_pnts_1324__pntz.o" "bat_geoShape.pt[1324].pz";
+connectAttr "bat_geoShape_pnts_1325__pntx.o" "bat_geoShape.pt[1325].px";
+connectAttr "bat_geoShape_pnts_1325__pnty.o" "bat_geoShape.pt[1325].py";
+connectAttr "bat_geoShape_pnts_1325__pntz.o" "bat_geoShape.pt[1325].pz";
+connectAttr "bat_geoShape_pnts_1326__pntx.o" "bat_geoShape.pt[1326].px";
+connectAttr "bat_geoShape_pnts_1326__pnty.o" "bat_geoShape.pt[1326].py";
+connectAttr "bat_geoShape_pnts_1326__pntz.o" "bat_geoShape.pt[1326].pz";
+connectAttr "bat_geoShape_pnts_1327__pntx.o" "bat_geoShape.pt[1327].px";
+connectAttr "bat_geoShape_pnts_1327__pnty.o" "bat_geoShape.pt[1327].py";
+connectAttr "bat_geoShape_pnts_1327__pntz.o" "bat_geoShape.pt[1327].pz";
+connectAttr "bat_geoShape_pnts_1328__pntx.o" "bat_geoShape.pt[1328].px";
+connectAttr "bat_geoShape_pnts_1328__pnty.o" "bat_geoShape.pt[1328].py";
+connectAttr "bat_geoShape_pnts_1328__pntz.o" "bat_geoShape.pt[1328].pz";
+connectAttr "bat_geoShape_pnts_1329__pntx.o" "bat_geoShape.pt[1329].px";
+connectAttr "bat_geoShape_pnts_1329__pnty.o" "bat_geoShape.pt[1329].py";
+connectAttr "bat_geoShape_pnts_1329__pntz.o" "bat_geoShape.pt[1329].pz";
+connectAttr "bat_geoShape_pnts_1330__pntx.o" "bat_geoShape.pt[1330].px";
+connectAttr "bat_geoShape_pnts_1330__pnty.o" "bat_geoShape.pt[1330].py";
+connectAttr "bat_geoShape_pnts_1330__pntz.o" "bat_geoShape.pt[1330].pz";
+connectAttr "bat_geoShape_pnts_1331__pntx.o" "bat_geoShape.pt[1331].px";
+connectAttr "bat_geoShape_pnts_1331__pnty.o" "bat_geoShape.pt[1331].py";
+connectAttr "bat_geoShape_pnts_1331__pntz.o" "bat_geoShape.pt[1331].pz";
+connectAttr "bat_geoShape_pnts_1332__pntx.o" "bat_geoShape.pt[1332].px";
+connectAttr "bat_geoShape_pnts_1332__pnty.o" "bat_geoShape.pt[1332].py";
+connectAttr "bat_geoShape_pnts_1332__pntz.o" "bat_geoShape.pt[1332].pz";
+connectAttr "bat_geoShape_pnts_1333__pntx.o" "bat_geoShape.pt[1333].px";
+connectAttr "bat_geoShape_pnts_1333__pnty.o" "bat_geoShape.pt[1333].py";
+connectAttr "bat_geoShape_pnts_1333__pntz.o" "bat_geoShape.pt[1333].pz";
+connectAttr "bat_geoShape_pnts_1334__pntx.o" "bat_geoShape.pt[1334].px";
+connectAttr "bat_geoShape_pnts_1334__pnty.o" "bat_geoShape.pt[1334].py";
+connectAttr "bat_geoShape_pnts_1334__pntz.o" "bat_geoShape.pt[1334].pz";
+connectAttr "bat_geoShape_pnts_1335__pntx.o" "bat_geoShape.pt[1335].px";
+connectAttr "bat_geoShape_pnts_1335__pnty.o" "bat_geoShape.pt[1335].py";
+connectAttr "bat_geoShape_pnts_1335__pntz.o" "bat_geoShape.pt[1335].pz";
+connectAttr "bat_geoShape_pnts_1336__pntx.o" "bat_geoShape.pt[1336].px";
+connectAttr "bat_geoShape_pnts_1336__pnty.o" "bat_geoShape.pt[1336].py";
+connectAttr "bat_geoShape_pnts_1336__pntz.o" "bat_geoShape.pt[1336].pz";
+connectAttr "bat_geoShape_pnts_1337__pntx.o" "bat_geoShape.pt[1337].px";
+connectAttr "bat_geoShape_pnts_1337__pnty.o" "bat_geoShape.pt[1337].py";
+connectAttr "bat_geoShape_pnts_1337__pntz.o" "bat_geoShape.pt[1337].pz";
+connectAttr "bat_geoShape_pnts_1338__pntx.o" "bat_geoShape.pt[1338].px";
+connectAttr "bat_geoShape_pnts_1338__pnty.o" "bat_geoShape.pt[1338].py";
+connectAttr "bat_geoShape_pnts_1338__pntz.o" "bat_geoShape.pt[1338].pz";
+connectAttr "bat_geoShape_pnts_1339__pntx.o" "bat_geoShape.pt[1339].px";
+connectAttr "bat_geoShape_pnts_1339__pnty.o" "bat_geoShape.pt[1339].py";
+connectAttr "bat_geoShape_pnts_1339__pntz.o" "bat_geoShape.pt[1339].pz";
+connectAttr "bat_geoShape_pnts_1340__pntx.o" "bat_geoShape.pt[1340].px";
+connectAttr "bat_geoShape_pnts_1340__pnty.o" "bat_geoShape.pt[1340].py";
+connectAttr "bat_geoShape_pnts_1340__pntz.o" "bat_geoShape.pt[1340].pz";
+connectAttr "bat_geoShape_pnts_1341__pntx.o" "bat_geoShape.pt[1341].px";
+connectAttr "bat_geoShape_pnts_1341__pnty.o" "bat_geoShape.pt[1341].py";
+connectAttr "bat_geoShape_pnts_1341__pntz.o" "bat_geoShape.pt[1341].pz";
+connectAttr "bat_geoShape_pnts_1342__pntx.o" "bat_geoShape.pt[1342].px";
+connectAttr "bat_geoShape_pnts_1342__pnty.o" "bat_geoShape.pt[1342].py";
+connectAttr "bat_geoShape_pnts_1342__pntz.o" "bat_geoShape.pt[1342].pz";
+connectAttr "bat_geoShape_pnts_1343__pntx.o" "bat_geoShape.pt[1343].px";
+connectAttr "bat_geoShape_pnts_1343__pnty.o" "bat_geoShape.pt[1343].py";
+connectAttr "bat_geoShape_pnts_1343__pntz.o" "bat_geoShape.pt[1343].pz";
+connectAttr "bat_geoShape_pnts_1344__pntx.o" "bat_geoShape.pt[1344].px";
+connectAttr "bat_geoShape_pnts_1344__pnty.o" "bat_geoShape.pt[1344].py";
+connectAttr "bat_geoShape_pnts_1344__pntz.o" "bat_geoShape.pt[1344].pz";
+connectAttr "bat_geoShape_pnts_1345__pntx.o" "bat_geoShape.pt[1345].px";
+connectAttr "bat_geoShape_pnts_1345__pnty.o" "bat_geoShape.pt[1345].py";
+connectAttr "bat_geoShape_pnts_1345__pntz.o" "bat_geoShape.pt[1345].pz";
+connectAttr "bat_geoShape_pnts_1346__pntx.o" "bat_geoShape.pt[1346].px";
+connectAttr "bat_geoShape_pnts_1346__pnty.o" "bat_geoShape.pt[1346].py";
+connectAttr "bat_geoShape_pnts_1346__pntz.o" "bat_geoShape.pt[1346].pz";
+connectAttr "bat_geoShape_pnts_1347__pntx.o" "bat_geoShape.pt[1347].px";
+connectAttr "bat_geoShape_pnts_1347__pnty.o" "bat_geoShape.pt[1347].py";
+connectAttr "bat_geoShape_pnts_1347__pntz.o" "bat_geoShape.pt[1347].pz";
+connectAttr "bat_geoShape_pnts_1348__pntx.o" "bat_geoShape.pt[1348].px";
+connectAttr "bat_geoShape_pnts_1348__pnty.o" "bat_geoShape.pt[1348].py";
+connectAttr "bat_geoShape_pnts_1348__pntz.o" "bat_geoShape.pt[1348].pz";
+connectAttr "bat_geoShape_pnts_1349__pntx.o" "bat_geoShape.pt[1349].px";
+connectAttr "bat_geoShape_pnts_1349__pnty.o" "bat_geoShape.pt[1349].py";
+connectAttr "bat_geoShape_pnts_1349__pntz.o" "bat_geoShape.pt[1349].pz";
+connectAttr "bat_geoShape_pnts_1350__pntx.o" "bat_geoShape.pt[1350].px";
+connectAttr "bat_geoShape_pnts_1350__pnty.o" "bat_geoShape.pt[1350].py";
+connectAttr "bat_geoShape_pnts_1350__pntz.o" "bat_geoShape.pt[1350].pz";
+connectAttr "bat_geoShape_pnts_1351__pntx.o" "bat_geoShape.pt[1351].px";
+connectAttr "bat_geoShape_pnts_1351__pnty.o" "bat_geoShape.pt[1351].py";
+connectAttr "bat_geoShape_pnts_1351__pntz.o" "bat_geoShape.pt[1351].pz";
+connectAttr "bat_geoShape_pnts_1352__pntx.o" "bat_geoShape.pt[1352].px";
+connectAttr "bat_geoShape_pnts_1352__pnty.o" "bat_geoShape.pt[1352].py";
+connectAttr "bat_geoShape_pnts_1352__pntz.o" "bat_geoShape.pt[1352].pz";
+connectAttr "bat_geoShape_pnts_1353__pntx.o" "bat_geoShape.pt[1353].px";
+connectAttr "bat_geoShape_pnts_1353__pnty.o" "bat_geoShape.pt[1353].py";
+connectAttr "bat_geoShape_pnts_1353__pntz.o" "bat_geoShape.pt[1353].pz";
+connectAttr "bat_geoShape_pnts_1354__pntx.o" "bat_geoShape.pt[1354].px";
+connectAttr "bat_geoShape_pnts_1354__pnty.o" "bat_geoShape.pt[1354].py";
+connectAttr "bat_geoShape_pnts_1354__pntz.o" "bat_geoShape.pt[1354].pz";
+connectAttr "bat_geoShape_pnts_1355__pntx.o" "bat_geoShape.pt[1355].px";
+connectAttr "bat_geoShape_pnts_1355__pnty.o" "bat_geoShape.pt[1355].py";
+connectAttr "bat_geoShape_pnts_1355__pntz.o" "bat_geoShape.pt[1355].pz";
 connectAttr "COG_parentConstraint1.ctx" "COG.tx";
 connectAttr "COG_parentConstraint1.cty" "COG.ty";
 connectAttr "COG_parentConstraint1.ctz" "COG.tz";
 connectAttr "COG_parentConstraint1.crx" "COG.rx";
 connectAttr "COG_parentConstraint1.cry" "COG.ry";
 connectAttr "COG_parentConstraint1.crz" "COG.rz";
+connectAttr "COG_scaleConstraint1.csx" "COG.sx";
+connectAttr "COG_scaleConstraint1.csy" "COG.sy";
+connectAttr "COG_scaleConstraint1.csz" "COG.sz";
 connectAttr "Joints.di" "COG.do";
 connectAttr "wing_01_jnt_parentConstraint1.crx" "R_wing_01_jnt.rx";
 connectAttr "wing_01_jnt_parentConstraint1.cry" "R_wing_01_jnt.ry";
@@ -8222,12 +13344,12 @@ connectAttr "L_wing_01_ctrl.pm" "L_wing_01_jnt_scaleConstraint1.tg[0].tpm";
 connectAttr "L_wing_01_jnt_scaleConstraint1.w0" "L_wing_01_jnt_scaleConstraint1.tg[0].tw"
 		;
 connectAttr "Contols.di" "contorls.do";
-connectAttr "L_wing_01_ctrl_translateX.o" "L_wing_01_ctrl.tx";
-connectAttr "L_wing_01_ctrl_translateY.o" "L_wing_01_ctrl.ty";
-connectAttr "L_wing_01_ctrl_translateZ.o" "L_wing_01_ctrl.tz";
-connectAttr "L_wing_01_ctrl_rotateX.o" "L_wing_01_ctrl.rx";
-connectAttr "L_wing_01_ctrl_rotateY.o" "L_wing_01_ctrl.ry";
-connectAttr "L_wing_01_ctrl_rotateZ.o" "L_wing_01_ctrl.rz";
+connectAttr "head_ctrl_translateX.o" "head_ctrl.tx";
+connectAttr "head_ctrl_translateY.o" "head_ctrl.ty";
+connectAttr "head_ctrl_translateZ.o" "head_ctrl.tz";
+connectAttr "head_ctrl_rotateX.o" "head_ctrl.rx";
+connectAttr "head_ctrl_rotateY.o" "head_ctrl.ry";
+connectAttr "head_ctrl_rotateZ.o" "head_ctrl.rz";
 connectAttr "transformGeometry1.og" "L_wing_01_ctrlShape.cr";
 connectAttr "transformGeometry2.og" "L_wing_02_ctrlShape.cr";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -8290,7 +13412,7 @@ connectAttr "head_jnt.obcc" "skinCluster1.ifcl[2]";
 connectAttr "L_wing_01_jnt.obcc" "skinCluster1.ifcl[3]";
 connectAttr "L_wing_02_jnt.obcc" "skinCluster1.ifcl[4]";
 connectAttr "COG.obcc" "skinCluster1.ifcl[5]";
-connectAttr "L_wing_01_jnt.msg" "skinCluster1.ptt";
+connectAttr "head_jnt.msg" "skinCluster1.ptt";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "bat_geoShape.iog" ":initialShadingGroup.dsm" -na;
 // End of Bat_rig.ma
