@@ -48,7 +48,7 @@ public class SimpleCharacterController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            attackEvent.Invoke();
+            attackEvent.Invoke();   
         }
     }
 
