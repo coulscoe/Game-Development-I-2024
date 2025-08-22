@@ -11,7 +11,7 @@ public class PlayerJump : MonoBehaviour
     public float gravityDelay = 2f; // Delay before gravity starts
     private Rigidbody rb;
     public bool gravityEnabled { get; set; } = false;
-    public UnityEvent startEvent, gravEvent, jumpEvent;
+    public UnityEvent startEvent, gravEvent, jumpEvent, fallEvent;
     public Transform playerTransform;
     public Vector3 newPosition;
 
@@ -80,7 +80,7 @@ public class PlayerJump : MonoBehaviour
         if (gravityEnabled)
         {
             Vector3 customGravity = new Vector3(0, -9.81f * gravityStrength, 0);
-            rb.AddForce(customGravity, ForceMode.Acceleration); 
+            rb.AddForce(customGravity, ForceMode.Acceleration);
         }
         else
         {

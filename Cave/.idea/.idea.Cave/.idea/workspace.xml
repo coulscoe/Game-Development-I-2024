@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce94dbd6-a80c-43bb-83d6-83e258889cf1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../3D_G/Assets/Scripts/SimpleCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../3D_G/Assets/Scripts/SimpleCharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../3D_G/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../3D_G/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cave/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Maya/Scenes/Bat_ani.ma" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Maya/Scenes/Bat_ani.ma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Maya/Scenes/Bat_ani.ma.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Maya/Scenes/Bat_ani.ma.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Maya/Scenes/Bat_rig_animator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Maya/Scenes/Bat_rig_animator.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SimpleMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SimpleMovementController.cs" afterDir="false" />
     </list>
@@ -155,6 +153,7 @@
       <workItem from="1753412631086" duration="152000" />
       <workItem from="1753413353226" duration="747000" />
       <workItem from="1753414177968" duration="863000" />
+      <workItem from="1755811330331" duration="4387000" />
     </task>
     <servers />
   </component>
