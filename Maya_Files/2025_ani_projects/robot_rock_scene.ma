@@ -1,6 +1,6 @@
 //Maya ASCII 2025ff03 scene
 //Name: robot_rock_scene.ma
-//Last modified: Mon, Sep 29, 2025 10:58:38 PM
+//Last modified: Thu, Oct 02, 2025 10:20:29 PM
 //Codeset: 1252
 file -rdi 1 -ns "house_1" -rfn "house_1RN" -op "mo=1;lo=0" -typ "OBJ" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_ani_projects//house_1.obj";
 file -rdi 1 -ns "Road_object" -rfn "Road_objectRN" -op "v=0;" -typ "mayaAscii"
@@ -18,30 +18,31 @@ file -r -ns "house_2" -dr 1 -rfn "house_2RN" -op "mo=1;lo=0" -typ "OBJ" "C:/User
 file -r -ns "Rock" -dr 1 -rfn "RockRN" -op "mo=1;lo=0" -typ "OBJ" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_ani_projects//Rock.obj";
 requires maya "2025ff03";
 requires "stereoCamera" "10.0";
-requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiImagerDenoiserOidn"
-		 "mtoa" "5.4.2.1";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiStandardSurface"
+		 -nodeType "aiImagerDenoiserOidn" "mtoa" "5.4.2.1";
 requires "Mayatomr" "2010.0m - 3.7.53.5 ";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
-fileInfo "osv" "Windows 11 Home v2009 (Build: 26100)";
-fileInfo "UUID" "66F38EBA-47D1-8530-389D-CF806E8F5A37";
+fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
+fileInfo "UUID" "AA7CFCC4-4511-553A-4477-F89B30BCE541";
 createNode transform -s -n "persp";
 	rename -uid "2FA500B8-4639-DA3D-D886-97952132D72B";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -27.693152927405606 405.09247247501617 -488.69712129354497 ;
-	setAttr ".r" -type "double3" -39.338352728943534 -3424.9999999989186 0 ;
+	setAttr ".t" -type "double3" -156.48878671594835 27.323605785450429 4.190827207785679 ;
+	setAttr ".r" -type "double3" -15.938352728361091 -4249.3999999998505 -4.7876683575980632e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "E2D1969C-4E1A-F6B2-3DC2-21AC44A27FB0";
 	setAttr -k off ".v" no;
+	setAttr ".rnd" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 705.65352308430874;
+	setAttr ".coi" 51.766637813310467;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" -205.78454317871407 19.776357262514416 -3.789783816873642 ;
+	setAttr ".tp" -type "double3" -254.39802124062987 29.395982573736418 -3.2242291388602227 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "9B0B2260-45AA-A71F-F4ED-EE8064B85426";
@@ -103,8 +104,34 @@ createNode transform -n "House_two";
 	setAttr ".t" -type "double3" 51.888661002169172 0 171.1693811949288 ;
 	setAttr ".r" -type "double3" 0 -177.42710190636913 0 ;
 	setAttr ".s" -type "double3" 3.0575123183212813 3.0575123183212813 3.0575123183212813 ;
+createNode transform -n "pointLight1";
+	rename -uid "72CAD0BF-4930-C090-B550-3B87078AAFE8";
+	setAttr ".t" -type "double3" -81.209334025349435 41.398697033066988 -53.574041389749198 ;
+	setAttr ".r" -type "double3" -12.600000000002868 27.999999999999986 0 ;
+createNode pointLight -n "pointLightShape1" -p "pointLight1";
+	rename -uid "52BF53A5-4190-0760-E1CE-C7AA5C95D08E";
+	setAttr -k off ".v";
+	setAttr ".col" 15.315939296621014;
+	setAttr ".us" no;
+	setAttr ".ai_exposure" 10;
+createNode transform -n "RENDER_CAMERA";
+	rename -uid "4C7B59A2-4781-A123-3FDD-168E977B73F8";
+	setAttr ".rp" -type "double3" 1.2878587085651816e-14 0 -3.1974423109204508e-14 ;
+	setAttr ".rpt" -type "double3" -6.6574079949997627e-14 -2.2965266883070864e-15 5.8192864053253051e-14 ;
+createNode camera -n "RENDER_CAMERAShape" -p "RENDER_CAMERA";
+	rename -uid "27C998EA-4642-723E-1A89-6F93F19F28E7";
+	setAttr -k off ".v";
+	setAttr ".ovr" 1.3;
+	setAttr ".fl" 34.999999999999993;
+	setAttr ".coi" 80.798528670800778;
+	setAttr ".imn" -type "string" "persp1";
+	setAttr ".den" -type "string" "persp1_depth";
+	setAttr ".man" -type "string" "persp1_mask";
+	setAttr ".tp" -type "double3" -11.353632901746911 19.128755914227881 -38.444328320316401 ;
+	setAttr ".hc" -type "string" "viewSet -p %camera";
+	setAttr ".dr" yes;
 createNode fosterParent -n "house_1RNfosterParent1";
-	rename -uid "FDD3FC57-4234-0236-0710-82885335EA1E";
+	rename -uid "924F2672-49B8-BA6C-ED6F-36A549EC3955";
 createNode mesh -n "house_1:polySurfaceShape1" -p "house_1RNfosterParent1";
 	rename -uid "97DA2119-44C1-2A35-0367-83833EE77A99";
 	setAttr -k off ".v";
@@ -1638,20 +1665,23 @@ createNode mesh -n "house_1:polySurfaceShape1" -p "house_1RNfosterParent1";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "A4F48D5D-42CF-6FC1-D8CE-6C8552E5BF91";
-	setAttr -s 6 ".lnk";
-	setAttr -s 6 ".slnk";
+	rename -uid "98339398-45BB-B4A8-4D7C-2EAB151615F2";
+	setAttr -s 9 ".lnk";
+	setAttr -s 9 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "57D55626-4C02-D38D-613E-0883D47B62FD";
+	rename -uid "9D623CF6-4EA7-3899-08AE-0CA40C3F96BE";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "4FEA6F0B-49E3-92F1-20CB-E29955692956";
+	rename -uid "FB4F8225-42F6-54F8-6089-53A5B921664F";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "1C01B6A8-46E0-2B6E-7825-D19E555A31D5";
+	rename -uid "5B183662-47AE-A3E8-C2EA-8AA15EC42537";
+	setAttr ".cdl" 1;
+	setAttr -s 2 ".dli[1]"  1;
+	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "C0A9F137-465A-91EB-9300-3681151DE086";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "07603194-43AC-5BEA-799A-B2AAEC60D8AA";
+	rename -uid "CAEC1D95-4ECC-0572-F4F7-D7BAB5290D4F";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "85F8B4DE-466B-00AA-6AB2-A2BBCAB5D834";
 	setAttr ".g" yes;
@@ -1661,60 +1691,62 @@ createNode script -n "uiConfigurationScriptNode";
 		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n"
 		+ "            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n"
-		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 610\n            -height 275\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n"
+		+ "            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n"
 		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n"
 		+ "            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n"
-		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1117\n            -height 744\n            -sceneRenderFilter 0\n"
+		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n"
 		+ "            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n"
 		+ "            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n"
 		+ "            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n"
-		+ "            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 517\n            -height 744\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 1\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n"
-		+ "            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n"
-		+ "            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n"
-		+ "            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1117\n            -height 744\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n"
-		+ "            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n"
-		+ "            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -selectCommand \"print(\\\"\\\")\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
-		+ "\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n"
-		+ "            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n"
-		+ "            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n"
-		+ "                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n"
-		+ "                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showPlayRangeShades \"on\" \n                -lockPlayRangeShades \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n"
-		+ "                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -keyMinScale 1\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -preSelectionHighlight 0\n                -limitToSelectedCurves 0\n                -constrainDrag 0\n                -valueLinesToggle 0\n                -outliner \"graphEditor1OutlineEd\" \n                -highlightAffectedCurves 1\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n"
-		+ "                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n"
-		+ "                -showSetMembers 1\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayValues 0\n"
-		+ "                -snapTime \"none\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -hierarchyBelow 0\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n"
-		+ "                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" != $panelName) {\n"
-		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n"
-		+ "                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
-		+ "\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n"
-		+ "                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n"
-		+ "                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n"
-		+ "\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -editorChanged \"updateModelPanelBar\" \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n"
-		+ "                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n"
-		+ "                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n"
-		+ "                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n"
-		+ "\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1117\\n    -height 744\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1117\\n    -height 744\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
+		+ "            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|RENDER_CAMERA\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 1\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n"
+		+ "            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n"
+		+ "            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n"
+		+ "            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1226\n            -height 596\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n"
+		+ "            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n"
+		+ "            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -selectCommand \"print(\\\"\\\")\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n"
+		+ "            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n"
+		+ "            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n"
+		+ "                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -isSet 0\n                -isSetMember 0\n"
+		+ "                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                -selectionOrder \"display\" \n                -expandAttribute 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n"
+		+ "                -showPlayRangeShades \"on\" \n                -lockPlayRangeShades \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -keyMinScale 1\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -preSelectionHighlight 0\n                -limitToSelectedCurves 0\n                -constrainDrag 0\n                -valueLinesToggle 0\n                -outliner \"graphEditor1OutlineEd\" \n                -highlightAffectedCurves 1\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n"
+		+ "                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 1\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n"
+		+ "                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -hierarchyBelow 0\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n"
+		+ "                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n"
+		+ "                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n"
+		+ "                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n"
+		+ "                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n"
+		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -editorChanged \"updateModelPanelBar\" \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n"
+		+ "                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n"
+		+ "                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n"
+		+ "                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n"
+		+ "        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|RENDER_CAMERA\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1226\\n    -height 596\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|RENDER_CAMERA\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 1\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1226\\n    -height 596\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "20A9B8BB-4B7D-BAB7-F77D-9AA42DA5C4A6";
-	setAttr ".b" -type "string" "playbackOptions -min 0 -max 30 -ast 0 -aet 40 ";
+	setAttr ".b" -type "string" "playbackOptions -min 1 -max 80 -ast 0 -aet 98 ";
 	setAttr ".st" 6;
 createNode reference -n "house_1RN";
 	rename -uid "8C0698D2-4545-E475-7228-B8AD2C7E30E0";
-	setAttr -s 2 ".phl";
+	setAttr -s 4 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
+	setAttr ".phl[3]" 0;
+	setAttr ".phl[4]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"house_1RN"
 		"house_1RN" 0
-		"house_1RN" 12
+		"house_1RN" 19
 		0 "|house_1:Mesh" "|House_one" "-s -r "
 		0 "|house_1:Mesh1" "|House_one" "-s -r "
 		0 "|house_1RNfosterParent1|house_1:polySurfaceShape1" "|House_one|house_1:Mesh" 
@@ -1731,16 +1763,29 @@ createNode reference -n "house_1RN";
 		
 		2 "|House_one|house_1:Mesh|house_1:MeshShape" "pt[336:347]" " -type \"float3\" 8.3446503e-07 0 0 0 0 0 -5.9604644999999993e-07 0 0 -5.9604644999999993e-07 0 0 -5.9604644999999993e-07 0 0 -5.9604644999999993e-07 0 0 -5.9604644999999993e-07 0 0 0 0 0 8.3446503e-07 0 0 8.3446503e-07 0 0 8.3446503e-07 0 0 8.3446503e-07 0 0"
 		
-		5 4 "house_1RN" "|House_one|house_1:Mesh|house_1:MeshShape.inMesh" "house_1RN.placeHolderList[1]" 
+		2 "|House_one|house_1:Mesh1" "visibility" " 1"
+		2 "|House_one|house_1:Mesh1" "translate" " -type \"double3\" 0 0 0.55075513424175671"
+		
+		2 "|House_one|house_1:Mesh1" "rotate" " -type \"double3\" 0 0 0"
+		3 "|House_one|house_1:Mesh1|house_1:Mesh1Shape.instObjGroups" ":initialShadingGroup.dagSetMembers" 
+		"-na"
+		3 "|House_one|house_1:Mesh|house_1:MeshShape.instObjGroups" ":initialShadingGroup.dagSetMembers" 
+		"-na"
+		5 3 "house_1RN" "|House_one|house_1:Mesh|house_1:MeshShape.instObjGroups" 
+		"house_1RN.placeHolderList[1]" ":initialShadingGroup.dsm"
+		5 4 "house_1RN" "|House_one|house_1:Mesh|house_1:MeshShape.inMesh" "house_1RN.placeHolderList[2]" 
 		""
 		5 3 "house_1RN" "|House_one|house_1:Mesh|house_1:MeshShape.worldMatrix" 
-		"house_1RN.placeHolderList[2]" "";
+		"house_1RN.placeHolderList[3]" ""
+		5 3 "house_1RN" "|House_one|house_1:Mesh1|house_1:Mesh1Shape.instObjGroups" 
+		"house_1RN.placeHolderList[4]" ":initialShadingGroup.dsm";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "14EFD6C2-45C0-9C5E-6AE0-558B16A2F6A1";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.4.2.1";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=cameraShape1;Snapshots Folder=C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_ani_projects/images/snapshots/robot_rock_scene;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "FE3738D4-4A12-EBD7-67D4-A3A96E4C7E75";
 	setAttr ".ai_translator" -type "string" "gaussian";
@@ -1755,30 +1800,1036 @@ createNode aiImagerDenoiserOidn -s -n "defaultArnoldDenoiser";
 	rename -uid "F28CC0C3-43C8-D0FC-6385-B48C7AA6D998";
 createNode reference -n "Road_objectRN";
 	rename -uid "6E18B6EC-41B4-3DF9-DAB2-898AC9EED8CE";
+	setAttr -s 2 ".phl";
+	setAttr ".phl[1]" 0;
+	setAttr ".phl[2]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Road_objectRN"
 		"Road_objectRN" 0
-		"Road_objectRN" 2
+		"Road_objectRN" 5
 		2 "|Road_object:road" "translate" " -type \"double3\" 0 0 8.22597092114249762"
 		
-		2 "|Road_object:road" "scale" " -type \"double3\" 1.35517344804464446 1.35517344804464446 1.35517344804464446";
+		2 "|Road_object:road" "scale" " -type \"double3\" 1.35517344804464446 1.35517344804464446 1.35517344804464446"
+		
+		3 "|Road_object:road|Road_object:roadShape.instObjGroups" ":initialShadingGroup.dagSetMembers" 
+		"-na"
+		5 4 "Road_objectRN" "|Road_object:road.drawOverride" "Road_objectRN.placeHolderList[1]" 
+		""
+		5 3 "Road_objectRN" "|Road_object:road|Road_object:roadShape.instObjGroups" 
+		"Road_objectRN.placeHolderList[2]" ":initialShadingGroup.dsm";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode reference -n "screw_robot_rigRN";
 	rename -uid "A50FED2E-4C3D-4367-2263-F8B491B6673C";
 	setAttr ".fn[0]" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_ani_projects//screw_robot_rig.ma";
+	setAttr -s 319 ".phl";
+	setAttr ".phl[1]" 0;
+	setAttr ".phl[2]" 0;
+	setAttr ".phl[3]" 0;
+	setAttr ".phl[4]" 0;
+	setAttr ".phl[5]" 0;
+	setAttr ".phl[6]" 0;
+	setAttr ".phl[7]" 0;
+	setAttr ".phl[8]" 0;
+	setAttr ".phl[9]" 0;
+	setAttr ".phl[10]" 0;
+	setAttr ".phl[11]" 0;
+	setAttr ".phl[12]" 0;
+	setAttr ".phl[13]" 0;
+	setAttr ".phl[14]" 0;
+	setAttr ".phl[15]" 0;
+	setAttr ".phl[16]" 0;
+	setAttr ".phl[17]" 0;
+	setAttr ".phl[18]" 0;
+	setAttr ".phl[19]" 0;
+	setAttr ".phl[20]" 0;
+	setAttr ".phl[21]" 0;
+	setAttr ".phl[22]" 0;
+	setAttr ".phl[23]" 0;
+	setAttr ".phl[24]" 0;
+	setAttr ".phl[25]" 0;
+	setAttr ".phl[26]" 0;
+	setAttr ".phl[27]" 0;
+	setAttr ".phl[28]" 0;
+	setAttr ".phl[29]" 0;
+	setAttr ".phl[30]" 0;
+	setAttr ".phl[31]" 0;
+	setAttr ".phl[32]" 0;
+	setAttr ".phl[33]" 0;
+	setAttr ".phl[34]" 0;
+	setAttr ".phl[35]" 0;
+	setAttr ".phl[36]" 0;
+	setAttr ".phl[37]" 0;
+	setAttr ".phl[38]" 0;
+	setAttr ".phl[39]" 0;
+	setAttr ".phl[40]" 0;
+	setAttr ".phl[41]" 0;
+	setAttr ".phl[42]" 0;
+	setAttr ".phl[43]" 0;
+	setAttr ".phl[44]" 0;
+	setAttr ".phl[45]" 0;
+	setAttr ".phl[46]" 0;
+	setAttr ".phl[47]" 0;
+	setAttr ".phl[48]" 0;
+	setAttr ".phl[49]" 0;
+	setAttr ".phl[50]" 0;
+	setAttr ".phl[51]" 0;
+	setAttr ".phl[52]" 0;
+	setAttr ".phl[53]" 0;
+	setAttr ".phl[54]" 0;
+	setAttr ".phl[55]" 0;
+	setAttr ".phl[56]" 0;
+	setAttr ".phl[57]" 0;
+	setAttr ".phl[58]" 0;
+	setAttr ".phl[59]" 0;
+	setAttr ".phl[60]" 0;
+	setAttr ".phl[61]" 0;
+	setAttr ".phl[62]" 0;
+	setAttr ".phl[63]" 0;
+	setAttr ".phl[64]" 0;
+	setAttr ".phl[65]" 0;
+	setAttr ".phl[66]" 0;
+	setAttr ".phl[67]" 0;
+	setAttr ".phl[68]" 0;
+	setAttr ".phl[69]" 0;
+	setAttr ".phl[70]" 0;
+	setAttr ".phl[71]" 0;
+	setAttr ".phl[72]" 0;
+	setAttr ".phl[73]" 0;
+	setAttr ".phl[74]" 0;
+	setAttr ".phl[75]" 0;
+	setAttr ".phl[76]" 0;
+	setAttr ".phl[77]" 0;
+	setAttr ".phl[78]" 0;
+	setAttr ".phl[79]" 0;
+	setAttr ".phl[80]" 0;
+	setAttr ".phl[81]" 0;
+	setAttr ".phl[82]" 0;
+	setAttr ".phl[83]" 0;
+	setAttr ".phl[84]" 0;
+	setAttr ".phl[85]" 0;
+	setAttr ".phl[86]" 0;
+	setAttr ".phl[87]" 0;
+	setAttr ".phl[88]" 0;
+	setAttr ".phl[89]" 0;
+	setAttr ".phl[90]" 0;
+	setAttr ".phl[91]" 0;
+	setAttr ".phl[92]" 0;
+	setAttr ".phl[93]" 0;
+	setAttr ".phl[94]" 0;
+	setAttr ".phl[95]" 0;
+	setAttr ".phl[96]" 0;
+	setAttr ".phl[97]" 0;
+	setAttr ".phl[98]" 0;
+	setAttr ".phl[99]" 0;
+	setAttr ".phl[100]" 0;
+	setAttr ".phl[101]" 0;
+	setAttr ".phl[102]" 0;
+	setAttr ".phl[103]" 0;
+	setAttr ".phl[104]" 0;
+	setAttr ".phl[105]" 0;
+	setAttr ".phl[106]" 0;
+	setAttr ".phl[107]" 0;
+	setAttr ".phl[108]" 0;
+	setAttr ".phl[109]" 0;
+	setAttr ".phl[110]" 0;
+	setAttr ".phl[111]" 0;
+	setAttr ".phl[112]" 0;
+	setAttr ".phl[113]" 0;
+	setAttr ".phl[114]" 0;
+	setAttr ".phl[115]" 0;
+	setAttr ".phl[116]" 0;
+	setAttr ".phl[117]" 0;
+	setAttr ".phl[118]" 0;
+	setAttr ".phl[119]" 0;
+	setAttr ".phl[120]" 0;
+	setAttr ".phl[121]" 0;
+	setAttr ".phl[122]" 0;
+	setAttr ".phl[123]" 0;
+	setAttr ".phl[124]" 0;
+	setAttr ".phl[125]" 0;
+	setAttr ".phl[126]" 0;
+	setAttr ".phl[127]" 0;
+	setAttr ".phl[128]" 0;
+	setAttr ".phl[129]" 0;
+	setAttr ".phl[130]" 0;
+	setAttr ".phl[131]" 0;
+	setAttr ".phl[132]" 0;
+	setAttr ".phl[133]" 0;
+	setAttr ".phl[134]" 0;
+	setAttr ".phl[135]" 0;
+	setAttr ".phl[136]" 0;
+	setAttr ".phl[137]" 0;
+	setAttr ".phl[138]" 0;
+	setAttr ".phl[139]" 0;
+	setAttr ".phl[140]" 0;
+	setAttr ".phl[141]" 0;
+	setAttr ".phl[142]" 0;
+	setAttr ".phl[143]" 0;
+	setAttr ".phl[144]" 0;
+	setAttr ".phl[145]" 0;
+	setAttr ".phl[146]" 0;
+	setAttr ".phl[147]" 0;
+	setAttr ".phl[148]" 0;
+	setAttr ".phl[149]" 0;
+	setAttr ".phl[150]" 0;
+	setAttr ".phl[151]" 0;
+	setAttr ".phl[152]" 0;
+	setAttr ".phl[153]" 0;
+	setAttr ".phl[154]" 0;
+	setAttr ".phl[155]" 0;
+	setAttr ".phl[156]" 0;
+	setAttr ".phl[157]" 0;
+	setAttr ".phl[158]" 0;
+	setAttr ".phl[159]" 0;
+	setAttr ".phl[160]" 0;
+	setAttr ".phl[161]" 0;
+	setAttr ".phl[162]" 0;
+	setAttr ".phl[163]" 0;
+	setAttr ".phl[164]" 0;
+	setAttr ".phl[165]" 0;
+	setAttr ".phl[166]" 0;
+	setAttr ".phl[167]" 0;
+	setAttr ".phl[168]" 0;
+	setAttr ".phl[169]" 0;
+	setAttr ".phl[170]" 0;
+	setAttr ".phl[171]" 0;
+	setAttr ".phl[172]" 0;
+	setAttr ".phl[173]" 0;
+	setAttr ".phl[174]" 0;
+	setAttr ".phl[175]" 0;
+	setAttr ".phl[176]" 0;
+	setAttr ".phl[177]" 0;
+	setAttr ".phl[178]" 0;
+	setAttr ".phl[179]" 0;
+	setAttr ".phl[180]" 0;
+	setAttr ".phl[181]" 0;
+	setAttr ".phl[182]" 0;
+	setAttr ".phl[183]" 0;
+	setAttr ".phl[184]" 0;
+	setAttr ".phl[185]" 0;
+	setAttr ".phl[186]" 0;
+	setAttr ".phl[187]" 0;
+	setAttr ".phl[188]" 0;
+	setAttr ".phl[189]" 0;
+	setAttr ".phl[190]" 0;
+	setAttr ".phl[191]" 0;
+	setAttr ".phl[192]" 0;
+	setAttr ".phl[193]" 0;
+	setAttr ".phl[194]" 0;
+	setAttr ".phl[195]" 0;
+	setAttr ".phl[196]" 0;
+	setAttr ".phl[197]" 0;
+	setAttr ".phl[198]" 0;
+	setAttr ".phl[199]" 0;
+	setAttr ".phl[200]" 0;
+	setAttr ".phl[201]" 0;
+	setAttr ".phl[202]" 0;
+	setAttr ".phl[203]" 0;
+	setAttr ".phl[204]" 0;
+	setAttr ".phl[205]" 0;
+	setAttr ".phl[206]" 0;
+	setAttr ".phl[207]" 0;
+	setAttr ".phl[208]" 0;
+	setAttr ".phl[209]" 0;
+	setAttr ".phl[210]" 0;
+	setAttr ".phl[211]" 0;
+	setAttr ".phl[212]" 0;
+	setAttr ".phl[213]" 0;
+	setAttr ".phl[214]" 0;
+	setAttr ".phl[215]" 0;
+	setAttr ".phl[216]" 0;
+	setAttr ".phl[217]" 0;
+	setAttr ".phl[218]" 0;
+	setAttr ".phl[219]" 0;
+	setAttr ".phl[220]" 0;
+	setAttr ".phl[221]" 0;
+	setAttr ".phl[222]" 0;
+	setAttr ".phl[223]" 0;
+	setAttr ".phl[224]" 0;
+	setAttr ".phl[225]" 0;
+	setAttr ".phl[226]" 0;
+	setAttr ".phl[227]" 0;
+	setAttr ".phl[228]" 0;
+	setAttr ".phl[229]" 0;
+	setAttr ".phl[230]" 0;
+	setAttr ".phl[231]" 0;
+	setAttr ".phl[232]" 0;
+	setAttr ".phl[233]" 0;
+	setAttr ".phl[234]" 0;
+	setAttr ".phl[235]" 0;
+	setAttr ".phl[236]" 0;
+	setAttr ".phl[237]" 0;
+	setAttr ".phl[238]" 0;
+	setAttr ".phl[239]" 0;
+	setAttr ".phl[240]" 0;
+	setAttr ".phl[241]" 0;
+	setAttr ".phl[242]" 0;
+	setAttr ".phl[243]" 0;
+	setAttr ".phl[244]" 0;
+	setAttr ".phl[245]" 0;
+	setAttr ".phl[246]" 0;
+	setAttr ".phl[247]" 0;
+	setAttr ".phl[248]" 0;
+	setAttr ".phl[249]" 0;
+	setAttr ".phl[250]" 0;
+	setAttr ".phl[251]" 0;
+	setAttr ".phl[252]" 0;
+	setAttr ".phl[253]" 0;
+	setAttr ".phl[254]" 0;
+	setAttr ".phl[255]" 0;
+	setAttr ".phl[256]" 0;
+	setAttr ".phl[257]" 0;
+	setAttr ".phl[258]" 0;
+	setAttr ".phl[259]" 0;
+	setAttr ".phl[260]" 0;
+	setAttr ".phl[261]" 0;
+	setAttr ".phl[262]" 0;
+	setAttr ".phl[263]" 0;
+	setAttr ".phl[264]" 0;
+	setAttr ".phl[265]" 0;
+	setAttr ".phl[266]" 0;
+	setAttr ".phl[267]" 0;
+	setAttr ".phl[268]" 0;
+	setAttr ".phl[269]" 0;
+	setAttr ".phl[270]" 0;
+	setAttr ".phl[271]" 0;
+	setAttr ".phl[272]" 0;
+	setAttr ".phl[273]" 0;
+	setAttr ".phl[274]" 0;
+	setAttr ".phl[275]" 0;
+	setAttr ".phl[276]" 0;
+	setAttr ".phl[277]" 0;
+	setAttr ".phl[278]" 0;
+	setAttr ".phl[279]" 0;
+	setAttr ".phl[280]" 0;
+	setAttr ".phl[281]" 0;
+	setAttr ".phl[282]" 0;
+	setAttr ".phl[283]" 0;
+	setAttr ".phl[284]" 0;
+	setAttr ".phl[285]" 0;
+	setAttr ".phl[286]" 0;
+	setAttr ".phl[287]" 0;
+	setAttr ".phl[288]" 0;
+	setAttr ".phl[289]" 0;
+	setAttr ".phl[290]" 0;
+	setAttr ".phl[291]" 0;
+	setAttr ".phl[292]" 0;
+	setAttr ".phl[293]" 0;
+	setAttr ".phl[294]" 0;
+	setAttr ".phl[295]" 0;
+	setAttr ".phl[296]" 0;
+	setAttr ".phl[297]" 0;
+	setAttr ".phl[298]" 0;
+	setAttr ".phl[299]" 0;
+	setAttr ".phl[300]" 0;
+	setAttr ".phl[301]" 0;
+	setAttr ".phl[302]" 0;
+	setAttr ".phl[303]" 0;
+	setAttr ".phl[304]" 0;
+	setAttr ".phl[305]" 0;
+	setAttr ".phl[306]" 0;
+	setAttr ".phl[307]" 0;
+	setAttr ".phl[308]" 0;
+	setAttr ".phl[309]" 0;
+	setAttr ".phl[310]" 0;
+	setAttr ".phl[311]" 0;
+	setAttr ".phl[312]" 0;
+	setAttr ".phl[313]" 0;
+	setAttr ".phl[314]" 0;
+	setAttr ".phl[315]" 0;
+	setAttr ".phl[316]" 0;
+	setAttr ".phl[317]" 0;
+	setAttr ".phl[318]" 0;
+	setAttr ".phl[319]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"screw_robot_rigRN"
 		"screw_robot_rigRN" 0
-		"screw_robot_rigRN" 4
+		"screw_robot_rigRN" 343
 		2 "|screw_robot_rig:Screw_robot" "visibility" " 1"
-		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl" 
-		"translate" " -type \"double3\" -208.31433881711197387 0.883783831307273 -13.78694715444653518"
-		
-		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl" 
-		"rotate" " -type \"double3\" 0 106.32660653413408625 0"
-		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl" 
-		"scale" " -type \"double3\" 0.10347556416366693 0.10347556416366693 0.10347556416366693";
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_01_FK_ctrl_grp|screw_robot_rig:R_leg_01_FK_ctrl|screw_robot_rig:R_leg_02_ctrl_grp|screw_robot_rig:R_leg_02_FK_ctrl|screw_robot_rig:R_leg_03_FK_ctrl_grp|screw_robot_rig:R_leg_03_FK_ctrl" 
+		"translate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "screw_robot_rig:Geo" "displayType" " 2"
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.L_armIKFK" 
+		"screw_robot_rigRN.placeHolderList[1]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.R_arm_IKFK" 
+		"screw_robot_rigRN.placeHolderList[2]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.L_leg_IKFK" 
+		"screw_robot_rigRN.placeHolderList[3]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.R_leg_IKFK" 
+		"screw_robot_rigRN.placeHolderList[4]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[5]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[6]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[7]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[8]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[9]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[10]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[11]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[12]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[13]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[14]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[15]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[16]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[17]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[18]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[19]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[20]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[21]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[22]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[23]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[24]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[25]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[26]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[27]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[28]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[29]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[30]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[31]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[32]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[33]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[34]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[35]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[36]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[37]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[38]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[39]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[40]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[41]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[42]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[43]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[44]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[45]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[46]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[47]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[48]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_01_IK_ctrl_grp|screw_robot_rig:L_leg_01_IK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[49]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[50]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[51]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[52]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[53]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[54]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[55]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[56]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[57]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_03_IK_ctrl_grp|screw_robot_rig:L_leg_03_IK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[58]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[59]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[60]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[61]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[62]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[63]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[64]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[65]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[66]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_leg_IK_ctrl_main_grp|screw_robot_rig:L_leg_PV_ctrl_grp|screw_robot_rig:L_leg_PV_ctrl_grp_offset|screw_robot_rig:L_leg_PV_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[67]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[68]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[69]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[70]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[71]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[72]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[73]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[74]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[75]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[76]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[77]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[78]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[79]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[80]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[81]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[82]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[83]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[84]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_03_FK_ctrl_grp|screw_robot_rig:L_toe_03_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[85]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[86]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[87]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[88]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[89]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[90]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[91]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[92]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[93]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_02_FK_ctrl_grp|screw_robot_rig:L_toe_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[94]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[95]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[96]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[97]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[98]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[99]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[100]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[101]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[102]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:L_leg_clav_FK_ctrl_grp|screw_robot_rig:L_leg_clav_FK_ctrl|screw_robot_rig:L_foot_FK_ctrl_grp|screw_robot_rig:L_foot_FK_ctrl|screw_robot_rig:L_toe_01_FK_ctrl_grp|screw_robot_rig:L_toe_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[103]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[104]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[105]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[106]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[107]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[108]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[109]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[110]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[111]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[112]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[113]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[114]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[115]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[116]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[117]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[118]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[119]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[120]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_01_IK_ctrl_grp|screw_robot_rig:R_leg_01_IK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[121]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[122]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[123]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[124]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[125]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[126]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[127]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[128]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[129]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_03_IK_ctrl_grp|screw_robot_rig:R_leg_03_IK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[130]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[131]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[132]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[133]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[134]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[135]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[136]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[137]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[138]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_leg_IK_ctrl_main_grp|screw_robot_rig:R_leg_PV_ctrl_grp|screw_robot_rig:R_leg_PV_ctrl_grp_offset|screw_robot_rig:R_leg_PV_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[139]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[140]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[141]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[142]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[143]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[144]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[145]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[146]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[147]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[148]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[149]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[150]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[151]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[152]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[153]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[154]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[155]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[156]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_01_FK_ctrl_grp|screw_robot_rig:R_toe_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[157]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[158]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[159]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[160]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[161]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[162]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[163]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[164]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[165]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_02_FK_ctrl_grp|screw_robot_rig:R_toe_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[166]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[167]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[168]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[169]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[170]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[171]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[172]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[173]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[174]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:hip_ctrl_grp|screw_robot_rig:hip_ctrl|screw_robot_rig:R_leg_clav_FK_ctrl_grp|screw_robot_rig:R_leg_clav_FK_ctrl|screw_robot_rig:R_foot_FK_ctrl_grp|screw_robot_rig:R_foot_FK_ctrl|screw_robot_rig:R_toe_03_FK_ctrl_grp|screw_robot_rig:R_toe_03_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[175]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[176]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[177]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[178]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[179]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[180]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[181]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[182]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[183]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[184]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[185]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[186]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[187]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[188]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[189]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[190]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[191]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[192]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[193]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[194]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[195]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[196]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[197]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[198]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[199]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[200]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[201]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[202]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[203]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[204]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[205]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[206]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[207]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[208]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[209]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[210]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[211]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[212]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[213]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[214]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[215]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[216]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[217]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[218]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[219]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl_grp|screw_robot_rig:L_arm_01_FK_ctrl|screw_robot_rig:L_arm_02_FK_ctrl_grp|screw_robot_rig:L_arm_02_FK_ctrl|screw_robot_rig:L_arm_03_FK_ctrl_grp|screw_robot_rig:L_arm_03_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[220]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[221]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[222]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[223]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[224]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[225]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[226]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[227]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[228]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[229]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[230]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[231]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[232]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[233]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[234]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[235]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[236]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[237]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[238]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[239]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[240]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[241]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[242]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[243]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[244]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[245]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[246]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:arms_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl_grp|screw_robot_rig:R_arm_01_FK_ctrl|screw_robot_rig:R_arm_02_FK_ctrl_grp|screw_robot_rig:R_arm_02_FK_ctrl|screw_robot_rig:R_arm_03_FK_ctrl_grp|screw_robot_rig:R_arm_03_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[247]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[248]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[249]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[250]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[251]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[252]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[253]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[254]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[255]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[256]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[257]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[258]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[259]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[260]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[261]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[262]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[263]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[264]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_01_FK_ctrl_grp|screw_robot_rig:L_finger_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[265]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[266]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[267]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[268]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[269]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[270]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[271]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[272]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[273]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_02_FK_ctrl_grp|screw_robot_rig:L_finger_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[274]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[275]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[276]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[277]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[278]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[279]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[280]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[281]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[282]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:L_hand_ctrl_grp|screw_robot_rig:L_hand_ctrl|screw_robot_rig:L_finger_03_FK_ctrl_grp|screw_robot_rig:L_finger_03_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[283]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[284]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[285]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[286]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[287]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[288]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[289]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[290]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[291]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[292]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[293]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[294]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[295]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[296]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[297]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[298]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[299]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[300]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_01_FK_ctrl_grp|screw_robot_rig:R_finger_01_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[301]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[302]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[303]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[304]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[305]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[306]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[307]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[308]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[309]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_02_FK_ctrl_grp|screw_robot_rig:R_finger_02_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[310]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.translateX" 
+		"screw_robot_rigRN.placeHolderList[311]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.translateY" 
+		"screw_robot_rigRN.placeHolderList[312]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.translateZ" 
+		"screw_robot_rigRN.placeHolderList[313]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.rotateX" 
+		"screw_robot_rigRN.placeHolderList[314]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.rotateY" 
+		"screw_robot_rigRN.placeHolderList[315]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.rotateZ" 
+		"screw_robot_rigRN.placeHolderList[316]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.scaleX" 
+		"screw_robot_rigRN.placeHolderList[317]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.scaleY" 
+		"screw_robot_rigRN.placeHolderList[318]" ""
+		5 4 "screw_robot_rigRN" "|screw_robot_rig:Screw_robot|screw_robot_rig:Controls|screw_robot_rig:FK_contols|screw_robot_rig:transform_ctrl_grp|screw_robot_rig:transform_ctrl|screw_robot_rig:COG_ctrl_grp|screw_robot_rig:COG_ctrl|screw_robot_rig:spine_01_FK_ctrl_grp|screw_robot_rig:spine_01_FK_ctrl|screw_robot_rig:spine_02_FK_ctrl_grp|screw_robot_rig:spine_02_FK_ctrl|screw_robot_rig:R_hand_ctrl_grp|screw_robot_rig:R_hand_ctrl|screw_robot_rig:R_finger_03_FK_ctrl_grp|screw_robot_rig:R_finger_03_FK_ctrl.scaleZ" 
+		"screw_robot_rigRN.placeHolderList[319]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode polySoftEdge -n "polySoftEdge1";
@@ -1789,45 +2840,2337 @@ createNode polySoftEdge -n "polySoftEdge1";
 	setAttr ".a" 0;
 createNode reference -n "house_2RN";
 	rename -uid "583CEA43-4980-7EBF-8F3A-D6906B724AA6";
+	setAttr ".fn[0]" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2024_3D_program_assignments/Game-Development-I-2024/Maya_Files/2025_ani_projects//house_2.obj";
+	setAttr -s 2 ".phl";
+	setAttr ".phl[1]" 0;
+	setAttr ".phl[2]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"house_2RN"
 		"house_2RN" 0
-		"house_2RN" 4
+		"house_2RN" 8
 		0 "|house_2:Mesh" "|House_two" "-s -r "
 		0 "|house_2:Mesh1" "|House_two" "-s -r "
 		2 "|House_two|house_2:Mesh" "translate" " -type \"double3\" 0 0.91594541699260612 0"
 		
-		2 "|House_two|house_2:Mesh1" "translate" " -type \"double3\" 0 0.9478993247872316 0";
+		2 "|House_two|house_2:Mesh1" "translate" " -type \"double3\" 0 0.9478993247872316 0"
+		
+		3 "|House_two|house_2:Mesh|house_2:MeshShape.instObjGroups" ":initialShadingGroup.dagSetMembers" 
+		"-na"
+		3 "|House_two|house_2:Mesh1|house_2:Mesh1Shape.instObjGroups" ":initialShadingGroup.dagSetMembers" 
+		"-na"
+		5 3 "house_2RN" "|House_two|house_2:Mesh|house_2:MeshShape.instObjGroups" 
+		"house_2RN.placeHolderList[1]" ":initialShadingGroup.dsm"
+		5 3 "house_2RN" "|House_two|house_2:Mesh1|house_2:Mesh1Shape.instObjGroups" 
+		"house_2RN.placeHolderList[2]" ":initialShadingGroup.dsm";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode reference -n "RockRN";
 	rename -uid "A3B347A3-4A19-591A-54A0-6C9B95B3A8C3";
+	setAttr ".phl[1]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"RockRN"
 		"RockRN" 0
-		"RockRN" 3
+		"RockRN" 4
 		2 "|Rock:Mesh" "translate" " -type \"double3\" 151.98675036371261626 2.3295357053823702 -10.39474902761816999"
 		
 		2 "|Rock:Mesh" "rotate" " -type \"double3\" 0 -141.57361023833084346 0"
-		2 "|Rock:Mesh" "scale" " -type \"double3\" 13.75409312297898445 13.75409312297898445 13.75409312297898445";
+		2 "|Rock:Mesh" "scale" " -type \"double3\" 13.75409312297898445 13.75409312297898445 13.75409312297898445"
+		
+		5 4 "RockRN" "|Rock:Mesh.drawOverride" "RockRN.placeHolderList[1]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode reference -n "sharedReferenceNode";
 	rename -uid "A715B389-43AB-B5F2-D2FD-3CBE913F904D";
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"sharedReferenceNode";
+createNode aiStandardSurface -n "HouseOne";
+	rename -uid "6175B083-425F-874C-CD3C-00B44955EABB";
+createNode shadingEngine -n "aiStandardSurface1SG";
+	rename -uid "863F4FCB-4A37-AE3A-F084-D1BF23CA60E4";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo1";
+	rename -uid "2C472349-4E82-29AA-1639-598B80281803";
+createNode file -n "file1";
+	rename -uid "42CCF923-4DDC-EF33-FEAA-C092AB20EFD5";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_default_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture1";
+	rename -uid "9262C1AE-4971-44AC-3E60-06938413D0C7";
+createNode file -n "file2";
+	rename -uid "70DEB9C9-43DE-33C6-9AAF-D4A5976503F8";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_default_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture2";
+	rename -uid "DB5FBF56-476A-A71C-B6E0-C086DA199B0D";
+createNode file -n "file3";
+	rename -uid "4D6EEECD-4C4E-E408-107E-F7A63E0A5AC2";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_default_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture3";
+	rename -uid "0D5D7B1F-4FA6-B796-EF87-F5AC71897CF4";
+createNode file -n "file4";
+	rename -uid "746C77B0-40D3-0AF1-A882-AC9F0C8E4FE9";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_default_Normal.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture4";
+	rename -uid "E1760591-4CD2-7AE0-6DFC-57B22C9DFFFA";
+createNode bump2d -n "bump2d1";
+	rename -uid "44AFDB86-448A-26D4-2316-CC802E62351E";
+	setAttr ".vc1" -type "float3" 0 1.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode displacementShader -n "displacementShader1";
+	rename -uid "CB28E485-4990-A467-C2DA-2FB1DDC95B05";
+createNode file -n "house_1_default_Height_1";
+	rename -uid "3514E3F1-4E1C-344A-805C-A1B440449DA2";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_default_Height.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture6";
+	rename -uid "E1278B39-4732-E83C-8D6C-ED8855BF15E5";
+createNode remapValue -n "remapValue1";
+	rename -uid "2F78B18A-4250-D120-17C1-85BEC8785AD8";
+	setAttr -s 2 ".vl[0:1]"  0 0 1 1 1 1;
+	setAttr -s 2 ".cl";
+	setAttr ".cl[0].clp" 0;
+	setAttr ".cl[0].clc" -type "float3" 0 0 0 ;
+	setAttr ".cl[0].cli" 1;
+	setAttr ".cl[1].clp" 1;
+	setAttr ".cl[1].clc" -type "float3" 1 1 1 ;
+	setAttr ".cl[1].cli" 1;
+createNode aiStandardSurface -n "HouseOneDoor";
+	rename -uid "A49A70B5-4E76-7928-18D3-7090A58251D3";
+createNode shadingEngine -n "aiStandardSurface2SG";
+	rename -uid "FE16EB44-4965-5BBD-D312-D7B1D021CC9B";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo2";
+	rename -uid "83E6E235-46D6-6447-03EB-79A09B56AF2C";
+createNode file -n "file5";
+	rename -uid "423D47A8-4AF8-1522-E247-32A2FC4D0385";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_standardSurface1_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture7";
+	rename -uid "75E60614-4226-C75E-1540-0083D935167A";
+createNode file -n "file6";
+	rename -uid "904421DF-481A-F82C-8CA7-D1A977E77897";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_standardSurface1_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture8";
+	rename -uid "E19AEB6F-4517-BBA4-5323-69BD8AD118E5";
+createNode file -n "file7";
+	rename -uid "AD70AB92-428D-DC98-4E84-2CA943BFB168";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_standardSurface1_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture9";
+	rename -uid "973AC324-4F1E-CFBB-3143-4DA69264A118";
+createNode file -n "file8";
+	rename -uid "4C5A59F6-4111-832E-7EE2-9498A64B2186";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_one_textures/house_1_standardSurface1_Normal.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture10";
+	rename -uid "AF595828-4415-397A-B916-2394D8C26713";
+createNode bump2d -n "bump2d2";
+	rename -uid "36D08387-44CF-7CA7-D063-97AF9E75F107";
+	setAttr ".vc1" -type "float3" 0 1.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode displayLayer -n "SceneGeo";
+	rename -uid "ADDD06D9-4B23-8B77-86ED-01A300127D60";
+	setAttr ".dt" 2;
+	setAttr ".ufem" -type "stringArray" 0  ;
+	setAttr ".do" 1;
+createNode animCurveTL -n "RENDER_CAMERA_translateX";
+	rename -uid "1FF1A42E-4622-BAA6-5C3F-1386FCF014A5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 5 ".ktv[0:4]"  1 15.083196635264841 15 17.663005503614809
+		 27 -26.675429493881488 44 3.9566062373890531 68 148.20706636137726;
+	setAttr -s 5 ".kot[0:4]"  5 5 5 5 5;
+createNode animCurveTL -n "RENDER_CAMERA_translateY";
+	rename -uid "0597BFDA-4AB1-8AAE-98ED-CDB6AB9FEC80";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 5 ".ktv[0:4]"  1 21.178783805801441 15 21.33185800143195
+		 27 29.316591818291229 44 16.710445420346648 68 38.003900055144797;
+	setAttr -s 5 ".kot[0:4]"  5 5 5 5 5;
+createNode animCurveTL -n "RENDER_CAMERA_translateZ";
+	rename -uid "3FA7D8A4-4A06-303A-D0F6-22960410D391";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 5 ".ktv[0:4]"  1 -45.22053756683502 15 -47.728705696825941
+		 27 -40.637180752606788 44 24.196889222768789 68 64.974302080250325;
+	setAttr -s 5 ".kot[0:4]"  5 5 5 5 5;
+createNode animCurveTA -n "RENDER_CAMERA_rotateX";
+	rename -uid "4DFE10D0-46E3-B3C9-2256-F48C93A995EB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 5 ".ktv[0:4]"  1 -2.738352729598919 15 -2.738352729598919
+		 27 -11.770260697703717 44 -2.1736284848929763 68 -20.138352729599713;
+	setAttr -s 5 ".kot[0:4]"  5 5 5 5 5;
+createNode animCurveTA -n "RENDER_CAMERA_rotateY";
+	rename -uid "A3B27E26-45E1-385A-3AD8-849AEE9ABAEB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 5 ".ktv[0:4]"  1 98 15 107 27 -98.546152155338518 44 -0.19995766854618613
+		 68 -13.399999999999885;
+	setAttr -s 5 ".kot[0:4]"  5 5 5 5 5;
+createNode animCurveTA -n "RENDER_CAMERA_rotateZ";
+	rename -uid "DBE3AF38-416E-EBEE-32C0-5192D73C5AFF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 4 ".ktv[0:3]"  1 0 15 0 27 0.14184563223374769 68 0;
+	setAttr -s 4 ".kot[0:3]"  5 5 5 5;
+createNode animCurveTL -n "transform_ctrl_translateX";
+	rename -uid "C56C3E26-47E5-EAC5-F9E6-78B93E0FFA6E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 -11.403524831592572 68 141.05807045741946;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "transform_ctrl_translateY";
+	rename -uid "B20B4DBD-4F32-3B5A-C1E5-A5A65D35712F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0.88378383130727878 68 0.88378383130727878;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "transform_ctrl_translateZ";
+	rename -uid "F41761D2-4476-D329-20ED-3A9B0F1CF88F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 -38.526712552360877 68 -14.502970287817149;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "COG_ctrl_translateX";
+	rename -uid "2DF786B7-49D3-2D61-34E9-6DB67CED0F48";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 37.381608789258635;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "COG_ctrl_translateY";
+	rename -uid "C9ADC5A7-438B-196B-CC4B-B0A863AEA131";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 329.88935065794465;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "COG_ctrl_translateZ";
+	rename -uid "BC8B9F9B-44D3-97D9-3194-B88BA811F4E4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "hip_ctrl_translateX";
+	rename -uid "6C3FE27C-4985-B9A3-E295-C4AD2C0B3C56";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "hip_ctrl_translateY";
+	rename -uid "5B1E9F42-4503-BA14-FE0D-94B5196636CD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "hip_ctrl_translateZ";
+	rename -uid "E18BE86C-4EAA-7397-4536-5283202CAED6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_clav_FK_ctrl_translateX";
+	rename -uid "2B6FD32D-4A07-4166-0656-B8BE19EA106E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_clav_FK_ctrl_translateY";
+	rename -uid "FF33D8A2-4A59-7018-BA86-7CA18B7A1775";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 103.05188444797929;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_leg_clav_FK_ctrl_translateZ";
+	rename -uid "8657485C-469E-3715-51FC-C4ADCE81128F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 5.494121417204715;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_foot_FK_ctrl_translateX";
+	rename -uid "F901EB41-431E-2B1E-C7EA-9BA879CF7A4C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_foot_FK_ctrl_translateY";
+	rename -uid "BC9F7788-49FE-EC1E-FBB2-A88CC63C0342";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_foot_FK_ctrl_translateZ";
+	rename -uid "47D8FBEA-4D7C-0291-07DC-499DE0AC4C62";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_01_FK_ctrl_translateX";
+	rename -uid "FEBFF0DE-4333-C473-8F0B-0C9B5BB23D2A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_01_FK_ctrl_translateY";
+	rename -uid "ED90104A-4CC8-D5B0-F9EA-BCAA2CB0551C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_01_FK_ctrl_translateZ";
+	rename -uid "F51B8E55-45AA-2684-010B-918825C478E7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_02_FK_ctrl_translateX";
+	rename -uid "435BA230-4BF4-709A-D322-1E85B624FCBA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_02_FK_ctrl_translateY";
+	rename -uid "B11D5822-4341-7596-8F16-FAB54C439FE2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_02_FK_ctrl_translateZ";
+	rename -uid "9E8F8D60-4C27-7719-CFBB-0EA3DDD63C0C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_03_FK_ctrl_translateX";
+	rename -uid "950DCD8A-465F-6592-865D-0E9C519A100B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_03_FK_ctrl_translateY";
+	rename -uid "6F72914C-4A59-46AE-1FFB-378C294529D7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_toe_03_FK_ctrl_translateZ";
+	rename -uid "32B67955-466F-BACA-3816-8CAC07EF0C10";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_01_IK_ctrl_translateX";
+	rename -uid "0E45D369-44EC-B1A7-939E-76983770BD21";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_01_IK_ctrl_translateY";
+	rename -uid "721FDD42-4A4B-5EA1-EC5F-FAB013F8A327";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_01_IK_ctrl_translateZ";
+	rename -uid "45DDA72F-47D9-89D6-6432-509FACF81943";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_03_IK_ctrl_translateX";
+	rename -uid "72E3FABC-40CE-4857-3FE8-9C994207BE3F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_03_IK_ctrl_translateY";
+	rename -uid "CAD3BF43-4A4B-83AF-7AB8-A58D38D9C33F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 4.9587037753438992;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_leg_03_IK_ctrl_translateZ";
+	rename -uid "49F7434F-43FD-BC56-6247-2C9395835E36";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 11.660158664438086;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_leg_PV_ctrl_translateX";
+	rename -uid "D790EF8D-4984-DB43-FFA4-EB8B8F5F64E8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_PV_ctrl_translateY";
+	rename -uid "AF8BA84F-42B7-191C-C07A-26BA4D4AD30A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_leg_PV_ctrl_translateZ";
+	rename -uid "42D716E8-4DD9-4E1C-1FF1-BCBA79B42A7A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_clav_FK_ctrl_translateX";
+	rename -uid "875AF3F6-4810-C630-44B1-84BA5DC6754C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_clav_FK_ctrl_translateY";
+	rename -uid "A88269C6-4EE4-BE66-0D04-FD911EA7BDC3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -130.55648109753915;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_leg_clav_FK_ctrl_translateZ";
+	rename -uid "5762B419-43AE-470B-F632-F6B0CBB60C8E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -218.35644677534702;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_foot_FK_ctrl_translateX";
+	rename -uid "4C6A6890-4DFE-A3C7-0F28-D4BD67BB1605";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_foot_FK_ctrl_translateY";
+	rename -uid "6A883C94-4190-4D94-8F49-D8B421C7D18E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_foot_FK_ctrl_translateZ";
+	rename -uid "A93EDD31-4A6F-5E1C-B3F6-57BD6177EE33";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_01_FK_ctrl_translateX";
+	rename -uid "AE6DE180-4588-EAEC-B113-F09468A04E99";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_01_FK_ctrl_translateY";
+	rename -uid "71691DD9-4C1C-BD67-EAFD-DF88EDB54E15";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_01_FK_ctrl_translateZ";
+	rename -uid "55D3A18C-4E01-113C-4642-D3979005D0EC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_02_FK_ctrl_translateX";
+	rename -uid "9771E841-40F3-CCFC-2981-74A19A621AF4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_02_FK_ctrl_translateY";
+	rename -uid "E44D5C67-4838-428F-95A9-468BE6B1AFE7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_02_FK_ctrl_translateZ";
+	rename -uid "16CE0419-48FC-F07C-6973-C9936AE8C37E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_03_FK_ctrl_translateX";
+	rename -uid "A31FF64C-4F7F-240A-550B-F4B0B03438AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_03_FK_ctrl_translateY";
+	rename -uid "323C161E-4789-BE82-8B27-5B84DC0DD546";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_toe_03_FK_ctrl_translateZ";
+	rename -uid "E8F7C0BF-488C-3E55-5EB0-ADA81A4E24A4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_01_IK_ctrl_translateX";
+	rename -uid "62FBD481-4B75-8A8A-9F57-988569C8D81A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_01_IK_ctrl_translateY";
+	rename -uid "4E8ED3A3-4650-0834-FE74-EC9715F27D96";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_01_IK_ctrl_translateZ";
+	rename -uid "65D00850-4FAB-0F3D-ADDF-8B92F445B3C0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_03_IK_ctrl_translateX";
+	rename -uid "96F98318-468C-DCF8-2F13-05B1EF7A7AEA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_03_IK_ctrl_translateY";
+	rename -uid "8E3BA4B5-42CC-B556-70AD-EE98EF5AED3F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 1.0274985195473414;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_leg_03_IK_ctrl_translateZ";
+	rename -uid "7A1C6DEC-4796-B41B-6774-819A9D722690";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_PV_ctrl_translateX";
+	rename -uid "D97ECA84-413A-CE70-A319-C0850AA15499";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_PV_ctrl_translateY";
+	rename -uid "5823162E-4038-204F-201C-27AD33036F53";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_leg_PV_ctrl_translateZ";
+	rename -uid "27BEBF42-4DC0-3D28-1EB7-5A91275AB24F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "spine_01_FK_ctrl_translateX";
+	rename -uid "B6BB8A04-4658-8750-2B8B-B790F45F7AB6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "spine_01_FK_ctrl_translateY";
+	rename -uid "D6DBA84E-4CF9-6782-D49C-01AD2BC19A5B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "spine_01_FK_ctrl_translateZ";
+	rename -uid "62EBE55D-45F2-3FA4-1F2B-469046B6C749";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "spine_02_FK_ctrl_translateX";
+	rename -uid "459CCA71-46EF-618F-5572-C0B2273E6BAC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 37 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "spine_02_FK_ctrl_translateY";
+	rename -uid "DDE0D46D-40D0-81E2-684D-598554EC1C11";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 37 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "spine_02_FK_ctrl_translateZ";
+	rename -uid "DF485B20-40E0-9979-E760-C792286F3013";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 37 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_hand_ctrl_translateX";
+	rename -uid "160036E2-40F6-FF24-F49D-D0B23FB06D9D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_hand_ctrl_translateY";
+	rename -uid "83A9F8A5-4340-C390-A3BC-DDB3AF06098F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_hand_ctrl_translateZ";
+	rename -uid "B000E923-4756-344B-A035-309C617FDDB0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_01_FK_ctrl_translateX";
+	rename -uid "8C19C7EC-41A9-F16F-ACE1-23A90B490D01";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_01_FK_ctrl_translateY";
+	rename -uid "8BEEAE51-40C4-6BF4-F864-EBADDDB38D4A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_01_FK_ctrl_translateZ";
+	rename -uid "7063FB66-4E42-F580-94B3-A39510A338B5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_02_FK_ctrl_translateX";
+	rename -uid "8572C074-4742-875D-C5E5-10A1F48893D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_02_FK_ctrl_translateY";
+	rename -uid "0CFF811F-4FA7-A46E-F512-25B131003235";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_02_FK_ctrl_translateZ";
+	rename -uid "DEAE0035-4B02-56A1-54D4-0FA5C2DDF399";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_03_FK_ctrl_translateX";
+	rename -uid "F192EC27-4896-2955-70C3-C3841A1E624D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_03_FK_ctrl_translateY";
+	rename -uid "01A4C2CD-415C-1403-041A-5CBB8D0FD012";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_finger_03_FK_ctrl_translateZ";
+	rename -uid "6424DCDD-4751-2875-88EC-33B0478AB307";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_hand_ctrl_translateX";
+	rename -uid "05BD7473-4793-015B-D7D8-73988D657DD6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_hand_ctrl_translateY";
+	rename -uid "AF9595E5-4519-9ADF-5626-83950A884D83";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_hand_ctrl_translateZ";
+	rename -uid "CE86360F-4550-A107-BE33-1FA941A7116F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_01_FK_ctrl_translateX";
+	rename -uid "0D51DF32-4FD9-20C3-525F-708320DD2455";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_01_FK_ctrl_translateY";
+	rename -uid "F8440A99-465C-9B28-2E60-D79BA7A55C18";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_01_FK_ctrl_translateZ";
+	rename -uid "416E3679-48A4-6307-5ECA-DDB8903EA9AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_02_FK_ctrl_translateX";
+	rename -uid "403A6FA6-4971-F24E-E72D-2BB4D09381EF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_02_FK_ctrl_translateY";
+	rename -uid "F6FC15CF-40DD-A144-C327-17B345EC0799";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_02_FK_ctrl_translateZ";
+	rename -uid "58F9F960-4792-2E18-F67D-90ACE5498B33";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_03_FK_ctrl_translateX";
+	rename -uid "AEFDBD5B-484D-4253-3A9A-ABAD62CD4E04";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_03_FK_ctrl_translateY";
+	rename -uid "42CC92A0-4010-CA0D-D391-CF8E281F5B03";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_finger_03_FK_ctrl_translateZ";
+	rename -uid "F0DF6A90-4D38-C6F2-03A0-478DF55FB9BE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_arm_01_FK_ctrl_translateX";
+	rename -uid "740029E8-41EB-1020-D2BA-10A3316E31AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -112.19053485746277;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_arm_01_FK_ctrl_translateY";
+	rename -uid "C58CF260-4C00-6045-9159-8DBED9BFFC2B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -53.159812981283324;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_arm_01_FK_ctrl_translateZ";
+	rename -uid "D0669434-4093-F45A-5019-2F82D70A53D9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -51.711434188364407;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_arm_02_FK_ctrl_translateX";
+	rename -uid "96F6AD70-441F-2BE1-E8BD-A9991F0A8201";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_arm_02_FK_ctrl_translateY";
+	rename -uid "91EF53F6-462D-A472-A921-B1AFD6AAAFB4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_arm_02_FK_ctrl_translateZ";
+	rename -uid "A55CE420-40D2-C1D1-7EBF-668ADA2B9F09";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "L_arm_03_FK_ctrl_translateX";
+	rename -uid "9AEE40CF-4051-484D-3A61-5398C0B3C42E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 124.65761558587809;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_arm_03_FK_ctrl_translateY";
+	rename -uid "3F9EC1E9-4C1A-694D-6D57-A3BBB1202A45";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 99.246075653277302;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "L_arm_03_FK_ctrl_translateZ";
+	rename -uid "D94E5C6A-4AD7-A351-9949-179AC7A737BA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_arm_01_FK_ctrl_translateX";
+	rename -uid "A50C2950-4C2C-7978-AC12-6AAD398B200E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 6.3863609175428859;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_arm_01_FK_ctrl_translateY";
+	rename -uid "B7CA7249-44A2-E1B5-D12E-348C3EB8DA17";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -11.536972803204016;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_arm_01_FK_ctrl_translateZ";
+	rename -uid "A2C6A45C-4E94-F8A1-A564-3C966A683830";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 83.737980935430869;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_arm_02_FK_ctrl_translateX";
+	rename -uid "0294F0B4-4BBD-6DF9-D780-3BAF45CF749E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_arm_02_FK_ctrl_translateY";
+	rename -uid "293694AD-4390-352F-C517-9BB7354BA3BB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_arm_02_FK_ctrl_translateZ";
+	rename -uid "0575E0B5-4FB8-AE43-47FA-FCB07910694F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "R_arm_03_FK_ctrl_translateX";
+	rename -uid "FC4422D7-4405-CEA6-9BCA-199C07C5F378";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -20.950775084550646;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_arm_03_FK_ctrl_translateY";
+	rename -uid "5A40B039-43D9-A311-1258-B7B0B40B49E8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -25.977269246933091;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTL -n "R_arm_03_FK_ctrl_translateZ";
+	rename -uid "6C448F86-48E3-A14F-4C6E-23A7457D0B4C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "RENDER_CAMERA_visibility";
+	rename -uid "736D75A6-41E2-D37D-1CA8-73BFDDCF6D0C";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "RENDER_CAMERA_scaleX";
+	rename -uid "B97BA8A5-4FE6-D424-4037-82ACBF6A0AFA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "RENDER_CAMERA_scaleY";
+	rename -uid "70F492E0-44D8-0111-E907-2AB7772AC901";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "RENDER_CAMERA_scaleZ";
+	rename -uid "4A443F3E-4841-7442-B999-7494F8A68424";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_01_IK_ctrl_rotateX";
+	rename -uid "4F752F4E-486D-1501-FF1A-EB98E60A0B90";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_01_IK_ctrl_rotateY";
+	rename -uid "9F6574B6-4F20-47BC-5493-438C0514A1C6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_01_IK_ctrl_rotateZ";
+	rename -uid "653B3F27-40E5-7E82-A388-2EBA41E001C5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_01_IK_ctrl_scaleX";
+	rename -uid "D5FB6299-444C-2ABF-7AAB-78BD90A51DB0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_01_IK_ctrl_scaleY";
+	rename -uid "BC9F711C-417F-D986-898E-7B8BCFA4D358";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_01_IK_ctrl_scaleZ";
+	rename -uid "72DADD41-4EDC-9ACD-4755-2597238C5E48";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_03_FK_ctrl_rotateX";
+	rename -uid "6CA64EBA-4900-4A0B-6B0D-E4A48813B999";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_03_FK_ctrl_rotateY";
+	rename -uid "C4C869D0-4C3F-5D23-AB30-2BA071FFB22D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_03_FK_ctrl_rotateZ";
+	rename -uid "4178B5F9-4D83-F402-8C8C-FFBFCB44B596";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 17.632043183677002;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_arm_03_FK_ctrl_scaleX";
+	rename -uid "1C143843-4D92-72B4-28EB-599099C2A198";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_arm_03_FK_ctrl_scaleY";
+	rename -uid "75512048-4052-3301-44C8-888FEEFA71CE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_arm_03_FK_ctrl_scaleZ";
+	rename -uid "712C3480-48B5-816D-2F56-8188168224AB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_01_FK_ctrl_rotateX";
+	rename -uid "47249E2E-475E-F8D0-7033-67826B5B1BD8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_01_FK_ctrl_rotateY";
+	rename -uid "9A978F92-4854-F633-D6FF-F9AC1C69E1C1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_01_FK_ctrl_rotateZ";
+	rename -uid "0F1B5A0A-4299-52E7-6EF7-4996257BE6BC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -78.867158678354414;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_finger_01_FK_ctrl_scaleX";
+	rename -uid "AD21FB2B-4625-6B85-88FC-78BE455E1D27";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_finger_01_FK_ctrl_scaleY";
+	rename -uid "538703EC-46EE-4B6E-6F19-1C9B23E2CA0A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_finger_01_FK_ctrl_scaleZ";
+	rename -uid "D0B2E805-431E-9953-AA21-27B6CB85DE62";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_clav_FK_ctrl_rotateX";
+	rename -uid "02F093B9-467C-3D2F-B036-91917884F0F2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_clav_FK_ctrl_rotateY";
+	rename -uid "E6467975-49D5-78AB-747D-69B3D82FA5DF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_clav_FK_ctrl_rotateZ";
+	rename -uid "515E7D93-4BD3-BB44-69D0-5FA6577AEC67";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_clav_FK_ctrl_scaleX";
+	rename -uid "B1EF4EAC-4EA8-EE1D-A475-E0AEBF80C71F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_clav_FK_ctrl_scaleY";
+	rename -uid "B831F513-4F3D-8557-AB8F-1682F380ED4F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_clav_FK_ctrl_scaleZ";
+	rename -uid "BDF1927D-4567-B0E7-2335-F7B96EFB4F3C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_02_FK_ctrl_rotateX";
+	rename -uid "0E996A1A-4785-2A0C-A9F2-10B30AEA1988";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_02_FK_ctrl_rotateY";
+	rename -uid "963E3738-4170-7C57-B380-AB8A2EF8DC1E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_02_FK_ctrl_rotateZ";
+	rename -uid "1DD39869-44CB-D305-A568-66ACD67E0EF0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 12.326326842795925;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_toe_02_FK_ctrl_scaleX";
+	rename -uid "1733C443-4E89-661E-FBFB-C99B9C7BD939";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_02_FK_ctrl_scaleY";
+	rename -uid "555462AF-412F-3F36-2224-2AB9AE64F467";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_02_FK_ctrl_scaleZ";
+	rename -uid "AA04F192-4ED5-C539-D6F4-A9ABFD679354";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_finger_01_FK_ctrl_rotateX";
+	rename -uid "8D2A9B66-43CD-880A-802C-C39C4B61C2BF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 41.991178757217178;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "R_finger_01_FK_ctrl_rotateY";
+	rename -uid "BF341180-4493-0BA5-A670-3E8CAA31C5DC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 45.886048594587891;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "R_finger_01_FK_ctrl_rotateZ";
+	rename -uid "726FA9A3-42C0-3F90-9337-AD83A3101078";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0.70218024401475931 68 0.70218024401475931;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_finger_01_FK_ctrl_scaleX";
+	rename -uid "97C1F7F4-4CEE-B805-3B5C-01882B3A5916";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_finger_01_FK_ctrl_scaleY";
+	rename -uid "35E2A24A-4B0A-1DFD-7265-A9AD8E2D7498";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_finger_01_FK_ctrl_scaleZ";
+	rename -uid "1BB11319-498B-4C65-CF17-2B83FA5B7318";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_02_FK_ctrl_rotateX";
+	rename -uid "E79035A5-4C0E-255B-FDD5-C89126F72E6B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_02_FK_ctrl_rotateY";
+	rename -uid "7A5EB01E-4960-6DB6-57E2-56B6786A8B95";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_02_FK_ctrl_rotateZ";
+	rename -uid "14BCFF02-4261-ECB6-C323-4580146BCA63";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -84.400049694944229;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_finger_02_FK_ctrl_scaleX";
+	rename -uid "4C2BE10B-4221-AA81-A5DE-3683072EBC10";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_finger_02_FK_ctrl_scaleY";
+	rename -uid "7AE0AB28-4771-4D3B-B049-B3A24DA29EF8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_finger_02_FK_ctrl_scaleZ";
+	rename -uid "A48754B1-4853-4E6D-FD82-E5BEAB6D9765";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "transform_ctrl_rotateX";
+	rename -uid "60ABB5BE-4A16-3C3C-F39A-0289AFD54D2E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "transform_ctrl_rotateY";
+	rename -uid "3A599DC5-4F4A-9A4E-95EE-82AD4D4AB00F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 107.88455855565169 68 81.477124977541749;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "transform_ctrl_rotateZ";
+	rename -uid "83D53AD3-426A-7DDF-F634-FE987A78F8C4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_scaleX";
+	rename -uid "7AC5FAE5-4648-8169-6315-C6BE92B2583E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0.10347556416366693;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_scaleY";
+	rename -uid "D6474DBF-4542-40D8-D4C0-C89DEBDFB0A2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0.10347556416366693;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_scaleZ";
+	rename -uid "B39A091F-45B0-A51E-7523-2886E5698116";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0.10347556416366693;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_L_armIKFK";
+	rename -uid "66BB938C-438A-FFE8-F013-428CDA3B975E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_R_arm_IKFK";
+	rename -uid "B2770ED0-45C7-87AB-E2FC-84AAC0D532DC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_L_leg_IKFK";
+	rename -uid "6E8997EE-4EAC-99B7-9783-9285D62A08D1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "transform_ctrl_R_leg_IKFK";
+	rename -uid "70504075-4690-2061-F455-09BF1FE1933E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_01_FK_ctrl_rotateX";
+	rename -uid "99F8B8BD-4BE9-0840-38CD-26B47DA5BF08";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_01_FK_ctrl_rotateY";
+	rename -uid "3291CE92-4FBB-90B0-CBAB-D39D2A0DCF34";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_01_FK_ctrl_rotateZ";
+	rename -uid "1F7B0908-4E5C-6904-965E-9693A84EB247";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 52.195648522987668;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_arm_01_FK_ctrl_scaleX";
+	rename -uid "F9062746-4A37-017D-972E-B1A3066A8C85";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_arm_01_FK_ctrl_scaleY";
+	rename -uid "7F7568C9-4724-A8A1-6E5B-8F83273F4A3F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_arm_01_FK_ctrl_scaleZ";
+	rename -uid "14A2F143-4796-B0BC-23B8-BD8CFA4328A4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "spine_02_FK_ctrl_rotateX";
+	rename -uid "B066A03B-47A6-7EB2-01B2-F9B58A064064";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  1 -53.074457288238108 15 0 37 0;
+	setAttr -s 3 ".kot[0:2]"  5 5 5;
+createNode animCurveTA -n "spine_02_FK_ctrl_rotateY";
+	rename -uid "4D995075-4AE8-20DB-9E4E-76BB028B29F0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 37 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "spine_02_FK_ctrl_rotateZ";
+	rename -uid "4B5444C8-4540-DD08-90CD-00A42E4F28DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "spine_02_FK_ctrl_scaleX";
+	rename -uid "EB736EA6-4308-0EFC-390A-6E9B28D8959E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "spine_02_FK_ctrl_scaleY";
+	rename -uid "DC3DE6C7-4ACB-DC48-F0BC-DE93FD9761F9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "spine_02_FK_ctrl_scaleZ";
+	rename -uid "051A43E9-4EDD-623D-8C1B-17AD1E5148F9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_foot_FK_ctrl_rotateX";
+	rename -uid "12F1FB24-4B13-217B-763E-0A80F14C5F07";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_foot_FK_ctrl_rotateY";
+	rename -uid "07EC6493-4074-A5C5-A10F-909C47C75BB8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_foot_FK_ctrl_rotateZ";
+	rename -uid "13FCBD0B-493A-B46D-52CA-02AAFECDD08F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_foot_FK_ctrl_scaleX";
+	rename -uid "4EB425D2-44B1-9558-CC4D-CCB73A7075B9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1.0000000000000004;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_foot_FK_ctrl_scaleY";
+	rename -uid "5762F29A-4F3B-10E1-6FE8-C0B003BDE311";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1.0000000000000004;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_foot_FK_ctrl_scaleZ";
+	rename -uid "712CBCEE-4E51-2B56-C3EA-0EA7F3714566";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_01_FK_ctrl_rotateX";
+	rename -uid "F99F3BF4-4A53-5EF1-111B-A39C22026791";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_01_FK_ctrl_rotateY";
+	rename -uid "4F6BFADE-4C19-08B6-09B6-128DE343092D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_01_FK_ctrl_rotateZ";
+	rename -uid "93058263-4CC1-5F5B-6D12-33AA3FB88396";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_01_FK_ctrl_scaleX";
+	rename -uid "F620A5EA-4E9E-60A8-5536-7A99D4C8CB2F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_01_FK_ctrl_scaleY";
+	rename -uid "CDF02127-47AE-DAEB-9B7D-02AAF54E726C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_01_FK_ctrl_scaleZ";
+	rename -uid "872A1882-4071-6087-55A4-DD9C96EE83AF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "COG_ctrl_rotateX";
+	rename -uid "DE42F3B6-4312-3392-2646-47ABAA21AB3B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "COG_ctrl_rotateY";
+	rename -uid "A5C8D226-43E9-EB29-96CE-F0814DE4A4F7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "COG_ctrl_rotateZ";
+	rename -uid "D5E1C1DA-4E0C-D11F-FB9E-8393F81E3591";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -121.75370126407883;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "COG_ctrl_scaleX";
+	rename -uid "7A9A7440-45D1-B797-4E34-8A808E62A563";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "COG_ctrl_scaleY";
+	rename -uid "7C2D14C8-4825-7203-215F-A78931D7A9B1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "COG_ctrl_scaleZ";
+	rename -uid "5B46281F-4336-8686-08D2-61A0F7F5FDEB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_finger_02_FK_ctrl_rotateX";
+	rename -uid "5E1A4F51-4947-B552-B6F4-659AE270BC54";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_finger_02_FK_ctrl_rotateY";
+	rename -uid "551A367F-4BDF-70AF-DB67-8CBA4BC9B0D0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_finger_02_FK_ctrl_rotateZ";
+	rename -uid "D57504FA-4770-4BB3-3AC9-6DAB7EFAFD10";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0.70218024401475931 68 29.455134708066645;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_finger_02_FK_ctrl_scaleX";
+	rename -uid "5707B225-40E6-58CF-9900-C68581099D3D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_finger_02_FK_ctrl_scaleY";
+	rename -uid "52A12B38-4455-7446-78B6-98B1A1CF998B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_finger_02_FK_ctrl_scaleZ";
+	rename -uid "70AFFAF5-47A4-C0A7-FA7A-2C902DE94B49";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_01_IK_ctrl_rotateX";
+	rename -uid "8DBAED1B-4CD4-E48D-EEEE-74B6930A828F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_01_IK_ctrl_rotateY";
+	rename -uid "986E7A14-4C1B-65AB-6FA6-C98A7D1DE75F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_01_IK_ctrl_rotateZ";
+	rename -uid "98242939-4BA6-90DA-924C-33B867CDD5CD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_01_IK_ctrl_scaleX";
+	rename -uid "B31352CB-4B41-C8A2-3135-97B7EDDDC6FC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_01_IK_ctrl_scaleY";
+	rename -uid "20C8CA72-4ABB-B219-F379-69B28550833D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_01_IK_ctrl_scaleZ";
+	rename -uid "84DB3FCE-488C-668C-E891-77AAB2DFC910";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_finger_03_FK_ctrl_rotateX";
+	rename -uid "0C785E88-4A64-89FA-D871-209758F5CC2E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 41.991178757217178;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "R_finger_03_FK_ctrl_rotateY";
+	rename -uid "A0DBE582-47B6-701F-177F-67BB1E629849";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 45.886048594587891;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "R_finger_03_FK_ctrl_rotateZ";
+	rename -uid "6289BBCC-4BB9-279E-1B63-109C033F7E07";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0.70218024401475931 68 18.527169814656457;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_finger_03_FK_ctrl_scaleX";
+	rename -uid "6A4A7946-4107-5B56-52AE-85A5525A09AC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_finger_03_FK_ctrl_scaleY";
+	rename -uid "DD3933D3-4FE1-0B39-F4D1-4E96A3341FFB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_finger_03_FK_ctrl_scaleZ";
+	rename -uid "F2ACF146-40FE-141F-135D-02915E4C61BD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_PV_ctrl_rotateX";
+	rename -uid "4C8216B5-468E-D670-9ED0-4F98A16018B1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_PV_ctrl_rotateY";
+	rename -uid "15A56035-412E-B4FE-3D3E-9692F8CE4896";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_PV_ctrl_rotateZ";
+	rename -uid "7BC5C17B-4672-DBEA-C042-FEA9345F045F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_PV_ctrl_scaleX";
+	rename -uid "99EFA525-4771-08B1-59FE-D4AEABF3AC71";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_PV_ctrl_scaleY";
+	rename -uid "CFFEA26C-4177-A811-04CE-79B8A44F4533";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_PV_ctrl_scaleZ";
+	rename -uid "B5A6F758-4EE8-7985-722C-83B7B10BEE95";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_03_FK_ctrl_rotateX";
+	rename -uid "9CB54B8D-4088-82E5-0D3E-D69D86CA161C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_03_FK_ctrl_rotateY";
+	rename -uid "E0D20CB8-4F5B-2447-D49E-1DA2E6D14CA3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_toe_03_FK_ctrl_rotateZ";
+	rename -uid "536AAB22-40E9-FE8A-51FE-FFA7321F89C0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_03_FK_ctrl_scaleX";
+	rename -uid "42A92D95-48F5-2684-0804-22ABCF818B70";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_03_FK_ctrl_scaleY";
+	rename -uid "49833341-4E10-9B82-C359-63A9EAA6844A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_toe_03_FK_ctrl_scaleZ";
+	rename -uid "2082DCAF-4A1B-AEF9-B11D-B9AC0027655B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_01_FK_ctrl_rotateX";
+	rename -uid "4ECB29A5-4C51-7A1B-FDBA-849448DA3DF6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_01_FK_ctrl_rotateY";
+	rename -uid "83311A2F-4C95-B089-ABC5-FCAED20D17D2";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_01_FK_ctrl_rotateZ";
+	rename -uid "86FB4B74-4083-C296-EADC-618A578ABB80";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 53.910738836476284;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_arm_01_FK_ctrl_scaleX";
+	rename -uid "77D439DA-4B2C-413F-B003-B18F17EA1FDE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_arm_01_FK_ctrl_scaleY";
+	rename -uid "47998789-4107-9CB3-D31B-2483574C721B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_arm_01_FK_ctrl_scaleZ";
+	rename -uid "169FE1BB-4277-C0CA-96BC-53BDE4414C97";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_clav_FK_ctrl_rotateX";
+	rename -uid "EC9E6C31-47BD-CE9F-30BB-D5BF66219F4C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -95.467414933301782;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "R_leg_clav_FK_ctrl_rotateY";
+	rename -uid "C45E7CA9-4B10-C322-BE08-16AAAE840290";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_clav_FK_ctrl_rotateZ";
+	rename -uid "AE24E222-43CF-FECA-3361-269FFF644A76";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_clav_FK_ctrl_scaleX";
+	rename -uid "6BE65CBB-4FAF-1C2D-AF7D-78835DBF5EA1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_clav_FK_ctrl_scaleY";
+	rename -uid "B44728C4-43A1-6B12-08A2-1CAC877652DA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_clav_FK_ctrl_scaleZ";
+	rename -uid "322BE287-4CBC-4276-E19B-CA9A8B1FD17C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "hip_ctrl_rotateX";
+	rename -uid "0D245441-40AD-A78D-D0D5-AB993F879426";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "hip_ctrl_rotateY";
+	rename -uid "55C2C609-44A9-3F90-B0EF-61A3AE77690D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "hip_ctrl_rotateZ";
+	rename -uid "04C992A6-4C66-5DEA-C20D-45B628D76E34";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "hip_ctrl_scaleX";
+	rename -uid "994893B2-480A-468A-BC8E-55AFEA66AAD8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "hip_ctrl_scaleY";
+	rename -uid "CE9F5832-498F-8F91-830E-CE89550C4E17";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "hip_ctrl_scaleZ";
+	rename -uid "D1CC4F11-4358-4D07-F114-8AA5E9FB7BE6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "spine_01_FK_ctrl_rotateX";
+	rename -uid "680441CC-4C51-4116-28AC-2A95BDA6FFDD";
+	setAttr ".tan" 5;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  1 0 27 -30.110265194703775 44 -18.641257478596334;
+	setAttr -s 3 ".kit[0:2]"  18 18 1;
+	setAttr -s 3 ".kix[2]"  1;
+	setAttr -s 3 ".kiy[2]"  0;
+createNode animCurveTA -n "spine_01_FK_ctrl_rotateY";
+	rename -uid "9080370A-42C7-1D8B-118A-14BB94351FF7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "spine_01_FK_ctrl_rotateZ";
+	rename -uid "44CD0CDB-4832-0BA9-56FB-D0B95972E70C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "spine_01_FK_ctrl_scaleX";
+	rename -uid "CB10E563-4422-4CF4-DE11-F8BE78565B24";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "spine_01_FK_ctrl_scaleY";
+	rename -uid "47B936F0-4D7B-767A-B38D-E4B96DEBE466";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "spine_01_FK_ctrl_scaleZ";
+	rename -uid "EA8F5539-4D21-4C0D-9EC3-7F9772B8F69E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_hand_ctrl_rotateX";
+	rename -uid "AB28DEB1-4641-1B59-3D6A-0F9A3BB62D08";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_hand_ctrl_rotateY";
+	rename -uid "19755F1F-42DC-F371-291A-208D5626B5F6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_hand_ctrl_rotateZ";
+	rename -uid "A8212891-497F-79D9-704F-74B5302A5046";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_hand_ctrl_scaleX";
+	rename -uid "FC7C5C4B-43B9-C20A-B887-0090FCBED63D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_hand_ctrl_scaleY";
+	rename -uid "844259C4-4CC6-05A8-611D-709032F76B87";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_hand_ctrl_scaleZ";
+	rename -uid "9C77B824-409E-3A40-A337-5FA2213752A3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_03_FK_ctrl_rotateX";
+	rename -uid "12A8DD1D-4297-0ABD-FF3D-F1BE1C459F64";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_03_FK_ctrl_rotateY";
+	rename -uid "D0C5EAD8-43D5-E2D4-15CE-679C162C5CC0";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_03_FK_ctrl_rotateZ";
+	rename -uid "AE193F14-491F-386E-43AB-BEA592E6B6DA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_03_FK_ctrl_scaleX";
+	rename -uid "3BD26205-420A-F4F1-808E-EBA9BC65A64D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_03_FK_ctrl_scaleY";
+	rename -uid "6946C0BA-420E-6EBC-7F4E-13886BF87451";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_03_FK_ctrl_scaleZ";
+	rename -uid "047872B6-476D-94BB-A682-55B33E7EFA3A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_03_FK_ctrl_rotateX";
+	rename -uid "2CEEB80C-4F20-918A-CD9C-3C8A838C8F54";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_03_FK_ctrl_rotateY";
+	rename -uid "7259E06B-4771-80EA-B3F7-1FAF6ABDD2FE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_finger_03_FK_ctrl_rotateZ";
+	rename -uid "97E08E0C-44B3-4BE3-CC43-48B33599269F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -84.400049694944229;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_finger_03_FK_ctrl_scaleX";
+	rename -uid "880CF8A4-445B-A62E-020E-6B91A4AF5153";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_finger_03_FK_ctrl_scaleY";
+	rename -uid "D3B58A21-4782-9B7A-6AA7-6E840FF2D7DC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_finger_03_FK_ctrl_scaleZ";
+	rename -uid "B44601FE-43F6-659E-ED95-179C8E2CC14D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_03_IK_ctrl_rotateX";
+	rename -uid "2220BBE0-4017-91FF-7A3D-84B6C2AFBA4A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_03_IK_ctrl_rotateY";
+	rename -uid "50BDB045-4B9D-FA70-F321-49914E95EC51";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_03_IK_ctrl_rotateZ";
+	rename -uid "532893DF-43B8-CAE1-F485-F98A372EDCAD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_03_IK_ctrl_scaleX";
+	rename -uid "FF96064E-49C5-9A9C-CECB-2BAC73E42D2E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_03_IK_ctrl_scaleY";
+	rename -uid "0E031F16-4F67-5447-536F-E2BABD86C135";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_03_IK_ctrl_scaleZ";
+	rename -uid "63FC450B-40A1-8BFF-6B87-7AA247C0BAA9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_02_FK_ctrl_rotateX";
+	rename -uid "4C62BE11-4C0D-AA8A-63A3-5FAF82680235";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_02_FK_ctrl_rotateY";
+	rename -uid "E31E1EAA-4C45-6DEE-4A23-6E967D117AB5";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_02_FK_ctrl_rotateZ";
+	rename -uid "8B0835DB-464B-6F13-5369-B7B5BA7D3FFF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -50.857638711657181;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_arm_02_FK_ctrl_scaleX";
+	rename -uid "433B033A-4DCD-15DD-D328-BFBBEC627D9E";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_arm_02_FK_ctrl_scaleY";
+	rename -uid "F6A48071-4D9A-B444-8BA8-FC83AD8E89F9";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_arm_02_FK_ctrl_scaleZ";
+	rename -uid "1105877C-4D34-AD8C-EB2D-12AB84DD85A6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_02_FK_ctrl_rotateX";
+	rename -uid "E42582C0-4448-74A6-23A7-1FACE51604C1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_02_FK_ctrl_rotateY";
+	rename -uid "55481835-4853-BC57-F7F3-588B6A50C185";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_arm_02_FK_ctrl_rotateZ";
+	rename -uid "3DF6F39D-4F23-8242-2ED0-8499044567B3";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -38.427969876652533;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "R_arm_02_FK_ctrl_scaleX";
+	rename -uid "5618BC33-4BCA-A4A3-CB63-FD8415DC3587";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_arm_02_FK_ctrl_scaleY";
+	rename -uid "620B1E0F-4940-4508-DC29-D49CE657D276";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_arm_02_FK_ctrl_scaleZ";
+	rename -uid "406B26BC-4421-0A44-B8C3-42BD2DDBE33F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_hand_ctrl_rotateX";
+	rename -uid "540BA816-4D57-6576-C299-A1AB0D28523C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_hand_ctrl_rotateY";
+	rename -uid "81E49C13-4CDB-887E-DA5C-CF87999FF8C4";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_hand_ctrl_rotateZ";
+	rename -uid "7352D3B4-401D-B3C6-0F94-FF9FC5B41FDF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_hand_ctrl_scaleX";
+	rename -uid "FD4E01BF-4B4F-6614-E22F-37B014C56746";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_hand_ctrl_scaleY";
+	rename -uid "9CBE5847-464A-970C-2C9C-6D841DD61DCE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_hand_ctrl_scaleZ";
+	rename -uid "C3AFA59F-4680-2ADB-FC7C-6B832BCDC736";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_01_FK_ctrl_rotateX";
+	rename -uid "2EB8F6E7-4F4F-83F3-B890-04B929AD5AC7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_01_FK_ctrl_rotateY";
+	rename -uid "E4CF29D2-44B7-E26B-C5AA-4DB7317C6577";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_01_FK_ctrl_rotateZ";
+	rename -uid "E7981B2E-469A-65E4-30AC-A5B8009BD271";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_01_FK_ctrl_scaleX";
+	rename -uid "5BF3EA46-4613-075B-730E-BEB2FA93F168";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_01_FK_ctrl_scaleY";
+	rename -uid "106B6A08-4F65-8CA7-F81D-3192E8B2A045";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_01_FK_ctrl_scaleZ";
+	rename -uid "57669B29-4212-5408-508E-1E9A939AE8F8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_PV_ctrl_rotateX";
+	rename -uid "168F4F32-430B-239C-1AE0-CD8061971A38";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_PV_ctrl_rotateY";
+	rename -uid "DB8F2C69-4DF3-1344-E182-DD9FDF35B69D";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_leg_PV_ctrl_rotateZ";
+	rename -uid "F5D42683-48CF-C4CB-CDE4-519786DD0E7F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_PV_ctrl_scaleX";
+	rename -uid "7E44A1DE-427D-D2EA-E963-349A04DD77A1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_PV_ctrl_scaleY";
+	rename -uid "DFAB82CE-466F-3E54-6CC6-2EA42D8A438C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_leg_PV_ctrl_scaleZ";
+	rename -uid "B42D0615-4E34-625A-2976-56B14675AAAA";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_toe_02_FK_ctrl_rotateX";
+	rename -uid "A32F3F74-4A48-2266-43E7-DFBA64147033";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -17.062487267196907;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "L_toe_02_FK_ctrl_rotateY";
+	rename -uid "C5ACC2F7-49CD-F4DE-0D5B-ADB0CAC07AED";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 0;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTA -n "L_toe_02_FK_ctrl_rotateZ";
+	rename -uid "5351EED0-47DD-5616-7CBD-9CB39C42D25A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 -30.328465007268033;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_toe_02_FK_ctrl_scaleX";
+	rename -uid "D2737BDE-49D2-B43B-CBF7-2AA727F90ADD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_02_FK_ctrl_scaleY";
+	rename -uid "2E575E8E-4987-C429-6895-9DBE2137D3DE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_toe_02_FK_ctrl_scaleZ";
+	rename -uid "810A2403-484E-CF4A-B0E3-EA96FDB16A45";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_03_FK_ctrl_rotateX";
+	rename -uid "435DA1D9-49FE-B737-0EB8-D7B48D2D55FD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_03_FK_ctrl_rotateY";
+	rename -uid "33A89F4C-47D1-77BA-FF40-37AB6BDA9FC6";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "L_arm_03_FK_ctrl_rotateZ";
+	rename -uid "DDB03D6F-41B9-13EC-663E-CDBB1FC7ECCE";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  1 0 68 117.51323802642891;
+	setAttr -s 2 ".kot[0:1]"  5 5;
+createNode animCurveTU -n "L_arm_03_FK_ctrl_scaleX";
+	rename -uid "03C237C8-4046-C7FF-3727-379E59D1C0EF";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_arm_03_FK_ctrl_scaleY";
+	rename -uid "6B2EF60C-405C-671B-0342-F09EE62913DB";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_arm_03_FK_ctrl_scaleZ";
+	rename -uid "29D1EE1F-40CB-3407-C60D-CA83F3155FD8";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_foot_FK_ctrl_rotateX";
+	rename -uid "75145573-42AB-1238-B942-B095959FDE7F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_foot_FK_ctrl_rotateY";
+	rename -uid "4C36A800-49F9-2908-FBCD-19965EF5E506";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_foot_FK_ctrl_rotateZ";
+	rename -uid "CBAB7F09-4EC1-73F5-C0C5-45A586969266";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_foot_FK_ctrl_scaleX";
+	rename -uid "D004CADD-48DB-4715-999B-DB980D33B28C";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_foot_FK_ctrl_scaleY";
+	rename -uid "E722FF87-49A1-2249-A7E0-F687D7392003";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_foot_FK_ctrl_scaleZ";
+	rename -uid "2291F88E-46F7-33A5-31D8-93A52464404A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_03_IK_ctrl_rotateX";
+	rename -uid "60BD95AE-4882-F453-77CE-8E8C630B7580";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_03_IK_ctrl_rotateY";
+	rename -uid "4256444F-4807-9FA8-37A6-A485DA5C4DF7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "R_leg_03_IK_ctrl_rotateZ";
+	rename -uid "AAE1D50B-48B5-C832-64E8-69BC76B498C7";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_03_IK_ctrl_scaleX";
+	rename -uid "30E90499-47A1-34CB-E7E9-F89147208DF1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_03_IK_ctrl_scaleY";
+	rename -uid "A45203E5-4D69-A11B-3E7D-98A21408D40F";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_leg_03_IK_ctrl_scaleZ";
+	rename -uid "3F245AA8-4EEB-AA2C-356B-EBB9ED991694";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+createNode aiStandardSurface -n "Road_obj";
+	rename -uid "9E76CA1F-44D7-4551-68DF-179C320D6BCE";
+createNode shadingEngine -n "aiStandardSurface3SG";
+	rename -uid "B1208FA6-4062-CD5D-3B2C-4C85E87ACC57";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo3";
+	rename -uid "4F3732D5-4447-E900-901F-FF80CBCA2CDE";
+createNode file -n "file9";
+	rename -uid "52354ADA-4F8A-7BEA-DE1A-50B9C07AAFD3";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/Road_substance/Road_obj_standardSurface1_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture11";
+	rename -uid "50AFF2C2-4991-7B87-7E5A-CA9C259D40BF";
+createNode file -n "file10";
+	rename -uid "3D92BBBD-4089-5899-18F9-7A8FE213B38B";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/Road_substance/Road_obj_standardSurface1_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture12";
+	rename -uid "6C669AFF-480E-6C72-C8C4-4BA172508D66";
+createNode file -n "file11";
+	rename -uid "47244DF6-4607-A070-3D8B-66B084A318D0";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/Road_substance/Road_obj_standardSurface1_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture13";
+	rename -uid "45DF9D82-4965-4CFD-4380-EEAF429FBFEE";
+createNode file -n "file12";
+	rename -uid "D1869A4B-44BE-8FEE-9DCA-6ABC1023F47F";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/Road_substance/Road_obj_standardSurface1_Normal.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture14";
+	rename -uid "69E10126-4E8E-8AD1-CD3C-02B0F08BA764";
+createNode bump2d -n "bump2d3";
+	rename -uid "D5B61564-49B6-8795-5E16-D7B082E7C0CC";
+	setAttr ".vc1" -type "float3" 0 1.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode aiStandardSurface -n "House_two_surface";
+	rename -uid "87F593FD-42E4-85E0-E60F-799EF6FE3AF6";
+createNode shadingEngine -n "aiStandardSurface4SG";
+	rename -uid "12FFA73A-4D90-1CAF-1D5C-EAA2542E6727";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo4";
+	rename -uid "E48D0DF3-4E3C-F798-3C2E-4AB4125304FC";
+createNode file -n "file13";
+	rename -uid "D763BE1A-4015-909D-F361-6E8127DCC0BA";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_default_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture15";
+	rename -uid "2EECBEA2-40D1-C4C5-F4F4-BBA3B0A0C4D5";
+createNode file -n "file14";
+	rename -uid "D01D1824-4785-E48F-A199-25B790BC77FF";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_default_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture16";
+	rename -uid "9F7A2D6A-4BAD-C3E7-6D30-B9ACB4295E33";
+createNode file -n "file15";
+	rename -uid "CD328BD4-4F81-7189-42E4-5C98E615DF37";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_default_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture17";
+	rename -uid "72BBDBEA-4F61-B7F7-5F47-27B451FDA89C";
+createNode file -n "file16";
+	rename -uid "E1837497-45F9-8518-6F63-3185DF03BBE6";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_default_Normal.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture18";
+	rename -uid "019C53ED-4C81-C9FB-24A6-2F8586E9D69D";
+createNode bump2d -n "bump2d4";
+	rename -uid "F39BCE08-42C0-F914-42CF-B7AA14C4DA35";
+	setAttr ".vc1" -type "float3" 0 2.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
+createNode aiStandardSurface -n "House_two_door";
+	rename -uid "E8A420E0-4F49-0DE9-2B43-CC9AF68E3FEB";
+createNode shadingEngine -n "aiStandardSurface5SG";
+	rename -uid "BFC67503-4C67-D357-C7E0-9E9627B67E6E";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo5";
+	rename -uid "4F0D4DF8-4147-0173-1353-EB9BF8B1AC51";
+createNode file -n "file17";
+	rename -uid "F556B9CD-40D6-EDFE-FA76-E69F7ED08ED8";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_standardSurface1_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture19";
+	rename -uid "1529EA17-4760-67D8-EE10-2CB3045423C7";
+createNode file -n "file18";
+	rename -uid "CE0D5681-4D05-1FBB-1CAF-38BBCB4B283F";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_standardSurface1_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture20";
+	rename -uid "B5138A47-4F3A-3AAF-8873-BF998226A141";
+createNode file -n "file19";
+	rename -uid "DD1108D7-475E-69F5-8640-C9B8CCC0FFBD";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_standardSurface1_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture21";
+	rename -uid "FB9E4146-458A-2D72-10FB-189F1A0EE87B";
+createNode file -n "file20";
+	rename -uid "B2BA9911-43EC-C103-66C3-D8809388E3A9";
+	setAttr ".ftn" -type "string" "C:/Users/couls/OneDrive - Utah Valley University/Desktop/2025_assignments/AnimationProjectOneTextures/House_two_textures/house_2_standardSurface1_Normal.png";
+	setAttr ".cs" -type "string" "sRGB";
+createNode place2dTexture -n "place2dTexture22";
+	rename -uid "61D25551-4EE6-8A55-3B7D-9BA68D67F56C";
+createNode bump2d -n "bump2d5";
+	rename -uid "744C643E-4CC8-3B22-A0A5-A699DE35A963";
+	setAttr ".vc1" -type "float3" 0 2.9999999e-05 0 ;
+	setAttr ".vc2" -type "float3" 9.9999997e-06 9.9999997e-06 0 ;
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "688E509D-45CF-EE19-BD30-E19389C89354";
+	rename -uid "81359418-4DA3-C60F-D2F2-7081C98835EA";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -44.047617297323995 -202.38094433905621 ;
-	setAttr ".tgi[0].vh" -type "double2" 102.38094831269902 44.047617297323995 ;
+	setAttr ".tgi[0].vl" -type "double2" 833.33330021964321 -469.16774020360697 ;
+	setAttr ".tgi[0].vh" -type "double2" 2139.351160075013 202.12974295104769 ;
+	setAttr -s 27 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" 1581.4285888671875;
+	setAttr ".tgi[0].ni[0].y" -104.28571319580078;
+	setAttr ".tgi[0].ni[0].nvs" 1923;
+	setAttr ".tgi[0].ni[1].x" 1152.857177734375;
+	setAttr ".tgi[0].ni[1].y" -121.42857360839844;
+	setAttr ".tgi[0].ni[1].nvs" 1923;
+	setAttr ".tgi[0].ni[2].x" 1480;
+	setAttr ".tgi[0].ni[2].y" -75.714286804199219;
+	setAttr ".tgi[0].ni[2].nvs" 1923;
+	setAttr ".tgi[0].ni[3].x" 1480;
+	setAttr ".tgi[0].ni[3].y" -75.714286804199219;
+	setAttr ".tgi[0].ni[3].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" 1767.142822265625;
+	setAttr ".tgi[0].ni[4].y" -75.714286804199219;
+	setAttr ".tgi[0].ni[4].nvs" 1923;
+	setAttr ".tgi[0].ni[5].x" 1274.2857666015625;
+	setAttr ".tgi[0].ni[5].y" -127.14286041259766;
+	setAttr ".tgi[0].ni[5].nvs" 1923;
+	setAttr ".tgi[0].ni[6].x" 1581.4285888671875;
+	setAttr ".tgi[0].ni[6].y" -104.28571319580078;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" 1480;
+	setAttr ".tgi[0].ni[7].y" -75.714286804199219;
+	setAttr ".tgi[0].ni[7].nvs" 1923;
+	setAttr ".tgi[0].ni[8].x" 1305.7142333984375;
+	setAttr ".tgi[0].ni[8].y" 60;
+	setAttr ".tgi[0].ni[8].nvs" 1923;
+	setAttr ".tgi[0].ni[9].x" 1327.142822265625;
+	setAttr ".tgi[0].ni[9].y" -87.142860412597656;
+	setAttr ".tgi[0].ni[9].nvs" 1923;
+	setAttr ".tgi[0].ni[10].x" 1581.4285888671875;
+	setAttr ".tgi[0].ni[10].y" -104.28571319580078;
+	setAttr ".tgi[0].ni[10].nvs" 1923;
+	setAttr ".tgi[0].ni[11].x" 1172.857177734375;
+	setAttr ".tgi[0].ni[11].y" -98.571426391601562;
+	setAttr ".tgi[0].ni[11].nvs" 1923;
+	setAttr ".tgi[0].ni[12].x" 1121.4285888671875;
+	setAttr ".tgi[0].ni[12].y" -138.57142639160156;
+	setAttr ".tgi[0].ni[12].nvs" 1923;
+	setAttr ".tgi[0].ni[13].x" 1460;
+	setAttr ".tgi[0].ni[13].y" -98.571426391601562;
+	setAttr ".tgi[0].ni[13].nvs" 1923;
+	setAttr ".tgi[0].ni[14].x" 1735.7142333984375;
+	setAttr ".tgi[0].ni[14].y" -92.857139587402344;
+	setAttr ".tgi[0].ni[14].nvs" 1923;
+	setAttr ".tgi[0].ni[15].x" 1634.2857666015625;
+	setAttr ".tgi[0].ni[15].y" -64.285713195800781;
+	setAttr ".tgi[0].ni[15].nvs" 1923;
+	setAttr ".tgi[0].ni[16].x" 1172.857177734375;
+	setAttr ".tgi[0].ni[16].y" -98.571426391601562;
+	setAttr ".tgi[0].ni[16].nvs" 1923;
+	setAttr ".tgi[0].ni[17].x" 1020;
+	setAttr ".tgi[0].ni[17].y" -110;
+	setAttr ".tgi[0].ni[17].nvs" 1923;
+	setAttr ".tgi[0].ni[18].x" 1305.7142333984375;
+	setAttr ".tgi[0].ni[18].y" -110;
+	setAttr ".tgi[0].ni[18].nvs" 1923;
+	setAttr ".tgi[0].ni[19].x" 1497.1297607421875;
+	setAttr ".tgi[0].ni[19].y" -67.854965209960938;
+	setAttr ".tgi[0].ni[19].nvs" 1923;
+	setAttr ".tgi[0].ni[20].x" 1612.857177734375;
+	setAttr ".tgi[0].ni[20].y" 82.857139587402344;
+	setAttr ".tgi[0].ni[20].nvs" 1923;
+	setAttr ".tgi[0].ni[21].x" 1428.5714111328125;
+	setAttr ".tgi[0].ni[21].y" -115.71428680419922;
+	setAttr ".tgi[0].ni[21].nvs" 1923;
+	setAttr ".tgi[0].ni[22].x" 1274.2857666015625;
+	setAttr ".tgi[0].ni[22].y" -127.14286041259766;
+	setAttr ".tgi[0].ni[22].nvs" 1923;
+	setAttr ".tgi[0].ni[23].x" 1274.2857666015625;
+	setAttr ".tgi[0].ni[23].y" -127.14286041259766;
+	setAttr ".tgi[0].ni[23].nvs" 1923;
+	setAttr ".tgi[0].ni[24].x" 1612.857177734375;
+	setAttr ".tgi[0].ni[24].y" -274.28570556640625;
+	setAttr ".tgi[0].ni[24].nvs" 1923;
+	setAttr ".tgi[0].ni[25].x" 1172.857177734375;
+	setAttr ".tgi[0].ni[25].y" -98.571426391601562;
+	setAttr ".tgi[0].ni[25].nvs" 1923;
+	setAttr ".tgi[0].ni[26].x" 1305.7142333984375;
+	setAttr ".tgi[0].ni[26].y" -297.14285278320312;
+	setAttr ".tgi[0].ni[26].nvs" 1923;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -k on ".o" 0;
-	setAttr -av ".unw";
+	setAttr -k on ".o" 15;
+	setAttr -av ".unw" 15;
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -1857,7 +5200,7 @@ select -ne :renderPartition;
 	setAttr -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 4 ".st";
+	setAttr -s 9 ".st";
 	setAttr -cb on ".an";
 	setAttr -cb on ".pt";
 select -ne :renderGlobalsList1;
@@ -1870,7 +5213,7 @@ select -ne :defaultShaderList1;
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 7 ".s";
+	setAttr -s 13 ".s";
 select -ne :postProcessList1;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
@@ -1882,13 +5225,14 @@ select -ne :defaultRenderUtilityList1;
 	setAttr -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 9 ".u";
+	setAttr -s 36 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
 	setAttr -s 3 ".r";
 select -ne :lightList1;
+	setAttr -s 2 ".l";
 select -ne :defaultTextureList1;
-	setAttr -s 4 ".tx";
+	setAttr -s 25 ".tx";
 select -ne :standardSurface1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
@@ -1902,7 +5246,6 @@ select -ne :initialShadingGroup;
 	setAttr -k on ".vwm";
 	setAttr -k on ".tpv";
 	setAttr -k on ".uit";
-	setAttr -s 6 ".dsm";
 	setAttr -k on ".mwc";
 	setAttr -cb on ".an";
 	setAttr -cb on ".il";
@@ -2031,11 +5374,11 @@ select -ne :defaultResolution;
 	setAttr -av -k on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -k on ".bnm";
-	setAttr -av -k on ".w";
-	setAttr -av -k on ".h";
+	setAttr -av -k on ".w" 1280;
+	setAttr -av -k on ".h" 720;
 	setAttr -av -k on ".pa" 1;
 	setAttr -av -k on ".al";
-	setAttr -av -k on ".dar";
+	setAttr -av -k on ".dar" 1.7769999504089355;
 	setAttr -av -k on ".ldar";
 	setAttr -av -k on ".dpi";
 	setAttr -av -k on ".off";
@@ -2044,6 +5387,7 @@ select -ne :defaultResolution;
 	setAttr -av -k on ".isu";
 	setAttr -av -k on ".pdu";
 select -ne :defaultLightSet;
+	setAttr -s 2 ".dsm";
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya2022-default/config.ocio";
@@ -2092,12 +5436,360 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".shml";
 	setAttr -k on ".hwel";
 select -ne :ikSystem;
-connectAttr "polySoftEdge1.out" "house_1RN.phl[1]";
-connectAttr "house_1RN.phl[2]" "polySoftEdge1.mp";
+connectAttr "house_1RN.phl[1]" "aiStandardSurface1SG.dsm" -na;
+connectAttr "polySoftEdge1.out" "house_1RN.phl[2]";
+connectAttr "house_1RN.phl[3]" "polySoftEdge1.mp";
+connectAttr "house_1RN.phl[4]" "aiStandardSurface2SG.dsm" -na;
+connectAttr "SceneGeo.di" "Road_objectRN.phl[1]";
+connectAttr "Road_objectRN.phl[2]" "aiStandardSurface3SG.dsm" -na;
+connectAttr "transform_ctrl_L_armIKFK.o" "screw_robot_rigRN.phl[1]";
+connectAttr "transform_ctrl_R_arm_IKFK.o" "screw_robot_rigRN.phl[2]";
+connectAttr "transform_ctrl_L_leg_IKFK.o" "screw_robot_rigRN.phl[3]";
+connectAttr "transform_ctrl_R_leg_IKFK.o" "screw_robot_rigRN.phl[4]";
+connectAttr "transform_ctrl_translateX.o" "screw_robot_rigRN.phl[5]";
+connectAttr "transform_ctrl_translateY.o" "screw_robot_rigRN.phl[6]";
+connectAttr "transform_ctrl_translateZ.o" "screw_robot_rigRN.phl[7]";
+connectAttr "transform_ctrl_rotateX.o" "screw_robot_rigRN.phl[8]";
+connectAttr "transform_ctrl_rotateY.o" "screw_robot_rigRN.phl[9]";
+connectAttr "transform_ctrl_rotateZ.o" "screw_robot_rigRN.phl[10]";
+connectAttr "transform_ctrl_scaleX.o" "screw_robot_rigRN.phl[11]";
+connectAttr "transform_ctrl_scaleY.o" "screw_robot_rigRN.phl[12]";
+connectAttr "transform_ctrl_scaleZ.o" "screw_robot_rigRN.phl[13]";
+connectAttr "COG_ctrl_translateX.o" "screw_robot_rigRN.phl[14]";
+connectAttr "COG_ctrl_translateY.o" "screw_robot_rigRN.phl[15]";
+connectAttr "COG_ctrl_translateZ.o" "screw_robot_rigRN.phl[16]";
+connectAttr "COG_ctrl_rotateX.o" "screw_robot_rigRN.phl[17]";
+connectAttr "COG_ctrl_rotateY.o" "screw_robot_rigRN.phl[18]";
+connectAttr "COG_ctrl_rotateZ.o" "screw_robot_rigRN.phl[19]";
+connectAttr "COG_ctrl_scaleX.o" "screw_robot_rigRN.phl[20]";
+connectAttr "COG_ctrl_scaleY.o" "screw_robot_rigRN.phl[21]";
+connectAttr "COG_ctrl_scaleZ.o" "screw_robot_rigRN.phl[22]";
+connectAttr "hip_ctrl_translateX.o" "screw_robot_rigRN.phl[23]";
+connectAttr "hip_ctrl_translateZ.o" "screw_robot_rigRN.phl[24]";
+connectAttr "hip_ctrl_translateY.o" "screw_robot_rigRN.phl[25]";
+connectAttr "hip_ctrl_rotateX.o" "screw_robot_rigRN.phl[26]";
+connectAttr "hip_ctrl_rotateY.o" "screw_robot_rigRN.phl[27]";
+connectAttr "hip_ctrl_rotateZ.o" "screw_robot_rigRN.phl[28]";
+connectAttr "hip_ctrl_scaleX.o" "screw_robot_rigRN.phl[29]";
+connectAttr "hip_ctrl_scaleY.o" "screw_robot_rigRN.phl[30]";
+connectAttr "hip_ctrl_scaleZ.o" "screw_robot_rigRN.phl[31]";
+connectAttr "L_leg_clav_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[32]";
+connectAttr "L_leg_clav_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[33]";
+connectAttr "L_leg_clav_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[34]";
+connectAttr "L_leg_clav_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[35]";
+connectAttr "L_leg_clav_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[36]";
+connectAttr "L_leg_clav_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[37]";
+connectAttr "L_leg_clav_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[38]";
+connectAttr "L_leg_clav_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[39]";
+connectAttr "L_leg_clav_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[40]";
+connectAttr "L_leg_01_IK_ctrl_translateX.o" "screw_robot_rigRN.phl[41]";
+connectAttr "L_leg_01_IK_ctrl_translateZ.o" "screw_robot_rigRN.phl[42]";
+connectAttr "L_leg_01_IK_ctrl_translateY.o" "screw_robot_rigRN.phl[43]";
+connectAttr "L_leg_01_IK_ctrl_rotateX.o" "screw_robot_rigRN.phl[44]";
+connectAttr "L_leg_01_IK_ctrl_rotateY.o" "screw_robot_rigRN.phl[45]";
+connectAttr "L_leg_01_IK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[46]";
+connectAttr "L_leg_01_IK_ctrl_scaleX.o" "screw_robot_rigRN.phl[47]";
+connectAttr "L_leg_01_IK_ctrl_scaleY.o" "screw_robot_rigRN.phl[48]";
+connectAttr "L_leg_01_IK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[49]";
+connectAttr "L_leg_03_IK_ctrl_rotateX.o" "screw_robot_rigRN.phl[50]";
+connectAttr "L_leg_03_IK_ctrl_rotateY.o" "screw_robot_rigRN.phl[51]";
+connectAttr "L_leg_03_IK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[52]";
+connectAttr "L_leg_03_IK_ctrl_translateX.o" "screw_robot_rigRN.phl[53]";
+connectAttr "L_leg_03_IK_ctrl_translateZ.o" "screw_robot_rigRN.phl[54]";
+connectAttr "L_leg_03_IK_ctrl_translateY.o" "screw_robot_rigRN.phl[55]";
+connectAttr "L_leg_03_IK_ctrl_scaleX.o" "screw_robot_rigRN.phl[56]";
+connectAttr "L_leg_03_IK_ctrl_scaleY.o" "screw_robot_rigRN.phl[57]";
+connectAttr "L_leg_03_IK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[58]";
+connectAttr "L_leg_PV_ctrl_translateX.o" "screw_robot_rigRN.phl[59]";
+connectAttr "L_leg_PV_ctrl_translateZ.o" "screw_robot_rigRN.phl[60]";
+connectAttr "L_leg_PV_ctrl_translateY.o" "screw_robot_rigRN.phl[61]";
+connectAttr "L_leg_PV_ctrl_rotateX.o" "screw_robot_rigRN.phl[62]";
+connectAttr "L_leg_PV_ctrl_rotateY.o" "screw_robot_rigRN.phl[63]";
+connectAttr "L_leg_PV_ctrl_rotateZ.o" "screw_robot_rigRN.phl[64]";
+connectAttr "L_leg_PV_ctrl_scaleX.o" "screw_robot_rigRN.phl[65]";
+connectAttr "L_leg_PV_ctrl_scaleY.o" "screw_robot_rigRN.phl[66]";
+connectAttr "L_leg_PV_ctrl_scaleZ.o" "screw_robot_rigRN.phl[67]";
+connectAttr "L_foot_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[68]";
+connectAttr "L_foot_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[69]";
+connectAttr "L_foot_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[70]";
+connectAttr "L_foot_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[71]";
+connectAttr "L_foot_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[72]";
+connectAttr "L_foot_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[73]";
+connectAttr "L_foot_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[74]";
+connectAttr "L_foot_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[75]";
+connectAttr "L_foot_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[76]";
+connectAttr "L_toe_03_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[77]";
+connectAttr "L_toe_03_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[78]";
+connectAttr "L_toe_03_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[79]";
+connectAttr "L_toe_03_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[80]";
+connectAttr "L_toe_03_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[81]";
+connectAttr "L_toe_03_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[82]";
+connectAttr "L_toe_03_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[83]";
+connectAttr "L_toe_03_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[84]";
+connectAttr "L_toe_03_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[85]";
+connectAttr "L_toe_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[86]";
+connectAttr "L_toe_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[87]";
+connectAttr "L_toe_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[88]";
+connectAttr "L_toe_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[89]";
+connectAttr "L_toe_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[90]";
+connectAttr "L_toe_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[91]";
+connectAttr "L_toe_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[92]";
+connectAttr "L_toe_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[93]";
+connectAttr "L_toe_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[94]";
+connectAttr "L_toe_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[95]";
+connectAttr "L_toe_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[96]";
+connectAttr "L_toe_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[97]";
+connectAttr "L_toe_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[98]";
+connectAttr "L_toe_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[99]";
+connectAttr "L_toe_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[100]";
+connectAttr "L_toe_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[101]";
+connectAttr "L_toe_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[102]";
+connectAttr "L_toe_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[103]";
+connectAttr "R_leg_clav_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[104]";
+connectAttr "R_leg_clav_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[105]";
+connectAttr "R_leg_clav_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[106]";
+connectAttr "R_leg_clav_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[107]";
+connectAttr "R_leg_clav_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[108]";
+connectAttr "R_leg_clav_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[109]";
+connectAttr "R_leg_clav_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[110]";
+connectAttr "R_leg_clav_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[111]";
+connectAttr "R_leg_clav_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[112]";
+connectAttr "R_leg_01_IK_ctrl_translateX.o" "screw_robot_rigRN.phl[113]";
+connectAttr "R_leg_01_IK_ctrl_translateY.o" "screw_robot_rigRN.phl[114]";
+connectAttr "R_leg_01_IK_ctrl_translateZ.o" "screw_robot_rigRN.phl[115]";
+connectAttr "R_leg_01_IK_ctrl_rotateX.o" "screw_robot_rigRN.phl[116]";
+connectAttr "R_leg_01_IK_ctrl_rotateY.o" "screw_robot_rigRN.phl[117]";
+connectAttr "R_leg_01_IK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[118]";
+connectAttr "R_leg_01_IK_ctrl_scaleX.o" "screw_robot_rigRN.phl[119]";
+connectAttr "R_leg_01_IK_ctrl_scaleY.o" "screw_robot_rigRN.phl[120]";
+connectAttr "R_leg_01_IK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[121]";
+connectAttr "R_leg_03_IK_ctrl_rotateX.o" "screw_robot_rigRN.phl[122]";
+connectAttr "R_leg_03_IK_ctrl_rotateY.o" "screw_robot_rigRN.phl[123]";
+connectAttr "R_leg_03_IK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[124]";
+connectAttr "R_leg_03_IK_ctrl_translateY.o" "screw_robot_rigRN.phl[125]";
+connectAttr "R_leg_03_IK_ctrl_translateX.o" "screw_robot_rigRN.phl[126]";
+connectAttr "R_leg_03_IK_ctrl_translateZ.o" "screw_robot_rigRN.phl[127]";
+connectAttr "R_leg_03_IK_ctrl_scaleX.o" "screw_robot_rigRN.phl[128]";
+connectAttr "R_leg_03_IK_ctrl_scaleY.o" "screw_robot_rigRN.phl[129]";
+connectAttr "R_leg_03_IK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[130]";
+connectAttr "R_leg_PV_ctrl_translateX.o" "screw_robot_rigRN.phl[131]";
+connectAttr "R_leg_PV_ctrl_translateY.o" "screw_robot_rigRN.phl[132]";
+connectAttr "R_leg_PV_ctrl_translateZ.o" "screw_robot_rigRN.phl[133]";
+connectAttr "R_leg_PV_ctrl_rotateX.o" "screw_robot_rigRN.phl[134]";
+connectAttr "R_leg_PV_ctrl_rotateY.o" "screw_robot_rigRN.phl[135]";
+connectAttr "R_leg_PV_ctrl_rotateZ.o" "screw_robot_rigRN.phl[136]";
+connectAttr "R_leg_PV_ctrl_scaleX.o" "screw_robot_rigRN.phl[137]";
+connectAttr "R_leg_PV_ctrl_scaleY.o" "screw_robot_rigRN.phl[138]";
+connectAttr "R_leg_PV_ctrl_scaleZ.o" "screw_robot_rigRN.phl[139]";
+connectAttr "R_foot_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[140]";
+connectAttr "R_foot_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[141]";
+connectAttr "R_foot_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[142]";
+connectAttr "R_foot_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[143]";
+connectAttr "R_foot_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[144]";
+connectAttr "R_foot_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[145]";
+connectAttr "R_foot_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[146]";
+connectAttr "R_foot_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[147]";
+connectAttr "R_foot_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[148]";
+connectAttr "R_toe_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[149]";
+connectAttr "R_toe_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[150]";
+connectAttr "R_toe_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[151]";
+connectAttr "R_toe_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[152]";
+connectAttr "R_toe_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[153]";
+connectAttr "R_toe_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[154]";
+connectAttr "R_toe_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[155]";
+connectAttr "R_toe_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[156]";
+connectAttr "R_toe_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[157]";
+connectAttr "R_toe_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[158]";
+connectAttr "R_toe_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[159]";
+connectAttr "R_toe_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[160]";
+connectAttr "R_toe_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[161]";
+connectAttr "R_toe_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[162]";
+connectAttr "R_toe_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[163]";
+connectAttr "R_toe_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[164]";
+connectAttr "R_toe_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[165]";
+connectAttr "R_toe_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[166]";
+connectAttr "R_toe_03_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[167]";
+connectAttr "R_toe_03_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[168]";
+connectAttr "R_toe_03_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[169]";
+connectAttr "R_toe_03_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[170]";
+connectAttr "R_toe_03_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[171]";
+connectAttr "R_toe_03_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[172]";
+connectAttr "R_toe_03_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[173]";
+connectAttr "R_toe_03_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[174]";
+connectAttr "R_toe_03_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[175]";
+connectAttr "spine_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[176]";
+connectAttr "spine_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[177]";
+connectAttr "spine_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[178]";
+connectAttr "spine_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[179]";
+connectAttr "spine_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[180]";
+connectAttr "spine_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[181]";
+connectAttr "spine_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[182]";
+connectAttr "spine_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[183]";
+connectAttr "spine_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[184]";
+connectAttr "spine_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[185]";
+connectAttr "spine_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[186]";
+connectAttr "spine_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[187]";
+connectAttr "spine_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[188]";
+connectAttr "spine_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[189]";
+connectAttr "spine_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[190]";
+connectAttr "spine_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[191]";
+connectAttr "spine_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[192]";
+connectAttr "spine_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[193]";
+connectAttr "L_arm_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[194]";
+connectAttr "L_arm_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[195]";
+connectAttr "L_arm_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[196]";
+connectAttr "L_arm_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[197]";
+connectAttr "L_arm_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[198]";
+connectAttr "L_arm_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[199]";
+connectAttr "L_arm_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[200]";
+connectAttr "L_arm_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[201]";
+connectAttr "L_arm_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[202]";
+connectAttr "L_arm_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[203]";
+connectAttr "L_arm_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[204]";
+connectAttr "L_arm_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[205]";
+connectAttr "L_arm_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[206]";
+connectAttr "L_arm_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[207]";
+connectAttr "L_arm_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[208]";
+connectAttr "L_arm_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[209]";
+connectAttr "L_arm_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[210]";
+connectAttr "L_arm_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[211]";
+connectAttr "L_arm_03_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[212]";
+connectAttr "L_arm_03_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[213]";
+connectAttr "L_arm_03_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[214]";
+connectAttr "L_arm_03_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[215]";
+connectAttr "L_arm_03_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[216]";
+connectAttr "L_arm_03_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[217]";
+connectAttr "L_arm_03_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[218]";
+connectAttr "L_arm_03_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[219]";
+connectAttr "L_arm_03_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[220]";
+connectAttr "R_arm_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[221]";
+connectAttr "R_arm_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[222]";
+connectAttr "R_arm_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[223]";
+connectAttr "R_arm_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[224]";
+connectAttr "R_arm_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[225]";
+connectAttr "R_arm_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[226]";
+connectAttr "R_arm_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[227]";
+connectAttr "R_arm_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[228]";
+connectAttr "R_arm_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[229]";
+connectAttr "R_arm_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[230]";
+connectAttr "R_arm_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[231]";
+connectAttr "R_arm_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[232]";
+connectAttr "R_arm_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[233]";
+connectAttr "R_arm_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[234]";
+connectAttr "R_arm_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[235]";
+connectAttr "R_arm_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[236]";
+connectAttr "R_arm_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[237]";
+connectAttr "R_arm_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[238]";
+connectAttr "R_arm_03_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[239]";
+connectAttr "R_arm_03_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[240]";
+connectAttr "R_arm_03_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[241]";
+connectAttr "R_arm_03_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[242]";
+connectAttr "R_arm_03_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[243]";
+connectAttr "R_arm_03_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[244]";
+connectAttr "R_arm_03_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[245]";
+connectAttr "R_arm_03_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[246]";
+connectAttr "R_arm_03_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[247]";
+connectAttr "L_hand_ctrl_translateX.o" "screw_robot_rigRN.phl[248]";
+connectAttr "L_hand_ctrl_translateZ.o" "screw_robot_rigRN.phl[249]";
+connectAttr "L_hand_ctrl_translateY.o" "screw_robot_rigRN.phl[250]";
+connectAttr "L_hand_ctrl_rotateX.o" "screw_robot_rigRN.phl[251]";
+connectAttr "L_hand_ctrl_rotateY.o" "screw_robot_rigRN.phl[252]";
+connectAttr "L_hand_ctrl_rotateZ.o" "screw_robot_rigRN.phl[253]";
+connectAttr "L_hand_ctrl_scaleX.o" "screw_robot_rigRN.phl[254]";
+connectAttr "L_hand_ctrl_scaleY.o" "screw_robot_rigRN.phl[255]";
+connectAttr "L_hand_ctrl_scaleZ.o" "screw_robot_rigRN.phl[256]";
+connectAttr "L_finger_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[257]";
+connectAttr "L_finger_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[258]";
+connectAttr "L_finger_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[259]";
+connectAttr "L_finger_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[260]";
+connectAttr "L_finger_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[261]";
+connectAttr "L_finger_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[262]";
+connectAttr "L_finger_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[263]";
+connectAttr "L_finger_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[264]";
+connectAttr "L_finger_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[265]";
+connectAttr "L_finger_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[266]";
+connectAttr "L_finger_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[267]";
+connectAttr "L_finger_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[268]";
+connectAttr "L_finger_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[269]";
+connectAttr "L_finger_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[270]";
+connectAttr "L_finger_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[271]";
+connectAttr "L_finger_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[272]";
+connectAttr "L_finger_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[273]";
+connectAttr "L_finger_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[274]";
+connectAttr "L_finger_03_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[275]";
+connectAttr "L_finger_03_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[276]";
+connectAttr "L_finger_03_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[277]";
+connectAttr "L_finger_03_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[278]";
+connectAttr "L_finger_03_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[279]";
+connectAttr "L_finger_03_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[280]";
+connectAttr "L_finger_03_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[281]";
+connectAttr "L_finger_03_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[282]";
+connectAttr "L_finger_03_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[283]";
+connectAttr "R_hand_ctrl_translateX.o" "screw_robot_rigRN.phl[284]";
+connectAttr "R_hand_ctrl_translateY.o" "screw_robot_rigRN.phl[285]";
+connectAttr "R_hand_ctrl_translateZ.o" "screw_robot_rigRN.phl[286]";
+connectAttr "R_hand_ctrl_rotateX.o" "screw_robot_rigRN.phl[287]";
+connectAttr "R_hand_ctrl_rotateY.o" "screw_robot_rigRN.phl[288]";
+connectAttr "R_hand_ctrl_rotateZ.o" "screw_robot_rigRN.phl[289]";
+connectAttr "R_hand_ctrl_scaleX.o" "screw_robot_rigRN.phl[290]";
+connectAttr "R_hand_ctrl_scaleY.o" "screw_robot_rigRN.phl[291]";
+connectAttr "R_hand_ctrl_scaleZ.o" "screw_robot_rigRN.phl[292]";
+connectAttr "R_finger_01_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[293]";
+connectAttr "R_finger_01_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[294]";
+connectAttr "R_finger_01_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[295]";
+connectAttr "R_finger_01_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[296]";
+connectAttr "R_finger_01_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[297]";
+connectAttr "R_finger_01_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[298]";
+connectAttr "R_finger_01_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[299]";
+connectAttr "R_finger_01_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[300]";
+connectAttr "R_finger_01_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[301]";
+connectAttr "R_finger_02_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[302]";
+connectAttr "R_finger_02_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[303]";
+connectAttr "R_finger_02_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[304]";
+connectAttr "R_finger_02_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[305]";
+connectAttr "R_finger_02_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[306]";
+connectAttr "R_finger_02_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[307]";
+connectAttr "R_finger_02_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[308]";
+connectAttr "R_finger_02_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[309]";
+connectAttr "R_finger_02_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[310]";
+connectAttr "R_finger_03_FK_ctrl_translateX.o" "screw_robot_rigRN.phl[311]";
+connectAttr "R_finger_03_FK_ctrl_translateY.o" "screw_robot_rigRN.phl[312]";
+connectAttr "R_finger_03_FK_ctrl_translateZ.o" "screw_robot_rigRN.phl[313]";
+connectAttr "R_finger_03_FK_ctrl_rotateX.o" "screw_robot_rigRN.phl[314]";
+connectAttr "R_finger_03_FK_ctrl_rotateY.o" "screw_robot_rigRN.phl[315]";
+connectAttr "R_finger_03_FK_ctrl_rotateZ.o" "screw_robot_rigRN.phl[316]";
+connectAttr "R_finger_03_FK_ctrl_scaleX.o" "screw_robot_rigRN.phl[317]";
+connectAttr "R_finger_03_FK_ctrl_scaleY.o" "screw_robot_rigRN.phl[318]";
+connectAttr "R_finger_03_FK_ctrl_scaleZ.o" "screw_robot_rigRN.phl[319]";
+connectAttr "house_2RN.phl[1]" "aiStandardSurface4SG.dsm" -na;
+connectAttr "house_2RN.phl[2]" "aiStandardSurface5SG.dsm" -na;
+connectAttr "SceneGeo.di" "RockRN.phl[1]";
+connectAttr "SceneGeo.di" "House_one.do";
+connectAttr "SceneGeo.di" "House_two.do";
+connectAttr "RENDER_CAMERA_translateZ.o" "RENDER_CAMERA.tz";
+connectAttr "RENDER_CAMERA_translateY.o" "RENDER_CAMERA.ty";
+connectAttr "RENDER_CAMERA_translateX.o" "RENDER_CAMERA.tx";
+connectAttr "RENDER_CAMERA_rotateZ.o" "RENDER_CAMERA.rz";
+connectAttr "RENDER_CAMERA_rotateX.o" "RENDER_CAMERA.rx";
+connectAttr "RENDER_CAMERA_rotateY.o" "RENDER_CAMERA.ry";
+connectAttr "RENDER_CAMERA_scaleX.o" "RENDER_CAMERA.sx";
+connectAttr "RENDER_CAMERA_scaleY.o" "RENDER_CAMERA.sy";
+connectAttr "RENDER_CAMERA_scaleZ.o" "RENDER_CAMERA.sz";
+connectAttr "RENDER_CAMERA_visibility.o" "RENDER_CAMERA.v";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "aiStandardSurface1SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "aiStandardSurface2SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "aiStandardSurface3SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "aiStandardSurface4SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "aiStandardSurface5SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "aiStandardSurface1SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "aiStandardSurface2SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "aiStandardSurface3SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "aiStandardSurface4SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "aiStandardSurface5SG.message" ":defaultLightSet.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
 connectAttr "house_1RNfosterParent1.msg" "house_1RN.fp";
@@ -2109,5 +5801,632 @@ connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
 connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
 connectAttr "sharedReferenceNode.sr" "screw_robot_rigRN.sr";
 connectAttr "house_1:polySurfaceShape1.o" "polySoftEdge1.ip";
+connectAttr "sharedReferenceNode.sr" "house_2RN.sr";
+connectAttr "file1.oc" "HouseOne.base_color";
+connectAttr "file2.oa" "HouseOne.metalness";
+connectAttr "file3.oa" "HouseOne.specular_roughness";
+connectAttr "bump2d1.o" "HouseOne.n";
+connectAttr "HouseOne.out" "aiStandardSurface1SG.ss";
+connectAttr "displacementShader1.d" "aiStandardSurface1SG.ds";
+connectAttr "aiStandardSurface1SG.msg" "materialInfo1.sg";
+connectAttr "HouseOne.msg" "materialInfo1.m";
+connectAttr "HouseOne.msg" "materialInfo1.t" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file1.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file1.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file1.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file1.ws";
+connectAttr "place2dTexture1.c" "file1.c";
+connectAttr "place2dTexture1.tf" "file1.tf";
+connectAttr "place2dTexture1.rf" "file1.rf";
+connectAttr "place2dTexture1.mu" "file1.mu";
+connectAttr "place2dTexture1.mv" "file1.mv";
+connectAttr "place2dTexture1.s" "file1.s";
+connectAttr "place2dTexture1.wu" "file1.wu";
+connectAttr "place2dTexture1.wv" "file1.wv";
+connectAttr "place2dTexture1.re" "file1.re";
+connectAttr "place2dTexture1.of" "file1.of";
+connectAttr "place2dTexture1.r" "file1.ro";
+connectAttr "place2dTexture1.n" "file1.n";
+connectAttr "place2dTexture1.vt1" "file1.vt1";
+connectAttr "place2dTexture1.vt2" "file1.vt2";
+connectAttr "place2dTexture1.vt3" "file1.vt3";
+connectAttr "place2dTexture1.vc1" "file1.vc1";
+connectAttr "place2dTexture1.o" "file1.uv";
+connectAttr "place2dTexture1.ofs" "file1.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file2.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file2.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file2.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file2.ws";
+connectAttr "place2dTexture2.c" "file2.c";
+connectAttr "place2dTexture2.tf" "file2.tf";
+connectAttr "place2dTexture2.rf" "file2.rf";
+connectAttr "place2dTexture2.mu" "file2.mu";
+connectAttr "place2dTexture2.mv" "file2.mv";
+connectAttr "place2dTexture2.s" "file2.s";
+connectAttr "place2dTexture2.wu" "file2.wu";
+connectAttr "place2dTexture2.wv" "file2.wv";
+connectAttr "place2dTexture2.re" "file2.re";
+connectAttr "place2dTexture2.of" "file2.of";
+connectAttr "place2dTexture2.r" "file2.ro";
+connectAttr "place2dTexture2.n" "file2.n";
+connectAttr "place2dTexture2.vt1" "file2.vt1";
+connectAttr "place2dTexture2.vt2" "file2.vt2";
+connectAttr "place2dTexture2.vt3" "file2.vt3";
+connectAttr "place2dTexture2.vc1" "file2.vc1";
+connectAttr "place2dTexture2.o" "file2.uv";
+connectAttr "place2dTexture2.ofs" "file2.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file3.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file3.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file3.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file3.ws";
+connectAttr "place2dTexture3.c" "file3.c";
+connectAttr "place2dTexture3.tf" "file3.tf";
+connectAttr "place2dTexture3.rf" "file3.rf";
+connectAttr "place2dTexture3.mu" "file3.mu";
+connectAttr "place2dTexture3.mv" "file3.mv";
+connectAttr "place2dTexture3.s" "file3.s";
+connectAttr "place2dTexture3.wu" "file3.wu";
+connectAttr "place2dTexture3.wv" "file3.wv";
+connectAttr "place2dTexture3.re" "file3.re";
+connectAttr "place2dTexture3.of" "file3.of";
+connectAttr "place2dTexture3.r" "file3.ro";
+connectAttr "place2dTexture3.n" "file3.n";
+connectAttr "place2dTexture3.vt1" "file3.vt1";
+connectAttr "place2dTexture3.vt2" "file3.vt2";
+connectAttr "place2dTexture3.vt3" "file3.vt3";
+connectAttr "place2dTexture3.vc1" "file3.vc1";
+connectAttr "place2dTexture3.o" "file3.uv";
+connectAttr "place2dTexture3.ofs" "file3.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file4.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file4.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file4.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file4.ws";
+connectAttr "place2dTexture4.c" "file4.c";
+connectAttr "place2dTexture4.tf" "file4.tf";
+connectAttr "place2dTexture4.rf" "file4.rf";
+connectAttr "place2dTexture4.mu" "file4.mu";
+connectAttr "place2dTexture4.mv" "file4.mv";
+connectAttr "place2dTexture4.s" "file4.s";
+connectAttr "place2dTexture4.wu" "file4.wu";
+connectAttr "place2dTexture4.wv" "file4.wv";
+connectAttr "place2dTexture4.re" "file4.re";
+connectAttr "place2dTexture4.of" "file4.of";
+connectAttr "place2dTexture4.r" "file4.ro";
+connectAttr "place2dTexture4.n" "file4.n";
+connectAttr "place2dTexture4.vt1" "file4.vt1";
+connectAttr "place2dTexture4.vt2" "file4.vt2";
+connectAttr "place2dTexture4.vt3" "file4.vt3";
+connectAttr "place2dTexture4.vc1" "file4.vc1";
+connectAttr "place2dTexture4.o" "file4.uv";
+connectAttr "place2dTexture4.ofs" "file4.fs";
+connectAttr "file4.oa" "bump2d1.bv";
+connectAttr "house_1_default_Height_1.ocr" "displacementShader1.d";
+connectAttr ":defaultColorMgtGlobals.cme" "house_1_default_Height_1.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "house_1_default_Height_1.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "house_1_default_Height_1.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "house_1_default_Height_1.ws";
+connectAttr "place2dTexture6.c" "house_1_default_Height_1.c";
+connectAttr "place2dTexture6.tf" "house_1_default_Height_1.tf";
+connectAttr "place2dTexture6.rf" "house_1_default_Height_1.rf";
+connectAttr "place2dTexture6.mu" "house_1_default_Height_1.mu";
+connectAttr "place2dTexture6.mv" "house_1_default_Height_1.mv";
+connectAttr "place2dTexture6.s" "house_1_default_Height_1.s";
+connectAttr "place2dTexture6.wu" "house_1_default_Height_1.wu";
+connectAttr "place2dTexture6.wv" "house_1_default_Height_1.wv";
+connectAttr "place2dTexture6.re" "house_1_default_Height_1.re";
+connectAttr "place2dTexture6.of" "house_1_default_Height_1.of";
+connectAttr "place2dTexture6.r" "house_1_default_Height_1.ro";
+connectAttr "place2dTexture6.n" "house_1_default_Height_1.n";
+connectAttr "place2dTexture6.vt1" "house_1_default_Height_1.vt1";
+connectAttr "place2dTexture6.vt2" "house_1_default_Height_1.vt2";
+connectAttr "place2dTexture6.vt3" "house_1_default_Height_1.vt3";
+connectAttr "place2dTexture6.vc1" "house_1_default_Height_1.vc1";
+connectAttr "place2dTexture6.o" "house_1_default_Height_1.uv";
+connectAttr "place2dTexture6.ofs" "house_1_default_Height_1.fs";
+connectAttr "house_1_default_Height_1.dcr" "remapValue1.i";
+connectAttr "file5.oc" "HouseOneDoor.base_color";
+connectAttr "file6.oa" "HouseOneDoor.metalness";
+connectAttr "file7.oa" "HouseOneDoor.specular_roughness";
+connectAttr "bump2d2.o" "HouseOneDoor.n";
+connectAttr "HouseOneDoor.out" "aiStandardSurface2SG.ss";
+connectAttr "aiStandardSurface2SG.msg" "materialInfo2.sg";
+connectAttr "HouseOneDoor.msg" "materialInfo2.m";
+connectAttr "HouseOneDoor.msg" "materialInfo2.t" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file5.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file5.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file5.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file5.ws";
+connectAttr "place2dTexture7.c" "file5.c";
+connectAttr "place2dTexture7.tf" "file5.tf";
+connectAttr "place2dTexture7.rf" "file5.rf";
+connectAttr "place2dTexture7.mu" "file5.mu";
+connectAttr "place2dTexture7.mv" "file5.mv";
+connectAttr "place2dTexture7.s" "file5.s";
+connectAttr "place2dTexture7.wu" "file5.wu";
+connectAttr "place2dTexture7.wv" "file5.wv";
+connectAttr "place2dTexture7.re" "file5.re";
+connectAttr "place2dTexture7.of" "file5.of";
+connectAttr "place2dTexture7.r" "file5.ro";
+connectAttr "place2dTexture7.n" "file5.n";
+connectAttr "place2dTexture7.vt1" "file5.vt1";
+connectAttr "place2dTexture7.vt2" "file5.vt2";
+connectAttr "place2dTexture7.vt3" "file5.vt3";
+connectAttr "place2dTexture7.vc1" "file5.vc1";
+connectAttr "place2dTexture7.o" "file5.uv";
+connectAttr "place2dTexture7.ofs" "file5.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file6.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file6.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file6.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file6.ws";
+connectAttr "place2dTexture8.c" "file6.c";
+connectAttr "place2dTexture8.tf" "file6.tf";
+connectAttr "place2dTexture8.rf" "file6.rf";
+connectAttr "place2dTexture8.mu" "file6.mu";
+connectAttr "place2dTexture8.mv" "file6.mv";
+connectAttr "place2dTexture8.s" "file6.s";
+connectAttr "place2dTexture8.wu" "file6.wu";
+connectAttr "place2dTexture8.wv" "file6.wv";
+connectAttr "place2dTexture8.re" "file6.re";
+connectAttr "place2dTexture8.of" "file6.of";
+connectAttr "place2dTexture8.r" "file6.ro";
+connectAttr "place2dTexture8.n" "file6.n";
+connectAttr "place2dTexture8.vt1" "file6.vt1";
+connectAttr "place2dTexture8.vt2" "file6.vt2";
+connectAttr "place2dTexture8.vt3" "file6.vt3";
+connectAttr "place2dTexture8.vc1" "file6.vc1";
+connectAttr "place2dTexture8.o" "file6.uv";
+connectAttr "place2dTexture8.ofs" "file6.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file7.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file7.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file7.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file7.ws";
+connectAttr "place2dTexture9.c" "file7.c";
+connectAttr "place2dTexture9.tf" "file7.tf";
+connectAttr "place2dTexture9.rf" "file7.rf";
+connectAttr "place2dTexture9.mu" "file7.mu";
+connectAttr "place2dTexture9.mv" "file7.mv";
+connectAttr "place2dTexture9.s" "file7.s";
+connectAttr "place2dTexture9.wu" "file7.wu";
+connectAttr "place2dTexture9.wv" "file7.wv";
+connectAttr "place2dTexture9.re" "file7.re";
+connectAttr "place2dTexture9.of" "file7.of";
+connectAttr "place2dTexture9.r" "file7.ro";
+connectAttr "place2dTexture9.n" "file7.n";
+connectAttr "place2dTexture9.vt1" "file7.vt1";
+connectAttr "place2dTexture9.vt2" "file7.vt2";
+connectAttr "place2dTexture9.vt3" "file7.vt3";
+connectAttr "place2dTexture9.vc1" "file7.vc1";
+connectAttr "place2dTexture9.o" "file7.uv";
+connectAttr "place2dTexture9.ofs" "file7.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file8.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file8.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file8.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file8.ws";
+connectAttr "place2dTexture10.c" "file8.c";
+connectAttr "place2dTexture10.tf" "file8.tf";
+connectAttr "place2dTexture10.rf" "file8.rf";
+connectAttr "place2dTexture10.mu" "file8.mu";
+connectAttr "place2dTexture10.mv" "file8.mv";
+connectAttr "place2dTexture10.s" "file8.s";
+connectAttr "place2dTexture10.wu" "file8.wu";
+connectAttr "place2dTexture10.wv" "file8.wv";
+connectAttr "place2dTexture10.re" "file8.re";
+connectAttr "place2dTexture10.of" "file8.of";
+connectAttr "place2dTexture10.r" "file8.ro";
+connectAttr "place2dTexture10.n" "file8.n";
+connectAttr "place2dTexture10.vt1" "file8.vt1";
+connectAttr "place2dTexture10.vt2" "file8.vt2";
+connectAttr "place2dTexture10.vt3" "file8.vt3";
+connectAttr "place2dTexture10.vc1" "file8.vc1";
+connectAttr "place2dTexture10.o" "file8.uv";
+connectAttr "place2dTexture10.ofs" "file8.fs";
+connectAttr "file8.oa" "bump2d2.bv";
+connectAttr "layerManager.dli[1]" "SceneGeo.id";
+connectAttr "file9.oc" "Road_obj.base_color";
+connectAttr "file10.oa" "Road_obj.metalness";
+connectAttr "file11.oa" "Road_obj.specular_roughness";
+connectAttr "bump2d3.o" "Road_obj.n";
+connectAttr "Road_obj.out" "aiStandardSurface3SG.ss";
+connectAttr "aiStandardSurface3SG.msg" "materialInfo3.sg";
+connectAttr "Road_obj.msg" "materialInfo3.m";
+connectAttr "Road_obj.msg" "materialInfo3.t" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file9.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file9.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file9.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file9.ws";
+connectAttr "place2dTexture11.c" "file9.c";
+connectAttr "place2dTexture11.tf" "file9.tf";
+connectAttr "place2dTexture11.rf" "file9.rf";
+connectAttr "place2dTexture11.mu" "file9.mu";
+connectAttr "place2dTexture11.mv" "file9.mv";
+connectAttr "place2dTexture11.s" "file9.s";
+connectAttr "place2dTexture11.wu" "file9.wu";
+connectAttr "place2dTexture11.wv" "file9.wv";
+connectAttr "place2dTexture11.re" "file9.re";
+connectAttr "place2dTexture11.of" "file9.of";
+connectAttr "place2dTexture11.r" "file9.ro";
+connectAttr "place2dTexture11.n" "file9.n";
+connectAttr "place2dTexture11.vt1" "file9.vt1";
+connectAttr "place2dTexture11.vt2" "file9.vt2";
+connectAttr "place2dTexture11.vt3" "file9.vt3";
+connectAttr "place2dTexture11.vc1" "file9.vc1";
+connectAttr "place2dTexture11.o" "file9.uv";
+connectAttr "place2dTexture11.ofs" "file9.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file10.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file10.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file10.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file10.ws";
+connectAttr "place2dTexture12.c" "file10.c";
+connectAttr "place2dTexture12.tf" "file10.tf";
+connectAttr "place2dTexture12.rf" "file10.rf";
+connectAttr "place2dTexture12.mu" "file10.mu";
+connectAttr "place2dTexture12.mv" "file10.mv";
+connectAttr "place2dTexture12.s" "file10.s";
+connectAttr "place2dTexture12.wu" "file10.wu";
+connectAttr "place2dTexture12.wv" "file10.wv";
+connectAttr "place2dTexture12.re" "file10.re";
+connectAttr "place2dTexture12.of" "file10.of";
+connectAttr "place2dTexture12.r" "file10.ro";
+connectAttr "place2dTexture12.n" "file10.n";
+connectAttr "place2dTexture12.vt1" "file10.vt1";
+connectAttr "place2dTexture12.vt2" "file10.vt2";
+connectAttr "place2dTexture12.vt3" "file10.vt3";
+connectAttr "place2dTexture12.vc1" "file10.vc1";
+connectAttr "place2dTexture12.o" "file10.uv";
+connectAttr "place2dTexture12.ofs" "file10.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file11.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file11.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file11.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file11.ws";
+connectAttr "place2dTexture13.c" "file11.c";
+connectAttr "place2dTexture13.tf" "file11.tf";
+connectAttr "place2dTexture13.rf" "file11.rf";
+connectAttr "place2dTexture13.mu" "file11.mu";
+connectAttr "place2dTexture13.mv" "file11.mv";
+connectAttr "place2dTexture13.s" "file11.s";
+connectAttr "place2dTexture13.wu" "file11.wu";
+connectAttr "place2dTexture13.wv" "file11.wv";
+connectAttr "place2dTexture13.re" "file11.re";
+connectAttr "place2dTexture13.of" "file11.of";
+connectAttr "place2dTexture13.r" "file11.ro";
+connectAttr "place2dTexture13.n" "file11.n";
+connectAttr "place2dTexture13.vt1" "file11.vt1";
+connectAttr "place2dTexture13.vt2" "file11.vt2";
+connectAttr "place2dTexture13.vt3" "file11.vt3";
+connectAttr "place2dTexture13.vc1" "file11.vc1";
+connectAttr "place2dTexture13.o" "file11.uv";
+connectAttr "place2dTexture13.ofs" "file11.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file12.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file12.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file12.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file12.ws";
+connectAttr "place2dTexture14.c" "file12.c";
+connectAttr "place2dTexture14.tf" "file12.tf";
+connectAttr "place2dTexture14.rf" "file12.rf";
+connectAttr "place2dTexture14.mu" "file12.mu";
+connectAttr "place2dTexture14.mv" "file12.mv";
+connectAttr "place2dTexture14.s" "file12.s";
+connectAttr "place2dTexture14.wu" "file12.wu";
+connectAttr "place2dTexture14.wv" "file12.wv";
+connectAttr "place2dTexture14.re" "file12.re";
+connectAttr "place2dTexture14.of" "file12.of";
+connectAttr "place2dTexture14.r" "file12.ro";
+connectAttr "place2dTexture14.n" "file12.n";
+connectAttr "place2dTexture14.vt1" "file12.vt1";
+connectAttr "place2dTexture14.vt2" "file12.vt2";
+connectAttr "place2dTexture14.vt3" "file12.vt3";
+connectAttr "place2dTexture14.vc1" "file12.vc1";
+connectAttr "place2dTexture14.o" "file12.uv";
+connectAttr "place2dTexture14.ofs" "file12.fs";
+connectAttr "file12.oa" "bump2d3.bv";
+connectAttr "file13.oc" "House_two_surface.base_color";
+connectAttr "file14.oa" "House_two_surface.metalness";
+connectAttr "file15.oa" "House_two_surface.specular_roughness";
+connectAttr "bump2d4.o" "House_two_surface.n";
+connectAttr "House_two_surface.out" "aiStandardSurface4SG.ss";
+connectAttr "aiStandardSurface4SG.msg" "materialInfo4.sg";
+connectAttr "House_two_surface.msg" "materialInfo4.m";
+connectAttr "House_two_surface.msg" "materialInfo4.t" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file13.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file13.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file13.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file13.ws";
+connectAttr "place2dTexture15.c" "file13.c";
+connectAttr "place2dTexture15.tf" "file13.tf";
+connectAttr "place2dTexture15.rf" "file13.rf";
+connectAttr "place2dTexture15.mu" "file13.mu";
+connectAttr "place2dTexture15.mv" "file13.mv";
+connectAttr "place2dTexture15.s" "file13.s";
+connectAttr "place2dTexture15.wu" "file13.wu";
+connectAttr "place2dTexture15.wv" "file13.wv";
+connectAttr "place2dTexture15.re" "file13.re";
+connectAttr "place2dTexture15.of" "file13.of";
+connectAttr "place2dTexture15.r" "file13.ro";
+connectAttr "place2dTexture15.n" "file13.n";
+connectAttr "place2dTexture15.vt1" "file13.vt1";
+connectAttr "place2dTexture15.vt2" "file13.vt2";
+connectAttr "place2dTexture15.vt3" "file13.vt3";
+connectAttr "place2dTexture15.vc1" "file13.vc1";
+connectAttr "place2dTexture15.o" "file13.uv";
+connectAttr "place2dTexture15.ofs" "file13.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file14.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file14.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file14.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file14.ws";
+connectAttr "place2dTexture16.c" "file14.c";
+connectAttr "place2dTexture16.tf" "file14.tf";
+connectAttr "place2dTexture16.rf" "file14.rf";
+connectAttr "place2dTexture16.mu" "file14.mu";
+connectAttr "place2dTexture16.mv" "file14.mv";
+connectAttr "place2dTexture16.s" "file14.s";
+connectAttr "place2dTexture16.wu" "file14.wu";
+connectAttr "place2dTexture16.wv" "file14.wv";
+connectAttr "place2dTexture16.re" "file14.re";
+connectAttr "place2dTexture16.of" "file14.of";
+connectAttr "place2dTexture16.r" "file14.ro";
+connectAttr "place2dTexture16.n" "file14.n";
+connectAttr "place2dTexture16.vt1" "file14.vt1";
+connectAttr "place2dTexture16.vt2" "file14.vt2";
+connectAttr "place2dTexture16.vt3" "file14.vt3";
+connectAttr "place2dTexture16.vc1" "file14.vc1";
+connectAttr "place2dTexture16.o" "file14.uv";
+connectAttr "place2dTexture16.ofs" "file14.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file15.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file15.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file15.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file15.ws";
+connectAttr "place2dTexture17.c" "file15.c";
+connectAttr "place2dTexture17.tf" "file15.tf";
+connectAttr "place2dTexture17.rf" "file15.rf";
+connectAttr "place2dTexture17.mu" "file15.mu";
+connectAttr "place2dTexture17.mv" "file15.mv";
+connectAttr "place2dTexture17.s" "file15.s";
+connectAttr "place2dTexture17.wu" "file15.wu";
+connectAttr "place2dTexture17.wv" "file15.wv";
+connectAttr "place2dTexture17.re" "file15.re";
+connectAttr "place2dTexture17.of" "file15.of";
+connectAttr "place2dTexture17.r" "file15.ro";
+connectAttr "place2dTexture17.n" "file15.n";
+connectAttr "place2dTexture17.vt1" "file15.vt1";
+connectAttr "place2dTexture17.vt2" "file15.vt2";
+connectAttr "place2dTexture17.vt3" "file15.vt3";
+connectAttr "place2dTexture17.vc1" "file15.vc1";
+connectAttr "place2dTexture17.o" "file15.uv";
+connectAttr "place2dTexture17.ofs" "file15.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file16.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file16.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file16.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file16.ws";
+connectAttr "place2dTexture18.c" "file16.c";
+connectAttr "place2dTexture18.tf" "file16.tf";
+connectAttr "place2dTexture18.rf" "file16.rf";
+connectAttr "place2dTexture18.mu" "file16.mu";
+connectAttr "place2dTexture18.mv" "file16.mv";
+connectAttr "place2dTexture18.s" "file16.s";
+connectAttr "place2dTexture18.wu" "file16.wu";
+connectAttr "place2dTexture18.wv" "file16.wv";
+connectAttr "place2dTexture18.re" "file16.re";
+connectAttr "place2dTexture18.of" "file16.of";
+connectAttr "place2dTexture18.r" "file16.ro";
+connectAttr "place2dTexture18.n" "file16.n";
+connectAttr "place2dTexture18.vt1" "file16.vt1";
+connectAttr "place2dTexture18.vt2" "file16.vt2";
+connectAttr "place2dTexture18.vt3" "file16.vt3";
+connectAttr "place2dTexture18.vc1" "file16.vc1";
+connectAttr "place2dTexture18.o" "file16.uv";
+connectAttr "place2dTexture18.ofs" "file16.fs";
+connectAttr "file16.oa" "bump2d4.bv";
+connectAttr "file17.oc" "House_two_door.base_color";
+connectAttr "file18.oa" "House_two_door.metalness";
+connectAttr "file19.oa" "House_two_door.specular_roughness";
+connectAttr "bump2d5.o" "House_two_door.n";
+connectAttr "House_two_door.out" "aiStandardSurface5SG.ss";
+connectAttr "aiStandardSurface5SG.msg" "materialInfo5.sg";
+connectAttr "House_two_door.msg" "materialInfo5.m";
+connectAttr "House_two_door.msg" "materialInfo5.t" -na;
+connectAttr ":defaultColorMgtGlobals.cme" "file17.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file17.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file17.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file17.ws";
+connectAttr "place2dTexture19.c" "file17.c";
+connectAttr "place2dTexture19.tf" "file17.tf";
+connectAttr "place2dTexture19.rf" "file17.rf";
+connectAttr "place2dTexture19.mu" "file17.mu";
+connectAttr "place2dTexture19.mv" "file17.mv";
+connectAttr "place2dTexture19.s" "file17.s";
+connectAttr "place2dTexture19.wu" "file17.wu";
+connectAttr "place2dTexture19.wv" "file17.wv";
+connectAttr "place2dTexture19.re" "file17.re";
+connectAttr "place2dTexture19.of" "file17.of";
+connectAttr "place2dTexture19.r" "file17.ro";
+connectAttr "place2dTexture19.n" "file17.n";
+connectAttr "place2dTexture19.vt1" "file17.vt1";
+connectAttr "place2dTexture19.vt2" "file17.vt2";
+connectAttr "place2dTexture19.vt3" "file17.vt3";
+connectAttr "place2dTexture19.vc1" "file17.vc1";
+connectAttr "place2dTexture19.o" "file17.uv";
+connectAttr "place2dTexture19.ofs" "file17.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file18.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file18.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file18.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file18.ws";
+connectAttr "place2dTexture20.c" "file18.c";
+connectAttr "place2dTexture20.tf" "file18.tf";
+connectAttr "place2dTexture20.rf" "file18.rf";
+connectAttr "place2dTexture20.mu" "file18.mu";
+connectAttr "place2dTexture20.mv" "file18.mv";
+connectAttr "place2dTexture20.s" "file18.s";
+connectAttr "place2dTexture20.wu" "file18.wu";
+connectAttr "place2dTexture20.wv" "file18.wv";
+connectAttr "place2dTexture20.re" "file18.re";
+connectAttr "place2dTexture20.of" "file18.of";
+connectAttr "place2dTexture20.r" "file18.ro";
+connectAttr "place2dTexture20.n" "file18.n";
+connectAttr "place2dTexture20.vt1" "file18.vt1";
+connectAttr "place2dTexture20.vt2" "file18.vt2";
+connectAttr "place2dTexture20.vt3" "file18.vt3";
+connectAttr "place2dTexture20.vc1" "file18.vc1";
+connectAttr "place2dTexture20.o" "file18.uv";
+connectAttr "place2dTexture20.ofs" "file18.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file19.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file19.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file19.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file19.ws";
+connectAttr "place2dTexture21.c" "file19.c";
+connectAttr "place2dTexture21.tf" "file19.tf";
+connectAttr "place2dTexture21.rf" "file19.rf";
+connectAttr "place2dTexture21.mu" "file19.mu";
+connectAttr "place2dTexture21.mv" "file19.mv";
+connectAttr "place2dTexture21.s" "file19.s";
+connectAttr "place2dTexture21.wu" "file19.wu";
+connectAttr "place2dTexture21.wv" "file19.wv";
+connectAttr "place2dTexture21.re" "file19.re";
+connectAttr "place2dTexture21.of" "file19.of";
+connectAttr "place2dTexture21.r" "file19.ro";
+connectAttr "place2dTexture21.n" "file19.n";
+connectAttr "place2dTexture21.vt1" "file19.vt1";
+connectAttr "place2dTexture21.vt2" "file19.vt2";
+connectAttr "place2dTexture21.vt3" "file19.vt3";
+connectAttr "place2dTexture21.vc1" "file19.vc1";
+connectAttr "place2dTexture21.o" "file19.uv";
+connectAttr "place2dTexture21.ofs" "file19.fs";
+connectAttr ":defaultColorMgtGlobals.cme" "file20.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "file20.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "file20.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "file20.ws";
+connectAttr "place2dTexture22.c" "file20.c";
+connectAttr "place2dTexture22.tf" "file20.tf";
+connectAttr "place2dTexture22.rf" "file20.rf";
+connectAttr "place2dTexture22.mu" "file20.mu";
+connectAttr "place2dTexture22.mv" "file20.mv";
+connectAttr "place2dTexture22.s" "file20.s";
+connectAttr "place2dTexture22.wu" "file20.wu";
+connectAttr "place2dTexture22.wv" "file20.wv";
+connectAttr "place2dTexture22.re" "file20.re";
+connectAttr "place2dTexture22.of" "file20.of";
+connectAttr "place2dTexture22.r" "file20.ro";
+connectAttr "place2dTexture22.n" "file20.n";
+connectAttr "place2dTexture22.vt1" "file20.vt1";
+connectAttr "place2dTexture22.vt2" "file20.vt2";
+connectAttr "place2dTexture22.vt3" "file20.vt3";
+connectAttr "place2dTexture22.vc1" "file20.vc1";
+connectAttr "place2dTexture22.o" "file20.uv";
+connectAttr "place2dTexture22.ofs" "file20.fs";
+connectAttr "file20.oa" "bump2d5.bv";
+connectAttr "file10.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+		;
+connectAttr "place2dTexture18.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+		;
+connectAttr "file17.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "file19.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "bump2d4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+		;
+connectAttr "place2dTexture13.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+		;
+connectAttr "file9.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "file18.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "place2dTexture15.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "file20.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+		;
+connectAttr "file11.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+		;
+connectAttr "place2dTexture19.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+		;
+connectAttr "place2dTexture14.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+		;
+connectAttr "file16.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
+		;
+connectAttr "bump2d3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
+		;
+connectAttr "bump2d5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[15].dn"
+		;
+connectAttr "place2dTexture20.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[16].dn"
+		;
+connectAttr "place2dTexture22.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[17].dn"
+		;
+connectAttr "place2dTexture17.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[18].dn"
+		;
+connectAttr "file15.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[19].dn"
+		;
+connectAttr "file13.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[20].dn"
+		;
+connectAttr "file12.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[21].dn"
+		;
+connectAttr "place2dTexture12.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[22].dn"
+		;
+connectAttr "place2dTexture11.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[23].dn"
+		;
+connectAttr "file14.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[24].dn"
+		;
+connectAttr "place2dTexture21.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[25].dn"
+		;
+connectAttr "place2dTexture16.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[26].dn"
+		;
+connectAttr "aiStandardSurface1SG.pa" ":renderPartition.st" -na;
+connectAttr "aiStandardSurface2SG.pa" ":renderPartition.st" -na;
+connectAttr "aiStandardSurface3SG.pa" ":renderPartition.st" -na;
+connectAttr "aiStandardSurface4SG.pa" ":renderPartition.st" -na;
+connectAttr "aiStandardSurface5SG.pa" ":renderPartition.st" -na;
+connectAttr "HouseOne.msg" ":defaultShaderList1.s" -na;
+connectAttr "displacementShader1.msg" ":defaultShaderList1.s" -na;
+connectAttr "HouseOneDoor.msg" ":defaultShaderList1.s" -na;
+connectAttr "Road_obj.msg" ":defaultShaderList1.s" -na;
+connectAttr "House_two_surface.msg" ":defaultShaderList1.s" -na;
+connectAttr "House_two_door.msg" ":defaultShaderList1.s" -na;
+connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture4.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture6.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "remapValue1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture7.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture8.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture9.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture10.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture11.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture12.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture13.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture14.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture15.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture16.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture17.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture18.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d4.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture19.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture20.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture21.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture22.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "bump2d5.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
+connectAttr "pointLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "file1.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file2.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file3.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file4.msg" ":defaultTextureList1.tx" -na;
+connectAttr "house_1_default_Height_1.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file5.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file6.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file7.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file8.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file9.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file10.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file11.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file12.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file13.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file14.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file15.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file16.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file17.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file18.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file19.msg" ":defaultTextureList1.tx" -na;
+connectAttr "file20.msg" ":defaultTextureList1.tx" -na;
+connectAttr "pointLight1.iog" ":defaultLightSet.dsm" -na;
 // End of robot_rock_scene.ma
